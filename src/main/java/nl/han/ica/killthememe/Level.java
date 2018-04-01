@@ -1,13 +1,19 @@
 package nl.han.ica.killthememe;
 
-public class Level{
-	private int levels;
-	
-	
-	
-	
-	
+import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
+import nl.han.ica.waterworld.Player;
 
+public class Level extends MainGame{
+	private int levels;
+	private Sound backgroundSound;
+	private Speler speler;
+	
+	
+	
+	private void createObjects() {
+		speler = new Speler(this);
+		
+	}
 	
 	
 	

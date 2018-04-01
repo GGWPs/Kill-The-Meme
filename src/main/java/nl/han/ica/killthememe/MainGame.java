@@ -11,8 +11,8 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine{
 
-	Level level = new Level();
-	Menu menu = new Menu();
+//	Level level = new Level();
+//	Menu menu = new Menu();
 	
 	public static void main(String[] args) {
 		PApplet.main(new String[] {"nl.han.ica.killthememe.MainGame"});
@@ -26,7 +26,7 @@ public class MainGame extends GameEngine{
 	     int worldHeight=903;
 	     
 	     
-	     menu.createDashboard(worldWidth, 100);
+//	     menu.createDashboard(worldWidth, 100);
 	     createView(worldWidth, worldHeight);
 		
 	}
