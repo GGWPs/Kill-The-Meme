@@ -7,15 +7,24 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 public class Vijand extends SpriteObject{
 	
 	private Level level;
+	private MainGame maingame;
 	
 	
-	public Vijand(Level level) {
-		 this(new Sprite("src/main/java/nl/han/ica/waterworld/media/swordfish.png"));
-	     this.level=level;
+	public Vijand(MainGame mainGame) {
+		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/sprite1.png"));
+	     this.maingame=maingame;
 	}
 	
     private Vijand(Sprite sprite) {
         super(sprite);
         setxSpeed(-1);
+    }
+
+    @Override
+    public void update() {
+        if (getX()+getWidth()<=0) {
+            setX(level.getWidth());
+        }
+
     }
 }

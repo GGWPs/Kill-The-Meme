@@ -4,24 +4,28 @@ import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
+import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.waterworld.tiles.BoardsTile;
+import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles {
-	private int size;
+    final int size=30;
 	private int huidigLevel;
 	private String naam;
 	private char controls;
 	private Level level;
+	private MainGame maingame;
 	
 	
 	
 	
 	
 	
-	public Speler(Level level) {
-        super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
-        this.level=level;
+	public Speler(MainGame mainGame) {
+        super(new Sprite("src/main/java/nl/han/ica/killthememe/media/testsprite.png"),2);
+        this.maingame=maingame;
         setCurrentFrameIndex(1);
         setFriction(0.05f);
 	}
@@ -78,11 +82,31 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
     }
 	
 	
-	@Override
-	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
-		// TODO Auto-generated method stub
-		
-	}
+	 @Override
+	    public void tileCollisionOccurred(List<CollidedTile> collidedTiles)  {
+	        PVector vector;
+
+	        for (CollidedTile ct : collidedTiles) {
+	            if (ct.theTile instanceof BoardsTile) {
+	                if (ct.collisionSide == ct.TOP) {
+	                    try {
+	                        vector = level.getTileMap().getTilePixelLocation(ct.theTile);
+	                        setY(vector.y - getHeight());
+	                    } catch (TileNotFoundException e) {
+	                        e.printStackTrace();
+	                    }
+	                }
+	                if (ct.collisionSide == ct.RIGHT) {
+	                    try {
+	                        vector = level.getTileMap().getTilePixelLocation(ct.theTile);
+	                        level.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+	                    } catch (TileNotFoundException e) {
+	                        e.printStackTrace();
+	                    }
+	                }
+	            }
+	        }
+	    }
 	
 	
 

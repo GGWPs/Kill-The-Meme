@@ -7,14 +7,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
-//import waterworld.View;
 
 //yeet
 
 
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine{
-
+	private Speler speler;
+	private Vijand vijand;
 //	Level level = new Level();
 //	Menu menu = new Menu();
 	
@@ -32,7 +32,7 @@ public class MainGame extends GameEngine{
 	     initializeTileMap();
 //	     menu.createDashboard(worldWidth, 100);
 	     createView(worldWidth, worldHeight);
-		
+		 createObjects();
 	}
 
 	/**
@@ -42,14 +42,22 @@ public class MainGame extends GameEngine{
      */
     private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background1.jpg"));
         view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
-        
         
         setView(view);
         size(screenWidth, screenHeight);
     }
+    
+	public void createObjects() {
+		speler = new Speler(this);
+        addGameObject(speler, 100, 100);
+        Vijand vf=new Vijand(this);
+        addGameObject(vf,200,200);
+		
+	}
+    
     
     
     private void initializeTileMap() {

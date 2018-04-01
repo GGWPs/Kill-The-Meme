@@ -2,6 +2,7 @@ package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.waterworld.Player;
+import nl.han.ica.waterworld.Swordfish;
 
 public class Level extends MainGame{
 	private int levels;
@@ -10,8 +11,13 @@ public class Level extends MainGame{
 	
 	
 	
-	private void createObjects() {
+	
+	
+	public void createObjects() {
 		speler = new Speler(this);
+        addGameObject(speler, 100, 100);
+        Vijand vf=new Vijand(this);
+        addGameObject(vf,200,200);
 		
 	}
 	
