@@ -1,7 +1,11 @@
 package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
+import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 //import waterworld.View;
 
@@ -25,7 +29,7 @@ public class MainGame extends GameEngine{
 		 int worldWidth=1204;
 	     int worldHeight=903;
 	     
-	     
+	     initializeTileMap();
 //	     menu.createDashboard(worldWidth, 100);
 	     createView(worldWidth, worldHeight);
 		
@@ -36,13 +40,44 @@ public class MainGame extends GameEngine{
      * @param screenWidth Breedte van het scherm
      * @param screenHeight Hoogte van het scherm
      */
-    public void createView(int screenWidth, int screenHeight) {
+    private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
+        
+        
         setView(view);
         size(screenWidth, screenHeight);
     }
+    
+    
+    private void initializeTileMap() {
+        /* TILES */
+        Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
+        TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
+
+        TileType[] tileTypes = { boardTileType };
+        int tileSize=50;
+        int tilesMap[][]={
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+        };
+        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+    }
+    
 
 	@Override
 	public void update() {
