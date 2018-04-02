@@ -16,7 +16,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private String naam;
 	private char controls;
 	private Level level;
-	private MainGame maingame;
+	private MainGame mainGame;
 	
 	
 	
@@ -24,8 +24,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	
 	public Speler(MainGame mainGame) {
-        super(new Sprite("src/main/java/nl/han/ica/killthememe/media/testsprite.png"),2);
-        this.maingame=maingame;
+     //   super(new Sprite("src/main/java/nl/han/ica/killthememe/media/testsprite.png"),2);
+        super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
+        this.mainGame=mainGame;
         setCurrentFrameIndex(1);
         setFriction(0.05f);
 	}
@@ -48,11 +49,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
             setySpeed(0);
             setY(0);
         }
-        if (getX()>=level.getWidth()-size) {
+        if (getX()>=mainGame.getWidth()-size) {
             setxSpeed(0);
             setX(level.getWidth() - size);
         }
-        if (getY()>=level.getHeight()-size) {
+        if (getY()>=mainGame.getHeight()-size) {
             setySpeed(0);
             setY(level.getHeight() - size);
         }

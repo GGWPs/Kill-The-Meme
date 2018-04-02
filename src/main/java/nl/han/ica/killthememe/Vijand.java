@@ -7,12 +7,12 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 public class Vijand extends SpriteObject{
 	
 	private Level level;
-	private MainGame maingame;
+	private MainGame mainGame;
 	
 	
 	public Vijand(MainGame mainGame) {
 		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/sprite1.png"));
-	     this.maingame=maingame;
+	     this.mainGame=mainGame;
 	}
 	
     private Vijand(Sprite sprite) {
@@ -23,7 +23,7 @@ public class Vijand extends SpriteObject{
     @Override
     public void update() {
         if (getX()+getWidth()<=0) {
-            setX(level.getWidth());
+            setX(mainGame.getWidth());
         }
 
     }

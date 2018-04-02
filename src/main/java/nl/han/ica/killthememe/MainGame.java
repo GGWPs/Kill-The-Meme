@@ -2,19 +2,22 @@ package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
-//yeet
+//yeete
 
 
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine{
 	private Speler speler;
-	private Vijand vijand;
+//	private Vijand vijand;
+	private Sound backgroundSound;
+    private Sound bubblePopSound;
 //	Level level = new Level();
 //	Menu menu = new Menu();
 	
@@ -31,8 +34,13 @@ public class MainGame extends GameEngine{
 	     
 	     initializeTileMap();
 //	     menu.createDashboard(worldWidth, 100);
+	     initializeSound();
+	     createObjects();
+	     
+	     
 	     createView(worldWidth, worldHeight);
-		 createObjects();
+	     
+		 
 	}
 
 	/**
@@ -58,6 +66,12 @@ public class MainGame extends GameEngine{
 		
 	}
     
+    private void initializeSound() {
+        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+        backgroundSound.loop(-1);
+        bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+    }
+
     
     
     private void initializeTileMap() {
