@@ -18,6 +18,7 @@ public class MainGame extends GameEngine{
 //	private Vijand vijand;
 	private Sound backgroundSound;
     private Sound bubblePopSound;
+
 //	Level level = new Level();
 //	Menu menu = new Menu();
 	
@@ -65,7 +66,7 @@ public class MainGame extends GameEngine{
         addGameObject(vf,200,200);
 		
 	}
-    
+	
     private void initializeSound() {
         backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
         backgroundSound.loop(-1);
