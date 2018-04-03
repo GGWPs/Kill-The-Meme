@@ -10,11 +10,10 @@ public class Level extends MainGame{
 	private Speler speler;
 	private int currentLevel;
 	
-	
+
 	public Level(int currentLevel) {
 		this.currentLevel=currentLevel;
 	}
-	
 	
 	
 	boolean levelClear() {

@@ -9,9 +9,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class Vijand extends SpriteObject{
 	
-	private Level level;
-	private MainGame mainGame;
-	private Sprite projectileSprite;
+	protected Level level;
+	protected MainGame mainGame;
+	protected Sprite projectileSprite;
 
 	
 	/**
@@ -27,6 +27,9 @@ public class Vijand extends SpriteObject{
 //		this.mainGame=mainGame;
 
 	}
+
+//	public abstract void afvuren();
+
 	
  	
     private Vijand(Sprite sprite) {

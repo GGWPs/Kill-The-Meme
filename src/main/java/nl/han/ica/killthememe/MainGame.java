@@ -104,6 +104,8 @@ public class MainGame extends GameEngine{
         addGameObject(vijand,1000,500);
         vogel=new Vogel(this);
         addGameObject(vogel,1000,100);
+//        Vijand vf=new BaasEen(this);
+//        addGameObject(vf,0,0);
 		
 	}
 	
@@ -151,5 +153,6 @@ public class MainGame extends GameEngine{
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 }
