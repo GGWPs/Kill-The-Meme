@@ -10,5 +10,7 @@ public interface Beweeg {
 
 	void beweeg(int directionspeed, int speed);
 
+	void beweeg(int directionspeed, int speed, int frame);
+
 
 }

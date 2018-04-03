@@ -1,5 +1,8 @@
 package nl.han.ica.killthememe;
 
+
+import java.awt.image.BufferedImage;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
@@ -8,6 +11,8 @@ public class Vijand extends SpriteObject{
 	
 	private Level level;
 	private MainGame mainGame;
+	private Sprite projectileSprite;
+
 	
 	/**
 	 * 
@@ -16,8 +21,14 @@ public class Vijand extends SpriteObject{
 	public Vijand(MainGame mainGame) {
 		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"));
 	     this.mainGame=mainGame;
+	
+//	public Vijand(Sprite sprite, MainGame mainGame) {
+//	    super(sprite);
+//		this.mainGame=mainGame;
+
 	}
 	
+ 	
     private Vijand(Sprite sprite) {
         super(sprite);
         setxSpeed(-1);
@@ -31,3 +42,5 @@ public class Vijand extends SpriteObject{
 
     }
 }
+
+
