@@ -16,11 +16,11 @@ public class Projectiel extends Aanval{
 		}
 		
 		
-//		@Override
-//		public void update() {
-//			if (mainGame.getX() <= getX()) {
-//				mainGame.deleteGameObject(this);
-//			}
-//		}
+		@Override
+		public void update() {
+			if (mainGame.getX() <= getX()) {
+				mainGame.deleteGameObject(this);
+			}
+		}
     	
 }

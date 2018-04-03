@@ -1,7 +1,7 @@
 package nl.han.ica.killthememe;
 
 
-import java.awt.image.BufferedImage;
+
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
