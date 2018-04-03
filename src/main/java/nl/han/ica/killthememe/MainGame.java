@@ -25,9 +25,9 @@ public class MainGame extends GameEngine{
     private Sound bubblePopSound;
     private TextObject dashboardText;
     private IPersistence persistence;
-    private int currentLevel;
-    
     private Menu menu;
+    private int currentLevel = 1;
+    private Level level;
 
 //	Level level = new Level();
 //	Menu menu = new Menu();
@@ -65,8 +65,8 @@ public class MainGame extends GameEngine{
      */
     private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
         
         setView(view);
@@ -122,7 +122,7 @@ public class MainGame extends GameEngine{
 
         TileType[] tileTypes = { boardTileType };
         int tileSize=50;
-        int tilesMap[][]={
+        int tilesMap[][]= {
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -132,7 +132,7 @@ public class MainGame extends GameEngine{
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
+                {-1,-1,-1, 0, 0, 0, 0,-1,0,0},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
