@@ -15,7 +15,7 @@ public class BaasEen extends Vijand{
 	@Override
 	public void afvuren() {
 		Aanval projectiel = new Projectiel(mainGame, projectileSprite);
-		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2, getY() + getHeight());
+		mainGame.addGameObject(projectiel,200,200);
 	}
 	@Override
 	public void update() {

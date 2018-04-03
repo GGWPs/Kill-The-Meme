@@ -12,7 +12,7 @@ public class Projectiel extends Aanval{
 		 * @param sprite
 		 */
 		public Projectiel(MainGame mainGame, Sprite sprite) {
-			super(mainGame, sprite, 270, 10);
+			super(mainGame, sprite, 180, 10);
 		}
 		
 		

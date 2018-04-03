@@ -100,12 +100,12 @@ public class MainGame extends GameEngine{
 	public void createObjects() {
 		speler = new Speler(this);
         addGameObject(speler, 10, 100);
-        vijand=new Vijand(this);
-        addGameObject(vijand,1000,500);
+//        vijand =new Vijand(this);
+//        addGameObject(vijand,1000,500);
         vogel=new Vogel(this);
         addGameObject(vogel,1000,100);
-//        Vijand vf=new BaasEen(this);
-//        addGameObject(vf,0,0);
+        Vijand vf=new BaasEen(this);
+        addGameObject(vf,0,0);
 		
 	}
 	
