@@ -51,11 +51,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (getX()>=mainGame.getWidth()-size) {
             setxSpeed(0);
-            setX(level.getWidth() - size);
+            setX(mainGame.getWidth() - size);
         }
         if (getY()>=mainGame.getHeight()-size) {
             setySpeed(0);
-            setY(level.getHeight() - size);
+            setY(mainGame.getHeight() - size);
         }
 
     }
@@ -63,18 +63,18 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
-        if (keyCode == level.LEFT) {
+        if (keyCode == mainGame.LEFT) {
             setDirectionSpeed(270, speed);
             setCurrentFrameIndex(0);
         }
-        if (keyCode == level.UP) {
+        if (keyCode == mainGame.UP) {
             setDirectionSpeed(0, speed);
         }
-        if (keyCode == level.RIGHT) {
+        if (keyCode == mainGame.RIGHT) {
             setDirectionSpeed(90, speed);
             setCurrentFrameIndex(1);
         }
-        if (keyCode == level.DOWN) {
+        if (keyCode == mainGame.DOWN) {
             setDirectionSpeed(180, speed);
         }
         if (key == ' ') {
