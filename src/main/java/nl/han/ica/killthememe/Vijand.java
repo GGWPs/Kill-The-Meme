@@ -9,7 +9,10 @@ public class Vijand extends SpriteObject{
 	private Level level;
 	private MainGame mainGame;
 	
-	
+	/**
+	 * 
+	 * @param mainGame
+	 */
 	public Vijand(MainGame mainGame) {
 		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"));
 	     this.mainGame=mainGame;

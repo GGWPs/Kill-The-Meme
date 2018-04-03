@@ -20,11 +20,12 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine{
 	private Speler speler;
 	private Vijand vijand;
+	private Vogel vogel;
 	private Sound backgroundSound;
     private Sound bubblePopSound;
     private TextObject dashboardText;
     private IPersistence persistence;
-    private int bubblesPopped;
+    private int currentLevel;
     
     private Menu menu;
 
@@ -74,8 +75,8 @@ public class MainGame extends GameEngine{
     
     public void createMenu() {
     	menu = new Menu(this);
-
     }
+    
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
         dashboardText = new TextObject("");
@@ -86,23 +87,23 @@ public class MainGame extends GameEngine{
     public void initializePersistence() {
         persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
         if (persistence.fileExists()) {
-            bubblesPopped = Integer.parseInt(persistence.loadDataString());
+            currentLevel = Integer.parseInt(persistence.loadDataString());
             refreshDasboardText();
         }
     }
     
     public void refreshDasboardText() {
-        dashboardText.setText("Level: "+bubblesPopped);
+        dashboardText.setText("Level: "+currentLevel);
     }
 	
     
 	public void createObjects() {
 		speler = new Speler(this);
         addGameObject(speler, 10, 100);
-        Vijand vf=new Vijand(this);
-        addGameObject(vf,1000,500);
-        Vogel vog=new Vogel(this);
-        addGameObject(vog,10,500);
+        Vijand vijand=new Vijand(this);
+        addGameObject(vijand,1000,500);
+       Vogel vogel=new Vogel(this);
+        addGameObject(vogel,1000,100);
 		
 	}
 	
@@ -126,7 +127,7 @@ public class MainGame extends GameEngine{
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,0,0,0,0,0,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},

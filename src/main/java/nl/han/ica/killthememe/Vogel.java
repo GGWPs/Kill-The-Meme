@@ -10,15 +10,21 @@ public class Vogel  extends AnimatedSpriteObject {
 	private MainGame mainGame;
 	
 	
+	
+	/**
+	 * 
+	 * @param mainGame
+	 */
 	public Vogel(MainGame mainGame) {
-		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/twitter-bird-sprite.png"));
+		 super(new Sprite("src/main/java/nl/han/ica/killthememe/media/twitter-bird-sprite.png"), 4);
 		 this.mainGame=mainGame;
+		 setCurrentFrameIndex(1);
 	}
 	
-    private Vogel(Sprite sprite) {
-        super(sprite, 2);
-        setxSpeed(-1);
-    }
+//    private Vogel(Sprite sprite) {
+//        super(sprite, 4);
+//        setxSpeed(-1);
+//    }
 
 	void aanval() {
 		
@@ -32,10 +38,6 @@ public class Vogel  extends AnimatedSpriteObject {
 	public void update() {
 		  if (getX()+getWidth()<=0) {
 	            setX(mainGame.getWidth());
-	            for(int i = 1; i < 5; i++) {
-	            setCurrentFrameIndex(i);
-	            }
-	            
 	        }
 	}
 	

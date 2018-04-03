@@ -22,9 +22,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param mainGame
+	 */
 	public Speler(MainGame mainGame) {
-     //   super(new Sprite("src/main/java/nl/han/ica/killthememe/media/testsprite.png"),2);
+//        super(new Sprite("src/main/java/nl/han/ica/killthememe/media/pikachu.png"),2);
         super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
         this.mainGame=mainGame;
         setCurrentFrameIndex(1);
@@ -103,10 +106,25 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	                        e.printStackTrace();
 	                    }
 	                }
+	                if (ct.collisionSide == ct.BOTTOM) {
+	                    try {
+	                        vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+	                        setY(vector.x - getHeight());
+	                    } catch (TileNotFoundException e) {
+	                        e.printStackTrace();
+	                    }
+	                }
+//	                if (ct.collisionSide == ct.RIGHT) {
+//	                    try {
+//	                        vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+//	                        mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+//	                    } catch (TileNotFoundException e) {
+//	                        e.printStackTrace();
+//	                    }
 	                if (ct.collisionSide == ct.RIGHT) {
 	                    try {
 	                        vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-	                        mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+	                        setY(vector.y - getHeight());
 	                    } catch (TileNotFoundException e) {
 	                        e.printStackTrace();
 	                    }
