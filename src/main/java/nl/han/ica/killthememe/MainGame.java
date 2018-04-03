@@ -20,13 +20,16 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine{
 	private Speler speler;
 	private Vijand vijand;
+	private Vogel vogel;
 	private Sound backgroundSound;
     private Sound bubblePopSound;
     private TextObject dashboardText;
     private IPersistence persistence;
-    private int bubblesPopped;
-    
     private Menu menu;
+    private int currentLevel = 1;
+    private Level level;
+	private int worldWidth;
+    private int worldHeight;
 
 //	Level level = new Level();
 //	Menu menu = new Menu();
@@ -39,15 +42,15 @@ public class MainGame extends GameEngine{
 	@Override
 	public void setupGame() {
 
-		 int worldWidth=1204;
-	     int worldHeight=903;
+		 worldWidth=800;
+	     worldHeight=600;
 	     
 	     
 	     initializeSound();
 	    // createMenu();
 //	     menu.createDashboard(worldWidth, 100);
 	     createDashboard(worldWidth, 100);
-	     initializeTileMap();
+	     initializeTileMap(currentLevel);
 
 	     initializeSound();
 	     initializePersistence();
@@ -66,7 +69,7 @@ public class MainGame extends GameEngine{
      */
     private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/nether.jpg"));
 //        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
         
@@ -76,8 +79,8 @@ public class MainGame extends GameEngine{
     
     public void createMenu() {
     	menu = new Menu(this);
-
     }
+    
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
         dashboardText = new TextObject("");
@@ -86,23 +89,23 @@ public class MainGame extends GameEngine{
     }
 
     public void initializePersistence() {
-        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
-        if (persistence.fileExists()) {
-            bubblesPopped = Integer.parseInt(persistence.loadDataString());
             refreshDasboardText();
-        }
     }
     
     public void refreshDasboardText() {
-        dashboardText.setText("Level: "+bubblesPopped);
+        dashboardText.setText("Level: "+currentLevel);
     }
 	
     
 	public void createObjects() {
 		speler = new Speler(this);
-        addGameObject(speler, 100, 100);
-        Vijand vf=new BaasEen(this);
-        addGameObject(vf,0,0);
+        addGameObject(speler, 10, 100);
+        vijand=new Vijand(this);
+        addGameObject(vijand,1000,500);
+        vogel=new Vogel(this);
+        addGameObject(vogel,1000,100);
+//        Vijand vf=new BaasEen(this);
+//        addGameObject(vf,0,0);
 		
 	}
 	
@@ -114,19 +117,21 @@ public class MainGame extends GameEngine{
 
     
     
-    private void initializeTileMap() {
+    private void initializeTileMap(int currentLevel) {
         /* TILES */
+//    	level = new Level(currentLevel);
         Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
-        int tileSize=50;
+        int tileSize=60;
+        
         int tilesMap[][]={
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,0,0,0,-1,-1},
+                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                {-1,-1,-1,0,0,0,0,0,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -137,7 +142,9 @@ public class MainGame extends GameEngine{
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
         };
+        
         tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+//        tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
     
 

@@ -17,7 +17,10 @@ public class Menu extends MainGame{
     
     
     
-
+	/**
+	 * 
+	 * @param mainGame
+	 */
     public Menu(MainGame mainGame) {
 		this.mainGame=mainGame;
 	}

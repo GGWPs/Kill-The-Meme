@@ -7,20 +7,29 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
-public abstract class Vijand extends SpriteObject{
+public class Vijand extends SpriteObject{
 	
 	protected Level level;
 	protected MainGame mainGame;
 	protected Sprite projectileSprite;
 
 	
+	/**
+	 * 
+	 * @param mainGame
+	 */
+	public Vijand(MainGame mainGame) {
+		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"));
+	     this.mainGame=mainGame;
 	
-	public Vijand(Sprite sprite, MainGame mainGame) {
-	    super(sprite);
-		this.mainGame=mainGame;
+//	public Vijand(Sprite sprite, MainGame mainGame) {
+//	    super(sprite);
+//		this.mainGame=mainGame;
 
 	}
-	public abstract void afvuren();
+
+//	public abstract void afvuren();
+
 	
  	
     private Vijand(Sprite sprite) {
