@@ -10,18 +10,7 @@ public class Level extends MainGame{
 	private Speler speler;
 	
 	
-	
-	
-	
-	public void createObjects() {
-		speler = new Speler(this);
-        addGameObject(speler, 100, 100);
-        Vijand vf=new Vijand(this);
-        addGameObject(vf,200,200);
 		
-	}
-	
-	
 	
 	boolean levelClear() {
 		

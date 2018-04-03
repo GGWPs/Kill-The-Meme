@@ -101,8 +101,8 @@ public class MainGame extends GameEngine{
 	public void createObjects() {
 		speler = new Speler(this);
         addGameObject(speler, 100, 100);
-        Vijand vf=new Vijand(this);
-        addGameObject(vf,200,200);
+        Vijand vf=new BaasEen(this);
+        addGameObject(vf,0,0);
 		
 	}
 	
@@ -146,5 +146,6 @@ public class MainGame extends GameEngine{
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 }
