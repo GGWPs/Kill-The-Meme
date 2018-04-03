@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
-public class Vijand extends SpriteObject{
+public abstract class Vijand extends SpriteObject{
 	
 	private Level level;
 	private MainGame mainGame;
@@ -15,17 +15,12 @@ public class Vijand extends SpriteObject{
 
 	
 	
-	public Vijand(MainGame mainGame) {
-		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/sprite1.png"));
-	     this.mainGame=mainGame;
-	     projectileSprite = new Sprite();
+	public Vijand(Sprite sprite, MainGame mainGame) {
+	    super(sprite);
+		this.mainGame=mainGame;
 
 	}
-	public void afschieten() {
-		float direction = getAngleFrom(mainGame.getVijand());
-		Aanval aanval = new Aanval(mainGame, projectileSprite, direction, 10, true, 8);
-		mainGame.addGameObject(Aanval, getX() + getWidth() / 2 - Aanval.WIDTH / 2, getY() + getHeight());
-	}
+	public abstract void afschieten();
 	
  	
     private Vijand(Sprite sprite) {
