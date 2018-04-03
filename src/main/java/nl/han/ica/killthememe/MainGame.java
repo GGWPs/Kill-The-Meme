@@ -1,11 +1,15 @@
 package nl.han.ica.killthememe;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
+import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+import nl.han.ica.waterworld.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
@@ -15,9 +19,14 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine{
 	private Speler speler;
-//	private Vijand vijand;
+	private Vijand vijand;
 	private Sound backgroundSound;
     private Sound bubblePopSound;
+    private TextObject dashboardText;
+    private IPersistence persistence;
+    private int bubblesPopped;
+    
+    private Menu menu;
 
 //	Level level = new Level();
 //	Menu menu = new Menu();
@@ -29,13 +38,17 @@ public class MainGame extends GameEngine{
 	
 	@Override
 	public void setupGame() {
-		// TODO Auto-generated method stub
+
 		 int worldWidth=1204;
 	     int worldHeight=903;
 	     
-	     initializeTileMap();
-//	     menu.createDashboard(worldWidth, 100);
+	     
 	     initializeSound();
+	    // createMenu();
+//	     menu.createDashboard(worldWidth, 100);
+	     createDashboard(worldWidth, 100);
+	     initializeTileMap();
+	     initializePersistence();
 	     createObjects();
 	     
 	     
@@ -51,13 +64,37 @@ public class MainGame extends GameEngine{
      */
     private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background1.jpg"));
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
         
         setView(view);
         size(screenWidth, screenHeight);
     }
+    
+    public void createMenu() {
+    	menu = new Menu(this);
+
+    }
+    private void createDashboard(int dashboardWidth,int dashboardHeight) {
+        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
+        dashboardText = new TextObject("");
+        dashboard.addGameObject(dashboardText);
+        addDashboard(dashboard);
+    }
+
+    public void initializePersistence() {
+        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
+        if (persistence.fileExists()) {
+            bubblesPopped = Integer.parseInt(persistence.loadDataString());
+            refreshDasboardText();
+        }
+    }
+    
+    public void refreshDasboardText() {
+        dashboardText.setText("Level: "+bubblesPopped);
+    }
+	
     
 	public void createObjects() {
 		speler = new Speler(this);

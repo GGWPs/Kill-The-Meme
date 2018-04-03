@@ -10,7 +10,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
-public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles {
+public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, Beweeg {
     final int size=30;
 	private int huidigLevel;
 	private String naam;
@@ -28,12 +28,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
         super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
         this.mainGame=mainGame;
         setCurrentFrameIndex(1);
-        setFriction(0.05f);
+        setFriction(0.02f);
 	}
 
-	void beweeg() {
-		
-	}
+
 	
 	void player() {
 		
@@ -62,25 +60,30 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	@Override
     public void keyPressed(int keyCode, char key) {
-        final int speed = 5;
+        final int speed = 3;
         if (keyCode == mainGame.LEFT) {
-            setDirectionSpeed(270, speed);
+            beweeg(270, speed);
             setCurrentFrameIndex(0);
         }
         if (keyCode == mainGame.UP) {
-            setDirectionSpeed(0, speed);
+            beweeg(0, speed);
         }
         if (keyCode == mainGame.RIGHT) {
-            setDirectionSpeed(90, speed);
+            beweeg(90, speed);
             setCurrentFrameIndex(1);
         }
         if (keyCode == mainGame.DOWN) {
-            setDirectionSpeed(180, speed);
+            beweeg(180, speed);
         }
         if (key == ' ') {
             System.out.println("Spatie!");
         }
     }
+	
+	@Override
+		public void beweeg(int directionspeed, int speed){
+		setDirectionSpeed(directionspeed, speed);
+		}
 	
 	
 	 @Override
@@ -91,7 +94,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	            if (ct.theTile instanceof BoardsTile) {
 	                if (ct.collisionSide == ct.TOP) {
 	                    try {
-	                        vector = level.getTileMap().getTilePixelLocation(ct.theTile);
+	                        vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 	                        setY(vector.y - getHeight());
 	                    } catch (TileNotFoundException e) {
 	                        e.printStackTrace();
@@ -99,8 +102,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	                }
 	                if (ct.collisionSide == ct.RIGHT) {
 	                    try {
-	                        vector = level.getTileMap().getTilePixelLocation(ct.theTile);
-	                        level.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+	                        vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+	                        mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 	                    } catch (TileNotFoundException e) {
 	                        e.printStackTrace();
 	                    }
