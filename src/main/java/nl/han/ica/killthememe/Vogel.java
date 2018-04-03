@@ -4,19 +4,19 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
-public class Vogel extends SpriteObject {
+public class Vogel  extends AnimatedSpriteObject {
 
 	
-	private Level level;
+	private MainGame mainGame;
 	
 	
-	public Vogel(Level level) {
-		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/vogel 1.png"));
-		 this.level=level;
+	public Vogel(MainGame mainGame) {
+		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/twitter-bird-sprite.png"));
+		 this.mainGame=mainGame;
 	}
 	
     private Vogel(Sprite sprite) {
-        super(sprite);
+        super(sprite, 2);
         setxSpeed(-1);
     }
 
@@ -31,7 +31,11 @@ public class Vogel extends SpriteObject {
 	@Override
 	public void update() {
 		  if (getX()+getWidth()<=0) {
-	            setX(level.getWidth());
+	            setX(mainGame.getWidth());
+	            for(int i = 1; i < 5; i++) {
+	            setCurrentFrameIndex(i);
+	            }
+	            
 	        }
 	}
 	

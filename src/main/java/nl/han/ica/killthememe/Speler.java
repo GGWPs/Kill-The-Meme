@@ -77,6 +77,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (key == ' ') {
             System.out.println("Spatie!");
+            beweeg(0, speed);
+            
+            beweeg(180, speed);
         }
     }
 	

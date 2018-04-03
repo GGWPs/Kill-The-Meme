@@ -64,8 +64,8 @@ public class MainGame extends GameEngine{
      */
     private void createView(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/background.jpeg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
         
         setView(view);
@@ -98,9 +98,11 @@ public class MainGame extends GameEngine{
     
 	public void createObjects() {
 		speler = new Speler(this);
-        addGameObject(speler, 100, 100);
+        addGameObject(speler, 10, 100);
         Vijand vf=new Vijand(this);
-        addGameObject(vf,200,200);
+        addGameObject(vf,1000,500);
+        Vogel vog=new Vogel(this);
+        addGameObject(vog,10,500);
 		
 	}
 	

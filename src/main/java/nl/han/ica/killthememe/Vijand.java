@@ -11,7 +11,7 @@ public class Vijand extends SpriteObject{
 	
 	
 	public Vijand(MainGame mainGame) {
-		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/sprite1.png"));
+		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"));
 	     this.mainGame=mainGame;
 	}
 	
