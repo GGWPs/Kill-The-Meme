@@ -18,7 +18,7 @@ public class MainGame extends GameEngine{
 //	private Vijand vijand;
 	private Sound backgroundSound;
     private Sound bubblePopSound;
-
+    private Menu menu;
 //	Level level = new Level();
 //	Menu menu = new Menu();
 	
@@ -34,13 +34,13 @@ public class MainGame extends GameEngine{
 	     int worldHeight=903;
 	     
 	     initializeTileMap();
-//	     menu.createDashboard(worldWidth, 100);
+
 	     initializeSound();
 	     createObjects();
 	     
 	     
 	     createView(worldWidth, worldHeight);
-	     
+	     menu.createDashboard(worldWidth, 100);	     
 		 
 	}
 
