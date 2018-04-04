@@ -21,9 +21,11 @@ public abstract class Aanval extends SpriteObject {
 	 */
 	@Override
 	public void update() {
-		if (mainGame.getX() <= getX()) {
+		if (getY() < 0 || getY() > mainGame.getHeight() || 
+				getX() < 0 || getX() > mainGame.getWidth()) {
 			mainGame.deleteGameObject(this);
+			System.out.print("out of screen het werkt");
 		}
-
 	}
 }
+
