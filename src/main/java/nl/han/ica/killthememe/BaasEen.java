@@ -1,6 +1,10 @@
 package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+/**
+ * @author Kaene Peters
+ * 
+ */
 
 public class BaasEen extends Vijand {
 	private Sprite projectileSprite;
@@ -11,7 +15,7 @@ public class BaasEen extends Vijand {
 	 * @param mainGame
 	 */
 	public BaasEen(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"), mainGame, 5);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"), mainGame, 0.25f);
 		projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png");
 
 	}
@@ -21,8 +25,11 @@ public class BaasEen extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-		Projectiel projectiel = new Projectiel(mainGame, projectileSprite, 1000, 3);
-		mainGame.addGameObject(projectiel, 200 - Projectiel.WIDTH, 200);
+
+		Aanval projectiel = new Projectiel(mainGame, projectileSprite);
+		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2, getY() + getHeight());
+
+
 	}
 
 	/**

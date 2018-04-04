@@ -23,7 +23,7 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 		this.aanvallenPerSeconden = aanvallenPerSeconden;
 		this.magAanvallen = false;
 		setFriction(0.05f);
- 
+
 	}
 
 	public void update() {

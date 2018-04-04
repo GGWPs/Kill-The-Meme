@@ -18,7 +18,7 @@ import processing.core.PApplet;
 //yeete
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine implements IAlarmListener{
+public class MainGame extends GameEngine implements IAlarmListener {
 	private Speler speler;
 	private Vijand vijand;
 	private Vogel vogel;
@@ -29,11 +29,10 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	private int currentLevel = 0;
 	Level level = new Level(currentLevel);
 	private int worldWidth;
-//	Menu menu = new Menu(this);
-    private int worldHeight;
-    private boolean isNext;
 
-
+	// Menu menu = new Menu(this);
+	private int worldHeight;
+	private boolean isNext;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -42,7 +41,6 @@ public class MainGame extends GameEngine implements IAlarmListener{
 
 	@Override
 	public void setupGame() {
-
 
 		 worldWidth=800;
 	     worldHeight=600;
@@ -61,6 +59,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	     startAlarm();
 	     createView(worldWidth, worldHeight);
 	     
+
 	}
 
 	/**
@@ -74,14 +73,14 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	private void createView(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
 		view.setBackground(loadImage(level.pickBackground(currentLevel)));
-		
+
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
 
-//	public void createMenu() {
-//		menu = new Menu(this);
-//	}
+	// public void createMenu() {
+	// menu = new Menu(this);
+	// }
 
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
@@ -96,24 +95,25 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	}
 
 	public void refreshDasboardText() {
-		if(currentLevel == 0) {
+		if (currentLevel == 0) {
 			dashboardText.setText("Menu");
 		}
-		if(currentLevel >= 1) {
-		dashboardText.setText("Level: " + currentLevel);
+		if (currentLevel >= 1) {
+			dashboardText.setText("Level: " + currentLevel);
 		}
 	}
 
 	public void createObjects(int currentLevel) {
-		if(currentLevel >= 1) {
-		speler = new Speler(this);
-		addGameObject(speler, 10, 100);
-		// vijand =new Vijand(this);
-		// addGameObject(vijand,1000,500);
-		vogel = new Vogel(this);
-		addGameObject(vogel, 1000, 100);
-		Vijand vf = new BaasEen(this);
-		addGameObject(vf, 100, 100);
+		if (currentLevel >= 1) {
+			speler = new Speler(this);
+			addGameObject(speler, 10, 100);
+			// vijand =new Vijand(this);
+			// addGameObject(vijand,1000,500);
+			vogel = new Vogel(this);
+			addGameObject(vogel, 1000, 100);
+			Vijand vf = new BaasEen(this);
+			addGameObject(vf, 450, -50);
+			addGameObject(vf, 100, 100);
 		}
 
 	}
@@ -123,8 +123,6 @@ public class MainGame extends GameEngine implements IAlarmListener{
 		backgroundSound.loop(-1);
 		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
-
-
 
     
     
@@ -149,16 +147,40 @@ public class MainGame extends GameEngine implements IAlarmListener{
     }
     
 	public void triggerAlarm(String alarmName) {
-		 if (!isNext) {
-			 System.out.println("New level!");
-			 isNext = true;
-			 startAlarm();
-			  currentLevel++;
-			  setupGame();
-		  }
+		if (!isNext) {
+			System.out.println("New level!");
+			isNext = true;
+			startAlarm();
+			currentLevel++;
+			setupGame();
+		}
 	}
-	
 
+	private int[][] laadTileMap(int currentLevel) {
+		if (currentLevel == 1) {
+			int tileMap[][] = { { -1, -1, -1, -1, -1, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
+					{ -1, -1, -1, 0, 0, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, 0, 0, 0, 0, -1, 0, 0 },
+					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } };
+
+			return tileMap;
+		} else if (currentLevel == 2) {
+			int tileMap[][] = { { -1, -1, -1, -1, -1, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
+					{ -1, -1, -1, 1, 1, 1, 1, 1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, 1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, 0, 0, 0, 0, -1, 0, 0 },
+					{ -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 },
+					{ -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 } };
+
+			return tileMap;
+		} else {
+			return null;
+		}
+	}
 
 	@Override
 	public void update() {
