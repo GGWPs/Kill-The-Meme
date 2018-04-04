@@ -60,6 +60,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		
 	}
+	
 
 //	public void spelerAfvuren() {
 //		if (powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
