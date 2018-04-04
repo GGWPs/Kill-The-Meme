@@ -29,7 +29,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private TextObject dashboardText;
 	private IPersistence persistence;
 	private int currentLevel = 0;
-	Level level = new Level(currentLevel);
+	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
 
 	private Menu menu;
@@ -51,12 +51,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	     initializeSound();
 	    // createMenu();
 //	     menu.createDashboard(worldWidth, 100);
-	     createDashboard(worldWidth, 100, currentLevel);
-	     initializeTileMap(currentLevel);
+	     createDashboard(worldWidth, 100, getCurrentLevel());
+	     initializeTileMap(getCurrentLevel());
 
 	     initializeSound();
 	     initializePersistence();
-	     createObjects(currentLevel);
+	     createObjects(getCurrentLevel());
 	     
 	     startAlarm();
 	     createView(worldWidth, worldHeight);
@@ -75,7 +75,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 */
 	private void createView(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
-		view.setBackground(loadImage(level.pickBackground(currentLevel)));
+		view.setBackground(loadImage(level.pickBackground(getCurrentLevel())));
 
 		setView(view);
 		size(screenWidth, screenHeight);
@@ -113,8 +113,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == 0) {
 			menu.setText("Kill The Meme!");
 		}
-		if (currentLevel >= 1) {
-			dashboardText.setText("Level: " + currentLevel);
+		if (getCurrentLevel() >= 1) {
+			dashboardText.setText("Level: " + getCurrentLevel());
 		}
 	}
 
@@ -127,10 +127,13 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(vogel, 1000, 100);
 			Vijand vf = new BaasEen(this);
 			addGameObject(vf, 200, 450);
-
+//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+			PowerUp copy = new PowerUp(this, "copyPower");
+			addGameObject(copy, 300, 300);
 		}
 
 	}
+
 
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
@@ -183,5 +186,15 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		
 		return speler;
 	}
+
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public void setCurrentLevel(int currentLevel) {
+		this.currentLevel = currentLevel;
+	}
+
+	
 
 }

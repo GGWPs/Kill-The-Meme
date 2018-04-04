@@ -34,7 +34,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setFriction(0.10f);
 	}
 
-	
 		//dit is zodat de speler niet uit het scherm gaat.
 	@Override
 	public void update() {
@@ -57,8 +56,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	}
 
-	
-	//alarm voor animatie
+	// public void spelerAfvuren() {
+	// if (mainGame.getCurrentLevel() == 1) {
+	// BaasEen.afvuren();
+	// }
+	// }
+
+	// alarm voor animatie
+
 	void startAlarm() {
 		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
 		alarm.addTarget(this);
@@ -74,8 +79,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	}
 	
-	
-	//dit zijn de keybinds van de speler.
+	// dit zijn de keybinds van de speler.
 	@Override
 	public void keyPressed(int keyCode, char key) {
 
@@ -115,24 +119,24 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			System.out.println("Spatie!");
 		}
 	}
-	//functie om naar links te bewegen
+	// functie om naar links te bewegen
 	public void beweegLinks() {
-//		setCurrentFrameIndex(0 + totalFramez);
+		// setCurrentFrameIndex(0 + totalFramez);
 		beweeg(270, speed, 0 + totalFramez);
 	}
-//functie om naar rechts te bewegen
+	// functie om naar rechts te bewegen
 	public void beweegRechts() {
-//		setCurrentFrameIndex(6 + totalFramez);
+		// setCurrentFrameIndex(6 + totalFramez);
 		beweeg(90, speed, 6 + totalFramez);
 	}
-//functie omhoog te lopen
+	// functie omhoog te lopen
 	public void beweegOmhoog() {
-//		setCurrentFrameIndex(4 + totalFramez);
+		// setCurrentFrameIndex(4 + totalFramez);
 		beweeg(0, speed, 4 + totalFramez);
 	}
-//functie om omlaag te bewegen
+	// functie om omlaag te bewegen
 	public void beweegOmlaag() {
-//		setCurrentFrameIndex(2 + totalFramez);
+		// setCurrentFrameIndex(2 + totalFramez);
 		beweeg(180, speed, 2 + totalFramez);
 	}
 
@@ -141,7 +145,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
-	//collision
+	// collision
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
