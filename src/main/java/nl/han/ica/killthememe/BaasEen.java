@@ -2,6 +2,7 @@ package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
+
 public class BaasEen extends Vijand {
 	private Sprite projectileSprite;
 
@@ -22,7 +23,7 @@ public class BaasEen extends Vijand {
 	@Override
 	public void afvuren() {
 		Aanval projectiel = new Projectiel(mainGame, projectileSprite);
-		mainGame.addGameObject(projectiel, 600 - Projectiel.WIDTH, 600);
+		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2, getY() + getHeight());
 	}
 
 	/**
