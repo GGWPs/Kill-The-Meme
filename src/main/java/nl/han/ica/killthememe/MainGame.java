@@ -17,33 +17,31 @@ import processing.core.PApplet;
 
 //yeete
 
-
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener{
 	private Speler speler;
 	private Vijand vijand;
 	private Vogel vogel;
 	private Sound backgroundSound;
-    private Sound bubblePopSound;
-    private TextObject dashboardText;
-    private IPersistence persistence;
-    private Menu menu;
-    private int currentLevel = 1;
-    private Level level;
+	private Sound bubblePopSound;
+	private TextObject dashboardText;
+	private IPersistence persistence;
+	private Menu menu;
+	private int currentLevel = 1;
+	private Level level;
 	private int worldWidth;
+
     private int worldHeight;
     private boolean isNext;
 
-//	Level level = new Level();
-//	Menu menu = new Menu();
-	
 	public static void main(String[] args) {
-		PApplet.main(new String[] {"nl.han.ica.killthememe.MainGame"});
-		
+		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
+
 	}
-	
+
 	@Override
 	public void setupGame() {
+
 
 		 worldWidth=800;
 	     worldHeight=600;
@@ -62,61 +60,63 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	     startAlarm();
 	     createView(worldWidth, worldHeight);
 	     
-		 
 	}
 
 	/**
-     * creert de view zonder viewport
-     * @param screenWidth Breedte van het scherm
-     * @param screenHeight Hoogte van het scherm
-     */
-    private void createView(int screenWidth, int screenHeight) {
-        View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/nether.jpg"));
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+	 * creert de view zonder viewport
+	 * 
+	 * @param screenWidth
+	 *            Breedte van het scherm
+	 * @param screenHeight
+	 *            Hoogte van het scherm
+	 */
+	private void createView(int screenWidth, int screenHeight) {
+		View view = new View(screenWidth, screenHeight);
+		view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/nether.jpg"));
+		// view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
 
-        
-        setView(view);
-        size(screenWidth, screenHeight);
-    }
-    
-    public void createMenu() {
-    	menu = new Menu(this);
-    }
-    
-    private void createDashboard(int dashboardWidth,int dashboardHeight) {
-        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-        dashboardText = new TextObject("");
-        dashboard.addGameObject(dashboardText);
-        addDashboard(dashboard);
-    }
+		setView(view);
+		size(screenWidth, screenHeight);
+	}
 
-    public void initializePersistence() {
-            refreshDasboardText();
-    }
-    
-    public void refreshDasboardText() {
-        dashboardText.setText("Level: "+currentLevel);
-    }
-	
-    
+	public void createMenu() {
+		menu = new Menu(this);
+	}
+
+	private void createDashboard(int dashboardWidth, int dashboardHeight) {
+		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
+		dashboardText = new TextObject("");
+		dashboard.addGameObject(dashboardText);
+		addDashboard(dashboard);
+	}
+
+	public void initializePersistence() {
+		refreshDasboardText();
+	}
+
+	public void refreshDasboardText() {
+		dashboardText.setText("Level: " + currentLevel);
+	}
+
 	public void createObjects() {
 		speler = new Speler(this);
-        addGameObject(speler, 10, 100);
-//        vijand =new Vijand(this);
-//        addGameObject(vijand,1000,500);
-        vogel=new Vogel(this);
-        addGameObject(vogel,1000,100);
-        Vijand vf=new BaasEen(this);
-        addGameObject(vf,0,0);
-		
+		addGameObject(speler, 10, 100);
+		// vijand =new Vijand(this);
+		// addGameObject(vijand,1000,500);
+		vogel = new Vogel(this);
+		addGameObject(vogel, 1000, 100);
+		Vijand vf = new BaasEen(this);
+		addGameObject(vf, 100, 100);
+
 	}
-	
-    private void initializeSound() {
-        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
-        backgroundSound.loop(-1);
-        bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
-    }
+
+	private void initializeSound() {
+		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+		backgroundSound.loop(-1);
+		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+	}
+
+
 
     
     
@@ -201,5 +201,4 @@ public class MainGame extends GameEngine implements IAlarmListener{
 
 	}
 
-	
 }
