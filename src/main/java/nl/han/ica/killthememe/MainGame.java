@@ -33,7 +33,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
 
-	// Menu menu = new Menu(this);
+	private Menu menu;
 	private int worldHeight;
 	private boolean isNext;
 
@@ -48,14 +48,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		 worldWidth=800;
 	     worldHeight=600;
 	     
-	     
+	 	deleteAllGameOBjects();
 	     initializeSound();
-	    // createMenu();
-//	     menu.createDashboard(worldWidth, 100);
 	     createDashboard(worldWidth, 100, getCurrentLevel());
 	     initializeTileMap(getCurrentLevel());
 
-	     initializeSound();
 	     initializePersistence();
 	     createObjects(getCurrentLevel());
 	     
@@ -82,36 +79,41 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		size(screenWidth, screenHeight);
 	}
 
-	// public void createMenu() {
-	// menu = new Menu(this);
-	// }
 
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		dashboardText = new TextObject("", currentLevel);
-		dashboard.addGameObject(dashboardText);
+		if(getCurrentLevel() == 0 || getCurrentLevel() == -1 ) {
+			menu = new Menu("", currentLevel, worldWidth, worldHeight);
+			dashboard.addGameObject(menu);
+		} else if (getCurrentLevel() >= 1) {
+			dashboardText = new TextObject("", currentLevel, worldWidth, worldHeight);
+			dashboard.addGameObject(dashboardText);
+		}
 		addDashboard(dashboard);
 	}
 
 	public void initializePersistence() {
 		refreshDasboardText();
 	}
+	
 	@Override
 	public void mouseClicked(){
-		if(mouseX > 350 && mouseY > 400 && mouseX < 430 && mouseY < 440) {
-			currentLevel++;
+		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0) {
+			currentLevel = 1;
 			setupGame();
-			
 		}
 	}
 	
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
-			dashboardText.setText("Kill The Meme!");
+			menu.setText("Kill The Meme!");
 		}
 		if (getCurrentLevel() >= 1) {
 			dashboardText.setText("Level: " + getCurrentLevel());
+		}
+		if(getCurrentLevel() == -1) {
+			menu.setText("Dead! Retry?");
 		}
 	}
 
@@ -133,7 +135,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 
 	private void initializeSound() {
-		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
@@ -147,7 +149,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
-        int tileSize=40;
+        int tileSize=50;
         
         tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }

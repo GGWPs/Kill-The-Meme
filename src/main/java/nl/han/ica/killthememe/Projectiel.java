@@ -13,7 +13,7 @@ public class Projectiel extends Aanval {
 	/**
 	 * Projectiel constructor 
 	 * 
-	 * @param maingGame
+	 * @param mainGame
 	 * @param sprite
 	 */
 	public Projectiel(MainGame mainGame, Sprite sprite, float richting) {
@@ -26,7 +26,8 @@ public class Projectiel extends Aanval {
 			if (go instanceof Speler) {
 				//System.out.print("Het is een hit");
 				mainGame.deleteGameObject(this);
-				//hier komt wat moet gebeuren als iets de speler raakt.
+				mainGame.setCurrentLevel(-1);
+				mainGame.setupGame();
 			}
 		}
 		
