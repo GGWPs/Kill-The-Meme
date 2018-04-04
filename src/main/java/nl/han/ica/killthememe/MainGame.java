@@ -96,7 +96,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	public void refreshDasboardText() {
 		if (currentLevel == 0) {
-			dashboardText.setText("Menu");
+			dashboardText.setText("Kill The Meme!");
 		}
 		if (currentLevel >= 1) {
 			dashboardText.setText("Level: " + currentLevel);

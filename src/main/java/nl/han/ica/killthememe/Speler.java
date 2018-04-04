@@ -32,7 +32,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		// super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(3);
-		setFriction(0.05f);
+		setFriction(0.10f);
 	}
 
 	@Override

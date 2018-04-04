@@ -30,8 +30,8 @@ public class TextObject extends GameObject {
     public void draw(PGraphics g) {
     	if(currentLevel == 0) {
     		g.textAlign(g.CENTER,g.TOP);
-            g.textSize(20);
-            g.text(text,getX()*2,getY()*2);
+            g.textSize(50);
+            g.text(text,getX()+400,getY()+50);
     	}
     	if(currentLevel >= 1) {
         g.textAlign(g.LEFT,g.TOP);
