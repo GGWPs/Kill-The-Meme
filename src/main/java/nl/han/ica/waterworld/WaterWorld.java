@@ -57,7 +57,7 @@ public class WaterWorld extends GameEngine {
     }
 
     /**
-     * CreeÃ«rt de view zonder viewport
+     * Creeërt de view zonder viewport
      * @param screenWidth Breedte van het scherm
      * @param screenHeight Hoogte van het scherm
      */
@@ -70,7 +70,7 @@ public class WaterWorld extends GameEngine {
     }
 
     /**
-     * CreeÃ«rt de view met viewport
+     * Creeërt  de view met viewport
      * @param worldWidth Totale breedte van de wereld
      * @param worldHeight Totale hoogte van de wereld
      * @param screenWidth Breedte van het scherm

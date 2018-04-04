@@ -37,6 +37,7 @@ public class TextObject extends GameObject {
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(20);
         g.text(text,getX(),getY());
+        
     	}
     }
 }
