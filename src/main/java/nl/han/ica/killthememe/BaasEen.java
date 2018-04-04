@@ -21,8 +21,8 @@ public class BaasEen extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-		Aanval projectiel = new Projectiel(mainGame, projectileSprite);
-		mainGame.addGameObject(projectiel, 600 - Projectiel.WIDTH, 600);
+		Projectiel projectiel = new Projectiel(mainGame, projectileSprite, 1000, 3);
+		mainGame.addGameObject(projectiel, 200 - Projectiel.WIDTH, 200);
 	}
 
 	/**
@@ -30,6 +30,7 @@ public class BaasEen extends Vijand {
 	 */
 	public void update() {
 		if (!magAanvallen) {
+			System.out.println("schiet");
 			afvuren();
 			magAanvallen = true;
 			startAlarm();

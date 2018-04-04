@@ -26,7 +26,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	private Sound bubblePopSound;
 	private TextObject dashboardText;
 	private IPersistence persistence;
-	private int currentLevel = 1;
+	private int currentLevel = 0;
 	Level level = new Level(currentLevel);
 	private int worldWidth;
 //	Menu menu = new Menu(this);
@@ -56,7 +56,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 
 	     initializeSound();
 	     initializePersistence();
-	     createObjects();
+	     createObjects(currentLevel);
 	     
 	     startAlarm();
 	     createView(worldWidth, worldHeight);
@@ -84,6 +84,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 //	}
 
 	private void createDashboard(int dashboardWidth, int dashboardHeight) {
+		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
 		dashboardText = new TextObject("");
 		dashboard.addGameObject(dashboardText);
@@ -95,10 +96,16 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	}
 
 	public void refreshDasboardText() {
+		if(currentLevel == 0) {
+			dashboardText.setText("Menu");
+		}
+		if(currentLevel >= 1) {
 		dashboardText.setText("Level: " + currentLevel);
+		}
 	}
 
-	public void createObjects() {
+	public void createObjects(int currentLevel) {
+		if(currentLevel >= 1) {
 		speler = new Speler(this);
 		addGameObject(speler, 10, 100);
 		// vijand =new Vijand(this);
@@ -106,7 +113,8 @@ public class MainGame extends GameEngine implements IAlarmListener{
 		vogel = new Vogel(this);
 		addGameObject(vogel, 1000, 100);
 		Vijand vf = new BaasEen(this);
-		addGameObject(vf, 1000, 1000);
+		addGameObject(vf, 100, 100);
+		}
 
 	}
 
@@ -129,9 +137,6 @@ public class MainGame extends GameEngine implements IAlarmListener{
         TileType[] tileTypes = { boardTileType };
         int tileSize=60;
         
-//        int tilesMap[][]=level.getLevelTile(currentLevel);
-        
-//        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
         tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
     
@@ -146,12 +151,10 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	public void triggerAlarm(String alarmName) {
 		 if (!isNext) {
 			 System.out.println("New level!");
+			 isNext = true;
+			 startAlarm();
 			  currentLevel++;
-			  initializeTileMap(currentLevel);
-			  initializePersistence();
-			  createView(worldWidth, worldHeight);
-			  startAlarm();
-			  isNext = true;
+			  setupGame();
 		  }
 	}
 	

@@ -46,6 +46,9 @@ public class Level{
 	}
 	
 	public String pickBackground(int currentLevel) {
+		if(currentLevel == 0) {
+			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
+		}
 		if(currentLevel == 1) {
 			return "src/main/java/nl/han/ica/killthememe/media/nether.jpg";
 		} else if (currentLevel == 2) {
@@ -57,7 +60,26 @@ public class Level{
 
 
 	public int[][] getLevelTile(int currentLevel){
-		
+		if (currentLevel == 0) {
+			System.out.println("Level" + currentLevel);
+			int tilesMap[][]={
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1, -1, -1, -1, -1,-1,-1 ,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+	        };
+			return tilesMap; 
+		}
 		if (currentLevel == 1) {
 			System.out.println("Level" + currentLevel);
 			int tilesMap[][]={
