@@ -30,7 +30,6 @@ public class BaasEen extends Vijand {
 	 */
 	public void update() {
 		if (!magAanvallen) {
-			System.out.println("schiet");
 			afvuren();
 			magAanvallen = true;
 			startAlarm();

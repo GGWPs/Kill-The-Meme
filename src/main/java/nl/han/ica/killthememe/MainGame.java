@@ -11,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.waterworld.TextObject;
+import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
@@ -51,7 +51,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	     initializeSound();
 	    // createMenu();
 //	     menu.createDashboard(worldWidth, 100);
-	     createDashboard(worldWidth, 100);
+	     createDashboard(worldWidth, 100, currentLevel);
 	     initializeTileMap(currentLevel);
 
 	     initializeSound();
@@ -83,10 +83,10 @@ public class MainGame extends GameEngine implements IAlarmListener{
 //		menu = new Menu(this);
 //	}
 
-	private void createDashboard(int dashboardWidth, int dashboardHeight) {
+	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		dashboardText = new TextObject("");
+		dashboardText = new TextObject("", currentLevel);
 		dashboard.addGameObject(dashboardText);
 		addDashboard(dashboard);
 	}
@@ -135,7 +135,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
-        int tileSize=60;
+        int tileSize=50;
         
         tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
