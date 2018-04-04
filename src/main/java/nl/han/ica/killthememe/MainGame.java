@@ -32,7 +32,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	Level level = new Level(currentLevel);
 	private int worldWidth;
 
-	// Menu menu = new Menu(this);
+	private Menu menu;
 	private int worldHeight;
 	private boolean isNext;
 
@@ -88,8 +88,13 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		dashboardText = new TextObject("", currentLevel);
-		dashboard.addGameObject(dashboardText);
+		if(currentLevel == 0) {
+			menu = new Menu("", currentLevel, worldWidth, worldHeight);
+			dashboard.addGameObject(menu);
+		} else if (currentLevel >= 1) {
+			dashboardText = new TextObject("", currentLevel, worldWidth, worldHeight);
+			dashboard.addGameObject(dashboardText);
+		}
 		addDashboard(dashboard);
 	}
 
@@ -98,16 +103,15 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 	@Override
 	public void mouseClicked(){
-		if(mouseX > 350 && mouseY > 400 && mouseX < 430 && mouseY < 440) {
-			currentLevel++;
+		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0) {
+			currentLevel = 1;
 			setupGame();
-			
 		}
 	}
 	
 	public void refreshDasboardText() {
 		if (currentLevel == 0) {
-			dashboardText.setText("Kill The Meme!");
+			menu.setText("Kill The Meme!");
 		}
 		if (currentLevel >= 1) {
 			dashboardText.setText("Level: " + currentLevel);
@@ -143,7 +147,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
-        int tileSize=40;
+        int tileSize=50;
         
         tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }

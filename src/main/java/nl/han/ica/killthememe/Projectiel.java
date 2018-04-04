@@ -13,7 +13,7 @@ public class Projectiel extends Aanval {
 	/**
 	 * Projectiel constructor 
 	 * 
-	 * @param maingGame
+	 * @param mainGame
 	 * @param sprite
 	 */
 	public Projectiel(MainGame mainGame, Sprite sprite, float richting) {
