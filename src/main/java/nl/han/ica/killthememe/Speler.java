@@ -29,7 +29,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	public Speler(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
-		// super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.png"),2);
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(3);
 		setFriction(0.05f);
