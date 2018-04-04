@@ -60,6 +60,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	     
 	     startAlarm();
 	     createView(worldWidth, worldHeight);
+
 	     
 
 	}
@@ -95,7 +96,15 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void initializePersistence() {
 		refreshDasboardText();
 	}
-
+	@Override
+	public void mouseClicked(){
+		if(mouseX > 350 && mouseY > 400 && mouseX < 430 && mouseY < 440) {
+			currentLevel++;
+			setupGame();
+			
+		}
+	}
+	
 	public void refreshDasboardText() {
 		if (currentLevel == 0) {
 			dashboardText.setText("Kill The Meme!");
@@ -134,7 +143,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
-        int tileSize=50;
+        int tileSize=40;
         
         tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
@@ -152,37 +161,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			System.out.println("New level!");
 			isNext = true;
 			startAlarm();
-			currentLevel++;
-			setupGame();
+//			currentLevel++;
+//			setupGame();
 		}
 	}
 
 
-	private int[][] laadTileMap(int currentLevel) {
-		if (currentLevel == 1) {
-			int tileMap[][] = { { -1, -1, -1, -1, -1, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
-					{ -1, -1, -1, 0, 0, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, 0, 0, 0, 0, -1, 0, 0 },
-					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } };
-
-			return tileMap;
-		} else if (currentLevel == 2) {
-			int tileMap[][] = { { -1, -1, -1, -1, -1, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
-					{ -1, -1, -1, 1, 1, 1, 1, 1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, 1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 }, { -1, -1, -1, 0, 0, 0, 0, -1, 0, 0 },
-					{ -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 },
-					{ -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, 0, -1, -1, -1, -1 } };
-
-			return tileMap;
-		} else {
-			return null;
-		}
-	}
 
 	@Override
 	public void update() {
