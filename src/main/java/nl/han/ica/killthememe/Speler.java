@@ -67,7 +67,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
     }
 	
 	 void startAlarm() {
-	        Alarm alarm=new Alarm("Animatie", 1/0.99f);
+	        Alarm alarm=new Alarm("Animatie", 1/0.95f);
 	        alarm.addTarget(this);
 	        alarm.start();
 	    }

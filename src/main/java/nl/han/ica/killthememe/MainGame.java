@@ -1,5 +1,7 @@
 package nl.han.ica.killthememe;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -17,7 +19,7 @@ import processing.core.PApplet;
 
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine{
+public class MainGame extends GameEngine implements IAlarmListener{
 	private Speler speler;
 	private Vijand vijand;
 	private Vogel vogel;
@@ -30,6 +32,7 @@ public class MainGame extends GameEngine{
     private Level level;
 	private int worldWidth;
     private int worldHeight;
+    private boolean isNext;
 
 //	Level level = new Level();
 //	Menu menu = new Menu();
@@ -56,7 +59,7 @@ public class MainGame extends GameEngine{
 	     initializePersistence();
 	     createObjects();
 	     
-	     
+	     startAlarm();
 	     createView(worldWidth, worldHeight);
 	     
 		 
@@ -119,39 +122,83 @@ public class MainGame extends GameEngine{
     
     private void initializeTileMap(int currentLevel) {
         /* TILES */
-//    	level = new Level(currentLevel);
+
         Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
         int tileSize=60;
         
-        int tilesMap[][]={
-                {-1,-1,-1,-1,-1,0,0,0,-1,-1},
-                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                {-1,-1,-1,0,0,0,0,0,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
-        };
+        int tilesMap[][]=laadTileMap(currentLevel);
         
         tileMap = new TileMap(tileSize, tileTypes, tilesMap);
 //        tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
     
+    private int[][] laadTileMap(int currentLevel){
+    	if(currentLevel == 1) {
+    		int tileMap[][]={
+                    {-1,-1,-1,-1,-1,0,0,0,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,0,0,0,0,0,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+            };
+        	
+        	return tileMap;
+    	} else if(currentLevel == 2) {
+    		int tileMap[][]={
+                    {-1,-1,-1,-1,-1,0,0,0,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,1,1,1,1,1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
+                    {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
+                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
+                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1}
+            };
+        	
+        	return tileMap;
+    	} else {
+    		return null;
+    	}
+    }
+    
+    void startAlarm() {
+        Alarm alarm=new Alarm("Next", 1/0.2f);
+        alarm.addTarget(this);
+        alarm.start();
+    }
+    
+	public void triggerAlarm(String alarmName) {
+		 if (!isNext) {
+			  isNext = true;
+			  currentLevel++;
+			  startAlarm();
+		  }
+	}
+	
+
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	
