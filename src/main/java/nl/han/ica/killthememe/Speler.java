@@ -22,6 +22,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean isAnimatie;
 	int totalFramez = 0;
 	final int speed = 3;
+	private Sprite projectileSprite;
+//	PowerUp powerup;
+	
 
 	/**
 	 *
@@ -32,11 +35,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
+	
 	}
 
-		//dit is zodat de speler niet uit het scherm gaat.
+	// dit is zodat de speler niet uit het scherm gaat.
 	@Override
 	public void update() {
+//		spelerAfvuren();
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -53,14 +58,19 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-
+		
 	}
 
-	// public void spelerAfvuren() {
-	// if (mainGame.getCurrentLevel() == 1) {
-	// BaasEen.afvuren();
-	// }
-	// }
+//	public void spelerAfvuren() {
+//		if (powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
+//			System.out.print("We Fire BACK");
+//			float richting = getAngleFrom(mainGame.getBaasEen());
+//			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting);
+//			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+//					getY() + getHeight() - 65);
+//
+//		}
+//	}
 
 	// alarm voor animatie
 
@@ -78,7 +88,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 
 	}
-	
+
 	// dit zijn de keybinds van de speler.
 	@Override
 	public void keyPressed(int keyCode, char key) {
@@ -119,21 +129,25 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			System.out.println("Spatie!");
 		}
 	}
+
 	// functie om naar links te bewegen
 	public void beweegLinks() {
 		// setCurrentFrameIndex(0 + totalFramez);
 		beweeg(270, speed, 0 + totalFramez);
 	}
+
 	// functie om naar rechts te bewegen
 	public void beweegRechts() {
 		// setCurrentFrameIndex(6 + totalFramez);
 		beweeg(90, speed, 6 + totalFramez);
 	}
+
 	// functie omhoog te lopen
 	public void beweegOmhoog() {
 		// setCurrentFrameIndex(4 + totalFramez);
 		beweeg(0, speed, 4 + totalFramez);
 	}
+
 	// functie om omlaag te bewegen
 	public void beweegOmlaag() {
 		// setCurrentFrameIndex(2 + totalFramez);
@@ -145,6 +159,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
+
 	// collision
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {

@@ -23,6 +23,7 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine implements IAlarmListener {
 	private Speler speler;
 	private Vijand vijand;
+	private BaasEen baaseen;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private Sound bubblePopSound;
@@ -123,7 +124,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(vogel, 1000, 100);
 			Vijand vf = new BaasEen(this);
 			addGameObject(vf, 200, 450);
-//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+//@@@@@@@@ deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 300, 300);
 		}
@@ -189,6 +190,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
+	}
+
+	public GameObject getBaasEen() {
+		return baaseen;
 	}
 
 	

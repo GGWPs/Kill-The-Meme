@@ -13,18 +13,15 @@ public class PowerUp extends Aanval {
 	public PowerUp(MainGame mainGame, String powerUpNaam) {
 		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), 0, 0);
 		this.powerUpNaam = powerUpNaam;
-		this.setItemIsOpgepakt(false);
+		this.itemIsOpgepakt = false;
 	}
 
-	public void spawnPowerUp() {
-		PowerUp copy = new PowerUp(mainGame, powerUpNaam);
-		mainGame.addGameObject(copy, 300, 300);
-	}
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
+				System.out.print("item is opgepakt");
 				itemIsOpgepakt = true;
 				mainGame.deleteGameObject(this);
 
