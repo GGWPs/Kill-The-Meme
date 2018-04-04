@@ -11,7 +11,7 @@ public class PowerUp extends Aanval {
 	private boolean itemIsOpgepakt;
 
 	public PowerUp(MainGame mainGame, String powerUpNaam) {
-		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), 0,0);
+		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), 0, 0);
 		this.powerUpNaam = powerUpNaam;
 		this.setItemIsOpgepakt(false);
 	}
@@ -32,7 +32,6 @@ public class PowerUp extends Aanval {
 		}
 
 	}
-
 
 	public boolean isItemIsOpgepakt() {
 		return itemIsOpgepakt;
