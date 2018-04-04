@@ -1,5 +1,8 @@
 package nl.han.ica.killthememe;
 
+import java.util.List;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class Projectiel extends Aanval {
@@ -13,8 +16,19 @@ public class Projectiel extends Aanval {
 	 * @param maingGame
 	 * @param sprite
 	 */
-	public Projectiel(MainGame mainGame, Sprite sprite) {
-		super(mainGame, sprite, 180, 0.25f);
+	public Projectiel(MainGame mainGame, Sprite sprite, float richting) {
+		super(mainGame, sprite, richting, 0.25f);
+	}
+	
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		for (GameObject go : collidedGameObjects) {
+			if (go instanceof Speler) {
+				System.out.print("Het is een hit");
+				mainGame.deleteGameObject(this);
+			}
+		}
+		
 	}
 
 }

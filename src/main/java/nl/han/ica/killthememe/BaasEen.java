@@ -15,7 +15,7 @@ public class BaasEen extends Vijand {
 	 * @param mainGame
 	 */
 	public BaasEen(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/marge.png"), mainGame, 0.25f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenCarlosMatos.png"), mainGame, 0.3f);
 		projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png");
 
 	}
@@ -25,9 +25,9 @@ public class BaasEen extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-
-		Aanval projectiel = new Projectiel(mainGame, projectileSprite);
-		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2, getY() + getHeight());
+		float richting = getAngleFrom(mainGame.getSpeler());
+		Aanval projectiel = new Projectiel(mainGame, projectileSprite,richting);
+		mainGame.addGameObject(projectiel,getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16, getY() + getHeight()-65);
 
 
 	}
