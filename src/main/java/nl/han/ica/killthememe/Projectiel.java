@@ -24,8 +24,9 @@ public class Projectiel extends Aanval {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
-				System.out.print("Het is een hit");
+				//System.out.print("Het is een hit");
 				mainGame.deleteGameObject(this);
+				//hier komt wat moet gebeuren als iets de speler raakt.
 			}
 		}
 		

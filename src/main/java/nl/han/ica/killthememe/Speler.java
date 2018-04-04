@@ -55,6 +55,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	}
 
+//	public void spelerAfvuren() {
+//		if (mainGame.getCurrentLevel() == 1) {
+//			BaasEen.afvuren();
+//		}
+//	}
+
 	void startAlarm() {
 		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
 		alarm.addTarget(this);
