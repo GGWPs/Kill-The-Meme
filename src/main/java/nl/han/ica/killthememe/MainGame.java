@@ -4,6 +4,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
@@ -11,6 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+
 import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
@@ -111,7 +113,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
 			Vijand vf = new BaasEen(this);
-			addGameObject(vf, 450, 0);
+			addGameObject(vf, 200, 450);
 
 		}
 
@@ -155,6 +157,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 	}
 
+
 	private int[][] laadTileMap(int currentLevel) {
 		if (currentLevel == 1) {
 			int tileMap[][] = { { -1, -1, -1, -1, -1, 0, 0, 0, -1, -1 }, { -1, -1, -1, -1, -1, -1, 0, -1, -1, -1 },
@@ -185,6 +188,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void update() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	public GameObject getSpeler() {
+		
+		return speler;
 	}
 
 }

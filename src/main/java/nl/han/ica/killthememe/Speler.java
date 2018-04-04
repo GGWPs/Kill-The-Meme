@@ -24,7 +24,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	final int speed = 3;
 
 	/**
-	 * 
+	 *
 	 * @param mainGame
 	 */
 	public Speler(MainGame mainGame) {
