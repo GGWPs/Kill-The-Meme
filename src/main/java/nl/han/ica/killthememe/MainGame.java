@@ -26,13 +26,14 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	private Sound bubblePopSound;
 	private TextObject dashboardText;
 	private IPersistence persistence;
-	private Menu menu;
 	private int currentLevel = 1;
-	private Level level;
+	Level level = new Level(currentLevel);
 	private int worldWidth;
-
+//	Menu menu = new Menu(this);
     private int worldHeight;
     private boolean isNext;
+
+
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -72,16 +73,15 @@ public class MainGame extends GameEngine implements IAlarmListener{
 	 */
 	private void createView(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
-		view.setBackground(loadImage("src/main/java/nl/han/ica/killthememe/media/nether.jpg"));
-		// view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
-
+		view.setBackground(loadImage(level.pickBackground(currentLevel)));
+		
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
 
-	public void createMenu() {
-		menu = new Menu(this);
-	}
+//	public void createMenu() {
+//		menu = new Menu(this);
+//	}
 
 	private void createDashboard(int dashboardWidth, int dashboardHeight) {
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
@@ -106,7 +106,7 @@ public class MainGame extends GameEngine implements IAlarmListener{
 		vogel = new Vogel(this);
 		addGameObject(vogel, 1000, 100);
 		Vijand vf = new BaasEen(this);
-		addGameObject(vf, 100, 100);
+		addGameObject(vf, 1000, 1000);
 
 	}
 
@@ -129,55 +129,13 @@ public class MainGame extends GameEngine implements IAlarmListener{
         TileType[] tileTypes = { boardTileType };
         int tileSize=60;
         
-        int tilesMap[][]=laadTileMap(currentLevel);
+//        int tilesMap[][]=level.getLevelTile(currentLevel);
         
-        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
-//        tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
+//        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+        tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
     }
     
-    private int[][] laadTileMap(int currentLevel){
-    	if(currentLevel == 1) {
-    		int tileMap[][]={
-                    {-1,-1,-1,-1,-1,0,0,0,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,0,0,0,0,0,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
-            };
-        	
-        	return tileMap;
-    	} else if(currentLevel == 2) {
-    		int tileMap[][]={
-                    {-1,-1,-1,-1,-1,0,0,0,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,1,1,1,1,1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,-1,0,-1,-1,-1},
-                    {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0},
-                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1},
-                    {-1,-1,-1,-1,-1,0,-1,-1,-1,-1}
-            };
-        	
-        	return tileMap;
-    	} else {
-    		return null;
-    	}
-    }
+    
     
     void startAlarm() {
         Alarm alarm=new Alarm("Next", 1/0.2f);
@@ -187,9 +145,13 @@ public class MainGame extends GameEngine implements IAlarmListener{
     
 	public void triggerAlarm(String alarmName) {
 		 if (!isNext) {
-			  isNext = true;
+			 System.out.println("New level!");
 			  currentLevel++;
+			  initializeTileMap(currentLevel);
+			  initializePersistence();
+			  createView(worldWidth, worldHeight);
 			  startAlarm();
+			  isNext = true;
 		  }
 	}
 	
