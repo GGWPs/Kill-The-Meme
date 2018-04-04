@@ -51,13 +51,15 @@ public class Level {
 			return "src/main/java/nl/han/ica/killthememe/media/nether.jpg";
 		} else if (currentLevel == 2) {
 			return "src/main/java/nl/han/ica/killthememe/media/beech.jpg";
+		} else if (currentLevel == -1) {
+			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		} else {
 			return null;
 		}
 	}
 
 	public int[][] getLevelTile(int currentLevel) {
-		if (currentLevel == 0) {
+		if (currentLevel == 0 || currentLevel == -1) {
 			System.out.println("Level" + currentLevel);
 			int tilesMap[][] = { { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },

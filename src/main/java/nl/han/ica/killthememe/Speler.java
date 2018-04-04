@@ -91,29 +91,17 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			totalFramez = 0;
 			startAlarm();
 		}
-		if (keyCode == mainGame.LEFT) {
+		if (keyCode == mainGame.LEFT || key == 'a') {
 			beweegLinks();
 		}
-		if (keyCode == mainGame.UP) {
+		if (keyCode == mainGame.UP || key == 'w') {
 			beweegOmhoog();
 		}
-		if (keyCode == mainGame.RIGHT) {
+		if (keyCode == mainGame.RIGHT || key == 'd') {
 			beweegRechts();
 		}
-		if (keyCode == mainGame.DOWN) {
+		if (keyCode == mainGame.DOWN || key == 's') {
 			beweegOmlaag();
-		}
-		if (key == 'w') {
-			beweegOmhoog();
-		}
-		if (key == 'a') {
-			beweegLinks();
-		}
-		if (key == 's') {
-			beweegOmlaag();
-		}
-		if (key == 'd') {
-			beweegRechts();
 		}
 		if (key == ' ') {
 			System.out.println("Spatie!");

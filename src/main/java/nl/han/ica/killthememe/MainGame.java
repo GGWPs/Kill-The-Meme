@@ -47,14 +47,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		 worldWidth=800;
 	     worldHeight=600;
 	     
-	     
+	 	deleteAllGameOBjects();
 	     initializeSound();
-	    // createMenu();
-//	     menu.createDashboard(worldWidth, 100);
 	     createDashboard(worldWidth, 100, getCurrentLevel());
 	     initializeTileMap(getCurrentLevel());
 
-	     initializeSound();
 	     initializePersistence();
 	     createObjects(getCurrentLevel());
 	     
@@ -81,17 +78,14 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		size(screenWidth, screenHeight);
 	}
 
-	// public void createMenu() {
-	// menu = new Menu(this);
-	// }
 
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if(currentLevel == 0) {
+		if(getCurrentLevel() == 0 || getCurrentLevel() == -1 ) {
 			menu = new Menu("", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
-		} else if (currentLevel >= 1) {
+		} else if (getCurrentLevel() >= 1) {
 			dashboardText = new TextObject("", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(dashboardText);
 		}
@@ -101,6 +95,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void initializePersistence() {
 		refreshDasboardText();
 	}
+	
 	@Override
 	public void mouseClicked(){
 		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0) {
@@ -110,11 +105,14 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 	
 	public void refreshDasboardText() {
-		if (currentLevel == 0) {
+		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
 		}
 		if (getCurrentLevel() >= 1) {
 			dashboardText.setText("Level: " + getCurrentLevel());
+		}
+		if(getCurrentLevel() == -1) {
+			menu.setText("Dead! Retry?");
 		}
 	}
 
@@ -136,7 +134,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 
 	private void initializeSound() {
-		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
