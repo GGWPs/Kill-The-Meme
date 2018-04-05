@@ -20,7 +20,7 @@ import processing.core.PApplet;
 //yeete
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine implements IAlarmListener {
+public class MainGame extends GameEngine{
 	private Speler speler;
 	private Vijand vijand;
 	private Vogel vogel;
@@ -31,6 +31,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private int currentLevel = 0;
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
+	private String naamText = " ";
 
 	private Menu menu;
 	private int worldHeight;
@@ -55,7 +56,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	     initializePersistence();
 	     createObjects(getCurrentLevel());
 	     
-	     startAlarm();
+//	     startAlarm();
 	     createView(worldWidth, worldHeight);
 
 	     
@@ -83,8 +84,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
 		if(getCurrentLevel() == 0 || getCurrentLevel() == -1 ) {
-			menu = new Menu("", currentLevel, worldWidth, worldHeight);
+			menu = new Menu(this,"", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
+			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1) {
 			dashboardText = new TextObject("", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(dashboardText);
@@ -100,7 +102,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void mouseClicked(){
 		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0 
 				|| currentLevel == -1 && mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440) {
+			if(currentLevel == 0) {
+				naamText=menu.getNaam();
+			}
 			currentLevel = 1;
+			
 			setupGame();
 		}
 		System.out.println(mouseX);
@@ -110,9 +116,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
+			menu.setNaamText(naamText);
 		}
 		if (getCurrentLevel() >= 1) {
-			dashboardText.setText("Level: " + getCurrentLevel());
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
 		if(getCurrentLevel() == -1) {
 			menu.setText("Dead! Retry?");
@@ -158,21 +165,21 @@ public class MainGame extends GameEngine implements IAlarmListener {
     
     
     
-    void startAlarm() {
-        Alarm alarm=new Alarm("Next", 1/0.2f);
-        alarm.addTarget(this);
-        alarm.start();
-    }
-    
-	public void triggerAlarm(String alarmName) {
-		if (!isNext) {
-			System.out.println("New level!");
-			isNext = true;
-			startAlarm();
-//			currentLevel++;
-//			setupGame();
-		}
-	}
+//    void startAlarm() {
+//        Alarm alarm=new Alarm("Next", 1/0.2f);
+//        alarm.addTarget(this);
+//        alarm.start();
+//    }
+//    
+//	public void triggerAlarm(String alarmName) {
+//		if (!isNext) {
+//			System.out.println("New level!");
+//			isNext = true;
+//			startAlarm();
+////			currentLevel++;
+////			setupGame();
+//		}
+//	}
 
 
 
@@ -196,12 +203,28 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		this.currentLevel = currentLevel;
 	}
 	
+	public void setCurrentName(String naamText) {
+		this.naamText=naamText;
+	}
+	
+	public float getSpelerX() {
+		return speler.getX();
+	}
+	
+	public float getSpelerY() {
+		return speler.getY();
+	}
 	boolean levelClear() {
-		if(currentLevel == 1 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
+		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
+			return true;
+		}
+		if(getCurrentLevel() == 2 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
 			return true;
 		}
 		return false;
 	}
 
+	
+	
 
 }

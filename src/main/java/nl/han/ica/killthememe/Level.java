@@ -18,7 +18,9 @@ public class Level {
 		this.currentLevel = currentLevel;
 	}
 
-
+	
+	
+	
 
 	void obstakel() {
 

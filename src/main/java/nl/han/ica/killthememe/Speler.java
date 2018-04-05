@@ -22,6 +22,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean isAnimatie;
 	int totalFramez = 0;
 	final int speed = 2;
+	String naamText = "";
 
 	/**
 	 *
