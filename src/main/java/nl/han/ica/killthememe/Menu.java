@@ -12,7 +12,7 @@ import processing.event.KeyEvent;
 
 @SuppressWarnings("serial")
 public class Menu extends GameObject{
-    private int currentLevel;
+   private int currentLevel;
     private int worldWidth;
     private int worldHeight;
     private String text;
