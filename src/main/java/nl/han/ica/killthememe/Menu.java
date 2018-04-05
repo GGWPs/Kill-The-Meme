@@ -12,14 +12,11 @@ import processing.event.KeyEvent;
 
 @SuppressWarnings("serial")
 public class Menu extends GameObject{
-	//yeet
-    private TextObject dashboardText;
     private int currentLevel;
     private int worldWidth;
     private int worldHeight;
     private String text;
     private String naamText;
-    private String invoerText;
     private int menuKnopX = 80;
     private int menuKnopY= 30;
     private MainGame mainGame;

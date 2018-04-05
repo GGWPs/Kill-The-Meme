@@ -89,7 +89,7 @@ public class MainGame extends GameEngine {
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1) {
-			dashboardText = new TextObject("", currentLevel, worldWidth, worldHeight);
+			dashboardText = new TextObject("", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
 		addDashboard(dashboard);

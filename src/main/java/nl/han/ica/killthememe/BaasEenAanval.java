@@ -11,6 +11,11 @@ public class BaasEenAanval extends Projectiel{
 		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting,snelheid);
 		
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see nl.han.ica.killthememe.Projectiel#gameObjectCollisionOccurred(java.util.List)
+	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {

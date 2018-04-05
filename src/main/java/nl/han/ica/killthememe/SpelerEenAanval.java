@@ -7,12 +7,20 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class SpelerEenAanval extends Projectiel {
 	private int damageDone;
-
+	
+	/*
+	 * @oparam mainGame referentie naar mainGame
+	 * @param sprite de afbeelding van de aanval
+	 * @param richting de richting van de projectiel
+	 */
 	public SpelerEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting, snelheid);
 
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see nl.han.ica.killthememe.Projectiel#gameObjectCollisionOccurred(java.util.List)
+	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {

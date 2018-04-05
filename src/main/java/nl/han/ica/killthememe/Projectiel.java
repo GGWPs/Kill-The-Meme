@@ -21,6 +21,10 @@ public abstract class Projectiel extends Aanval {
 	public Projectiel(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame, sprite, richting, snelheid);
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see nl.han.ica.killthememe.Aanval#update()
+	 */
 	@Override
 	public void update() {
 		if (getY() < 0 || getY() > mainGame.getHeight() || 

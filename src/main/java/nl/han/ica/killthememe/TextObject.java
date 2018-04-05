@@ -11,26 +11,31 @@ public class TextObject extends GameObject {
 
     private String text;
     private int currentLevel;
-    private int worldWidth;
-    private int worldHeight;
     
-
-    public TextObject(String text, int currentLevel, int  worldWidth, int worldHeight) {
+    /*
+     * @param text tekst 
+     * @param currentLevel huidige level
+     */
+    public TextObject(String text, int currentLevel) {
         this.text=text;
         this.currentLevel=currentLevel;
-        this.worldWidth=worldWidth;
-        this.worldHeight=worldHeight;
     }
 
     public void setText(String text) {
         this.text=text;
     }
-
+    /*
+     * (non-Javadoc)
+     * @see nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject#update()
+     */
     @Override
     public void update() {
 
     }
-
+    /*
+     * (non-Javadoc)
+     * @see nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject#draw(processing.core.PGraphics)
+     */
     @Override
     public void draw(PGraphics g) {
     	if(currentLevel >= 1) {
