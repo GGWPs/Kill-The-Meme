@@ -42,6 +42,8 @@ public class MainGame extends GameEngine{
 
 	}
 
+	
+	//Dit is om alles van de level/spel voor te bereiden.
 	@Override
 	public void setupGame() {
 
@@ -55,10 +57,9 @@ public class MainGame extends GameEngine{
 	     createDashboard(worldWidth, 100, getCurrentLevel());
 	     initializeTileMap(getCurrentLevel());
 
-	     initializePersistence();
+	     refreshDasboardText();
 	     createObjects(getCurrentLevel());
 	     
-//	     startAlarm();
 	     createView(worldWidth, worldHeight);
 
 	     
@@ -81,7 +82,7 @@ public class MainGame extends GameEngine{
 		size(screenWidth, screenHeight);
 	}
 
-
+	//Functie om een dashboard te maken.
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
@@ -96,10 +97,7 @@ public class MainGame extends GameEngine{
 		addDashboard(dashboard);
 	}
 
-	public void initializePersistence() {
-		refreshDasboardText();
-	}
-	
+	//
 	@Override
 	public void mouseClicked(){
 		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0 
@@ -111,10 +109,8 @@ public class MainGame extends GameEngine{
 			
 			setupGame();
 		}
-		System.out.println(mouseX);
-		System.out.println(mouseY);
 	}
-	
+	//om de dashboard te verversen.
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
@@ -127,7 +123,9 @@ public class MainGame extends GameEngine{
 			menu.setText("Dead! Retry?");
 		}
 	}
-
+	
+	
+	//Dit is voor de creatie van Game Objecten
 	public void createObjects(int currentLevel) {
 		if (currentLevel == 1) {
 			speler = new Speler(this,0.3f);
@@ -137,7 +135,6 @@ public class MainGame extends GameEngine{
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
 
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
@@ -150,7 +147,7 @@ public class MainGame extends GameEngine{
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
-//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+
 
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
@@ -158,7 +155,7 @@ public class MainGame extends GameEngine{
 
 	}
 
-
+	//Functie om het geluid te initieeren
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
@@ -166,7 +163,7 @@ public class MainGame extends GameEngine{
 	}
 
     
-    
+    //Functie om de tilemap in te laden en op te halen van Level.
     private void initializeTileMap(int currentLevel) {
         /* TILES */
 
@@ -180,61 +177,47 @@ public class MainGame extends GameEngine{
     }
     
     
-    
-//    void startAlarm() {
-//        Alarm alarm=new Alarm("Next", 1/0.2f);
-//        alarm.addTarget(this);
-//        alarm.start();
-//    }
-//    
-//	public void triggerAlarm(String alarmName) {
-//		if (!isNext) {
-//			System.out.println("New level!");
-//			isNext = true;
-//			startAlarm();
-////			currentLevel++;
-////			setupGame();
-//		}
-//	}
 
 
-
+    //niet gebruikt
 	@Override
 	public void update() {
 
 
 	}
 
-
+	//Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
 	public GameObject getSpeler() {
 		
 		return speler;
 	}
-
+	//Functie die de huidige level teruggeeft
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
-
+	//Functie om de level te wijzigen
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	
+	//Functie om de naam van de speler op te slaan.
 	public void setCurrentName(String naamText) {
 		this.naamText=naamText;
 	}
-	
+	// Haalt de X pos van de speler op
 	public float getSpelerX() {
 		return speler.getX();
 	}
-	
+	//Haalt de Y pos van de speler op
 	public float getSpelerY() {
 		return speler.getY();
 	}
-
+	//Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan 
 	public GameObject getBaasEen() {
 		return baaseen;
 	}
-
+	
+	
+	//checkt of de level is gecleared en weergeeft true.
 	boolean levelClear() {
 		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
 			return true;

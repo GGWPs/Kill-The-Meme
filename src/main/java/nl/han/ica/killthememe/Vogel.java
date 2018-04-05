@@ -48,9 +48,12 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
     
 	@Override
 	public void update() {
+		//zodra de vogel uit het scherm is, komt hij uit een random positie weer terug
 		  if (getX()+getWidth()<=0) {
 	            setX(mainGame.getWidth());
+	            setY(mainGame.random(0, mainGame.getHeight()));
 	        }
+		  //als de alarm af gaat, doet hij de volgende frame
 		  if (!isAnimatie) {
 			  if(totalFramez == 4) {
 				  totalFramez=0;
