@@ -23,8 +23,7 @@ public class Projectiel extends Aanval {
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
-			if (go instanceof Speler && (go instanceof PowerUp)) {
-			
+			if (go instanceof Speler) {
 				mainGame.deleteGameObject(this);
 				mainGame.setCurrentLevel(-1);
 				mainGame.setupGame();

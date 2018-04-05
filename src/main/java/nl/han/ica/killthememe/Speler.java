@@ -32,7 +32,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 *
 	 * @param mainGame
 	 */
-	public Speler(MainGame mainGame,float aanvallenPerSeconden) {
+	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
 		this.aanvallenPerSeconden = aanvallenPerSeconden;
@@ -45,7 +45,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	// dit is zodat de speler niet uit het scherm gaat.
 	@Override
 	public void update() {
-		spelerAfvuren();
+
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -66,14 +66,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void spelerAfvuren() {
-		if (powerup != null && powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1 &&  !magAanvallen) {
+		if (powerup != null && powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
 			float richting = getAngleFrom(mainGame.getBaasEen());
-			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting,0.1f);
+			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting, 0.1f);
 			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 					getY() + getHeight() - 65);
-			magAanvallen = true;
-			startAlarmAanval();
-
 		}
 	}
 
@@ -85,15 +82,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.start();
 	}
 
-	
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
 		} else if (!isAnimatie) {
 			isAnimatie = true;
 		}
-
 	}
+
 	/**
 	 * alarm voor aantal aanvaller per seconden
 	 */
@@ -102,6 +98,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.addTarget(this);
 		alarm.start();
 	}
+
 	public void triggerAlarmAanval(String alarmName) {
 		magAanvallen = false;
 	}
@@ -130,10 +127,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag();
 		}
 		if (key == ' ') {
-			System.out.println("Spatie!");
+			spelerAfvuren();
+
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
-		if (mainGame.levelClear()) {
+		if (mainGame.levelClear())
+
+		{
 			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
 			mainGame.setupGame();
 		}
