@@ -54,16 +54,23 @@ public class Menu extends GameObject{
     @Override
     public void keyPressed(int keyCode, char key) {
     	if(keyCode == BACKSPACE) {
+    		if(naamText.length() > 0) {
+    			 naamText = naamText.substring(0, naamText.length()-1);
+    		}
     		System.out.println("back");
+    	} else if (keyCode == DELETE) {
+    	    naamText = "";
     	}
-			naamText+=key;
-//			invoerText=naamText.substring(0, 10);
+    	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) ) {
+    		naamText+=key;
 			System.out.println(naamText);
 			  if (keyCode == ENTER) {
 				  mainGame.setCurrentName(naamText);
-				  mainGame.setCurrentLevel(1);
+				  mainGame.setCurrentLevel(2);
 			      mainGame.setupGame();
 			  }
+    	}
+			
     }
     
     @Override

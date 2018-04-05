@@ -26,7 +26,6 @@ public class MainGame extends GameEngine{
 	private BaasEen baaseen;
 	private Vogel vogel;
 	private Sound backgroundSound;
-	private Sound bubblePopSound;
 	private TextObject dashboardText;
 	private IPersistence persistence;
 	private int currentLevel = 0;
@@ -50,7 +49,9 @@ public class MainGame extends GameEngine{
 	     worldHeight=600;
 	     
 	 	deleteAllGameOBjects();
+	 	if(currentLevel == 0) {
 	     initializeSound();
+	 	}
 	     createDashboard(worldWidth, 100, getCurrentLevel());
 	     initializeTileMap(getCurrentLevel());
 
@@ -128,7 +129,7 @@ public class MainGame extends GameEngine{
 	}
 
 	public void createObjects(int currentLevel) {
-		if (currentLevel >= 1) {
+		if (currentLevel == 1) {
 			speler = new Speler(this,0.3f);
 			addGameObject(speler, 10, 100);
 
@@ -141,6 +142,19 @@ public class MainGame extends GameEngine{
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
 		}
+		if (currentLevel == 2) {
+			speler = new Speler(this,0.3f);
+			addGameObject(speler, 10, 100);
+
+			vogel = new Vogel(this);
+			addGameObject(vogel, 1000, 100);
+			baaseen = new BaasEen(this);
+			addGameObject(baaseen, 700, 500);
+//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+
+			PowerUp copy = new PowerUp(this, "copyPower");
+			addGameObject(copy, 100, 300);
+		}
 
 	}
 
@@ -148,7 +162,7 @@ public class MainGame extends GameEngine{
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
-		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+//		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
 
     
@@ -225,7 +239,7 @@ public class MainGame extends GameEngine{
 		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
 			return true;
 		}
-		if(getCurrentLevel() == 2 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
+		if(getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800 && speler.getY() <= 600) {
 			return true;
 		}
 		return false;
