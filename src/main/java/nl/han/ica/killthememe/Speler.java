@@ -14,10 +14,6 @@ import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, Beweeg, IAlarmListener {
 	final int size = 50;
-	private int huidigLevel;
-	private String naam;
-	private char controls;
-	private Level level;
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	int totalFramez = 0;
@@ -42,7 +38,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	}
 
-	// dit is zodat de speler niet uit het scherm gaat.
+	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
 	@Override
 	public void update() {
 		if (getX() <= 0) {
@@ -62,7 +58,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setY(mainGame.getHeight() - size);
 		}
 	}
-
+	
+	
+	//dit vuurt een projectiel af zodra de speler een powerup heeft.
 	public void spelerAfvuren() {
 		if (powerup != null && powerup.isItemIsOpgepakt() && !magAanvallen) {
 			System.out.println(" ErwordtietsGeschoten ");
@@ -82,7 +80,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.addTarget(this);
 		alarm.start();
 	}
-
+	
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
