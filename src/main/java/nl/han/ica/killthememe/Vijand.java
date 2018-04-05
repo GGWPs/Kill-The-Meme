@@ -27,7 +27,7 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 		setFriction(0.05f);
 
 	}
-	
+	//wordt niet gebruikt
 	public void update() {
 
 	}

@@ -6,8 +6,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
@@ -22,7 +20,7 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine {
 	private Speler speler;
 	private Vijand vijand;
-	private BaasEen baaseen;
+	private BaasEen baaseen, baastwee, baasdrie, baasvier;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
@@ -84,11 +82,11 @@ public class MainGame extends GameEngine {
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if (getCurrentLevel() == 0 || getCurrentLevel() == -1) {
+		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 4  ) {
 			menu = new Menu(this, "", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
-		} else if (getCurrentLevel() >= 1) {
+		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3) {
 			dashboardText = new TextObject("", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
@@ -101,6 +99,8 @@ public class MainGame extends GameEngine {
 		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
 				&& currentLevel == 0
 				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
+						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
 						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
 			if (currentLevel == 0) {
 				naamText = menu.getNaam();
@@ -154,6 +154,25 @@ public class MainGame extends GameEngine {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
+
+			PowerUp copy = new PowerUp(this, "copyPower");
+			addGameObject(copy, 100, 300);
+		}
+		
+		if (currentLevel == 3) {
+			speler = new Speler(this, 0.4f);
+			addGameObject(speler, 10, 100);
+
+			vogel = new Vogel(this);
+			addGameObject(vogel, 1000, 100);
+			baaseen = new BaasEen(this);
+			baastwee = new BaasEen(this);
+			baasdrie = new BaasEen(this);
+			baasvier = new BaasEen(this);
+			addGameObject(baaseen, 700, 500);
+			addGameObject(baastwee, 600, 500);
+			addGameObject(baasdrie, 500, 500);
+			addGameObject(baasvier, 400, 500);
 
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
@@ -245,6 +264,10 @@ public class MainGame extends GameEngine {
 		}
 		if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
 				&& speler.getY() <= 600 || bossVerslagen) {
+			return true;
+		}
+		if (getCurrentLevel() == 3 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+				&& speler.getY() <= 150) {
 			return true;
 		}
 		return false;

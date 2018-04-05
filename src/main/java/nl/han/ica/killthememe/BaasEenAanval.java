@@ -6,7 +6,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasEenAanval extends Projectiel{
-
+	
+	/*
+	 * @param mainGame referentie naar maingame
+	 * @param sprite voor de sprite
+	 */
 	public BaasEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting,snelheid);
 		
