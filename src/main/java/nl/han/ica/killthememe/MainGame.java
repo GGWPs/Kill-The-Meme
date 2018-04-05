@@ -23,6 +23,7 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine{
 	private Speler speler;
 	private Vijand vijand;
+	private BaasEen baaseen;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private Sound bubblePopSound;
@@ -128,16 +129,17 @@ public class MainGame extends GameEngine{
 
 	public void createObjects(int currentLevel) {
 		if (currentLevel >= 1) {
-			speler = new Speler(this);
+			speler = new Speler(this,0.3f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			Vijand vf = new BaasEen(this);
-			addGameObject(vf, 220, 500);
+			baaseen = new BaasEen(this);
+			addGameObject(baaseen, 220, 500);
 //@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+
 			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 300, 300);
+			addGameObject(copy, 100, 300);
 		}
 
 	}
@@ -214,6 +216,11 @@ public class MainGame extends GameEngine{
 	public float getSpelerY() {
 		return speler.getY();
 	}
+
+	public GameObject getBaasEen() {
+		return baaseen;
+	}
+
 	boolean levelClear() {
 		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
 			return true;

@@ -1,13 +1,13 @@
 package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+
 /**
  * @author Kaene Peters
  * 
  */
 
 public class BaasEen extends Vijand {
-	private Sprite projectileSprite;
 
 	/**
 	 * BaasEen constructor
@@ -16,7 +16,6 @@ public class BaasEen extends Vijand {
 	 */
 	public BaasEen(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenCarlosMatos.png"), mainGame, 0.3f);
-		projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png");
 
 	}
 
@@ -26,10 +25,9 @@ public class BaasEen extends Vijand {
 	@Override
 	public void afvuren() {
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new Projectiel(mainGame, projectileSprite,richting);
-		mainGame.addGameObject(projectiel,getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16, getY() + getHeight()-65);
-
-
+		Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting,0.25f);
+		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+				getY() + getHeight() - 65);
 	}
 
 	/**
