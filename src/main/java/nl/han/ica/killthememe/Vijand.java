@@ -14,8 +14,10 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 	protected boolean magAanvallen;
 
 	/**
+	 * @param sprite de vijand zijn afbeelding
+	 * @param mainGame klasse van mainGame
+	 * @param aanvallenperSeconden het aantal aanvallen per seconden
 	 * 
-	 * @param mainGame
 	 */
 	public Vijand(Sprite sprite, MainGame mainGame, float aanvallenPerSeconden) {
 		super(sprite);
@@ -25,13 +27,13 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 		setFriction(0.05f);
 
 	}
-
+	
 	public void update() {
 
 	}
 
 	public abstract void afvuren();
-
+	//Functie om alarm te starten voor de aanval van de vijand
 	protected void startAlarm() {
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);

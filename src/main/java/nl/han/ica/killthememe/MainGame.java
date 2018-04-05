@@ -26,7 +26,6 @@ public class MainGame extends GameEngine{
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
-	private IPersistence persistence;
 	private int currentLevel = 0;
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
@@ -34,7 +33,6 @@ public class MainGame extends GameEngine{
 	private boolean bossVerslagen;
 	private Menu menu;
 	private int worldHeight;
-	private boolean isNext;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -80,8 +78,11 @@ public class MainGame extends GameEngine{
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
-
-	//Functie om een dashboard te maken.
+	/**
+	* Functie om een dashboard te maken.
+	* @param dashboardWidth breedte van de scherm
+	* @param dashboardHeight hoogte van de scherm
+	*/
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
@@ -115,16 +116,23 @@ public class MainGame extends GameEngine{
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
 		}
-		if (getCurrentLevel() >= 1) {
+		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3 ) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
+		if (getCurrentLevel() == 4) {
+			menu.setText("Congratulations! You won!");
+			menu.setNaamText(naamText);
+		}
 		if(getCurrentLevel() == -1) {
-			menu.setText("Dead! Retry?");
+			menu.setText("You died");
 		}
 	}
 	
 	
-	//Dit is voor de creatie van Game Objecten
+	/**Dit is voor de creatie van Game Objecten
+	 * 
+	 * @param currentLevel de hudige level
+	 */
 	public void createObjects(int currentLevel) {
 		if (currentLevel == 1) {
 			speler = new Speler(this,0.3f);
@@ -162,7 +170,11 @@ public class MainGame extends GameEngine{
 	}
 
     
-    //Functie om de tilemap in te laden en op te halen van Level.
+    /*
+     * 
+     * Functie om de tilemap in te laden en op te halen van Level.
+     * @param currentLevel huidige level
+     */
     private void initializeTileMap(int currentLevel) {
         /* TILES */
 
@@ -198,10 +210,15 @@ public class MainGame extends GameEngine{
 		return currentLevel;
 	}
 	//Functie om de level te wijzigen
+	/*
+	 * @param currentLevel huidige level
+	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	//Functie om de naam van de speler op te slaan.
+	/*Functie om de naam op te slaan.
+	 * @param naamText de naam die ingevoerd is
+	 */
 	public void setCurrentName(String naamText) {
 		this.naamText=naamText;
 	}
