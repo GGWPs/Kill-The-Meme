@@ -13,6 +13,11 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 	private MainGame mainGame;
 	private boolean itemIsOpgepakt;
 
+	
+	/*
+	 * @param mainGame referentie naar de wereld
+	 * @param powerUpNaam referentie naar de naam van de powerup
+	 */
 	public PowerUp(MainGame mainGame,String  powerUpNaam) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"));
 		this.powerUpNaam = powerUpNaam;
@@ -20,7 +25,11 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 	}
 
 
-	
+	/*
+	 * (non-Javadoc)
+	 *kijkt of de item is opgepakt
+	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#gameObjectCollisionOccurred(java.util.List)
+	 */
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
@@ -31,18 +40,20 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 		}
 
 	}
-
+	//bolean die returnt of de item is opgepakt
 	public boolean isItemIsOpgepakt() {
 		return itemIsOpgepakt;
 	}
-
+	/*
+	 * Functie om de bolean aan te passen.
+	 */
 	public void setItemIsOpgepakt(boolean itemIsOpgepakt) {
 		this.itemIsOpgepakt = itemIsOpgepakt;
 	}
 
 
 
-	
+	//niet gebruikt
 	public void update() {
 		// TODO Auto-generated method stub
 		

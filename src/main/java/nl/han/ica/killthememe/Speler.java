@@ -22,7 +22,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	PowerUp powerup;
 	boolean magAanvallen;
 	final int speed = 2;
-	String naamText = "";
+
 
 	/**
 	 *
@@ -74,13 +74,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	// alarm voor animatie
-
 	void startAlarm() {
 		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
 		alarm.addTarget(this);
 		alarm.start();
 	}
-	
+	//Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een bolean voor de animatie en maakt hij magAanvallen false.
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
@@ -94,16 +93,20 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	/**
-	 * alarm voor aantal aanvaller per seconden
+	 * Functie om alarm te starten voor de aanval van de speler.
 	 */
 	public void startAlarmAanval() {
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);
 		alarm.start();
-
 	}
 
-	// dit zijn de keybinds van de speler.
+	/**
+	 * Deze functie controleert of de speler een knop indrukt
+	 *  en als hij dat wel doet, checkt hij de animatie
+	 *  of het een beweging is of het een aanval is of dat de level gecleared is.
+	 */
+	
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		if (!isAnimatie) {
@@ -135,7 +138,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (mainGame.levelClear())
 
 		{
-			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
+			mainGame.setCurrentLevel(mainGame.getCurrentLevel()+ 1);
 			mainGame.setupGame();
 		}
 
@@ -164,14 +167,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		// setCurrentFrameIndex(2 + totalFramez);
 		beweeg(180, speed, 2 + totalFramez);
 	}
-
+	
+	
+	//Functie geërft van de beweeg interface voor het bewegen.
 	@Override
 	public void beweeg(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
 
-	// collision
+	// Deze functie kijkt of de speler tegen een tile aanloopt.
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
@@ -220,7 +225,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
-
+	//functie geerft van interface beweeg maar wordt niet gebruikt
 	@Override
 	public void beweeg(int directionspeed, int speed) {
 		// TODO Auto-generated method stub

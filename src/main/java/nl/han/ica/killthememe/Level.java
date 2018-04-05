@@ -1,19 +1,11 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
-import nl.han.ica.waterworld.Player;
-import nl.han.ica.waterworld.Swordfish;
-import nl.han.ica.waterworld.tiles.BoardsTile;
-
 public class Level {
-	private int levels;
-	private Sound backgroundSound;
-	private Speler speler;
 	private int currentLevel;
 
+	/*
+	 * @param currentLevel huidige level
+	 */
 	public Level(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
@@ -29,9 +21,9 @@ public class Level {
 		if (currentLevel == 1) {
 			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
 		} else if (currentLevel == 2) {
-			return "src/main/java/nl/han/ica/killthememe/media/beech.jpg";
+			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
 		} else if (currentLevel == 3) {
-			return "src/main/java/nl/han/ica/killthememe/media/beech.jpg";
+			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
 		} else if (currentLevel == -1) {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		} else {
@@ -84,19 +76,38 @@ public class Level {
 			return tilesMap;
 		} else if (currentLevel == 3) {
 			System.out.println("Level" + currentLevel);
-			int tilesMap[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-					{ -1, 0, -1, -1, -1, -1, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0 },
-					{ -1, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0 },
-					{ -1, 0, -1, -1, 0, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0 },
-					{ -1, 0, -1, -1, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, 0, -1, -1, -1, -1, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ -1, 0, -1, -1, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, -1 },
-					{ -1, 0, 0, 0, 0, -1, -1, 0, 0, -1, 0, 0, 0, 0, 0, -1, -1 },
-					{ -1, -1, -1, -1, 0, -1, -1, 0, 0, -1, 0, 0, 0, 0, 0, -1, -1 },
-					{ -1, -1, -1, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, -1, -1 },
-					{ 0, 0, 0, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1 },
-					{ 0, 0, 0, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1 } };
-			return tilesMap;
+			int tilesMap[][]={
+	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,-1,-1,0,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,0,-1,-1,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,0,-1,-1,-1,-1,0,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,0,0,0,0,-1,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,-1,-1,-1,0,-1,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,-1,-1,-1,0,0,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {0,0,0,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {0,0,0,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1}
+	        };
+			return tilesMap; 
+		} else if (currentLevel == 4) {
+			System.out.println("Level" + currentLevel);
+			int tilesMap[][]={
+	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,-1,-1,0,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,0,-1,-1,-1,-1,-1,0,0,0,0,0,0,0},
+	                {-1,0,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {-1,0,-1,-1,-1,-1,0,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,0,0,0,0,-1,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,-1,-1,-1,0,-1,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {-1,-1,-1,-1,0,0,-1,0,0,-1,0,0,0,0,0,-1,-1},
+	                {0,0,0,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1},
+	                {0,0,0,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1}
+	        };
+			return tilesMap; 
 		} else {
 			System.out.println("Geen level gevonden!");
 			return null;
