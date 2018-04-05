@@ -21,7 +21,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	int totalFramez = 0;
-	final int speed = 3;
+	final int speed = 2;
 
 	/**
 	 *
@@ -82,7 +82,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	// dit zijn de keybinds van de speler.
 	@Override
 	public void keyPressed(int keyCode, char key) {
-
 		if (!isAnimatie) {
 			totalFramez = 1;
 			startAlarm();
@@ -106,6 +105,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (key == ' ') {
 			System.out.println("Spatie!");
 		}
+		//dit checkt met elke keypress of de speler de level heeft gecleared.
+		if(mainGame.levelClear()) {
+			mainGame.setCurrentLevel(mainGame.getCurrentLevel()+1);
+			mainGame.setupGame();
+		}
+
 	}
 	// functie om naar links te bewegen
 	public void beweegLinks() {
