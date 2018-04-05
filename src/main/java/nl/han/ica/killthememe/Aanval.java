@@ -32,10 +32,7 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	 */
 	@Override
 	public void update() {
-		if (getY() < 0 || getY() > mainGame.getHeight() || 
-				getX() < 0 || getX() > mainGame.getWidth()) {
-			mainGame.deleteGameObject(this);
-		}
+
 	}
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

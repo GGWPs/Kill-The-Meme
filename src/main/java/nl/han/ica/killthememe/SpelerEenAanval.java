@@ -16,12 +16,12 @@ public class SpelerEenAanval extends Projectiel {
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
-			if (go instanceof BaasEen) {
-				if (mainGame.getCurrentLevel() == 1) {
-					System.out.print("imgod");
+			if (go instanceof Vijand) {
+				if (mainGame.getCurrentLevel() == 2) {
 					damageDone++;
-					if (damageDone == 3) {
-
+					if (damageDone >= 3) {
+						mainGame.deleteGameObject(go);
+						mainGame.bossVerslagen();
 					}
 				}
 			}

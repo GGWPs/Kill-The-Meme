@@ -45,7 +45,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	// dit is zodat de speler niet uit het scherm gaat.
 	@Override
 	public void update() {
-
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -62,15 +61,15 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-
 	}
 
 	public void spelerAfvuren() {
-		if (powerup != null && powerup.isItemIsOpgepakt() ) {
+		
+		if (powerup != null && powerup.isItemIsOpgepakt()) {
 			float richting = getAngleFrom(mainGame.getBaasEen());
 			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.3f);
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 + 10,
-					getY() + getHeight() +10);
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
+					getY() + getHeight() - 10);
 		}
 	}
 
