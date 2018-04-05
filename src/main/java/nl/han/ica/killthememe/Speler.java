@@ -27,6 +27,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	boolean magAanvallen;
 	final int speed = 2;
 	String naamText = "";
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 	/**
 	 *
 	 * @param mainGame
