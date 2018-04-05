@@ -12,7 +12,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-
 import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
@@ -32,7 +31,7 @@ public class MainGame extends GameEngine{
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
 	private String naamText = " ";
-
+	private boolean bossVerslagen;
 	private Menu menu;
 	private int worldHeight;
 	private boolean isNext;
@@ -137,7 +136,7 @@ public class MainGame extends GameEngine{
 			addGameObject(baaseen, 220, 500);
 
 			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 100, 300);
+			addGameObject(copy, 10, 100);
 		}
 		if (currentLevel == 2) {
 			speler = new Speler(this,0.3f);
@@ -177,6 +176,9 @@ public class MainGame extends GameEngine{
     }
     
     
+    public void bossVerslagen() {
+    	bossVerslagen = true;
+    }
 
 
     //niet gebruikt
@@ -222,7 +224,7 @@ public class MainGame extends GameEngine{
 		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
 			return true;
 		}
-		if(getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800 && speler.getY() <= 600) {
+		if(getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800 && speler.getY() <= 600 || bossVerslagen) {
 			return true;
 		}
 		return false;

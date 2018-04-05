@@ -27,7 +27,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 				System.out.print("item is opgepakt");
 				itemIsOpgepakt = true;
 				((Speler) go).setPowerup(this);
-				mainGame.deleteGameObject(this);
+				setVisible(false);
 			}
 		}
 

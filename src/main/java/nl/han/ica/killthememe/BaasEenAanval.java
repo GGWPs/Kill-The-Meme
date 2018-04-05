@@ -1,5 +1,8 @@
 package nl.han.ica.killthememe;
 
+import java.util.List;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasEenAanval extends Projectiel{
@@ -8,5 +11,15 @@ public class BaasEenAanval extends Projectiel{
 		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting,snelheid);
 		
 	}
-
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		for (GameObject go : collidedGameObjects) {
+			if (go instanceof Speler) {
+				mainGame.deleteGameObject(this);
+				mainGame.setCurrentLevel(-1);
+				mainGame.setupGame();
+			}
+		}
+		
+	}
 }

@@ -41,7 +41,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
 	@Override
 	public void update() {
-
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -58,17 +57,17 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-
 	}
 	
 	
 	//dit vuurt een projectiel af zodra de speler een powerup heeft.
 	public void spelerAfvuren() {
-		if (powerup != null && powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
+		
+		if (powerup != null && powerup.isItemIsOpgepakt()) {
 			float richting = getAngleFrom(mainGame.getBaasEen());
-			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting, 0.1f);
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
-					getY() + getHeight() - 65);
+			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.3f);
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
+					getY() + getHeight() - 10);
 		}
 	}
 
