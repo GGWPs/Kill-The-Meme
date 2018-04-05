@@ -27,10 +27,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	boolean magAanvallen;
 	final int speed = 2;
 	String naamText = "";
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 	/**
 	 *
 	 * @param mainGame
@@ -69,11 +66,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void spelerAfvuren() {
-		if (powerup != null && powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
+		if (powerup != null && powerup.isItemIsOpgepakt() ) {
 			float richting = getAngleFrom(mainGame.getBaasEen());
-			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting, 0.1f);
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
-					getY() + getHeight() - 65);
+			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.3f);
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 + 10,
+					getY() + getHeight() +10);
 		}
 	}
 

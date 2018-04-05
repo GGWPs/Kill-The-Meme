@@ -5,7 +5,7 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
-public class Projectiel extends Aanval {
+public abstract class Projectiel extends Aanval {
 	
 
 	public static int WIDTH = 20;
@@ -20,16 +20,6 @@ public class Projectiel extends Aanval {
 		super(mainGame, sprite, richting, snelheid);
 	}
 	
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		for (GameObject go : collidedGameObjects) {
-			if (go instanceof Speler) {
-				mainGame.deleteGameObject(this);
-				mainGame.setCurrentLevel(-1);
-				mainGame.setupGame();
-			}
-		}
-		
-	}
+	public abstract void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects);
 
 }
