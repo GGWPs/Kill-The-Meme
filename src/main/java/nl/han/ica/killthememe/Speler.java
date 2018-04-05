@@ -26,7 +26,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	PowerUp powerup;
 	boolean magAanvallen;
 	final int speed = 2;
-
+	String naamText = "";
 	/**
 	 *
 	 * @param mainGame
