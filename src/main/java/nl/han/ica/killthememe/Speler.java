@@ -64,12 +64,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void spelerAfvuren() {
-		
-		if (powerup != null && powerup.isItemIsOpgepakt()) {
+		if (powerup != null && powerup.isItemIsOpgepakt() && !magAanvallen) {
+			System.out.println(" ErwordtietsGeschoten ");
 			float richting = getAngleFrom(mainGame.getBaasEen());
 			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.3f);
 			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
 					getY() + getHeight() - 10);
+			magAanvallen = true;
+			startAlarmAanval();
 		}
 	}
 
@@ -87,6 +89,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (!isAnimatie) {
 			isAnimatie = true;
 		}
+		if (alarmName == "magAanvallen") {
+			System.out.println("TriggerGaatOpFalse");
+			magAanvallen = false;
+		}
 	}
 
 	/**
@@ -96,10 +102,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);
 		alarm.start();
-	}
-
-	public void triggerAlarmAanval(String alarmName) {
-		magAanvallen = false;
+		System.out.println(" StartAlamrAanval ");
 	}
 
 	// dit zijn de keybinds van de speler.
@@ -126,6 +129,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag();
 		}
 		if (key == ' ') {
+			System.out.print("Spatiewerkt");
 			spelerAfvuren();
 
 		}

@@ -141,7 +141,7 @@ public class MainGame extends GameEngine{
 			addGameObject(copy, 10, 100);
 		}
 		if (currentLevel == 2) {
-			speler = new Speler(this,0.3f);
+			speler = new Speler(this,0.4f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
