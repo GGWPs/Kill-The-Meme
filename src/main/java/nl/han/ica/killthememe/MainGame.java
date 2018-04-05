@@ -19,7 +19,7 @@ import processing.core.PApplet;
 //yeete
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine{
+public class MainGame extends GameEngine {
 	private Speler speler;
 	private Vijand vijand;
 	private BaasEen baaseen;
@@ -41,27 +41,24 @@ public class MainGame extends GameEngine{
 
 	}
 
-	
-	//Dit is om alles van de level/spel voor te bereiden.
+	// Dit is om alles van de level/spel voor te bereiden.
 	@Override
 	public void setupGame() {
 
-		 worldWidth=800;
-	     worldHeight=600;
-	     
-	 	deleteAllGameOBjects();
-	 	if(currentLevel == 0) {
-	     initializeSound();
-	 	}
-	     createDashboard(worldWidth, 100, getCurrentLevel());
-	     initializeTileMap(getCurrentLevel());
+		worldWidth = 800;
+		worldHeight = 600;
 
-	     refreshDasboardText();
-	     createObjects(getCurrentLevel());
-	     
-	     createView(worldWidth, worldHeight);
+		deleteAllGameOBjects();
+		if (currentLevel == 0) {
+			initializeSound();
+		}
+		createDashboard(worldWidth, 100, getCurrentLevel());
+		initializeTileMap(getCurrentLevel());
 
-	     
+		refreshDasboardText();
+		createObjects(getCurrentLevel());
+
+		createView(worldWidth, worldHeight);
 
 	}
 
@@ -81,12 +78,12 @@ public class MainGame extends GameEngine{
 		size(screenWidth, screenHeight);
 	}
 
-	//Functie om een dashboard te maken.
+	// Functie om een dashboard te maken.
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if(getCurrentLevel() == 0 || getCurrentLevel() == -1 ) {
-			menu = new Menu(this,"", currentLevel, worldWidth, worldHeight);
+		if (getCurrentLevel() == 0 || getCurrentLevel() == -1) {
+			menu = new Menu(this, "", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1) {
@@ -98,18 +95,21 @@ public class MainGame extends GameEngine{
 
 	//
 	@Override
-	public void mouseClicked(){
-		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0 
-				|| currentLevel == -1 && mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440) {
-			if(currentLevel == 0) {
-				naamText=menu.getNaam();
+	public void mouseClicked() {
+		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
+				&& currentLevel == 0
+				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+			if (currentLevel == 0) {
+				naamText = menu.getNaam();
 			}
 			currentLevel = 1;
-			
+
 			setupGame();
 		}
 	}
-	//om de dashboard te verversen.
+
+	// om de dashboard te verversen.
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
@@ -118,16 +118,15 @@ public class MainGame extends GameEngine{
 		if (getCurrentLevel() >= 1) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
-		if(getCurrentLevel() == -1) {
+		if (getCurrentLevel() == -1) {
 			menu.setText("Dead! Retry?");
 		}
 	}
-	
-	
-	//Dit is voor de creatie van Game Objecten
+
+	// Dit is voor de creatie van Game Objecten
 	public void createObjects(int currentLevel) {
 		if (currentLevel == 1) {
-			speler = new Speler(this,0.3f);
+			speler = new Speler(this, 0.3f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
@@ -135,11 +134,9 @@ public class MainGame extends GameEngine{
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
 
-			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 10, 100);
 		}
 		if (currentLevel == 2) {
-			speler = new Speler(this,0.4f);
+			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
@@ -147,90 +144,90 @@ public class MainGame extends GameEngine{
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
 
-
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
 		}
 
 	}
 
-	//Functie om het geluid te initieeren
+	// Functie om het geluid te initieeren
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
-//		bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+		// bubblePopSound = new Sound(this,
+		// "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
 
-    
-    //Functie om de tilemap in te laden en op te halen van Level.
-    private void initializeTileMap(int currentLevel) {
-        /* TILES */
+	// Functie om de tilemap in te laden en op te halen van Level.
+	private void initializeTileMap(int currentLevel) {
+		/* TILES */
 
-        Sprite boardsSprite = new Sprite(level.pickLevelTile());
-        TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
+		Sprite boardsSprite = new Sprite(level.pickLevelTile());
+		TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
-        TileType[] tileTypes = { boardTileType };
-        int tileSize=50;
-        
-        tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
-    }
-    
-    
-    public void bossVerslagen() {
-    	bossVerslagen = true;
-    }
+		TileType[] tileTypes = { boardTileType };
+		int tileSize = 50;
 
+		tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
+	}
 
-    //niet gebruikt
+	public void bossVerslagen() {
+		bossVerslagen = true;
+	}
+
+	// niet gebruikt
 	@Override
 	public void update() {
 
-
 	}
 
-	//Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
 	public GameObject getSpeler() {
-		
+
 		return speler;
 	}
-	//Functie die de huidige level teruggeeft
+
+	// Functie die de huidige level teruggeeft
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
-	//Functie om de level te wijzigen
+
+	// Functie om de level te wijzigen
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	//Functie om de naam van de speler op te slaan.
+
+	// Functie om de naam van de speler op te slaan.
 	public void setCurrentName(String naamText) {
-		this.naamText=naamText;
+		this.naamText = naamText;
 	}
+
 	// Haalt de X pos van de speler op
 	public float getSpelerX() {
 		return speler.getX();
 	}
-	//Haalt de Y pos van de speler op
+
+	// Haalt de Y pos van de speler op
 	public float getSpelerY() {
 		return speler.getY();
 	}
-	//Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan 
+
+	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
 	public GameObject getBaasEen() {
 		return baaseen;
 	}
-	
-	
-	//checkt of de level is gecleared en weergeeft true.
+
+	// checkt of de level is gecleared en weergeeft true.
 	boolean levelClear() {
-		if(getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
+		if (getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+				&& speler.getY() <= 150) {
 			return true;
 		}
-		if(getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800 && speler.getY() <= 600 || bossVerslagen) {
+		if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
+				&& speler.getY() <= 600 || bossVerslagen) {
 			return true;
 		}
 		return false;
 	}
-
-	
-	
 
 }
