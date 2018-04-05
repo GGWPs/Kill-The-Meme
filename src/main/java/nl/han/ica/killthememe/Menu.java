@@ -12,12 +12,7 @@ import processing.event.KeyEvent;
 
 @SuppressWarnings("serial")
 public class Menu extends GameObject{
-<<<<<<< HEAD
-	//yeet
-
-=======
->>>>>>> branch 'master' of https://github.com/GGWPs/killthememev2.git
-    private int currentLevel;
+   private int currentLevel;
     private int worldWidth;
     private int worldHeight;
     private String text;
