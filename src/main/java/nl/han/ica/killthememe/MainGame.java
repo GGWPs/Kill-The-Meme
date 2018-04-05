@@ -99,10 +99,13 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	
 	@Override
 	public void mouseClicked(){
-		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0) {
+		if(mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440 && currentLevel == 0 
+				|| currentLevel == -1 && mouseX > worldWidth/2 && mouseY > (worldHeight/3)*2&& mouseX < worldWidth/2+80 && mouseY < 440) {
 			currentLevel = 1;
 			setupGame();
 		}
+		System.out.println(mouseX);
+		System.out.println(mouseY);
 	}
 	
 	public void refreshDasboardText() {
@@ -119,16 +122,17 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	public void createObjects(int currentLevel) {
 		if (currentLevel >= 1) {
-			speler = new Speler(this);
+			speler = new Speler(this,0.3f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			Vijand vf = new BaasEen(this);
-			addGameObject(vf, 200, 450);
-//@@@@@@@@ deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+			baaseen = new BaasEen(this);
+			addGameObject(baaseen, 220, 500);
+//@@@@@@@@deze moet eigenlijk in currentlevel = 2 of ook in lvl 1
+
 			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 300, 300);
+			addGameObject(copy, 100, 300);
 		}
 
 	}
@@ -145,7 +149,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
     private void initializeTileMap(int currentLevel) {
         /* TILES */
 
-        Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
+        Sprite boardsSprite = new Sprite(level.pickLevelTile());
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
@@ -176,7 +180,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+
 
 	}
 
@@ -198,6 +202,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		return baaseen;
 	}
 
-	
+	boolean levelClear() {
+		if(currentLevel == 1 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800 && speler.getY() <= 150) {
+			return true;
+		}
+		return false;
+	}
+
 
 }

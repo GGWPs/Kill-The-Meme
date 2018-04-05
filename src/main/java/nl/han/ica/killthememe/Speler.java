@@ -21,27 +21,29 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	int totalFramez = 0;
-	final int speed = 3;
 	private Sprite projectileSprite;
-//	PowerUp powerup;
-	
-
+	private float aanvallenPerSeconden;
+	PowerUp powerup;
+	boolean magAanvallen;
+	final int speed = 2;
 	/**
 	 *
 	 * @param mainGame
 	 */
-	public Speler(MainGame mainGame) {
+	public Speler(MainGame mainGame,float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
+		this.aanvallenPerSeconden = aanvallenPerSeconden;
+		this.magAanvallen = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
-	
+
 	}
 
 	// dit is zodat de speler niet uit het scherm gaat.
 	@Override
 	public void update() {
-//		spelerAfvuren();
+		spelerAfvuren();
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -58,20 +60,20 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		
-	}
-	
 
-//	public void spelerAfvuren() {
-//		if (powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1) {
-//			System.out.print("We Fire BACK");
-//			float richting = getAngleFrom(mainGame.getBaasEen());
-//			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting);
-//			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
-//					getY() + getHeight() - 65);
-//
-//		}
-//	}
+	}
+
+	public void spelerAfvuren() {
+		if (powerup != null && powerup.isItemIsOpgepakt() && mainGame.getCurrentLevel() == 1 &&  !magAanvallen) {
+			float richting = getAngleFrom(mainGame.getBaasEen());
+			Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting,0.1f);
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+					getY() + getHeight() - 65);
+			magAanvallen = true;
+			startAlarmAanval();
+
+		}
+	}
 
 	// alarm voor animatie
 
@@ -81,6 +83,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.start();
 	}
 
+	
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
@@ -89,11 +92,21 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 
 	}
+	/**
+	 * alarm voor aantal aanvaller per seconden
+	 */
+	public void startAlarmAanval() {
+		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
+		alarm.addTarget(this);
+		alarm.start();
+	}
+	public void triggerAlarmAanval(String alarmName) {
+		magAanvallen = false;
+	}
 
 	// dit zijn de keybinds van de speler.
 	@Override
 	public void keyPressed(int keyCode, char key) {
-
 		if (!isAnimatie) {
 			totalFramez = 1;
 			startAlarm();
@@ -112,11 +125,17 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegRechts();
 		}
 		if (keyCode == mainGame.DOWN || key == 's') {
-			beweegOmlaag(); 
+			beweegOmlaag();
 		}
 		if (key == ' ') {
 			System.out.println("Spatie!");
 		}
+		// dit checkt met elke keypress of de speler de level heeft gecleared.
+		if (mainGame.levelClear()) {
+			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
+			mainGame.setupGame();
+		}
+
 	}
 
 	// functie om naar links te bewegen
@@ -203,6 +222,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void beweeg(int directionspeed, int speed) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public PowerUp getPowerup() {
+		return powerup;
+	}
+
+	public void setPowerup(PowerUp powerup) {
+		this.powerup = powerup;
 	}
 
 }

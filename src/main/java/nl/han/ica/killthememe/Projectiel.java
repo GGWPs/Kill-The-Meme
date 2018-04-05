@@ -16,15 +16,15 @@ public class Projectiel extends Aanval {
 	 * @param mainGame
 	 * @param sprite
 	 */
-	public Projectiel(MainGame mainGame, Sprite sprite, float richting) {
-		super(mainGame, sprite, richting, 0.25f);
+	public Projectiel(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
+		super(mainGame, sprite, richting, snelheid);
 	}
 	
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
-			if (go instanceof Speler) {
-				//System.out.print("Het is een hit");
+			if (go instanceof Speler && (go instanceof PowerUp)) {
+			
 				mainGame.deleteGameObject(this);
 				mainGame.setCurrentLevel(-1);
 				mainGame.setupGame();

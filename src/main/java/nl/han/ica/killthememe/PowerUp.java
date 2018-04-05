@@ -23,6 +23,7 @@ public class PowerUp extends Aanval {
 			if (go instanceof Speler) {
 				System.out.print("item is opgepakt");
 				itemIsOpgepakt = true;
+				((Speler) go).setPowerup(this);
 				mainGame.deleteGameObject(this);
 
 			}

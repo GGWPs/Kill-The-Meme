@@ -25,7 +25,7 @@ public class BaasEen extends Vijand {
 	@Override
 	public void afvuren() {
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting);
+		Aanval projectiel = new BaasEenAanval(mainGame, projectileSprite, richting,0.25f);
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}
