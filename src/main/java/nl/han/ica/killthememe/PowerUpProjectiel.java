@@ -13,13 +13,19 @@ public class PowerUpProjectiel extends PowerUp {
 	}
 	
 	//dit vuurt een projectiel af zodra de speler een powerup heeft.
+	@Override
 	public void gebruikPowerUp() {
+		if (isItemIsOpgepakt() &&!magAanvallen) {
+			System.out.print("gebruikPowerUp");
 			float richting = getAngleFrom(mainGame.getBaas());
-			System.out.print(richting);
+			System.out.println(""+richting);
 			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.7f);
 			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
 			mainGame.getSpelerY() + getHeight() - 10);
-			startAlarmAanval();
+			magAanvallen = true;
+			startAlarm();
 	}
+		}
+	
 
 }

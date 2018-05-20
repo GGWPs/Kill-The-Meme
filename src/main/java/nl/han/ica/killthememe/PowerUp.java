@@ -25,6 +25,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 		super(sprite);
 		this.mainGame = mainGame;
 		this.itemIsOpgepakt = false;
+		this.magAanvallen = false;
 	}
 	
 
@@ -33,13 +34,14 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	}
 	/*
 	 * (non-Javadoc)
-	 *kijkt of de item is opgepakt
+	 *kijkt of het item is opgepakt
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#gameObjectCollisionOccurred(java.util.List)
 	 */
 	
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
+				((Speler) go).setPowerup(this);
 				setItemIsOpgepakt(true);
 				setVisible(false);
 			}
@@ -57,8 +59,6 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 		this.itemIsOpgepakt = itemIsOpgepakt;
 	}
 
-
-
 	//niet gebruikt
 	public void update() {
 	}
@@ -72,15 +72,10 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	/**
 	 * Functie om alarm te starten voor de aanval van de speler.
 	 */
-	public void startAlarmAanval() {
-		magAanvallen = true;
-		Alarm alarm = new Alarm("magAanvallen", 1 / 6);
+	public void startAlarm() {
+		Alarm alarm = new Alarm("magAanvallen", 1 / 6f);
 		alarm.addTarget(this);
 		alarm.start();
 
 	}	
-
-	
-	
-
 }

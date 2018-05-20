@@ -29,7 +29,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
-		//powerup = new PowerUpProjectiel(mainGame);
+		
 	}
 
 	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
@@ -52,8 +52,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setY(mainGame.getHeight() - size);
 		}
 	}
-	
-	
 
 	// alarm voor animatie
 	void startAlarm() {
@@ -61,7 +59,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.addTarget(this);
 		alarm.start();
 	}
-	//Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een bolean voor de animatie en maakt hij magAanvallen false.
+
+	// Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een
+	// bolean voor de animatie en maakt hij magAanvallen false.
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
@@ -70,11 +70,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-
 	/**
-	 * Deze functie controleert of de speler een knop indrukt
-	 *  en als hij dat wel doet, checkt hij de animatie
-	 *  of het een beweging is of het een aanval is of dat de level gecleared is.
+	 * Deze functie controleert of de speler een knop indrukt en als hij dat wel
+	 * doet, checkt hij de animatie of het een beweging is of het een aanval is of
+	 * dat de level gecleared is.
 	 */
 	@Override
 	public void keyPressed(int keyCode, char key) {
@@ -99,15 +98,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag(180, speed, 2 + totalFramez);
 		}
 		if (key == ' ') {
-			System.out.print("spatiebar");
-			if(powerup != null) {
-				System.out.print("hij zou het nu moeten afvuren");
-				powerup.gebruikPowerUp();
+			if (powerup != null) {
+			powerup.gebruikPowerUp();
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
-		if (mainGame.levelClear()){
-			mainGame.setCurrentLevel(mainGame.getCurrentLevel()+ 1);
+		if (mainGame.levelClear()) {
+			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
 			mainGame.setupGame();
 		}
 
@@ -136,9 +133,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
-	
-	
-	//Functie geërft van de beweeg interface voor het bewegen.
+
+	// Functie geërft van de beweeg interface voor het bewegen.
 
 	// Deze functie kijkt of de speler tegen een tile aanloopt.
 	@Override
@@ -189,16 +185,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
-	//functie geeft van interface beweeg maar wordt niet gebruikt
 
 	public PowerUp getPowerup() {
 		return powerup;
 	}
 
-	public void setPowerup(String powerNaam) {
-		if(powerNaam == "projectiel") {
-			powerup = new PowerUpProjectiel(mainGame);
-		}
-	}
+	public void setPowerup(PowerUp powerup) {
+        this.powerup = powerup;
+    }
 
 }
