@@ -30,8 +30,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
 		powerup = new PowerUpProjectiel(mainGame, "projectiel");
-
-
 	}
 
 	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
@@ -106,7 +104,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			System.out.print("spatiebar");
 			if(powerup != null) {
 				System.out.print("hij zou het nu moeten afvuren");
-				((PowerUpProjectiel) powerup).spelerAfvuren();
+				powerup.gebruikPowerUp();
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.

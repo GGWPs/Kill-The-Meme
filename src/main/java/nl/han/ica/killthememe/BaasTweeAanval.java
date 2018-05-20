@@ -13,7 +13,6 @@ public class BaasTweeAanval extends Projectiel{
 	 */
 	public BaasTweeAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png"), richting,snelheid);
-		
 	}
 	
 	/*

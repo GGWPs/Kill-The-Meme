@@ -12,7 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class BaasTwee extends Vijand {
 
 	/**
-	 * BaasEen constructor
+	 * BaasTwee constructor
 	 * 
 	 * @param mainGame
 	 */

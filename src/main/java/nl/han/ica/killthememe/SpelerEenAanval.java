@@ -14,7 +14,7 @@ public class SpelerEenAanval extends Projectiel {
 	 * @param richting de richting van de projectiel
 	 */
 	public SpelerEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
-		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting, snelheid);
+		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png"), richting, snelheid);
 
 	}
 	/*

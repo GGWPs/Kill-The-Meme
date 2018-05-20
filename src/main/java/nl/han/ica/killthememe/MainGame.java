@@ -157,8 +157,6 @@ public class MainGame extends GameEngine {
 			addGameObject(baasdrie, 500, 500);
 			addGameObject(baasvier, 400, 500);
 
-			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 100, 300);
 		}
 		if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
@@ -210,7 +208,6 @@ public class MainGame extends GameEngine {
 
 	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
 	public GameObject getSpeler() {
-
 		return speler;
 	}
 

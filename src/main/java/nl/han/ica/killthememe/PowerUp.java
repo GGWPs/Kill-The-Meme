@@ -9,22 +9,24 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class PowerUp extends SpriteObject implements ICollidableWithGameObjects, IAlarmListener{
-	private String powerUpNaam;
-	private Sprite powerUp;
-	private MainGame mainGame;
-	private boolean itemIsOpgepakt;
+	protected String powerUpNaam;
+	protected Sprite powerUp;
+	protected MainGame mainGame;
+	protected boolean itemIsOpgepakt;
 	
 	
 	/*
 	 * @param mainGame referentie naar de wereld
 	 * @param powerUpNaam referentie naar de naam van de powerup
 	 */
-	public PowerUp(MainGame mainGame,String  powerUpNaam) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"));
+	public PowerUp(Sprite sprite, MainGame mainGame,String powerUpNaam) {
+		super(sprite);
+		this.mainGame = mainGame;
 		this.powerUpNaam = powerUpNaam;
 		this.itemIsOpgepakt = false;
 	}
 	
+
 	public void gebruikPowerUp() {
 		
 	}
