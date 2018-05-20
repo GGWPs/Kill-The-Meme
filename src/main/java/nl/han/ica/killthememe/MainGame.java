@@ -129,7 +129,7 @@ public class MainGame extends GameEngine {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-			powerup = new PowerUpSpeed(this);
+			powerup = new PowerUpProjectiel(this);
 			addGameObject(powerup, 100, 300);
 		}
 		if (currentLevel == 2) {

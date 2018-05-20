@@ -16,9 +16,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	final int size = 50;
 	private MainGame mainGame;
 	private boolean isAnimatie;
+	private float aanvallenPerSeconden;
 	int totalFramez = 0;
 	private int speed = 2;
 	PowerUp powerup;
+	protected boolean magAanvallen;
 
 	/**
 	 *
@@ -27,6 +29,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
+		this.aanvallenPerSeconden = aanvallenPerSeconden;
+		this.magAanvallen = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
 
@@ -68,6 +72,19 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (!isAnimatie) {
 			isAnimatie = true;
 		}
+		if (alarmName == "magAanvallen") {
+			magAanvallen = false;
+		}
+	}
+
+	/**
+	 * Functie om alarm te starten voor de aanval van de speler.
+	 */
+	public void startAlarmAanval() {
+		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
+		alarm.addTarget(this);
+		alarm.start();
+
 	}
 
 	/**
@@ -98,8 +115,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag(180, speed, 2 + totalFramez);
 		}
 		if (key == ' ') {
-			if (powerup != null) {
-			powerup.gebruikPowerUp();
+			if (powerup != null && !magAanvallen && powerup.isItemIsOpgepakt()) {
+				float richting = getAngleFrom(mainGame.getBaas());
+				powerup.gebruikPowerUp(richting);
+				magAanvallen = true;
+				startAlarmAanval();
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
@@ -107,7 +127,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
 			mainGame.setupGame();
 		}
-
 	}
 
 	// functie om naar links te bewegen
@@ -189,13 +208,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public PowerUp getPowerup() {
 		return powerup;
 	}
+
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 
 	public void setPowerup(PowerUp powerup) {
 
-        this.powerup = powerup;
-    }
+		this.powerup = powerup;
+	}
 
 }
