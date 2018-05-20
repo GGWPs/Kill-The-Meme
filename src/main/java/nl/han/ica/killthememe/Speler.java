@@ -17,12 +17,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	int totalFramez = 0;
-	private Sprite projectileSprite;
-	private float aanvallenPerSeconden;
-	PowerUp powerup;
-	boolean magAanvallen;
 	final int speed = 2;
-
+	PowerUp powerup;
 
 	/**
 	 *
@@ -31,10 +27,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
-		this.aanvallenPerSeconden = aanvallenPerSeconden;
-		this.magAanvallen = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
+		powerup = new PowerUpProjectiel(mainGame, "projectiel");
+
 
 	}
 
@@ -60,18 +56,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	
-	//dit vuurt een projectiel af zodra de speler een powerup heeft.
-	public void spelerAfvuren() {
-		if (powerup != null && powerup.isItemIsOpgepakt() && !magAanvallen) {
-
-			float richting = getAngleFrom(mainGame.getBaasEen());
-			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.3f);
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
-					getY() + getHeight() - 10);
-			magAanvallen = true;
-			startAlarmAanval();
-		}
-	}
 
 	// alarm voor animatie
 	void startAlarm() {
@@ -86,19 +70,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (!isAnimatie) {
 			isAnimatie = true;
 		}
-		if (alarmName == "magAanvallen") {
-			magAanvallen = false;
-		}
 	}
 
-	/**
-	 * Functie om alarm te starten voor de aanval van de speler.
-	 */
-	public void startAlarmAanval() {
-		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
-		alarm.addTarget(this);
-		alarm.start();
-	}
+
 
 	/**
 	 * Deze functie controleert of de speler een knop indrukt
@@ -129,7 +103,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag();
 		}
 		if (key == ' ') {
-			spelerAfvuren();
+			System.out.print("spatiebar");
+			if(powerup != null) {
+				System.out.print("hij zou het nu moeten afvuren");
+				((PowerUpProjectiel) powerup).spelerAfvuren();
+			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
 		if (mainGame.levelClear())

@@ -25,6 +25,7 @@ public class MainGame extends GameEngine {
 	private Sound vuurGeluid;
 	private TextObject dashboardText;
 	private int currentLevel = 0;
+	PowerUp powerup;
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
 	private String naamText = " ";
@@ -137,8 +138,8 @@ public class MainGame extends GameEngine {
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
 
-			PowerUp copy = new PowerUp(this, "copyPower");
-			addGameObject(copy, 100, 300);
+			powerup = new PowerUpProjectiel(this, "projectiel");
+			addGameObject(powerup, 100, 300);
 		}
 		
 		if (currentLevel == 3) {
