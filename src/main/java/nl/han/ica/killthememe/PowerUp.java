@@ -2,17 +2,18 @@ package nl.han.ica.killthememe;
 
 import java.util.List;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
-public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
+public class PowerUp extends SpriteObject implements ICollidableWithGameObjects, IAlarmListener{
 	private String powerUpNaam;
 	private Sprite powerUp;
 	private MainGame mainGame;
 	private boolean itemIsOpgepakt;
-
+	
 	
 	/*
 	 * @param mainGame referentie naar de wereld
@@ -23,18 +24,20 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 		this.powerUpNaam = powerUpNaam;
 		this.itemIsOpgepakt = false;
 	}
-
-
+	
+	public void gebruikPowerUp() {
+		
+	}
 	/*
 	 * (non-Javadoc)
 	 *kijkt of de item is opgepakt
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#gameObjectCollisionOccurred(java.util.List)
 	 */
+	
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
 				itemIsOpgepakt = true;
-				((Speler) go).setPowerup(this);
 				setVisible(false);
 			}
 		}
@@ -55,6 +58,12 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 
 	//niet gebruikt
 	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void triggerAlarm(String alarmName) {
 		// TODO Auto-generated method stub
 		
 	}
