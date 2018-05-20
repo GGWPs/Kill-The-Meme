@@ -27,7 +27,7 @@ public class Level {
 		} else if (currentLevel == 4) {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		}  else {
-			return null;
+			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		}
 	}
 
@@ -93,6 +93,23 @@ public class Level {
 	        };
 			return tilesMap; 
 		} else if (currentLevel == 4) {
+			System.out.println("Level" + currentLevel);
+			int tilesMap[][]={
+	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0},
+	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+	        };
+			return tilesMap; 
+		}else if (currentLevel == 5) {
 			System.out.println("Level" + currentLevel);
 			int tilesMap[][]={
 	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

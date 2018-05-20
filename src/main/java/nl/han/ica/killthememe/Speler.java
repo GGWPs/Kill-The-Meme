@@ -87,7 +87,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			isAnimatie = true;
 		}
 		if (alarmName == "magAanvallen") {
-
 			magAanvallen = false;
 		}
 	}
@@ -130,9 +129,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag();
 		}
 		if (key == ' ') {
-	
 			spelerAfvuren();
-
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
 		if (mainGame.levelClear())

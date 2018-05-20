@@ -38,7 +38,6 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects{
 				setVisible(false);
 			}
 		}
-
 	}
 	//bolean die returnt of de item is opgepakt
 	public boolean isItemIsOpgepakt() {

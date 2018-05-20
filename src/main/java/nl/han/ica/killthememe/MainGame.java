@@ -19,7 +19,6 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine {
 	private Speler speler;
-	private Vijand vijand;
 	private Vijand baaseen, baasx, baastwee, baasdrie, baasvier;
 	private Vogel vogel;
 	private Sound backgroundSound;
@@ -35,7 +34,6 @@ public class MainGame extends GameEngine {
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
-
 	}
 
 	// Dit is om alles van de level/spel voor te bereiden.
@@ -94,22 +92,6 @@ public class MainGame extends GameEngine {
 		addDashboard(dashboard);
 	}
 
-	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
-	@Override
-	public void mouseClicked() {
-		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
-				&& currentLevel == 0
-				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
-						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
-			if (currentLevel == 0) {
-				naamText = menu.getNaam();
-			}
-			currentLevel = 1;
-			setupGame();
-		}
-	}
 
 	// om de dashboard te verversen.
 	public void refreshDasboardText() {
@@ -121,7 +103,7 @@ public class MainGame extends GameEngine {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
 		
-		if (getCurrentLevel() == 4) {
+		if (getCurrentLevel() == 5) {
 			menu.setText("Congratulations! You won!");
 			menu.setNaamText(naamText);
 		}
@@ -176,6 +158,14 @@ public class MainGame extends GameEngine {
 
 			PowerUp copy = new PowerUp(this, "copyPower");
 			addGameObject(copy, 100, 300);
+		}
+		if (currentLevel == 4) {
+			speler = new Speler(this, 0.4f);
+			addGameObject(speler, 10, 100);
+
+			vogel = new Vogel(this);
+			addGameObject(vogel, 1000, 100);
+			
 		}
 
 	}
@@ -276,6 +266,23 @@ public class MainGame extends GameEngine {
 			return true;
 		}
 		return false;
+	}
+	
+	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
+	@Override
+	public void mouseClicked() {
+		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
+				&& currentLevel == 0
+				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
+						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+			if (currentLevel == 0) {
+				naamText = menu.getNaam();
+			}
+			currentLevel = 1;
+			setupGame();
+		}
 	}
 
 }
