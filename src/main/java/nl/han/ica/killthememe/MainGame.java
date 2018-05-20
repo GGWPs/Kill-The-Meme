@@ -58,6 +58,8 @@ public class MainGame extends GameEngine {
 
 	}
 
+
+
 	/**
 	 * creert de view zonder viewport
 	 * 
@@ -100,7 +102,7 @@ public class MainGame extends GameEngine {
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
 		}
-		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3 ) {
+		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
 		
@@ -120,14 +122,16 @@ public class MainGame extends GameEngine {
 	 */
 	public void createObjects(int currentLevel) {
 		if (currentLevel == 1) {
+			backgroundSound.rewind();
 			speler = new Speler(this, 0.3f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			baasx = new BaasTwee(this);
-			addGameObject(baasx, 220, 500);
-
+			baaseen = new BaasEen(this);
+			addGameObject(baaseen, 220, 500);
+			powerup = new PowerUpProjectiel(this);
+			addGameObject(powerup, 100, 300);
 		}
 		if (currentLevel == 2) {
 			speler = new Speler(this, 0.4f);
@@ -138,7 +142,7 @@ public class MainGame extends GameEngine {
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
 
-			powerup = new PowerUpProjectiel(this, "projectiel");
+			powerup = new PowerUpProjectiel(this);
 			addGameObject(powerup, 100, 300);
 		}
 		
@@ -174,10 +178,8 @@ public class MainGame extends GameEngine {
 		vuurGeluid = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
-		// bubblePopSound = new Sound(this,
-		// "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
 	}
-
+	
     
     /*
      * 
@@ -241,12 +243,18 @@ public class MainGame extends GameEngine {
 	}
 
 	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
-	public GameObject getBaasEen() {
-		return baaseen;
-	}
-	
-	public GameObject getBaasTwee() {
-		return baasx;
+	public GameObject getBaas() {
+		if (getCurrentLevel() == 1) {
+			return baaseen;
+		}else if (getCurrentLevel() == 2) {
+			return baasx;
+		} else if (getCurrentLevel() == 3) {
+			return baasx;
+		} else if (getCurrentLevel() == 4) {
+			return baasx;
+		} else {
+			return null;
+		}
 	}
 
 	// checkt of de level is gecleared en weergeeft true.
@@ -285,5 +293,6 @@ public class MainGame extends GameEngine {
 			setupGame();
 		}
 	}
+	
 
 }

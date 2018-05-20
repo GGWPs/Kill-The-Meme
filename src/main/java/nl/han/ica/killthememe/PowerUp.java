@@ -10,21 +10,20 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class PowerUp extends SpriteObject implements ICollidableWithGameObjects, IAlarmListener{
-	protected String powerUpNaam;
 	protected Sprite powerUp;
 	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
 	protected boolean magAanvallen;
+	public Speler speler;
 	
 	
 	/*
 	 * @param mainGame referentie naar de wereld
 	 * @param powerUpNaam referentie naar de naam van de powerup
 	 */
-	public PowerUp(Sprite sprite, MainGame mainGame,String powerUpNaam) {
+	public PowerUp(Sprite sprite, MainGame mainGame) {
 		super(sprite);
 		this.mainGame = mainGame;
-		this.powerUpNaam = powerUpNaam;
 		this.itemIsOpgepakt = false;
 	}
 	
@@ -41,7 +40,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
-				itemIsOpgepakt = true;
+				setItemIsOpgepakt(true);
 				setVisible(false);
 			}
 		}
@@ -61,7 +60,9 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 
 	//niet gebruikt
 	public void update() {
-		// TODO Auto-generated method stub
+		if (isItemIsOpgepakt()) {
+			speler.setPowerup(this);
+		}
 		
 	}
 

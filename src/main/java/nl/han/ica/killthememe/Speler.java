@@ -29,7 +29,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
-		powerup = new PowerUpProjectiel(mainGame, "projectiel");
+		//powerup = new PowerUpProjectiel(mainGame);
 	}
 
 	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
