@@ -18,9 +18,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean isAnimatie;
 	private float aanvallenPerSeconden;
 	int totalFramez = 0;
-	private int speed = 2;
 	PowerUp powerup;
 	protected boolean magAanvallen;
+	private int speed = 2;
 
 	/**
 	 *
@@ -115,11 +115,18 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegOmlaag(180, speed, 2 + totalFramez);
 		}
 		if (key == ' ') {
-			if (powerup != null && !magAanvallen && powerup.isItemIsOpgepakt()) {
+			if (powerup != null && powerup.isItemIsOpgepakt()) {
 				float richting = getAngleFrom(mainGame.getBaas());
-				powerup.gebruikPowerUp(richting);
-				magAanvallen = true;
-				startAlarmAanval();
+				if(powerup.powerNaam == "Projectiel" && !magAanvallen ) {
+					powerup.gebruikPowerUp(richting);
+					magAanvallen = true;
+					startAlarmAanval();
+				} else if (powerup.powerNaam == "Speed"){
+					powerup.gebruikPowerUp(richting);
+				} else if (powerup.powerNaam == "Basis") {
+					System.out.print("Niks");
+				}
+				
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
@@ -210,11 +217,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void setSpeed(int speed) {
+		System.out.print("Speed!");
 		this.speed = speed;
+		System.out.print(speed);
 	}
 
 	public void setPowerup(PowerUp powerup) {
-
 		this.powerup = powerup;
 	}
 

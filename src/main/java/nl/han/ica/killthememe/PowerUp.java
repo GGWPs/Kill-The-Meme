@@ -14,7 +14,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
 	public Speler speler;
-	String powerNaam;
+	String powerNaam = "Basis";
 
 	/*
 	 * @param mainGame referentie naar de wereld
@@ -59,7 +59,10 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	public void setItemIsOpgepakt(boolean itemIsOpgepakt) {
 		this.itemIsOpgepakt = itemIsOpgepakt;
 	}
-
+	
+	public String powerNaam() {
+		return powerNaam;
+	}
 	public void update() {
 	}
 

@@ -129,7 +129,7 @@ public class MainGame extends GameEngine {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-			powerup = new PowerUpProjectiel(this);
+			powerup = new PowerUpSpeed(this);
 			addGameObject(powerup, 100, 300);
 		}
 		if (currentLevel == 2) {
@@ -138,7 +138,7 @@ public class MainGame extends GameEngine {
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			baaseen = new BaasEen(this);
+			baaseen = new BaasTwee(this);
 			addGameObject(baaseen, 700, 500);
 
 			powerup = new PowerUpProjectiel(this);
@@ -238,6 +238,8 @@ public class MainGame extends GameEngine {
 	public float getSpelerY() {
 		return speler.getY();
 	}
+	
+
 
 	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
 	public GameObject getBaas() {
@@ -290,6 +292,8 @@ public class MainGame extends GameEngine {
 			setupGame();
 		}
 	}
+	
+	
 	
 
 }
