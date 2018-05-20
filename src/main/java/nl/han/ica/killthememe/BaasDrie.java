@@ -2,6 +2,7 @@ package nl.han.ica.killthememe;
 
 import java.util.Random;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 /**
@@ -10,14 +11,17 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
  */
 
 public class BaasDrie extends Vijand {
-
+	
+	
+	int speciaalAanval = 0;
+	double aanvalSnelheid = 1.5;
 	/**
 	 * BaasEen constructor
 	 * 
 	 * @param mainGame
 	 */
 	public BaasDrie(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/harambeboss.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasDrie.png"), mainGame, 0.2f);
 
 	}
 
@@ -26,9 +30,8 @@ public class BaasDrie extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-		Random r = new Random();
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new BaasTweeAanval(mainGame, projectileSprite, richting,r.nextFloat());
+		Aanval projectiel = new BaasDrieAanval(mainGame, projectileSprite, richting,0.7f);
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}
@@ -42,7 +45,28 @@ public class BaasDrie extends Vijand {
 			afvuren();
 			magAanvallen = true;
 			startAlarm();
+			speciaalAanval++;
+			if(speciaalAanval >= 4 && speciaalAanval <= 7) {
+				aanvalSnelheid = 0.2;
+			} else if (speciaalAanval >= 7) {
+				aanvalSnelheid = 1.5;
+			}
+			
 		}
+	}
+	
+	//Functie om alarm te starten voor de aanval van de vijand
+	@Override
+	public void startAlarm(){
+		Random r = new Random();
+		Alarm alarm = new Alarm("magAanvallen", aanvalSnelheid+r.nextFloat());
+		alarm.addTarget(this);
+		alarm.start();
+	}
+
+	@Override
+	public void triggerAlarm(String alarmName) {
+		magAanvallen = false;
 	}
 
 }
