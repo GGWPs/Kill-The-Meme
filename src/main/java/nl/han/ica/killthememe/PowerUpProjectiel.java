@@ -21,5 +21,10 @@ public class PowerUpProjectiel extends PowerUp {
 
 		}
 	}
+	
+	@Override
+	public String powerNaam() {
+		return powerNaam;
+	}
 
 }

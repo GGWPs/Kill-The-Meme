@@ -19,5 +19,10 @@ public class PowerUpSpeed extends PowerUp{
 	public boolean powerActivated() {
 		return speedActivated;
 	}
+	
+	@Override
+	public String powerNaam() {
+		return "Speed";
+	}
 
 }
