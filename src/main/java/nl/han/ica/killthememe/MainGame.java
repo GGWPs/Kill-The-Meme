@@ -22,13 +22,11 @@ public class MainGame extends GameEngine {
 	private Vijand baaseen, baasx, baastwee, baasdrie, baasvier;
 	private Vogel vogel;
 	private Sound backgroundSound;
-	private Sound vuurGeluid;
 	private TextObject dashboardText;
 	private int currentLevel = 0;
 	PowerUp powerup;
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
-	private String powerupnaam;
 	private String naamText = " ";
 	private boolean bossVerslagen;
 	private Menu menu;
@@ -175,7 +173,6 @@ public class MainGame extends GameEngine {
 
 	// Functie om het geluid te initieeren
 	private void initializeSound() {
-		vuurGeluid = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 	}
