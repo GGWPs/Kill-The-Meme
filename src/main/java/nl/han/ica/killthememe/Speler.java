@@ -76,7 +76,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 *  en als hij dat wel doet, checkt hij de animatie
 	 *  of het een beweging is of het een aanval is of dat de level gecleared is.
 	 */
-	
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		if (!isAnimatie) {
@@ -107,9 +106,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
-		if (mainGame.levelClear())
-
-		{
+		if (mainGame.levelClear()){
 			mainGame.setCurrentLevel(mainGame.getCurrentLevel()+ 1);
 			mainGame.setupGame();
 		}
@@ -192,14 +189,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
-	//functie geerft van interface beweeg maar wordt niet gebruikt
+	//functie geeft van interface beweeg maar wordt niet gebruikt
 
 	public PowerUp getPowerup() {
 		return powerup;
 	}
 
-	public void setPowerup(PowerUp powerup) {
-		this.powerup = powerup;
+	public void setPowerup(String powerNaam) {
+		if(powerNaam == "projectiel") {
+			powerup = new PowerUpProjectiel(mainGame);
+		}
 	}
 
 }

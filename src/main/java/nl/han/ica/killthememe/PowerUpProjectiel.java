@@ -6,6 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class PowerUpProjectiel extends PowerUp {
 
 	Sprite projectileSprite;
+	String powerNaam = "projectiel";
 
 	public PowerUpProjectiel(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), mainGame);

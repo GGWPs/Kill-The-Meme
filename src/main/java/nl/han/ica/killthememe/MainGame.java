@@ -71,10 +71,10 @@ public class MainGame extends GameEngine {
 	private void createView(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
 		view.setBackground(loadImage(level.pickBackground(getCurrentLevel())));
-
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
+	
 	/**
 	* Functie om een dashboard te maken.
 	* @param dashboardWidth breedte van de scherm
@@ -84,11 +84,11 @@ public class MainGame extends GameEngine {
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 4  ) {
+		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 5  ) {
 			menu = new Menu(this, "", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
-		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3) {
+		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
 			dashboardText = new TextObject("", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
@@ -102,7 +102,7 @@ public class MainGame extends GameEngine {
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
 		}
-		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 3) {
+		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		}
 		

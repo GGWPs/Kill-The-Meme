@@ -15,7 +15,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	protected boolean itemIsOpgepakt;
 	protected boolean magAanvallen;
 	public Speler speler;
-	
+	String powerNaam;
 	
 	/*
 	 * @param mainGame referentie naar de wereld
@@ -49,6 +49,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	public boolean isItemIsOpgepakt() {
 		return itemIsOpgepakt;
 	}
+	
 	/*
 	 * Functie om de bolean aan te passen.
 	 */
@@ -60,10 +61,6 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 
 	//niet gebruikt
 	public void update() {
-		if (isItemIsOpgepakt()) {
-			speler.setPowerup(this);
-		}
-		
 	}
 
 	public void triggerAlarm(String alarmName) {
