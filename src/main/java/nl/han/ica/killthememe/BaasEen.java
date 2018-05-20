@@ -3,7 +3,7 @@ package nl.han.ica.killthememe;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 /**
- * @author Kaene Peters
+ * @author Kaene Peters & Ivan Miladinovic
  * 
  */
 
@@ -29,10 +29,11 @@ public class BaasEen extends Vijand {
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}
-
+	
 	/**
 	 * kijkt of er aangevallen mag worden
 	 */
+	@Override
 	public void update() {
 		if (!magAanvallen) {
 			afvuren();

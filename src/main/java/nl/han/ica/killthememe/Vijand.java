@@ -4,15 +4,16 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 
-public abstract class Vijand extends SpriteObject implements IAlarmListener {
+public class Vijand extends SpriteObject implements IAlarmListener {
 
 	protected Level level;
 	protected MainGame mainGame;
 	protected Sprite projectileSprite;
 	protected float aanvallenPerSeconden;
 	protected boolean magAanvallen;
-
+	
 	/**
 	 * @param sprite de vijand zijn afbeelding
 	 * @param mainGame klasse van mainGame
@@ -29,12 +30,20 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 	}
 	//wordt niet gebruikt
 	public void update() {
-
+		
 	}
 
-	public abstract void afvuren();
+	public void afvuren() {
+		
+	}
+	
+	private void initializeSound() {
+		
+		// bubblePopSound = new Sound(this,
+		// "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+	}
 	//Functie om alarm te starten voor de aanval van de vijand
-	protected void startAlarm() {
+	public void startAlarm(){
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);
 		alarm.start();

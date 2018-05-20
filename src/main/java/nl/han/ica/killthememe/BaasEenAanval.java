@@ -12,7 +12,7 @@ public class BaasEenAanval extends Projectiel{
 	 * @param sprite voor de sprite
 	 */
 	public BaasEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
-		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenAanval.png"), richting,snelheid);
+		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BossEenAanval.png"), richting,snelheid);
 		
 	}
 	
@@ -29,6 +29,5 @@ public class BaasEenAanval extends Projectiel{
 				mainGame.setupGame();
 			}
 		}
-		
 	}
 }

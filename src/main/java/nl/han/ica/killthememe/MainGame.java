@@ -21,8 +21,10 @@ public class MainGame extends GameEngine {
 	private Speler speler;
 	private Vijand vijand;
 	private BaasEen baaseen, baastwee, baasdrie, baasvier;
+	private BaasTwee baasx;
 	private Vogel vogel;
 	private Sound backgroundSound;
+	private Sound vuurGeluid;
 	private TextObject dashboardText;
 	private int currentLevel = 0;
 	Level level = new Level(getCurrentLevel());
@@ -40,7 +42,7 @@ public class MainGame extends GameEngine {
 	// Dit is om alles van de level/spel voor te bereiden.
 	@Override
 	public void setupGame() {
-
+		bossVerslagen = false;
 		worldWidth = 800;
 		worldHeight = 600;
 
@@ -93,7 +95,7 @@ public class MainGame extends GameEngine {
 		addDashboard(dashboard);
 	}
 
-	//Kijkt of de muis ingedrukt wordt
+	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
 	@Override
 	public void mouseClicked() {
 		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
@@ -106,7 +108,6 @@ public class MainGame extends GameEngine {
 				naamText = menu.getNaam();
 			}
 			currentLevel = 1;
-
 			setupGame();
 		}
 	}
@@ -142,8 +143,8 @@ public class MainGame extends GameEngine {
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			baaseen = new BaasEen(this);
-			addGameObject(baaseen, 220, 500);
+			baasx = new BaasTwee(this);
+			addGameObject(baasx, 220, 500);
 
 		}
 		if (currentLevel == 2) {
@@ -182,6 +183,7 @@ public class MainGame extends GameEngine {
 
 	// Functie om het geluid te initieeren
 	private void initializeSound() {
+		vuurGeluid = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 		// bubblePopSound = new Sound(this,
@@ -255,6 +257,10 @@ public class MainGame extends GameEngine {
 	public GameObject getBaasEen() {
 		return baaseen;
 	}
+	
+	public GameObject getBaasTwee() {
+		return baasx;
+	}
 
 	// checkt of de level is gecleared en weergeeft true.
 	boolean levelClear() {
@@ -263,7 +269,7 @@ public class MainGame extends GameEngine {
 			return true;
 		}
 		if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
-				&& speler.getY() <= 600 || bossVerslagen) {
+				&& speler.getY() <= 600 || getCurrentLevel() == 2 && bossVerslagen) {
 			return true;
 		}
 		if (getCurrentLevel() == 3 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
