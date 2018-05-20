@@ -12,7 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
-public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, Beweeg, IAlarmListener {
+public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
 	final int size = 50;
 	private MainGame mainGame;
 	private boolean isAnimatie;
@@ -71,7 +71,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 
-
 	/**
 	 * Deze functie controleert of de speler een knop indrukt
 	 *  en als hij dat wel doet, checkt hij de animatie
@@ -89,16 +88,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			startAlarm();
 		}
 		if (keyCode == mainGame.LEFT || key == 'a') {
-			beweegLinks();
+			beweegLinks(270, speed, 0 + totalFramez);
 		}
 		if (keyCode == mainGame.UP || key == 'w') {
-			beweegOmhoog();
+			beweegOmhoog(0, speed, 4 + totalFramez);
 		}
 		if (keyCode == mainGame.RIGHT || key == 'd') {
-			beweegRechts();
+			beweegRechts(90, speed, 6 + totalFramez);
 		}
 		if (keyCode == mainGame.DOWN || key == 's') {
-			beweegOmlaag();
+			beweegOmlaag(180, speed, 2 + totalFramez);
 		}
 		if (key == ' ') {
 			System.out.print("spatiebar");
@@ -118,36 +117,31 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	// functie om naar links te bewegen
-	public void beweegLinks() {
-		// setCurrentFrameIndex(0 + totalFramez);
-		beweeg(270, speed, 0 + totalFramez);
+	public void beweegLinks(int directionspeed, int speed, int frame) {
+		setDirectionSpeed(directionspeed, speed);
+		setCurrentFrameIndex(frame);
 	}
 
 	// functie om naar rechts te bewegen
-	public void beweegRechts() {
-		// setCurrentFrameIndex(6 + totalFramez);
-		beweeg(90, speed, 6 + totalFramez);
+	public void beweegRechts(int directionspeed, int speed, int frame) {
+		setDirectionSpeed(directionspeed, speed);
+		setCurrentFrameIndex(frame);
 	}
 
 	// functie omhoog te lopen
-	public void beweegOmhoog() {
-		// setCurrentFrameIndex(4 + totalFramez);
-		beweeg(0, speed, 4 + totalFramez);
+	public void beweegOmhoog(int directionspeed, int speed, int frame) {
+		setDirectionSpeed(directionspeed, speed);
+		setCurrentFrameIndex(frame);
 	}
 
 	// functie om omlaag te bewegen
-	public void beweegOmlaag() {
-		// setCurrentFrameIndex(2 + totalFramez);
-		beweeg(180, speed, 2 + totalFramez);
+	public void beweegOmlaag(int directionspeed, int speed, int frame) {
+		setDirectionSpeed(directionspeed, speed);
+		setCurrentFrameIndex(frame);
 	}
 	
 	
 	//Functie geërft van de beweeg interface voor het bewegen.
-	@Override
-	public void beweeg(int directionspeed, int speed, int frame) {
-		setDirectionSpeed(directionspeed, speed);
-		setCurrentFrameIndex(frame);
-	}
 
 	// Deze functie kijkt of de speler tegen een tile aanloopt.
 	@Override
@@ -199,11 +193,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	//functie geerft van interface beweeg maar wordt niet gebruikt
-	@Override
-	public void beweeg(int directionspeed, int speed) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public PowerUp getPowerup() {
 		return powerup;

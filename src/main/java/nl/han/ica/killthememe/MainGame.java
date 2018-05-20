@@ -263,6 +263,9 @@ public class MainGame extends GameEngine {
 				&& speler.getY() <= 150) {
 			return true;
 		}
+		if (getCurrentLevel() == 4 && bossVerslagen) {
+			return true;
+		}
 		return false;
 	}
 	

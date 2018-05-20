@@ -2,6 +2,7 @@ package nl.han.ica.killthememe;
 
 import java.util.List;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
@@ -13,6 +14,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 	protected Sprite powerUp;
 	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
+	protected boolean magAanvallen;
 	
 	
 	/*
@@ -63,12 +65,22 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects,
 		
 	}
 
-	@Override
 	public void triggerAlarm(String alarmName) {
-		// TODO Auto-generated method stub
-		
+		if (alarmName == "magAanvallen") {
+			magAanvallen = false;
+		}
 	}
+	
+	/**
+	 * Functie om alarm te starten voor de aanval van de speler.
+	 */
+	public void startAlarmAanval() {
+		magAanvallen = true;
+		Alarm alarm = new Alarm("magAanvallen", 1 / 6);
+		alarm.addTarget(this);
+		alarm.start();
 
+	}	
 
 	
 	
