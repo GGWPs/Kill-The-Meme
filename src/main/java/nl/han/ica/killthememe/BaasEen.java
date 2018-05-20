@@ -1,5 +1,7 @@
 package nl.han.ica.killthememe;
 
+import java.util.Random;
+
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 /**
@@ -15,7 +17,7 @@ public class BaasEen extends Vijand {
 	 * @param mainGame
 	 */
 	public BaasEen(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BossEenCarlosMatos.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
 
 	}
 

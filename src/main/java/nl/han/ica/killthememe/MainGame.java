@@ -20,8 +20,7 @@ import processing.core.PApplet;
 public class MainGame extends GameEngine {
 	private Speler speler;
 	private Vijand vijand;
-	private BaasEen baaseen, baastwee, baasdrie, baasvier;
-	private BaasTwee baasx;
+	private Vijand baaseen, baasx, baastwee, baasdrie, baasvier;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private Sound vuurGeluid;
