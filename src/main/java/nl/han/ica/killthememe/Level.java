@@ -25,7 +25,7 @@ public class Level {
 		} else if (currentLevel == 3) {
 			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
 		} else if (currentLevel == 4) {
-			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
+			return "src/main/java/nl/han/ica/killthememe/media/fccachtergrond.jpg";
 		}  else {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		}
