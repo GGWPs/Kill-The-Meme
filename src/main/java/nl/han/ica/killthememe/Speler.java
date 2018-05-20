@@ -195,10 +195,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		return powerup;
 	}
 
-	public void setPowerup(String powerNaam) {
-		if(powerNaam == "projectiel") {
-			powerup = new PowerUpProjectiel(mainGame);
-		}
+	public void setPowerup(PowerUp powerup) {
+		this.powerup = powerup;
 	}
 
 }

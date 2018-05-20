@@ -28,6 +28,7 @@ public class MainGame extends GameEngine {
 	PowerUp powerup;
 	Level level = new Level(getCurrentLevel());
 	private int worldWidth;
+	private String powerupnaam;
 	private String naamText = " ";
 	private boolean bossVerslagen;
 	private Menu menu;
@@ -230,6 +231,14 @@ public class MainGame extends GameEngine {
 	 */
 	public void setCurrentName(String naamText) {
 		this.naamText = naamText;
+	}
+	
+	public void setPowerUp(String powerupnaam) {
+		this.powerupnaam = powerupnaam;
+	}
+	
+	public String getPowerUp() {
+		return powerupnaam;
 	}
 
 	// Haalt de X pos van de speler op
