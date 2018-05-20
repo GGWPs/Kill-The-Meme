@@ -131,7 +131,7 @@ public class MainGame extends GameEngine {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-			powerup = new PowerUpProjectiel(this);
+			powerup = new PowerUpSpeed(this);
 			addGameObject(powerup, 100, 300);
 		}
 		if (currentLevel == 2) {
@@ -166,10 +166,9 @@ public class MainGame extends GameEngine {
 		if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
-
-			vogel = new Vogel(this);
-			addGameObject(vogel, 1000, 100);
 			
+			baaseen = new BaasDrie(this);
+			addGameObject(baaseen, 700, 500);
 		}
 
 	}
@@ -233,14 +232,6 @@ public class MainGame extends GameEngine {
 		this.naamText = naamText;
 	}
 	
-	public void setPowerUp(String powerupnaam) {
-		this.powerupnaam = powerupnaam;
-	}
-	
-	public String getPowerUp() {
-		return powerupnaam;
-	}
-
 	// Haalt de X pos van de speler op
 	public float getSpelerX() {
 		return speler.getX();
