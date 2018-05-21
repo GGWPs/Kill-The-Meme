@@ -1,5 +1,8 @@
 package nl.han.ica.killthememe;
 
+import java.util.List;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpSpeed extends PowerUp{
@@ -11,14 +14,27 @@ public class PowerUpSpeed extends PowerUp{
 	}
 	
 	//
-	public void gebruikPowerUp() {
-		speler.setSpeed(4);
+	public void gebruikPowerUp(float richting) {
+		System.out.print("Speed");
 	}
 	
 	
 	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+        for (GameObject go : collidedGameObjects) {
+            if (go instanceof Speler) {
+                ((Speler) go).setPowerup(this);
+                ((Speler) go).setSpeed(4);
+                setItemIsOpgepakt(true);
+                setVisible(false);
+            }
+        }
+    }
+	
+	
+	@Override
 	public String powerNaam() {
-		return "Speed";
+		return powerNaam;
 	}
 
 }

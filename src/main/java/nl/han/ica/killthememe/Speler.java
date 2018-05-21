@@ -116,19 +116,18 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
-				float richting = getAngleFrom(mainGame.getBaas());
 				if(powerup.powerNaam() == "Projectiel" && !magAanvallen ) {
+					float richting = getAngleFrom(mainGame.getBaas());
 					System.out.print("Projectiel");
 					powerup.gebruikPowerUp(richting);
 					magAanvallen = true;
 					startAlarmAanval();
 				} else if (powerup.powerNaam()  == "Speed"){
 					System.out.print("Speed");
-					powerup.gebruikPowerUp(richting);
-				} else if (powerup.powerNaam()  == "Basis") {
-					System.out.print("Niks");
+					setSpeed(4);
+				} else if (powerup.powerNaam()  == "Sloop"){
+					System.out.print("Sloop");
 				}
-				
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
@@ -171,49 +170,79 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.theTile instanceof BoardsTile) {
-				if (ct.collisionSide == ct.TOP) {
-					try {
-						vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						setY(vector.y - getHeight());
-					} catch (TileNotFoundException e) {
-						e.printStackTrace();
+				if(powerup != null && powerup.powerNaam() == "Sloop") {
+					 if (ct.collisionSide == ct.RIGHT) {
+						 try {
+						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						 } catch (TileNotFoundException e) {
+						 e.printStackTrace();
+					 }
+					 }
+					 if (ct.collisionSide == ct.LEFT) {
+						 try {
+						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						 } catch (TileNotFoundException e) {
+						 e.printStackTrace();
+						 }
+					 }
+					 if (ct.collisionSide == ct.TOP) {
+						 try {
+						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						 } catch (TileNotFoundException e) {
+						 e.printStackTrace();
+						 }
+					 }
+					 if (ct.collisionSide == ct.BOTTOM) {
+						 try {
+						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						 } catch (TileNotFoundException e) {
+						 e.printStackTrace();
+						 }
+					 }
+				} else {
+					if (ct.collisionSide == ct.TOP) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							setY(vector.y - getHeight());
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
 					}
-				}
-				if (ct.collisionSide == ct.BOTTOM) {
-					try {
-						vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						setY(vector.y + getHeight());
-					} catch (TileNotFoundException e) {
-						e.printStackTrace();
+					if (ct.collisionSide == ct.BOTTOM) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							setY(vector.y + getHeight());
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
 					}
-				}
-				// if (ct.collisionSide == ct.RIGHT) {
-				// try {
-				// vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-				// mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-				// } catch (TileNotFoundException e) {
-				// e.printStackTrace();
-				// }
-				if (ct.collisionSide == ct.RIGHT) {
-					try {
-						vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						setX(vector.x + getHeight());
-					} catch (TileNotFoundException e) {
-						e.printStackTrace();
+					if (ct.collisionSide == ct.RIGHT) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							setX(vector.x + getHeight());
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
 					}
-				}
-				if (ct.collisionSide == ct.LEFT) {
-					try {
-						vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						setX(vector.x - getHeight());
-					} catch (TileNotFoundException e) {
-						e.printStackTrace();
+					if (ct.collisionSide == ct.LEFT) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							setX(vector.x - getHeight());
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
 		}
 	}
-
+	
+	
+	
 	public PowerUp getPowerup() {
 		return powerup;
 	}

@@ -144,13 +144,16 @@ public class MainGame extends GameEngine {
 			powerup = new PowerUpProjectiel(this);
 			addGameObject(powerup, 100, 300);
 		}
-		
 		if (currentLevel == 3) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
+			
+			powerup = new PowerUpSpeed(this);
+			addGameObject(powerup, 0, 300);
+			
 			baaseen = new BaasEen(this);
 			baastwee = new BaasEen(this);
 			baasdrie = new BaasEen(this);
@@ -241,6 +244,7 @@ public class MainGame extends GameEngine {
 		return speler.getY();
 	}
 	
+	
 
 
 	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
@@ -248,7 +252,7 @@ public class MainGame extends GameEngine {
 		if (getCurrentLevel() == 1) {
 			return baaseen;
 		}else if (getCurrentLevel() == 2) {
-			return baasx;
+			return baaseen;
 		} else if (getCurrentLevel() == 3) {
 			return baasx;
 		} else if (getCurrentLevel() == 4) {
