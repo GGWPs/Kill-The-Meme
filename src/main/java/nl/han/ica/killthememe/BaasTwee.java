@@ -10,7 +10,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
  */
 
 public class BaasTwee extends Vijand {
-
+	
+	Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
+	
 	/**
 	 * BaasTwee constructor
 	 * 
@@ -28,7 +30,7 @@ public class BaasTwee extends Vijand {
 	public void afvuren() {
 		Random r = new Random();
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new BaasTweeAanval(mainGame, projectileSprite, richting,r.nextFloat());
+		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,r.nextFloat());
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}

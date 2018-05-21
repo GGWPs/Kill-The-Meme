@@ -5,14 +5,14 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
-public class BaasDrieAanval extends Projectiel{
+public class VijandAanval extends Projectiel{
 	
 	/*
 	 * @param mainGame referentie naar maingame
 	 * @param sprite voor de sprite
 	 */
-	public BaasDrieAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
-		super(mainGame,new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png"), richting,snelheid);
+	public VijandAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
+		super(mainGame,sprite, richting,snelheid);
 	}
 	
 	/*

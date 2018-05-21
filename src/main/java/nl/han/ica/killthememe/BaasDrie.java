@@ -12,6 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasDrie extends Vijand {
 	
+	Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
 	
 	int speciaalAanval = 0;
 	double aanvalSnelheid = 1.5;
@@ -31,7 +32,7 @@ public class BaasDrie extends Vijand {
 	@Override
 	public void afvuren() {
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new BaasDrieAanval(mainGame, projectileSprite, richting,0.7f);
+		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.7f);
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}

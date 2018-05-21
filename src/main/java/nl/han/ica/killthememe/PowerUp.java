@@ -31,12 +31,11 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 
 	}
 	/*
-	 * (non-Javadoc) kijkt of het item is opgepakt
+	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en pakt het dan op
 	 * 
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#
 	 * gameObjectCollisionOccurred(java.util.List)
 	 */
-
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
@@ -59,9 +58,13 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 		this.itemIsOpgepakt = itemIsOpgepakt;
 	}
 	
+	/*
+	 * Returnt de naam van de powerup
+	 */
 	public String powerNaam() {
 		return "Basis";
 	}
+	
 	public void update() {
 	}
 

@@ -31,7 +31,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	private boolean bossVerslagen;
 	private Menu menu;
 	private int worldHeight;
-	private int tijd = 10;
+	private int tijd = 5;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -96,7 +96,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	}
 
 
-	// om de dashboard te verversen.
+	//om de dashboard te verversen.
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
