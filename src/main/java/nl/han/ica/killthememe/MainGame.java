@@ -17,7 +17,7 @@ import processing.core.PApplet;
 //yeete
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine {
+public class MainGame extends GameEngine implements IAlarmListener  {
 	private Speler speler;
 	private Vijand baaseen, baasx, baastwee, baasdrie, baasvier;
 	private Vogel vogel;
@@ -31,6 +31,7 @@ public class MainGame extends GameEngine {
 	private boolean bossVerslagen;
 	private Menu menu;
 	private int worldHeight;
+	private int tijd = 10;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -83,11 +84,11 @@ public class MainGame extends GameEngine {
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 5  ) {
+		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 6) {
 			menu = new Menu(this, "", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
-		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
+		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 5) {
 			dashboardText = new TextObject("", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
@@ -100,16 +101,14 @@ public class MainGame extends GameEngine {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
-		}
-		if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
+		}else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
-		}
-		
-		if (getCurrentLevel() == 5) {
+		} else if (getCurrentLevel() == 5) {
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + " Tijd om te winnen: " + tijd);
+		} else if (getCurrentLevel() == 6) {
 			menu.setText("Congratulations! You won!");
 			menu.setNaamText(naamText);
-		}
-		if(getCurrentLevel() == -1) {
+		} else if(getCurrentLevel() == -1) {
 			menu.setText("You died");
 		}
 	}
@@ -129,10 +128,9 @@ public class MainGame extends GameEngine {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-			powerup = new PowerUpSpeed(this);
+			powerup = new PowerUpVlug(this);
 			addGameObject(powerup, 100, 300);
-		}
-		if (currentLevel == 2) {
+		} else if (currentLevel == 2) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
 
@@ -143,15 +141,14 @@ public class MainGame extends GameEngine {
 
 			powerup = new PowerUpProjectiel(this);
 			addGameObject(powerup, 100, 300);
-		}
-		if (currentLevel == 3) {
+		} else if (currentLevel == 3) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
 			
-			powerup = new PowerUpSpeed(this);
+			powerup = new PowerUpVlug(this);
 			addGameObject(powerup, 0, 300);
 			
 			baaseen = new BaasEen(this);
@@ -163,15 +160,19 @@ public class MainGame extends GameEngine {
 			addGameObject(baasdrie, 500, 500);
 			addGameObject(baasvier, 400, 500);
 
-		}
-		if (currentLevel == 4) {
+		} else if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
+			powerup = new PowerUpSloop(this);
+			addGameObject(powerup, 100, 300);
+		} else if (currentLevel == 5) {
+			speler = new Speler(this, 0.4f);
+			addGameObject(speler, 50, 250);
 			
 			baaseen = new BaasDrie(this);
 			addGameObject(baaseen, 700, 500);
+			startTimerAlarm();
 		}
-
 	}
 	
 
@@ -267,19 +268,20 @@ public class MainGame extends GameEngine {
 		if (getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
 			return true;
-		}
-		if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
 				&& speler.getY() <= 600 || getCurrentLevel() == 2 && bossVerslagen) {
 			return true;
-		}
-		if (getCurrentLevel() == 3 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 3 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
 			return true;
-		}
-		if (getCurrentLevel() == 4 && bossVerslagen) {
+		} else if (getCurrentLevel() == 4 && getSpelerX() >= 750 && speler.getY() >= 250 && speler.getX() <= 800
+				&& speler.getY() <= 350) {
 			return true;
+		} else if (bossVerslagen) {
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
@@ -288,6 +290,10 @@ public class MainGame extends GameEngine {
 		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
 				&& currentLevel == 0
 				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
+						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
+						&& mouseX < worldWidth / 2 + 80 && mouseY < 440
+						|| currentLevel == 6 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
 						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
 						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
 						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
@@ -299,6 +305,23 @@ public class MainGame extends GameEngine {
 		}
 	}
 	
+	
+	//Functie om alarm te starten voor de aanval van de vijand
+	public void startTimerAlarm(){
+		Alarm alarm = new Alarm("timer", 1);
+		alarm.addTarget(this);
+		alarm.start();
+	}
+
+	public void triggerAlarm(String alarmName) {
+		if(tijd >= 1) {
+			tijd--;
+			refreshDasboardText();
+			startTimerAlarm();
+		} else if (tijd <= 0) {
+			bossVerslagen = true;
+		}
+	}
 	
 	
 

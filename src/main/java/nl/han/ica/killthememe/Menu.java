@@ -63,7 +63,7 @@ public class Menu extends GameObject{
 			System.out.println(naamText);
 			  if (keyCode == ENTER) {
 				  mainGame.setCurrentName(naamText);
-				  mainGame.setCurrentLevel(3);
+				  mainGame.setCurrentLevel(5);
 			      mainGame.setupGame();
 			  }
     	}
@@ -90,7 +90,7 @@ public class Menu extends GameObject{
             g.text(naamText,worldWidth/2-menuKnopY*4,((worldHeight/40)*18)+menuKnopY);
             g.textSize(20);
             g.text("Start ", worldWidth/2+(menuKnopY/2), worldWidth/2);
-    	} else if(currentLevel == -1) {
+    	} else if(currentLevel == -1 || currentLevel == 6) {
     		g.setSize(worldWidth, worldHeight);
     		g.background(0);
     		g.textAlign(g.CENTER,g.TOP);

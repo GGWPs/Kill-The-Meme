@@ -37,11 +37,6 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 		
 	}
 	
-	private void initializeSound() {
-		
-		// bubblePopSound = new Sound(this,
-		// "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
-	}
 	//Functie om alarm te starten voor de aanval van de vijand
 	public void startAlarm(){
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);

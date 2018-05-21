@@ -12,7 +12,7 @@ public class PowerUpSloop extends PowerUp{
 	
 	//
 	public void gebruikPowerUp(float richting) {
-		System.out.print("Speed");
+		System.out.print("Sloop");
 	}
 	
 	

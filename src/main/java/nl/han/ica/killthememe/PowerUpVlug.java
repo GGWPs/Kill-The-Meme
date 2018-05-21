@@ -5,11 +5,11 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
-public class PowerUpSpeed extends PowerUp{
+public class PowerUpVlug extends PowerUp{
 	
 	String powerNaam = "Speed";
 	
-	public PowerUpSpeed(MainGame mainGame) {
+	public PowerUpVlug(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), mainGame);
 	}
 	
