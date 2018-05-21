@@ -4,7 +4,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpSpeed extends PowerUp{
 	
-	boolean speedActivated = false;
 	String powerNaam = "Speed";
 	
 	public PowerUpSpeed(MainGame mainGame) {
@@ -13,12 +12,9 @@ public class PowerUpSpeed extends PowerUp{
 	
 	//
 	public void gebruikPowerUp() {
-		speedActivated = true;
+		speler.setSpeed(4);
 	}
 	
-	public boolean powerActivated() {
-		return speedActivated;
-	}
 	
 	@Override
 	public String powerNaam() {
