@@ -11,8 +11,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasTwee extends Vijand {
 	
-	Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
-	
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
+	private int leven = 3;
 	/**
 	 * BaasTwee constructor
 	 * 
@@ -40,11 +40,19 @@ public class BaasTwee extends Vijand {
 	 */
 	@Override
 	public void update() {
+		if(leven <= 0) {
+			mainGame.deleteGameObject(this);
+			mainGame.bossVerslagen();
+		}
 		if (!magAanvallen) {
 			afvuren();
 			magAanvallen = true;
 			startAlarm();
 		}
+	}
+	
+	public void verliesLeven() {
+		leven--;
 	}
 
 }

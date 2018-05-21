@@ -163,6 +163,8 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		} else if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
+			vogel = new Vogel(this);
+			addGameObject(vogel, 1000, 100);
 			powerup = new PowerUpSloop(this);
 			addGameObject(powerup, 100, 300);
 		} else if (currentLevel == 5) {
@@ -277,7 +279,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		} else if (getCurrentLevel() == 4 && getSpelerX() >= 750 && speler.getY() >= 250 && speler.getX() <= 800
 				&& speler.getY() <= 350) {
 			return true;
-		} else if (bossVerslagen) {
+		} else if (getCurrentLevel() == 5 && bossVerslagen) {
 			return true;
 		} else {
 			return false;

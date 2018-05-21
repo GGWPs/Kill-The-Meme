@@ -13,6 +13,7 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	protected Sprite projectileSprite;
 	protected float aanvallenPerSeconden;
 	protected boolean magAanvallen;
+	protected int leven;
 	
 	/**
 	 * @param sprite de vijand zijn afbeelding
@@ -47,6 +48,9 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	@Override
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;
+	}
+	public void verliesLeven() {
+		
 	}
 
 }

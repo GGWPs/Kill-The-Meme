@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class SpelerEenAanval extends Projectiel {
-	private int damageDone;
+	private int damageDone = 0;
 	
 	/*
 	 * @oparam mainGame referentie naar mainGame
@@ -25,13 +25,8 @@ public class SpelerEenAanval extends Projectiel {
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Vijand) {
-				if (mainGame.getCurrentLevel() == 2) {
-					damageDone++;
-					if (damageDone >= 3) {
-						mainGame.deleteGameObject(go);
-						mainGame.bossVerslagen();
-					}
-				}
+				((Vijand) go).verliesLeven();
+				mainGame.deleteGameObject(this);
 			}
 		}
 

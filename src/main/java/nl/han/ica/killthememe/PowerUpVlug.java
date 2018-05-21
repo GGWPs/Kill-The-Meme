@@ -10,7 +10,7 @@ public class PowerUpVlug extends PowerUp{
 	String powerNaam = "Speed";
 	
 	public PowerUpVlug(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), mainGame);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpVlug.png"), mainGame);
 	}
 	
 	//

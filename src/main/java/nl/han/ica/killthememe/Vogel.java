@@ -29,13 +29,7 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
         setxSpeed(-1);
     }
 
-	void aanval() {
-		
-	}
 	
-	void beweeg() {
-		
-	}
     void startAlarm() {
         Alarm alarm=new Alarm("Animatie", 1/0.99f);
         alarm.addTarget(this);

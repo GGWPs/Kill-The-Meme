@@ -7,7 +7,7 @@ public class PowerUpSloop extends PowerUp{
 	String powerNaam = "Sloop";
 	
 	public PowerUpSloop(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/PowerUpCopyAttack.png"), mainGame);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpSloop.png"), mainGame);
 	}
 	
 	//

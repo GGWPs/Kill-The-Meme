@@ -33,7 +33,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.magAanvallen = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
-
 	}
 
 	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.

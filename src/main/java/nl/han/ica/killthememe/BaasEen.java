@@ -11,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasEen extends Vijand {
 	
-	Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png");
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png");
 	
 	/**
 	 * BaasEen constructor

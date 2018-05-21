@@ -12,7 +12,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasDrie extends Vijand {
 	
-	Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
 	
 	int speciaalAanval = 0;
 	double aanvalSnelheid = 1.5;
@@ -64,7 +64,7 @@ public class BaasDrie extends Vijand {
 		alarm.addTarget(this);
 		alarm.start();
 	}
-
+	//Functie die automatisch wordt uitgevoerd zodra de alarm afgaat.
 	@Override
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;
