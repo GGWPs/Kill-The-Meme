@@ -6,7 +6,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class SpelerEenAanval extends Projectiel {
-	private int damageDone = 0;
 	
 	/*
 	 * @oparam mainGame referentie naar mainGame

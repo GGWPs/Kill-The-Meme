@@ -24,7 +24,7 @@ public class BaasTwee extends Vijand {
 	}
 
 	/**
-	 * vuurt projectielen af
+	 * vuurt random projectielen af
 	 */
 	@Override
 	public void afvuren() {

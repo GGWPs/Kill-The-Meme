@@ -23,8 +23,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private int speed = 2;
 
 	/**
-	 *
-	 * @param mainGame
+	 * Speler constructor
+	 * 
+	 * @param mainGame de wereld
+	 * @param aanvallenPerSeconden aanvallen per seconde
 	 */
 	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
