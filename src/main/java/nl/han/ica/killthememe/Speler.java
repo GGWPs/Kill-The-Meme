@@ -93,7 +93,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		alarm.start();
 
 	}
-
+	
 	/**
 	 * Deze functie controleert of de speler een knop indrukt en als hij dat wel
 	 * doet, checkt hij de animatie of het een beweging is of het een aanval is of
@@ -279,6 +279,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	/**
+	 * Functie om de powerup van de speler aan te passen
+	 * @param powerup powerup van de speler.
+	 */
+	public void setPowerup(PowerUp powerup) {
+		this.powerup = powerup;
+	}
+	
+	/**
 	 * Functie om de spelers snelheid aan te passen
 	 * @param speed spelers snelheid
 	 */
@@ -287,12 +295,5 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	
-	/**
-	 * Functie om de powerup van de speler aan te passen
-	 * @param powerup powerup van de speler.
-	 */
-	public void setPowerup(PowerUp powerup) {
-		this.powerup = powerup;
-	}
 
 }

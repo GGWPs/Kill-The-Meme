@@ -8,8 +8,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class VijandAanval extends Projectiel{
 	
 	/*
+	 * VijandAanval constructor
+	 * 
 	 * @param mainGame referentie naar maingame
-	 * @param sprite voor de sprite
+	 * @param sprite referentie naar de sprite
 	 */
 	public VijandAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame,sprite, richting,snelheid);
