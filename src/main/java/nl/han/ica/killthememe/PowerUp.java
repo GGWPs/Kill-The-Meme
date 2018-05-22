@@ -15,7 +15,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	protected boolean itemIsOpgepakt;
 	public Speler speler;
 
-	/*
+	/**
 	 * @param mainGame referentie naar de wereld
 	 * 
 	 * @param powerUpNaam referentie naar de naam van de powerup
@@ -30,7 +30,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	public void gebruikPowerUp(float richting) {
 
 	}
-	/*
+	/**
 	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en pakt het dan op
 	 * 
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#
@@ -46,13 +46,18 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 		}
 	}
 
-	// bolean die returnt of de item is opgepakt
+	/**
+	 * bolean die returnt of de item is opgepakt
+	 * @return itemIsOpgepakt
+	 */ 
 	public boolean isItemIsOpgepakt() {
 		return itemIsOpgepakt;
 	}
 
-	/*
-	 * Functie om de bolean aan te passen.
+	/**
+	 * Functie om de boolean aan te passen.
+	 * 
+	 * @param itemIsOpgepakt een boolean die aangeeft of de speler de powerup heeft opgepakt.
 	 */
 	public void setItemIsOpgepakt(boolean itemIsOpgepakt) {
 		this.itemIsOpgepakt = itemIsOpgepakt;

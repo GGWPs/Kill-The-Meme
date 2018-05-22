@@ -31,7 +31,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	private boolean bossVerslagen;
 	private Menu menu;
 	private int worldHeight;
-	private int tijd = 5;
+	private int tijd = 30;
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -128,8 +128,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			addGameObject(vogel, 1000, 100);
 			baaseen = new BaasEen(this);
 			addGameObject(baaseen, 220, 500);
-			powerup = new PowerUpVlug(this);
-			addGameObject(powerup, 100, 300);
 		} else if (currentLevel == 2) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
@@ -308,13 +306,17 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	}
 	
 	
-	//Functie om alarm te starten voor de aanval van de vijand
+	/**
+	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het moet overleven.
+	 */
 	public void startTimerAlarm(){
 		Alarm alarm = new Alarm("timer", 1);
 		alarm.addTarget(this);
 		alarm.start();
 	}
-
+	/**
+	 * Functie die uitgevoerd wordt zodra de alarm is afgelopen
+	 */
 	public void triggerAlarm(String alarmName) {
 		if(tijd >= 1) {
 			tijd--;

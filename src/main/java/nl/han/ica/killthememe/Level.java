@@ -3,17 +3,29 @@ package nl.han.ica.killthememe;
 public class Level {
 	private int currentLevel;
 
-	/*
-	 * @param currentLevel huidige level
+	/**
+	 * Level constructor
+	 * @param currentLevel de huidige level.
 	 */
 	public Level(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-
+	
+	
+	/**
+	 * Functie die de level tile afbeelding locatie ophaalt.
+	 * @return tile locatie
+	 */
 	public String pickLevelTile() {
 		return "src/main/java/nl/han/ica/killthememe/media/boards.jpg";
 	}
-
+	
+	
+	/**
+	 * Functie die de achtergrond voor de level ophaalt.
+	 * @param currentLevel
+	 * @return achtergrond level
+	 */
 	public String pickBackground(int currentLevel) {
 		if (currentLevel == 0 || currentLevel == -1) {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
@@ -32,7 +44,13 @@ public class Level {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		}
 	}
-
+	
+	
+	/**
+	 * Functie die de tilemap teruggeeft bij de bijhorende level.
+	 * @param currentLevel
+	 * @return tilemap
+	 */
 	public int[][] getLevelTile(int currentLevel) {
 		if (currentLevel == 0 || currentLevel == -1) {
 			System.out.println("Level" + currentLevel);

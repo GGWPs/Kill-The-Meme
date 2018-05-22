@@ -249,9 +249,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void setSpeed(int speed) {
-		System.out.print("Speed!");
 		this.speed = speed;
-		System.out.print(speed);
 	}
 
 	public void setPowerup(PowerUp powerup) {

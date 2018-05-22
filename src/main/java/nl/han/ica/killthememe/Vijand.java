@@ -33,12 +33,17 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	public void update() {
 		
 	}
-
+	
+	/**
+	 * Basis functie voor het afvuren van projectielen richting de speler.
+	 */
 	public void afvuren() {
 		
 	}
 	
-	//Functie om alarm te starten voor de aanval van de vijand
+	/**
+	 * Functie om een alarm te starten voor de vijand zodat hij alleen aanvalt wanneer de alarm is afgelopen.
+	 */
 	public void startAlarm(){
 		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);
@@ -49,6 +54,9 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;
 	}
+	/**
+	 * Basis functie voor het verliezen van levens bij de vijand.
+	 */
 	public void verliesLeven() {
 		
 	}

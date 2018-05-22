@@ -24,7 +24,7 @@ public class BaasTwee extends Vijand {
 	}
 
 	/**
-	 * vuurt random projectielen af
+	 * vuurt projectielen af die richting de speler gaan
 	 */
 	@Override
 	public void afvuren() {
@@ -51,6 +51,10 @@ public class BaasTwee extends Vijand {
 		}
 	}
 	
+	
+	/**
+	 * Functie voor het verliezen van levens bij de vijand.
+	 */
 	public void verliesLeven() {
 		leven--;
 	}

@@ -23,7 +23,7 @@ public class BaasEen extends Vijand {
 	}
 
 	/**
-	 * vuurt projectielen af
+	 * vuurt projectielen af die richting de speler gaan
 	 */
 	@Override
 	public void afvuren() {
