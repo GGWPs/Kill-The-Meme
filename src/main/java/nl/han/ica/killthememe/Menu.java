@@ -61,7 +61,8 @@ public class Menu extends GameObject{
     }
     
     /**
-     * Functie die kijkt of er een knop is ingedrukt en om de naam in te voeren/retry knop te gebruiken op een andere manier dan muis.
+     * Functie die kijkt of er een knop is ingedrukt en om de naam in te voeren/retry knop te gebruiken op een andere manier dan muis. 
+     * Checkt ook op max naam lengte
      */
     @Override
     public void keyPressed(int keyCode, char key) {
