@@ -13,6 +13,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	protected Sprite powerUp;
 	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
+	protected String powerNaam;
 	/**
 	 * Attribuut van de speler voor het checken van de collision.
 	 */
@@ -73,7 +74,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	 * Returnt de naam van de powerup
 	 */
 	public String powerNaam() {
-		return "Basis";
+		return powerNaam;
 	}
 	
 	public void update() {
