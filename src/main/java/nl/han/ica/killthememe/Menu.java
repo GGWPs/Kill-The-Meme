@@ -20,6 +20,7 @@ public class Menu extends GameObject{
     private int menuKnopX = 80;
     private int menuKnopY= 30;
     private MainGame mainGame;
+    private int maxNaamLengte = 15;
     
 	
     
@@ -73,7 +74,7 @@ public class Menu extends GameObject{
         	} else if (keyCode == DELETE) {
         	    naamText = "";
         	}
-        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) ) {
+        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) && naamText.length() < maxNaamLengte) {
         		naamText+=key;
     			System.out.println(naamText);
     			  if (keyCode == ENTER) {
