@@ -19,7 +19,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden;
 	private int totalFramez = 0;
 	private PowerUp powerup;
-	protected boolean magAanvallen;
+	private boolean magAanvallen;
 	private int speed = 2;
 
 	/**
@@ -63,7 +63,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	/**
 	 * functie voor de alarm voor de animatie.
 	 */
-	void startAlarm() {
+	public void startAlarm() {
 		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
 		alarm.addTarget(this);
 		alarm.start();

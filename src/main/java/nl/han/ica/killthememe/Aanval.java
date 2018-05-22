@@ -16,10 +16,10 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	/**
 	 * Aanval constructor
 	 * 
-	 * @param mainGame
-	 * @param sprite
-	 * @param richting
-	 * @param snelheid
+	 * @param mainGame de wereld
+	 * @param sprite de sprite van de aanval
+	 * @param richting de richting van de aanval
+	 * @param snelheid snelheid van de aanval
 	 */
 	public Aanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(sprite);

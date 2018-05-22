@@ -35,11 +35,11 @@ public class Menu extends GameObject{
 	 * @param worldHeight scherm hoogte
 	 */
     public Menu(MainGame mainGame, String text, int currentLevel, int  worldWidth, int worldHeight) {
+    	this.mainGame=mainGame;
         this.text=text;
         this.currentLevel=currentLevel;
         this.worldWidth=worldWidth;
         this.worldHeight=worldHeight;
-        this.mainGame=mainGame;
     }
     
     /**
@@ -90,6 +90,7 @@ public class Menu extends GameObject{
 		      mainGame.setupGame();
 		  }
     }
+    
     /** 
      * Draw methode van processing om de menu te tekenen.
      */

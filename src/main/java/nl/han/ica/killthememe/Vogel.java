@@ -10,7 +10,7 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
 
 	
 	private MainGame mainGame;
-	protected boolean isAnimatie;
+	private boolean isAnimatie;
 	private int totalFramez = 0;
 	
 	
@@ -37,7 +37,7 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
 	/**
 	 * functie voor de alarm voor de animatie.
 	 */
-    void startAlarm() {
+    public void startAlarm() {
         Alarm alarm=new Alarm("Animatie", 1/0.99f);
         alarm.addTarget(this);
         alarm.start();

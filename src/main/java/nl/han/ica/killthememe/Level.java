@@ -27,10 +27,9 @@ public class Level {
 	 * @return achtergrond level
 	 */
 	public String pickBackground(int currentLevel) {
-		if (currentLevel == 0 || currentLevel == -1) {
+		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
-		}
-		if (currentLevel == 1) {
+		} else if (currentLevel == 1) {
 			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
 		} else if (currentLevel == 2) {
 			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";

@@ -17,7 +17,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener  {
 	private Speler speler;
-	private Vijand baaseen, baasx, baastwee, baasdrie, baasvier;
+	private Vijand baaseen, baastwee, baasdrie, baasx;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
@@ -96,7 +96,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	/**
 	 * Functie om de dashboard te verversen.
 	 */
-	public void refreshDasboardText() {
+	private void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
@@ -118,7 +118,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	 * 
 	 * @param currentLevel de hudige level
 	 */
-	public void createObjects(int currentLevel) {
+	private void createObjects(int currentLevel) {
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
 			speler = new Speler(this, 0.3f);
@@ -152,11 +152,11 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			baaseen = new BaasEen(this);
 			baastwee = new BaasEen(this);
 			baasdrie = new BaasEen(this);
-			baasvier = new BaasEen(this);
+			baasx = new BaasEen(this);
 			addGameObject(baaseen, 700, 500);
 			addGameObject(baastwee, 600, 500);
 			addGameObject(baasdrie, 500, 500);
-			addGameObject(baasvier, 400, 500);
+			addGameObject(baasx, 400, 500);
 
 		} else if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
@@ -268,34 +268,24 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	 * @return baas object
 	 */
 	public GameObject getBaas() {
-		if (getCurrentLevel() == 1) {
 			return baaseen;
-		}else if (getCurrentLevel() == 2) {
-			return baaseen;
-		} else if (getCurrentLevel() == 3) {
-			return baasx;
-		} else if (getCurrentLevel() == 4) {
-			return baasx;
-		} else {
-			return null;
-		}
 	}
 
 	/**
 	 * checkt of de level is gecleared en returnt true.
 	 * @return
 	 */
-	boolean levelClear() {
-		if (getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+	public boolean levelClear() {
+		if (getCurrentLevel() == 1 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
 			return true;
-		} else if (getCurrentLevel() == 2 && getSpelerX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 2 && speler.getX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
 				&& speler.getY() <= 600 || getCurrentLevel() == 2 && bossVerslagen) {
 			return true;
-		} else if (getCurrentLevel() == 3 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 3 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
 			return true;
-		} else if (getCurrentLevel() == 4 && getSpelerX() >= 750 && speler.getY() >= 250 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 4 && speler.getX() >= 750 && speler.getY() >= 250 && speler.getX() <= 800
 				&& speler.getY() <= 350) {
 			return true;
 		} else if (getCurrentLevel() == 5 && bossVerslagen) {
@@ -325,7 +315,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	/**
 	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het moet overleven.
 	 */
-	public void startTimerAlarm(){
+	private void startTimerAlarm(){
 		Alarm alarm = new Alarm("timer", 1);
 		alarm.addTarget(this);
 		alarm.start();

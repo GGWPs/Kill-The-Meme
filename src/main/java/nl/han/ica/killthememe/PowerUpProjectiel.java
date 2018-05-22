@@ -5,8 +5,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpProjectiel extends PowerUp {
 
-	Sprite projectileSprite;
-	String powerNaam = "Projectiel";
+	private Sprite projectileSprite;
+	private String powerNaam = "Projectiel";
 	
 	
 	/**
