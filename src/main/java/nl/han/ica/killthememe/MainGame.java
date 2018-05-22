@@ -14,8 +14,6 @@ import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
-//yeete
-
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener  {
 	private Speler speler;
@@ -37,7 +35,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
 	}
 
-	// Dit is om alles van de level/spel voor te bereiden.
+	/**
+	 * Dit creert alle objecten en maakt de level.
+	 */
 	@Override
 	public void setupGame() {
 		bossVerslagen = false;
@@ -77,10 +77,10 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	
 	/**
 	* Functie om een dashboard te maken.
+	* 
 	* @param dashboardWidth breedte van de scherm
 	* @param dashboardHeight hoogte van de scherm
 	*/
-
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
@@ -96,7 +96,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	}
 
 
-	//om de dashboard te verversen.
+	/**
+	 * Functie om de dashboard te verversen.
+	 */
 	public void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
@@ -114,7 +116,8 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	}
 	
 	
-	/**Dit is voor de creatie van Game Objecten
+	/**
+	 * Dit is voor de creatie van Game Objecten
 	 * 
 	 * @param currentLevel de hudige level
 	 */
@@ -177,7 +180,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	
 
 
-	// Functie om het geluid te initieeren
+	/**
+	 * Functie voor het initialiseren van het geluid
+	 */
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
@@ -211,36 +216,49 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 
 	}
 
-	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	/**
+	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die naartoe moet gaan
+	 * @return speler Object van de speler
+	 */
 	public GameObject getSpeler() {
 		return speler;
 	}
 
-	// Functie die de huidige level teruggeeft
+	/**
+	 * Functie die de huidige level teruggeeft
+	 * @return huidige level
+	 */
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
 
-	//Functie om de level te wijzigen
-	/*
+	/**
+	 * Functie om de level te wijzigen
 	 * @param currentLevel huidige level
 	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	/*Functie om de naam op te slaan.
+	/** 
+	 * Functie om de naam op te slaan.
 	 * @param naamText de naam die ingevoerd is
 	 */
 	public void setCurrentName(String naamText) {
 		this.naamText = naamText;
 	}
 	
-	// Haalt de X pos van de speler op
+	/**
+	 *  Haalt de X pos van de speler op
+	 * @return X pos van speler.
+	 */
 	public float getSpelerX() {
 		return speler.getX();
 	}
 
-	// Haalt de Y pos van de speler op
+	/**
+	 *  Haalt de Y pos van de speler op
+	 * @return Y pos van speler.
+	 */
 	public float getSpelerY() {
 		return speler.getY();
 	}
@@ -248,7 +266,10 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	
 
 
-	// Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	/**
+	 * Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	 * @return baas object
+	 */
 	public GameObject getBaas() {
 		if (getCurrentLevel() == 1) {
 			return baaseen;
@@ -263,7 +284,10 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		}
 	}
 
-	// checkt of de level is gecleared en weergeeft true.
+	/**
+	 * checkt of de level is gecleared en returnt true.
+	 * @return
+	 */
 	boolean levelClear() {
 		if (getCurrentLevel() == 1 && getSpelerX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
@@ -284,7 +308,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		}
 	}
 	
-	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
+	/**
+	 * Kijkt of de muisknop ingedrukt wordt bij het start menu, gameover scherm of eindscherm en start het spel zodra de start of retry knop wordt gedrukt.
+	 */
 	@Override
 	public void mouseClicked() {
 		if(currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {

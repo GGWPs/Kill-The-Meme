@@ -162,9 +162,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setCurrentFrameIndex(frame);
 	}
 
-	// Functie geërft van de beweeg interface voor het bewegen.
-
-	// Deze functie kijkt of de speler tegen een tile aanloopt.
+	/**
+	 *  Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de powerup sloop heeft opgeraapt, sloopt hij alle tiles.
+	 * 
+	 */
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
@@ -247,11 +248,20 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public PowerUp getPowerup() {
 		return powerup;
 	}
-
+	
+	/**
+	 * Functie om de spelers snelheid aan te passen
+	 * @param speed spelers snelheid
+	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-
+	
+	
+	/**
+	 * Functie om de powerup van de speler aan te passen
+	 * @param powerup powerup van de speler.
+	 */
 	public void setPowerup(PowerUp powerup) {
 		this.powerup = powerup;
 	}

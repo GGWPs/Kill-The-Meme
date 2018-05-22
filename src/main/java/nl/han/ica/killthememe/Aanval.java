@@ -15,6 +15,7 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 
 	/**
 	 * Aanval constructor
+	 * 
 	 * @param mainGame
 	 * @param sprite
 	 * @param richting
@@ -40,7 +41,6 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// TODO Auto-generated method stub
 		
 	}
 }

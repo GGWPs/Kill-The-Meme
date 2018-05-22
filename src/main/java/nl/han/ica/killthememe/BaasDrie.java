@@ -31,8 +31,9 @@ public class BaasDrie extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
+		Random r = new Random();
 		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.7f);
+		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,r.nextFloat());
 		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 				getY() + getHeight() - 65);
 	}

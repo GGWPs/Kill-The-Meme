@@ -11,7 +11,7 @@ public abstract class Projectiel extends Aanval {
 	public static int WIDTH = 20;
 
 	/**
-	 * Constructor 
+	 * Projectiel Constructor 
 	 * 
 	 * @param mainGame referentie naar de wereld
 	 * @param sprite referentie naar een sprite 

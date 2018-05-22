@@ -16,6 +16,8 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	protected int leven;
 	
 	/**
+	 * Vijand constructor
+	 * 
 	 * @param sprite de vijand zijn afbeelding
 	 * @param mainGame klasse van mainGame
 	 * @param aanvallenperSeconden het aantal aanvallen per seconden
@@ -29,6 +31,7 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 		setFriction(0.05f);
 
 	}
+	
 	//wordt niet gebruikt
 	public void update() {
 		
@@ -49,7 +52,10 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 		alarm.addTarget(this);
 		alarm.start();
 	}
-
+	
+	/** 
+	 * Functie die wordt uitgevoerd zodra de alarm afgaat.
+	 */
 	@Override
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;
