@@ -13,12 +13,12 @@ import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
-	final int size = 50;
+	private final int size = 50;
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	private float aanvallenPerSeconden;
-	int totalFramez = 0;
-	PowerUp powerup;
+	private int totalFramez = 0;
+	private PowerUp powerup;
 	protected boolean magAanvallen;
 	private int speed = 2;
 
@@ -37,7 +37,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setFriction(0.10f);
 	}
 
-	// Dit stopt de speler zodra hij het rand van het scherm aanraakt.
+	/**
+	 * Functie die kijkt op de speler uit de scherm probeert te lopen en hem stopt als hij dat doet.
+	 */
 	@Override
 	public void update() {
 		if (getX() <= 0) {
@@ -58,15 +60,19 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	// alarm voor animatie
+	/**
+	 * functie voor de alarm voor de animatie.
+	 */
 	void startAlarm() {
 		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
 		alarm.addTarget(this);
 		alarm.start();
 	}
 
-	// Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een
-	// bolean voor de animatie en maakt hij magAanvallen false.
+	/**
+	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een boolean voor de animatie en maakt hij magAanvallen false.
+	 * 
+	 */
 	public void triggerAlarm(String alarmName) {
 		if (isAnimatie) {
 			isAnimatie = false;
@@ -138,25 +144,45 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	// functie om naar links te bewegen
+	/**
+	 * Functie die de speler na links beweegt en animatie verandert.
+	 * @param directionspeed de richting
+	 * @param speed de snelheid
+	 * @param frame de frame van de afbeelding
+	 */
 	public void beweegLinks(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
 
-	// functie om naar rechts te bewegen
+	/**
+	 * Functie die de speler na rechts beweegt en animatie verandert.
+	 * @param directionspeed de richting
+	 * @param speed de snelheid
+	 * @param frame de frame van de afbeelding
+	 */
 	public void beweegRechts(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
 
-	// functie omhoog te lopen
+	/**
+	 * Functie die de speler omhoog beweegt en animatie verandert.
+	 * @param directionspeed de richting
+	 * @param speed de snelheid
+	 * @param frame de frame van de afbeelding
+	 */
 	public void beweegOmhoog(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
 
-	// functie om omlaag te bewegen
+	/**
+	 * Functie die de speler omlaagt beweegt en animatie verandert.
+	 * @param directionspeed de richting
+	 * @param speed de snelheid
+	 * @param frame de frame van de afbeelding
+	 */
 	public void beweegOmlaag(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
@@ -244,7 +270,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	
-	
+	/**
+	 * Functie die teruggeeft welke powerup de speler heeft.
+	 * @return powerup de powerup van de speler.
+	 */
 	public PowerUp getPowerup() {
 		return powerup;
 	}

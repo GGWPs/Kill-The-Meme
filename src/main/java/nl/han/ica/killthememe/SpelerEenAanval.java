@@ -8,6 +8,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class SpelerEenAanval extends Projectiel {
 	
 	/*
+	 * SpelerEenAanval constructor
+	 * 
 	 * @oparam mainGame referentie naar mainGame
 	 * @param sprite de afbeelding van de aanval
 	 * @param richting de richting van de projectiel
@@ -17,7 +19,7 @@ public class SpelerEenAanval extends Projectiel {
 
 	}
 	/*
-	 * (non-Javadoc)
+	 * (non-Javadoc) functie die kijkt of de projectiel tegen een speler aankomt.
 	 * @see nl.han.ica.killthememe.Projectiel#gameObjectCollisionOccurred(java.util.List)
 	 */
 	@Override

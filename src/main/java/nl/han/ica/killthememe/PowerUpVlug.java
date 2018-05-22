@@ -7,18 +7,21 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpVlug extends PowerUp{
 	
-	String powerNaam = "Speed";
+	private String powerNaam = "Speed";
 	
 	public PowerUpVlug(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpVlug.png"), mainGame);
 	}
 	
-	//
+	/**
+	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze powerup.
+	 */
 	public void gebruikPowerUp(float richting) {
-		System.out.print("Speed");
 	}
 	
-	
+	/**
+	 * Functie die uitgevoert wordt als de speler tegen het object aanloopt, verandert de snelheid van de speler en maakt de powerup onzichtbaar.
+	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject go : collidedGameObjects) {
@@ -31,7 +34,9 @@ public class PowerUpVlug extends PowerUp{
         }
     }
 	
-	
+	/**
+	 * Functie voor het ophalen van de powerup naam
+	 */
 	@Override
 	public String powerNaam() {
 		return powerNaam;

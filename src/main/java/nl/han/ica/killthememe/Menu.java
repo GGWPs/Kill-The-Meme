@@ -26,6 +26,7 @@ public class Menu extends GameObject{
     
     
 	/**
+	 * menu constructor
 	 * 
 	 * @param text
 	 * @param currentLevel huidige level
@@ -39,37 +40,57 @@ public class Menu extends GameObject{
         this.worldHeight=worldHeight;
         this.mainGame=mainGame;
     }
-
+    
+    /**
+     * Functie om de text te wijzigen
+     * 
+     * @param text menu text en dergelijke
+     */
     public void setText(String text) {
         this.text=text;
     }
     
+    /**
+     * Functie om de naam te wijzigen
+     * 
+     * @param naamText String die de naam bevat
+     */
     public void setNaamText(String naamText) {
         this.naamText=naamText;
     }
     
+    /**
+     * Functie die kijkt of er een knop is ingedrukt en om de naam in te voeren/retry knop te gebruiken op een andere manier dan muis.
+     */
     @Override
     public void keyPressed(int keyCode, char key) {
-    	if(keyCode == BACKSPACE) {
-    		if(naamText.length() > 0) {
-    			 naamText = naamText.substring(0, naamText.length()-1);
-    		}
-    		System.out.println("back");
-    	} else if (keyCode == DELETE) {
-    	    naamText = "";
-    	}
-    	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) ) {
-    		naamText+=key;
-			System.out.println(naamText);
-			  if (keyCode == ENTER) {
-				  mainGame.setCurrentName(naamText);
-				  mainGame.setCurrentLevel(5);
-			      mainGame.setupGame();
-			  }
-    	}
-			
+    	if(currentLevel == 0) {
+    		if(keyCode == BACKSPACE) {
+        		if(naamText.length() > 0) {
+        			 naamText = naamText.substring(0, naamText.length()-1);
+        		}
+        		System.out.println("back");
+        	} else if (keyCode == DELETE) {
+        	    naamText = "";
+        	}
+        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) ) {
+        		naamText+=key;
+    			System.out.println(naamText);
+    			  if (keyCode == ENTER) {
+    				  mainGame.setCurrentName(naamText);
+    				  mainGame.setCurrentLevel(1);
+    			      mainGame.setupGame();
+    			  }
+        	}
+        }
+    	if (keyCode == ENTER && !(currentLevel == 0)) {
+			  mainGame.setCurrentLevel(1);
+		      mainGame.setupGame();
+		  }
     }
-    
+    /** 
+     * Draw methode van processing om de menu te tekenen.
+     */
     @Override
     public void draw(PGraphics g) {
     	if(currentLevel == 0) {
@@ -82,7 +103,6 @@ public class Menu extends GameObject{
             g.textSize(25);
             g.text("Naam: ",worldWidth/2-menuKnopX,(worldHeight/40)*18);
             g.fill(255);
-//            g.rectMode(CORNERS);
             g.rect(worldWidth/3,(worldHeight/4)*2 ,menuKnopX*3 ,menuKnopY, 8); 
             g.rect(worldWidth/2,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
             g.fill(0);
@@ -111,9 +131,12 @@ public class Menu extends GameObject{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
 	}
 	
+	/**
+	 * Functie om de naam op te halen.
+	 * @return naamText de naam van de speler.
+	 */
 	public String getNaam() {
 		return naamText;
 	}

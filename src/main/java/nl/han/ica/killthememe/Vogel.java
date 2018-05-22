@@ -11,12 +11,13 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
 	
 	private MainGame mainGame;
 	protected boolean isAnimatie;
-	int totalFramez = 0;
+	private int totalFramez = 0;
 	
 	
 	/**
+	 *  Vogel constructor
 	 * 
-	 * @param mainGame
+	 * @param mainGame de wereld
 	 */
 	public Vogel(MainGame mainGame) {
 		 this(new Sprite("src/main/java/nl/han/ica/killthememe/media/twitter-bird-sprite.png"));
@@ -24,30 +25,44 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
 		 setCurrentFrameIndex(totalFramez);
 	}
 	
+	/**
+	 * 
+	 * @param sprite Vogel Sprite
+	 */
     private Vogel(Sprite sprite) {
         super(sprite, 4);
         setxSpeed(-1);
     }
 
-	
+	/**
+	 * functie voor de alarm voor de animatie.
+	 */
     void startAlarm() {
         Alarm alarm=new Alarm("Animatie", 1/0.99f);
         alarm.addTarget(this);
         alarm.start();
     }
     
+    
+	/**
+	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een boolean voor de animatie en maakt hij magAanvallen false.
+	 * 
+	 */
 	public void triggerAlarm(String alarmName) {
 		isAnimatie = false;
 	}
     
+	
+	/**
+	 * Functie die kijkt of de vogel uit het scherm gaat, zodra hij dat doet komt hij weer vanuit een random X positie weer terug aan de rechterkant van de spelers scherm.
+	 * Bevat ook een functie voor de animatie van de vogel.
+	 */
 	@Override
 	public void update() {
-		//zodra de vogel uit het scherm is, komt hij uit een random positie weer terug
 		  if (getX()+getWidth()<=0) {
 	            setX(mainGame.getWidth());
 	            setY(mainGame.random(0, mainGame.getHeight()));
 	        }
-		  //als de alarm af gaat, doet hij de volgende frame
 		  if (!isAnimatie) {
 			  if(totalFramez == 4) {
 				  totalFramez=0;

@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 /**
- * @author Kaene Peters & Ivan Miladinovic
+ * @author Ivan Miladinovic
  * 
  */
 
@@ -14,12 +14,13 @@ public class BaasDrie extends Vijand {
 	
 	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
 	
-	int speciaalAanval = 0;
-	double aanvalSnelheid = 1.5;
+	private int speciaalAanval = 0;
+	private double aanvalSnelheid = 1.5;
+	
 	/**
-	 * BaasEen constructor
+	 * BaasDrie constructor
 	 * 
-	 * @param mainGame
+	 * @param mainGame de wereld.
 	 */
 	public BaasDrie(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasDrie.png"), mainGame, 0.2f);
@@ -57,7 +58,10 @@ public class BaasDrie extends Vijand {
 		}
 	}
 	
-	//Functie om alarm te starten voor de aanval van de vijand
+	/**
+	 * Functie om alarm te starten voor de random aanval van het object.
+	 * 
+	 */
 	@Override
 	public void startAlarm(){
 		Random r = new Random();
@@ -65,7 +69,9 @@ public class BaasDrie extends Vijand {
 		alarm.addTarget(this);
 		alarm.start();
 	}
-	//Functie die automatisch wordt uitgevoerd zodra de alarm afgaat.
+	/**
+	 * Functie die automatisch wordt uitgevoerd zodra de alarm afgaat.
+	 */
 	@Override
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;

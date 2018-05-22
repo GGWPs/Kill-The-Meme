@@ -16,6 +16,8 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	public Speler speler;
 
 	/**
+	 * PowerUp constructor
+	 * 
 	 * @param mainGame referentie naar de wereld
 	 * 
 	 * @param powerUpNaam referentie naar de naam van de powerup
@@ -30,8 +32,9 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	public void gebruikPowerUp(float richting) {
 
 	}
+	
 	/**
-	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en pakt het dan op
+	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een boolean dat de speler het heeft opgeraapt op true en maakt dan het object onzichtbaar.
 	 * 
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#
 	 * gameObjectCollisionOccurred(java.util.List)

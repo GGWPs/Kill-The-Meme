@@ -16,7 +16,7 @@ public class BaasEen extends Vijand {
 	/**
 	 * BaasEen constructor
 	 * 
-	 * @param mainGame
+	 * @param mainGame de wereld
 	 */
 	public BaasEen(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
