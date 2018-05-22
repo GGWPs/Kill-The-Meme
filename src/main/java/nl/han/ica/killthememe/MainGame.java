@@ -287,21 +287,14 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	//Kijkt of de muis ingedrukt wordt bij het start menu of gameover scherm en start het spel zodra de start of retry knop wordt gedrukt.
 	@Override
 	public void mouseClicked() {
-		if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440
-				&& currentLevel == 0
-				|| currentLevel == -1 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
-						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440
-						|| currentLevel == 6 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440 ||
-						currentLevel == 4 && mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2
-						&& mouseX < worldWidth / 2 + 80 && mouseY < 440) {
-			if (currentLevel == 0) {
-				naamText = menu.getNaam();
+		if(currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
+			if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+				if (currentLevel == 0) {
+					naamText = menu.getNaam();
+				}
+				currentLevel = 1;
+				setupGame();
 			}
-			currentLevel = 1;
-			setupGame();
 		}
 	}
 	
@@ -326,7 +319,4 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			bossVerslagen = true;
 		}
 	}
-	
-	
-
 }
