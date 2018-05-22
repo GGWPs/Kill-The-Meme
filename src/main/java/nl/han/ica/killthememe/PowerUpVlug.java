@@ -9,6 +9,11 @@ public class PowerUpVlug extends PowerUp{
 	
 	private String powerNaam = "Speed";
 	
+	/**
+	 * PowerupVlug constructor
+	 * 
+	 * @param mainGame de wereld
+	 */
 	public PowerUpVlug(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpVlug.png"), mainGame);
 	}

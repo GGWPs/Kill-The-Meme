@@ -22,8 +22,8 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	private Sound backgroundSound;
 	private TextObject dashboardText;
 	private int currentLevel = 0;
-	PowerUp powerup;
-	Level level = new Level(getCurrentLevel());
+	private PowerUp powerup;
+	private Level level = new Level(getCurrentLevel());
 	private int worldWidth;
 	private String naamText = " ";
 	private boolean bossVerslagen;
@@ -50,12 +50,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		}
 		createDashboard(worldWidth, 100, getCurrentLevel());
 		initializeTileMap(getCurrentLevel());
-
 		refreshDasboardText();
 		createObjects(getCurrentLevel());
-
 		createView(worldWidth, worldHeight);
-
 	}
 
 

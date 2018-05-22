@@ -13,6 +13,9 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	protected Sprite powerUp;
 	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
+	/**
+	 * Attribuut van de speler voor het checken van de collision.
+	 */
 	public Speler speler;
 
 	/**
