@@ -17,7 +17,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener  {
 	private Speler speler;
-	private Vijand baaseen, baastwee, baasdrie, baasx;
+	private Vijand baasEen, baasTwee, baasDrie, baasX;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
@@ -126,16 +126,16 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			baaseen = new BaasEen(this);
-			addGameObject(baaseen, 220, 500);
+			baasEen = new BaasEen(this);
+			addGameObject(baasEen, 220, 500);
 		} else if (currentLevel == 2) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
 
 			vogel = new Vogel(this);
 			addGameObject(vogel, 1000, 100);
-			baaseen = new BaasTwee(this);
-			addGameObject(baaseen, 700, 500);
+			baasEen = new BaasTwee(this);
+			addGameObject(baasEen, 700, 500);
 
 			powerup = new PowerUpProjectiel(this);
 			addGameObject(powerup, 100, 300);
@@ -149,14 +149,14 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			powerup = new PowerUpVlug(this);
 			addGameObject(powerup, 0, 300);
 			
-			baaseen = new BaasEen(this);
-			baastwee = new BaasEen(this);
-			baasdrie = new BaasEen(this);
-			baasx = new BaasEen(this);
-			addGameObject(baaseen, 700, 500);
-			addGameObject(baastwee, 600, 500);
-			addGameObject(baasdrie, 500, 500);
-			addGameObject(baasx, 400, 500);
+			baasEen = new BaasEen(this);
+			baasTwee = new BaasEen(this);
+			baasDrie = new BaasEen(this);
+			baasX = new BaasEen(this);
+			addGameObject(baasEen, 700, 500);
+			addGameObject(baasTwee, 600, 500);
+			addGameObject(baasDrie, 500, 500);
+			addGameObject(baasX, 400, 500);
 
 		} else if (currentLevel == 4) {
 			speler = new Speler(this, 0.4f);
@@ -169,8 +169,8 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 50, 250);
 			
-			baaseen = new BaasDrie(this);
-			addGameObject(baaseen, 700, 500);
+			baasEen = new BaasDrie(this);
+			addGameObject(baasEen, 700, 500);
 			startTimerAlarm();
 		}
 	}
@@ -210,7 +210,8 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	// niet gebruikt
 	@Override
 	public void update() {
-
+//		if(Vijand instanceof mainGame)
+//		Vijand.afvuren();
 	}
 
 	/**
@@ -268,7 +269,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	 * @return baas object
 	 */
 	public GameObject getBaas() {
-			return baaseen;
+			return baasEen;
 	}
 
 	/**

@@ -21,7 +21,10 @@ public class PowerUpVlug extends PowerUp{
 	/**
 	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze powerup.
 	 */
-	public void gebruikPowerUp(float richting) {
+	public void gebruikPowerUp() {
+		//Speler.setSpeed(4);
+		Speler.speed = 4;
+		
 	}
 	
 	/**
@@ -31,8 +34,8 @@ public class PowerUpVlug extends PowerUp{
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject go : collidedGameObjects) {
             if (go instanceof Speler) {
-                ((Speler) go).setPowerup(this);
-                ((Speler) go).setSpeed(4);
+                ((Speler) go).setPowerup(this);	
+                //((Speler) go).setSpeed(4);
                 setItemIsOpgepakt(true);
                 setVisible(false);
             }

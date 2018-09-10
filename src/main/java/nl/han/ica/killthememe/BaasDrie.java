@@ -53,6 +53,7 @@ public class BaasDrie extends Vijand {
 				aanvalSnelheid = 0.2;
 			} else if (speciaalAanval >= 7) {
 				aanvalSnelheid = 1.1;
+				speciaalAanval = 0;
 			}
 			
 		}

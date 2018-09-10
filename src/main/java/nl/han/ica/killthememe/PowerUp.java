@@ -36,9 +36,9 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	/**
 	 * Functie om de powerup te gebruiken
 	 * 
-	 * @param richting richting naar de vijand als het toegepast wordt.
+	 * 
 	 */
-	public void gebruikPowerUp(float richting) {
+	public void gebruikPowerUp() {
 	}
 	
 	/**

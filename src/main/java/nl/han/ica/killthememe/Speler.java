@@ -20,7 +20,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private int totalFramez = 0;
 	private PowerUp powerup;
 	private boolean magAanvallen;
-	private int speed = 2;
+	public static int speed = 2;
+	public static boolean sloop = false;
 
 	/**
 	 * Speler constructor
@@ -123,18 +124,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
-				if(powerup.powerNaam() == "Projectiel" && !magAanvallen ) {
-					float richting = getAngleFrom(mainGame.getBaas());
-					System.out.print("Projectiel");
-					powerup.gebruikPowerUp(richting);
-					magAanvallen = true;
-					startAlarmAanval();
-				} else if (powerup.powerNaam()  == "Speed"){
-					System.out.print("Speed");
-					setSpeed(4);
-				} else if (powerup.powerNaam()  == "Sloop"){
-					System.out.print("Sloop");
-				}
+				powerup.gebruikPowerUp();
+//				if(powerup.powerNaam() == "Projectiel" && !magAanvallen ) {
+//					float richting = getAngleFrom(mainGame.getBaas());
+//					System.out.print("Projectiel");
+//					powerup.gebruikPowerUp(richting);
+//					magAanvallen = true;
+//					startAlarmAanval();
+//				}
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
@@ -195,24 +192,23 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
-
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.theTile instanceof BoardsTile) {
-				if(powerup != null && powerup.powerNaam() == "Sloop") {
+				if(sloop == true) {
 					 if (ct.collisionSide == ct.RIGHT) {
 						 try {
 						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						 } catch (TileNotFoundException e) {
-						 e.printStackTrace();
-					 }
+							 e.printStackTrace();
+						 }
 					 }
 					 if (ct.collisionSide == ct.LEFT) {
 						 try {
 						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						 } catch (TileNotFoundException e) {
-						 e.printStackTrace();
+							 e.printStackTrace();
 						 }
 					 }
 					 if (ct.collisionSide == ct.TOP) {
@@ -220,7 +216,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						 } catch (TileNotFoundException e) {
-						 e.printStackTrace();
+							 e.printStackTrace();
 						 }
 					 }
 					 if (ct.collisionSide == ct.BOTTOM) {
@@ -228,7 +224,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						 } catch (TileNotFoundException e) {
-						 e.printStackTrace();
+							 e.printStackTrace();
 						 }
 					 }
 				} else {
@@ -294,6 +290,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.speed = speed;
 	}
 	
-	
-
+	public float getVijandRichting() {
+		return getAngleFrom(mainGame.getBaas());
+	}
 }

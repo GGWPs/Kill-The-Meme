@@ -18,7 +18,8 @@ public class PowerUpSloop extends PowerUp{
 	/**
 	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze powerup.
 	 */
-	public void gebruikPowerUp(float richting) {
+	public void gebruikPowerUp() {
+		Speler.sloop = true;
 	}
 	
 	

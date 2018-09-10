@@ -13,7 +13,7 @@ public class Level {
 	
 	
 	/**
-	 * Functie die de level tile afbeelding locatie ophaalt.
+	 * Functie die per level een andere tile kan uitkiezen of te wel een andere muur.
 	 * @return tile locatie
 	 */
 	public String pickLevelTile() {
