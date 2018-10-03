@@ -1,8 +1,5 @@
 package nl.han.ica.killthememe;
 
-import java.util.List;
-
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpVlug extends PowerUp{

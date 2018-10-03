@@ -45,7 +45,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		worldHeight = 600;
 
 		deleteAllGameOBjects();
-		if (currentLevel == 0) {
+		if (currentLevel == 0 && backgroundSound == null) {
 			initializeSound();
 		}
 		createDashboard(worldWidth, 100, getCurrentLevel());
@@ -81,7 +81,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 6) {
+		if (getCurrentLevel() == 0 || getCurrentLevel() == -1 || getCurrentLevel() == 6 || getCurrentLevel() == -10) {
 			menu = new Menu(this, "", currentLevel, worldWidth, worldHeight);
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
@@ -109,6 +109,9 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			menu.setNaamText(naamText);
 		} else if(getCurrentLevel() == -1) {
 			menu.setText("You died");
+		} else if(getCurrentLevel() == -10) {
+			menu.setText("Instructies:");
+			//menu.setNaamText(naamText);
 		}
 	}
 	
@@ -119,6 +122,13 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	 * @param currentLevel de hudige level
 	 */
 	private void createObjects(int currentLevel) {
+		if(currentLevel == -10) {
+			addGameObject(new PowerUpProjectiel(this), 110, 250);
+			speler = new Speler(this, 0.3f);
+			addGameObject(speler, 300, 250);
+			baasEen = new BaasEen(this);
+			addGameObject(new BaasEen(this), 650, 250);
+		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
 			speler = new Speler(this, 0.3f);
@@ -138,7 +148,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			addGameObject(baasEen, 700, 500);
 
 			powerup = new PowerUpProjectiel(this);
-			addGameObject(powerup, 100, 300);
+			addGameObject(powerup, 0, 300);
 		} else if (currentLevel == 3) {
 			speler = new Speler(this, 0.4f);
 			addGameObject(speler, 10, 100);
@@ -302,7 +312,20 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	@Override
 	public void mouseClicked() {
 		if(currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
-			if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+			if(mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80 && mouseY < 440) {
+				if (currentLevel == 0) {
+					naamText = menu.getNaam();
+				}
+				currentLevel = -10;
+				setupGame();
+			} else if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+				System.exit(1);
+			}
+		} else if(currentLevel == -10) {
+			if(mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80 && mouseY < 440) {
+				currentLevel = 0;
+				setupGame();
+			} else if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
 				if (currentLevel == 0) {
 					naamText = menu.getNaam();
 				}

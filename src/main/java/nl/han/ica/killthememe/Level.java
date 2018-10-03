@@ -27,7 +27,7 @@ public class Level {
 	 * @return achtergrond level
 	 */
 	public String pickBackground(int currentLevel) {
-		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
+		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6 || currentLevel == -10) {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		} else if (currentLevel == 1) {
 			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
@@ -51,7 +51,7 @@ public class Level {
 	 * @return tilemap
 	 */
 	public int[][] getLevelTile(int currentLevel) {
-		if (currentLevel == 0 || currentLevel == -1) {
+		if (currentLevel == 0 || currentLevel == -1 || currentLevel == -10) {
 			System.out.println("Level" + currentLevel);
 			int tilesMap[][] = { { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 					{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },

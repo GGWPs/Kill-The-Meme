@@ -7,6 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import processing.core.PGraphics;
+import processing.core.PImage;
 import processing.event.KeyEvent;
 
 
@@ -80,7 +81,7 @@ public class Menu extends GameObject{
     			System.out.println(naamText);
     			  if (keyCode == ENTER) {
     				  mainGame.setCurrentName(naamText);
-    				  mainGame.setCurrentLevel(3);
+    				  mainGame.setCurrentLevel(-10);
     			      mainGame.setupGame();
     			  }
         	}
@@ -108,11 +109,13 @@ public class Menu extends GameObject{
             g.fill(255);
             g.rect(worldWidth/3,(worldHeight/4)*2 ,menuKnopX*3 ,menuKnopY, 8); 
             g.rect(worldWidth/2,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
+            g.rect(worldWidth/3,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
             g.fill(0);
             g.textAlign(g.LEFT,g.TOP);
             g.text(naamText,worldWidth/2-menuKnopY*4,((worldHeight/40)*18)+menuKnopY);
             g.textSize(20);
-            g.text("Start ", worldWidth/2+(menuKnopY/2), worldWidth/2);
+            g.text("Quit ", worldWidth/2+(menuKnopY/2) , worldWidth/2);
+            g.text("Start ", worldWidth/3+(menuKnopY/2) , worldWidth/2);
     	} else if(currentLevel == -1 || currentLevel == 6) {
     		g.setSize(worldWidth, worldHeight);
     		g.background(0);
@@ -121,12 +124,34 @@ public class Menu extends GameObject{
             g.text(text,worldWidth/2,worldHeight/4);
             g.fill(255);
             g.rect(worldWidth/2,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
+            g.rect(worldWidth/3,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
             g.fill(0);
             g.textAlign(g.LEFT,g.TOP);
             g.textSize(20);
-            g.text("Retry ", worldWidth/2+(menuKnopY/2), worldWidth/2);
+            g.text("Retry ", worldWidth/3+(menuKnopY/2), worldWidth/2);
+            g.text("Quit ", worldWidth/2+(menuKnopY/2) , worldWidth/2);
+    	} else if(currentLevel == -10) {
+    		g.textAlign(g.CENTER,g.TOP);
+            g.textSize(50);
+            g.text(text,worldWidth/2,worldHeight/8);
+            g.fill(255);
+            g.rect(worldWidth/2,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
+            g.rect(worldWidth/3,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
+            g.fill(0);
+            g.textAlign(g.LEFT,g.TOP);
+            g.textSize(20);
+            g.text("Back ", worldWidth/3+(menuKnopY/2), worldWidth/2);
+            g.text("Next ", worldWidth/2+(menuKnopY/2) , worldWidth/2);
+            g.fill(255);
+            g.text("Powerup ", worldWidth/8, worldWidth/4);
+            g.text(" Spatie", worldWidth/8, worldWidth/3+menuKnopX);
+
+            g.text("Beweging", worldWidth/3, worldWidth/4);
+            g.text("Pijltjestoetsen", worldWidth/3, worldWidth/3+menuKnopX);
+            
+            g.text("Vijand", worldWidth/2+worldWidth/4+menuKnopY, worldWidth/4);
+            g.text("Schiet projectielen", worldWidth/2+worldWidth/4, worldWidth/3+menuKnopX);
     	}
-    	
     }
 
 

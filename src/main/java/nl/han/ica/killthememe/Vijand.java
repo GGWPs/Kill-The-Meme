@@ -66,5 +66,4 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	public void verliesLeven() {
 		
 	}
-
 }

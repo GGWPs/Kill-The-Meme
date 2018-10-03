@@ -23,13 +23,10 @@ public class PowerUpProjectiel extends PowerUp {
 	 * Functie die een projectiel afvuurt zodra de speler een powerup heeft opgepakt en op spatie drukt.
 	 */
 	public void gebruikPowerUp() {
-		if (isItemIsOpgepakt()) {
 			float richting = getAngleFrom(mainGame.getBaas());
 			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.9f);
 			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
 					mainGame.getSpelerY() + getHeight() - 10);
-
-		}
 	}
 	
 	/**

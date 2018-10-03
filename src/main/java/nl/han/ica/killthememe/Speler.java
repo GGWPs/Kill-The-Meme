@@ -125,6 +125,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
 				powerup.gebruikPowerUp();
+				
 //				if(powerup.powerNaam() == "Projectiel" && !magAanvallen ) {
 //					float richting = getAngleFrom(mainGame.getBaas());
 //					System.out.print("Projectiel");

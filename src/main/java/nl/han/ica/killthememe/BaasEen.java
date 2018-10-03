@@ -20,6 +20,7 @@ public class BaasEen extends Vijand {
 	 */
 	public BaasEen(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
+		this.mainGame = mainGame;
 	}
 
 	/**
@@ -38,11 +39,11 @@ public class BaasEen extends Vijand {
 	 */
 	@Override
 	public void update() {
-		if (!magAanvallen) {
-			afvuren();
-			magAanvallen = true;
-			startAlarm();
-		}
+			if (!magAanvallen) {
+				afvuren();
+				magAanvallen = true;
+				startAlarm();
+			}
 	}
 
 }
