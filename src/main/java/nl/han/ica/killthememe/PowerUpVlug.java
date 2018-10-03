@@ -24,23 +24,7 @@ public class PowerUpVlug extends PowerUp{
 	public void gebruikPowerUp() {
 		//Speler.setSpeed(4);
 		Speler.speed = 4;
-		
 	}
-	
-	/**
-	 * Functie die uitgevoert wordt als de speler tegen het object aanloopt, verandert de snelheid van de speler en maakt de powerup onzichtbaar.
-	 */
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        for (GameObject go : collidedGameObjects) {
-            if (go instanceof Speler) {
-                ((Speler) go).setPowerup(this);	
-                //((Speler) go).setSpeed(4);
-                setItemIsOpgepakt(true);
-                setVisible(false);
-            }
-        }
-    }
 	
 	/**
 	 * Functie voor het ophalen van de powerup naam
