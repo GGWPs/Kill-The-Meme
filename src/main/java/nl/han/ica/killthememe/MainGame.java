@@ -167,14 +167,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 	
     
-    /*
-     * 
-     * Functie om de tilemap in te laden en op te halen van Level.
-     * @param currentLevel huidige level
-     */
-    private void initializeTileMap(int currentLevel) {
-        /* TILES */
-
 	/*
 	 * 
 	 * Functie om de tilemap in te laden en op te halen van Level.
