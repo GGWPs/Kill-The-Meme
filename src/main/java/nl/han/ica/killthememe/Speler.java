@@ -19,15 +19,19 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden;
 	private int totalFramez = 0;
 	private PowerUp powerup;
-	private boolean magAanvallen;
 	public static int speed = 2;
 	public static boolean sloop = false;
+	public boolean magAanvallen;
+	public static boolean powerUpAanval = false;
+	private Sprite projectileSprite;
 
 	/**
 	 * Speler constructor
 	 * 
-	 * @param mainGame de wereld
-	 * @param aanvallenPerSeconden aanvallen per seconde
+	 * @param mainGame
+	 *            de wereld
+	 * @param aanvallenPerSeconden
+	 *            aanvallen per seconde
 	 */
 	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
@@ -39,7 +43,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	/**
-	 * Functie die kijkt op de speler uit de scherm probeert te lopen en hem stopt als hij dat doet.
+	 * Functie die kijkt op de speler uit de scherm probeert te lopen en hem stopt
+	 * als hij dat doet.
 	 */
 	@Override
 	public void update() {
@@ -59,6 +64,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
+		if (powerUpAanval && !magAanvallen) {
+			float richting = getAngleFrom(mainGame.getBaas());
+			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.9f);
+			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
+					mainGame.getSpelerY() + getHeight() - 10);
+			magAanvallen = true;
+			startAlarmAanval();
+		}
 	}
 
 	/**
@@ -71,7 +84,18 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	/**
-	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een boolean voor de animatie en maakt hij magAanvallen false.
+	 * Functie om alarm te starten voor de aanval van de speler.
+	 */
+	public void startAlarmAanval() {
+		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
+		alarm.addTarget(this);
+		alarm.start();
+
+	}
+
+	/**
+	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een
+	 * boolean voor de animatie en maakt hij magAanvallen false.
 	 * 
 	 */
 	public void triggerAlarm(String alarmName) {
@@ -85,16 +109,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	/**
-	 * Functie om alarm te starten voor de aanval van de speler.
-	 */
-	public void startAlarmAanval() {
-		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
-		alarm.addTarget(this);
-		alarm.start();
-
-	}
-	
 	/**
 	 * Deze functie controleert of de speler een knop indrukt en als hij dat wel
 	 * doet, checkt hij de animatie of het een beweging is of het een aanval is of
@@ -114,6 +128,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegLinks(270, speed, 0 + totalFramez);
 		}
 		if (keyCode == mainGame.UP || key == 'w') {
+			System.out.println(powerUpAanval);
 			beweegOmhoog(0, speed, 4 + totalFramez);
 		}
 		if (keyCode == mainGame.RIGHT || key == 'd') {
@@ -126,6 +141,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
 				powerup.gebruikPowerUp();
 			}
+
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
 		if (mainGame.levelClear()) {
@@ -136,9 +152,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	/**
 	 * Functie die de speler na links beweegt en animatie verandert.
-	 * @param directionspeed de richting
-	 * @param speed de snelheid
-	 * @param frame de frame van de afbeelding
+	 * 
+	 * @param directionspeed
+	 *            de richting
+	 * @param speed
+	 *            de snelheid
+	 * @param frame
+	 *            de frame van de afbeelding
 	 */
 	public void beweegLinks(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
@@ -147,9 +167,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	/**
 	 * Functie die de speler na rechts beweegt en animatie verandert.
-	 * @param directionspeed de richting
-	 * @param speed de snelheid
-	 * @param frame de frame van de afbeelding
+	 * 
+	 * @param directionspeed
+	 *            de richting
+	 * @param speed
+	 *            de snelheid
+	 * @param frame
+	 *            de frame van de afbeelding
 	 */
 	public void beweegRechts(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
@@ -158,9 +182,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	/**
 	 * Functie die de speler omhoog beweegt en animatie verandert.
-	 * @param directionspeed de richting
-	 * @param speed de snelheid
-	 * @param frame de frame van de afbeelding
+	 * 
+	 * @param directionspeed
+	 *            de richting
+	 * @param speed
+	 *            de snelheid
+	 * @param frame
+	 *            de frame van de afbeelding
 	 */
 	public void beweegOmhoog(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
@@ -169,9 +197,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	/**
 	 * Functie die de speler omlaagt beweegt en animatie verandert.
-	 * @param directionspeed de richting
-	 * @param speed de snelheid
-	 * @param frame de frame van de afbeelding
+	 * 
+	 * @param directionspeed
+	 *            de richting
+	 * @param speed
+	 *            de snelheid
+	 * @param frame
+	 *            de frame van de afbeelding
 	 */
 	public void beweegOmlaag(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
@@ -179,7 +211,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	/**
-	 *  Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de powerup sloop heeft opgeraapt, wo
+	 * Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de
+	 * powerup sloop heeft opgeraapt, sloopt hij alle tiles.
 	 * 
 	 */
 	@Override
@@ -187,39 +220,39 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		PVector vector;
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.theTile instanceof BoardsTile) {
-				if(sloop == true) {
-					 if (ct.collisionSide == ct.RIGHT) {
-						 try {
-						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						 } catch (TileNotFoundException e) {
-							 e.printStackTrace();
-						 }
-					 }
-					 if (ct.collisionSide == ct.LEFT) {
-						 try {
-						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						 } catch (TileNotFoundException e) {
-							 e.printStackTrace();
-						 }
-					 }
-					 if (ct.collisionSide == ct.TOP) {
-						 try {
-						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						 } catch (TileNotFoundException e) {
-							 e.printStackTrace();
-						 }
-					 }
-					 if (ct.collisionSide == ct.BOTTOM) {
-						 try {
-						 vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-						 mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						 } catch (TileNotFoundException e) {
-							 e.printStackTrace();
-						 }
-					 }
+				if (sloop == true) {
+					if (ct.collisionSide == ct.RIGHT) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
+					}
+					if (ct.collisionSide == ct.LEFT) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
+					}
+					if (ct.collisionSide == ct.TOP) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
+					}
+					if (ct.collisionSide == ct.BOTTOM) {
+						try {
+							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+						} catch (TileNotFoundException e) {
+							e.printStackTrace();
+						}
+					}
 				} else {
 					if (ct.collisionSide == ct.TOP) {
 						try {
@@ -257,33 +290,44 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
-	
-	
+
 	/**
 	 * Functie die teruggeeft welke powerup de speler heeft.
+	 * 
 	 * @return powerup de powerup van de speler.
 	 */
 	public PowerUp getPowerup() {
 		return powerup;
 	}
-	
+
 	/**
 	 * Functie om de powerup van de speler aan te passen
-	 * @param powerup powerup van de speler.
+	 * 
+	 * @param powerup
+	 *            powerup van de speler.
 	 */
 	public void setPowerup(PowerUp powerup) {
 		this.powerup = powerup;
 	}
-	
+
 	/**
 	 * Functie om de spelers snelheid aan te passen
-	 * @param speed spelers snelheid
+	 * 
+	 * @param speed
+	 *            spelers snelheid
 	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
+
 	public float getVijandRichting() {
 		return getAngleFrom(mainGame.getBaas());
 	}
+
+	// public void resetPowerUp() {
+	// if (powerup != null && powerup.isItemIsOpgepakt()) {
+	// powerup.resetPowerUp();
+	// }
+	//
+	// }
 }

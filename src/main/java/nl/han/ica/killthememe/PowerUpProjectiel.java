@@ -7,34 +7,32 @@ public class PowerUpProjectiel extends PowerUp {
 
 	private Sprite projectileSprite;
 	private String powerNaam = "Projectiel";
-	
-	
-	
+
 	/**
 	 * PowerupProjectiel constructor
 	 * 
-	 * @param mainGame De wereld
+	 * @param mainGame
+	 *            De wereld
 	 */
 	public PowerUpProjectiel(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpCopyAttack.png"), mainGame);
 	}
 
 	/**
-	 * Functie die een projectiel afvuurt zodra de speler een powerup heeft opgepakt en op spatie drukt.
+	 * Functie die een projectiel afvuurt zodra de speler een powerup heeft opgepakt
+	 * en op spatie drukt.
 	 */
 	public void gebruikPowerUp() {
-			float richting = getAngleFrom(mainGame.getBaas());
-			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.9f);
-			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
-					mainGame.getSpelerY() + getHeight() - 10);
+		Speler.powerUpAanval = true;
 	}
-	
+
+	public void resetPowerUp() {
+		System.out.println("Reset PowerUpProjectiel");
+		Speler.powerUpAanval = false;
+
+	}
 	/**
 	 * Functie voor het ophalen van de powerup naam
 	 */
-	@Override
-	public String powerNaam() {
-		return powerNaam;
-	}
 
 }
