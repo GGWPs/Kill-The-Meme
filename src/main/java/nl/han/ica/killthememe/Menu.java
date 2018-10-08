@@ -81,7 +81,7 @@ public class Menu extends GameObject{
     			System.out.println(naamText);
     			  if (keyCode == ENTER) {
     				  mainGame.setCurrentName(naamText);
-    				  mainGame.setCurrentLevel(-10);
+    				  mainGame.setCurrentLevel(3);
     			      mainGame.setupGame();
     			  }
         	}

@@ -17,7 +17,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener  {
 	private Speler speler;
-	private Vijand baasEen, baasTwee, baasDrie, baasX;
+	private Vijand baasEen;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
@@ -124,63 +124,36 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	private void createObjects(int currentLevel) {
 		if(currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), 110, 250);
-			speler = new Speler(this, 0.3f);
-			addGameObject(speler, 300, 250);
-			baasEen = new BaasEen(this);
-			addGameObject(new BaasEen(this), 650, 250);
+			addGameObject(speler = new Speler(this, 0.3f), 300, 250);
+			addGameObject(baasEen = new BaasEen(this), 650, 250);
 		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
-			speler = new Speler(this, 0.3f);
-			addGameObject(speler, 10, 100);
-
-			vogel = new Vogel(this);
-			addGameObject(vogel, 1000, 100);
-			baasEen = new BaasEen(this);
-			addGameObject(baasEen, 220, 500);
+			addGameObject(speler = new Speler(this, 0.3f), 10, 100);
+			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(baasEen = new BaasEen(this), 220, 500);
 		} else if (currentLevel == 2) {
-			speler = new Speler(this, 0.4f);
-			addGameObject(speler, 10, 100);
-
-			vogel = new Vogel(this);
-			addGameObject(vogel, 1000, 100);
-			baasEen = new BaasTwee(this);
-			addGameObject(baasEen, 700, 500);
-
-			powerup = new PowerUpProjectiel(this);
-			addGameObject(powerup, 0, 300);
+			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
+			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(baasEen = new BaasTwee(this), 700, 500);
+			addGameObject(powerup = new PowerUpProjectiel(this), 0, 300);
 		} else if (currentLevel == 3) {
-			speler = new Speler(this, 0.4f);
-			addGameObject(speler, 10, 100);
-
-			vogel = new Vogel(this);
-			addGameObject(vogel, 1000, 100);
-			
-			powerup = new PowerUpVlug(this);
-			addGameObject(powerup, 0, 300);
-			
-			baasEen = new BaasEen(this);
-			baasTwee = new BaasEen(this);
-			baasDrie = new BaasEen(this);
-			baasX = new BaasEen(this);
-			addGameObject(baasEen, 700, 500);
-			addGameObject(baasTwee, 600, 500);
-			addGameObject(baasDrie, 500, 500);
-			addGameObject(baasX, 400, 500);
+			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
+			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
+						
+			addGameObject(baasEen = new BaasEen(this), 700, 500);
+			addGameObject(new BaasEen(this), 600, 500);
+			addGameObject(new BaasEen(this), 500, 500);
+			addGameObject(new BaasEen(this), 400, 500);
 
 		} else if (currentLevel == 4) {
-			speler = new Speler(this, 0.4f);
-			addGameObject(speler, 10, 100);
-			vogel = new Vogel(this);
-			addGameObject(vogel, 1000, 100);
-			powerup = new PowerUpSloop(this);
-			addGameObject(powerup, 100, 300);
+			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
+			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
 		} else if (currentLevel == 5) {
-			speler = new Speler(this, 0.4f);
-			addGameObject(speler, 50, 250);
-			
-			baasEen = new BaasDrie(this);
-			addGameObject(baasEen, 700, 500);
+			addGameObject(speler = new Speler(this, 0.4f), 50, 250);
+			addGameObject(baasEen = new BaasDrie(this), 700, 500);
 			startTimerAlarm();
 		}
 	}

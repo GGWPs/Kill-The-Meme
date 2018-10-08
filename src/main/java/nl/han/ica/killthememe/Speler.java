@@ -125,14 +125,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
 				powerup.gebruikPowerUp();
-				
-//				if(powerup.powerNaam() == "Projectiel" && !magAanvallen ) {
-//					float richting = getAngleFrom(mainGame.getBaas());
-//					System.out.print("Projectiel");
-//					powerup.gebruikPowerUp(richting);
-//					magAanvallen = true;
-//					startAlarmAanval();
-//				}
 			}
 		}
 		// dit checkt met elke keypress of de speler de level heeft gecleared.
@@ -187,7 +179,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	/**
-	 *  Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de powerup sloop heeft opgeraapt, sloopt hij alle tiles.
+	 *  Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de powerup sloop heeft opgeraapt, wo
 	 * 
 	 */
 	@Override
