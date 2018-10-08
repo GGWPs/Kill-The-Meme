@@ -128,7 +128,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			beweegLinks(270, speed, 0 + totalFramez);
 		}
 		if (keyCode == mainGame.UP || key == 'w') {
-			System.out.println(powerUpAanval);
 			beweegOmhoog(0, speed, 4 + totalFramez);
 		}
 		if (keyCode == mainGame.RIGHT || key == 'd') {
@@ -324,10 +323,5 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		return getAngleFrom(mainGame.getBaas());
 	}
 
-	// public void resetPowerUp() {
-	// if (powerup != null && powerup.isItemIsOpgepakt()) {
-	// powerup.resetPowerUp();
-	// }
-	//
-	// }
+
 }
