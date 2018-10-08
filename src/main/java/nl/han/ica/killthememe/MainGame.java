@@ -15,7 +15,7 @@ import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
-public class MainGame extends GameEngine implements IAlarmListener  {
+public class MainGame extends GameEngine implements IAlarmListener {
 	private Speler speler;
 	private Vijand baasEen;
 	private Vogel vogel;
@@ -55,8 +55,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		createView(worldWidth, worldHeight);
 	}
 
-
-
 	/**
 	 * creert de view zonder viewport
 	 * 
@@ -71,13 +69,15 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
-	
+
 	/**
-	* Functie om een dashboard te maken.
-	* 
-	* @param dashboardWidth breedte van de scherm
-	* @param dashboardHeight hoogte van de scherm
-	*/
+	 * Functie om een dashboard te maken.
+	 * 
+	 * @param dashboardWidth
+	 *            breedte van de scherm
+	 * @param dashboardHeight
+	 *            hoogte van de scherm
+	 */
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();
 		Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
@@ -92,7 +92,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		addDashboard(dashboard);
 	}
 
-
 	/**
 	 * Functie om de dashboard te verversen.
 	 */
@@ -100,29 +99,29 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		if (getCurrentLevel() == 0) {
 			menu.setText("Kill The Meme!");
 			menu.setNaamText(naamText);
-		}else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
+		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
 		} else if (getCurrentLevel() == 5) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
 			menu.setText("Congratulations! You won!");
 			menu.setNaamText(naamText);
-		} else if(getCurrentLevel() == -1) {
+		} else if (getCurrentLevel() == -1) {
 			menu.setText("You died");
-		} else if(getCurrentLevel() == -10) {
+		} else if (getCurrentLevel() == -10) {
 			menu.setText("Instructies:");
-			//menu.setNaamText(naamText);
+			// menu.setNaamText(naamText);
 		}
 	}
-	
-	
+
 	/**
 	 * Dit is voor de creatie van Game Objecten
 	 * 
-	 * @param currentLevel de hudige level
+	 * @param currentLevel
+	 *            de hudige level
 	 */
 	private void createObjects(int currentLevel) {
-		if(currentLevel == -10) {
+		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), 110, 250);
 			addGameObject(speler = new Speler(this, 0.3f), 300, 250);
 			addGameObject(baasEen = new BaasEen(this), 650, 250);
@@ -141,7 +140,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
-						
 			addGameObject(baasEen = new BaasEen(this), 700, 500);
 			addGameObject(new BaasEen(this), 600, 500);
 			addGameObject(new BaasEen(this), 500, 500);
@@ -156,9 +154,10 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			addGameObject(baasEen = new BaasDrie(this), 700, 500);
 			startTimerAlarm();
 		}
+		if (speler != null && powerup != null) {
+			powerup.resetPowerUp();
+		}
 	}
-	
-
 
 	/**
 	 * Functie voor het initialiseren van het geluid
@@ -167,15 +166,15 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 	}
-	
-    
-    /*
-     * 
-     * Functie om de tilemap in te laden en op te halen van Level.
-     * @param currentLevel huidige level
-     */
-    private void initializeTileMap(int currentLevel) {
-        /* TILES */
+
+	/*
+	 * 
+	 * Functie om de tilemap in te laden en op te halen van Level.
+	 * 
+	 * @param currentLevel huidige level
+	 */
+	private void initializeTileMap(int currentLevel) {
+		/* TILES */
 
 		Sprite boardsSprite = new Sprite(level.pickLevelTile());
 		TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
@@ -193,12 +192,14 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	// niet gebruikt
 	@Override
 	public void update() {
-//		if(Vijand instanceof mainGame)
-//		Vijand.afvuren();
+		// if(Vijand instanceof mainGame)
+		// Vijand.afvuren();
 	}
 
 	/**
-	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die naartoe moet gaan
+	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
+	 * naartoe moet gaan
+	 * 
 	 * @return speler Object van de speler
 	 */
 	public GameObject getSpeler() {
@@ -207,6 +208,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 
 	/**
 	 * Functie die de huidige level teruggeeft
+	 * 
 	 * @return huidige level
 	 */
 	public int getCurrentLevel() {
@@ -215,21 +217,27 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 
 	/**
 	 * Functie om de level te wijzigen
-	 * @param currentLevel huidige level
+	 * 
+	 * @param currentLevel
+	 *            huidige level
 	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	/** 
+
+	/**
 	 * Functie om de naam op te slaan.
-	 * @param naamText de naam die ingevoerd is
+	 * 
+	 * @param naamText
+	 *            de naam die ingevoerd is
 	 */
 	public void setCurrentName(String naamText) {
 		this.naamText = naamText;
 	}
-	
+
 	/**
-	 *  Haalt de X pos van de speler op
+	 * Haalt de X pos van de speler op
+	 * 
 	 * @return X pos van speler.
 	 */
 	public float getSpelerX() {
@@ -237,26 +245,26 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	}
 
 	/**
-	 *  Haalt de Y pos van de speler op
+	 * Haalt de Y pos van de speler op
+	 * 
 	 * @return Y pos van speler.
 	 */
 	public float getSpelerY() {
 		return speler.getY();
 	}
-	
-	
-
 
 	/**
 	 * Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	 * 
 	 * @return baas object
 	 */
 	public GameObject getBaas() {
-			return baasEen;
+		return baasEen;
 	}
 
 	/**
 	 * checkt of de level is gecleared en returnt true.
+	 * 
 	 * @return
 	 */
 	public boolean levelClear() {
@@ -278,27 +286,32 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			return false;
 		}
 	}
-	
+
 	/**
-	 * Kijkt of de muisknop ingedrukt wordt bij het start menu, gameover scherm of eindscherm en start het spel zodra de start of retry knop wordt gedrukt.
+	 * Kijkt of de muisknop ingedrukt wordt bij het start menu, gameover scherm of
+	 * eindscherm en start het spel zodra de start of retry knop wordt gedrukt.
 	 */
 	@Override
 	public void mouseClicked() {
-		if(currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
-			if(mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80 && mouseY < 440) {
+		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
+			if (mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80
+					&& mouseY < 440) {
 				if (currentLevel == 0) {
 					naamText = menu.getNaam();
 				}
 				currentLevel = -10;
 				setupGame();
-			} else if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+			} else if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80
+					&& mouseY < 440) {
 				System.exit(1);
 			}
-		} else if(currentLevel == -10) {
-			if(mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80 && mouseY < 440) {
+		} else if (currentLevel == -10) {
+			if (mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80
+					&& mouseY < 440) {
 				currentLevel = 0;
 				setupGame();
-			} else if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
+			} else if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80
+					&& mouseY < 440) {
 				if (currentLevel == 0) {
 					naamText = menu.getNaam();
 				}
@@ -307,21 +320,22 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			}
 		}
 	}
-	
-	
+
 	/**
-	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het moet overleven.
+	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het
+	 * moet overleven.
 	 */
-	private void startTimerAlarm(){
+	private void startTimerAlarm() {
 		Alarm alarm = new Alarm("timer", 1);
 		alarm.addTarget(this);
 		alarm.start();
 	}
+
 	/**
 	 * Functie die uitgevoerd wordt zodra de alarm is afgelopen
 	 */
 	public void triggerAlarm(String alarmName) {
-		if(tijd >= 1) {
+		if (tijd >= 1) {
 			tijd--;
 			refreshDasboardText();
 			startTimerAlarm();

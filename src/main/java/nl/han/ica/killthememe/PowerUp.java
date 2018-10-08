@@ -22,9 +22,11 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	/**
 	 * PowerUp constructor
 	 * 
-	 * @param mainGame referentie naar de wereld
+	 * @param mainGame
+	 *            referentie naar de wereld
 	 * 
-	 * @param powerUpNaam referentie naar de naam van de powerup
+	 * @param powerUpNaam
+	 *            referentie naar de naam van de powerup
 	 */
 	public PowerUp(Sprite sprite, MainGame mainGame) {
 		super(sprite);
@@ -32,7 +34,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 		this.itemIsOpgepakt = false;
 
 	}
-	
+
 	/**
 	 * Functie om de powerup te gebruiken
 	 * 
@@ -40,12 +42,17 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	 */
 	public void gebruikPowerUp() {
 	}
-	
+
+	public void resetPowerUp() {
+	}
+
 	/**
-	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een boolean dat de speler het heeft opgeraapt op true en maakt dan het object onzichtbaar.
+	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een
+	 * boolean dat de speler het heeft opgeraapt op true en maakt dan het object
+	 * onzichtbaar.
 	 * 
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#
-	 * gameObjectCollisionOccurred(java.util.List)
+	 *      gameObjectCollisionOccurred(java.util.List)
 	 */
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
@@ -59,8 +66,9 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 
 	/**
 	 * bolean die returnt of de item is opgepakt
+	 * 
 	 * @return itemIsOpgepakt
-	 */ 
+	 */
 	public boolean isItemIsOpgepakt() {
 		return itemIsOpgepakt;
 	}
@@ -68,19 +76,17 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	/**
 	 * Functie om de boolean aan te passen.
 	 * 
-	 * @param itemIsOpgepakt een boolean die aangeeft of de speler de powerup heeft opgepakt.
+	 * @param itemIsOpgepakt
+	 *            een boolean die aangeeft of de speler de powerup heeft opgepakt.
 	 */
 	public void setItemIsOpgepakt(boolean itemIsOpgepakt) {
 		this.itemIsOpgepakt = itemIsOpgepakt;
 	}
-	
+
 	/*
 	 * Returnt de naam van de powerup
 	 */
-	public String powerNaam() {
-		return powerNaam;
-	}
-	
+
 	public void update() {
 	}
 
