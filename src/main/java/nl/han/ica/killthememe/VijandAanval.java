@@ -17,6 +17,19 @@ public class VijandAanval extends Projectiel{
 		super(mainGame,sprite, richting,snelheid);
 	}
 	
+	@Override
+	public void update() {
+		if(mainGame.getCurrentLevel() == -10) {
+			if (getY() < 0 || getY() > mainGame.getHeight() || 
+					getX() < (mainGame.getWidth()/4)*3 || getX() > mainGame.getWidth()) {
+				mainGame.deleteGameObject(this);
+			}
+		} else if (getY() < 0 || getY() > mainGame.getHeight() || 
+				getX() < 0 || getX() > mainGame.getWidth()) {
+			mainGame.deleteGameObject(this);
+		}
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see nl.han.ica.killthememe.Projectiel#gameObjectCollisionOccurred(java.util.List)

@@ -146,7 +146,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 			addGameObject(new BaasEen(this), 600, 500);
 			addGameObject(new BaasEen(this), 500, 500);
 			addGameObject(new BaasEen(this), 400, 500);
-
 		} else if (currentLevel == 4) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
@@ -158,7 +157,6 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 		}
 	}
 	
-
 
 	/**
 	 * Functie voor het initialiseren van het geluid
@@ -195,6 +193,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 	public void update() {
 //		if(Vijand instanceof mainGame)
 //		Vijand.afvuren();
+
 	}
 
 	/**
@@ -292,7 +291,7 @@ public class MainGame extends GameEngine implements IAlarmListener  {
 				currentLevel = -10;
 				setupGame();
 			} else if(mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80 && mouseY < 440) {
-				System.exit(1);
+				System.exit(0);
 			}
 		} else if(currentLevel == -10) {
 			if(mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80 && mouseY < 440) {
