@@ -140,12 +140,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
 				powerup.gebruikPowerUp();
 			}
-
-		}
-		// dit checkt met elke keypress of de speler de level heeft gecleared.
-		if (mainGame.levelClear()) {
-			mainGame.setCurrentLevel(mainGame.getCurrentLevel() + 1);
-			mainGame.setupGame();
 		}
 	}
 

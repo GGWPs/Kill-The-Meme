@@ -192,16 +192,20 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	public void update() {
-		if (currentLevel == 3 && speler != null) {
-			for (Vijand v : vijanden) {
-				v.afvuren();
+		if (speler != null) { 
+			if (levelClear()) {
+				setCurrentLevel(getCurrentLevel() + 1);
+				setupGame();
 			}
-		} else if (vijand != null) {
-			vijand.afvuren();
+			if (currentLevel == 3) {
+				for (Vijand v : vijanden) {
+					v.afvuren();
+				}
+			} else if (vijand != null) {
+				vijand.afvuren();
+			}
 		}
 	}
-
-	
 
 	/**
 	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
