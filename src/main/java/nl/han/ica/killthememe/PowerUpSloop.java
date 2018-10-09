@@ -22,9 +22,10 @@ public class PowerUpSloop extends PowerUp {
 	public void gebruikPowerUp() {
 		Speler.sloop = true;
 	}
-
+	/*
+	 * Functie om de powerups van de speler te resetten.
+	 */
 	public void resetPowerUp() {
-		System.out.println("Reset PowerUpSloop");
 		Speler.sloop = false;
 
 	}

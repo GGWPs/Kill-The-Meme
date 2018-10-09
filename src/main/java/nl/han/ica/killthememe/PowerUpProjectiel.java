@@ -24,9 +24,10 @@ public class PowerUpProjectiel extends PowerUp {
 	public void gebruikPowerUp() {
 		Speler.powerUpAanval = true;
 	}
-
+	/*
+	 * Functie om de powerups van de speler te resetten.
+	 */
 	public void resetPowerUp() {
-		System.out.println("Reset PowerUpProjectiel");
 		Speler.powerUpAanval = false;
 	}
 }
