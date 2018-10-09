@@ -147,7 +147,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(new BaasEen(this), 600, 500);
 			addGameObject(new BaasEen(this), 500, 500);
 			addGameObject(new BaasEen(this), 400, 500);
-
 		} else if (currentLevel == 4) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);

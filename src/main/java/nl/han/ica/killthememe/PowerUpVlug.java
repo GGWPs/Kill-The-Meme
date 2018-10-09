@@ -4,7 +4,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpVlug extends PowerUp {
 
-	private String powerNaam = "Speed";
 
 	/**
 	 * PowerupVlug constructor
@@ -29,9 +28,5 @@ public class PowerUpVlug extends PowerUp {
 		System.out.println("Reset PowerUpVlug");
 		Speler.speed = 2;
 	}
-
-	/**
-	 * Functie voor het ophalen van de powerup naam
-	 */
 
 }

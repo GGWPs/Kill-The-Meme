@@ -4,7 +4,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpSloop extends PowerUp {
 
-	private String powerNaam = "Sloop";
 
 	/**
 	 * PowerupSloop constructor
@@ -29,8 +28,4 @@ public class PowerUpSloop extends PowerUp {
 		Speler.sloop = false;
 
 	}
-	/**
-	 * Functie voor het ophalen van de powerup naam
-	 */
-
 }

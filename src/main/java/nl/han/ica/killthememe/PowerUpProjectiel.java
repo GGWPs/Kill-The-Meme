@@ -6,7 +6,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class PowerUpProjectiel extends PowerUp {
 
 	private Sprite projectileSprite;
-	private String powerNaam = "Projectiel";
 
 	/**
 	 * PowerupProjectiel constructor
@@ -29,10 +28,5 @@ public class PowerUpProjectiel extends PowerUp {
 	public void resetPowerUp() {
 		System.out.println("Reset PowerUpProjectiel");
 		Speler.powerUpAanval = false;
-
 	}
-	/**
-	 * Functie voor het ophalen van de powerup naam
-	 */
-
 }
