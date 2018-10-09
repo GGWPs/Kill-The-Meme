@@ -28,22 +28,16 @@ public class BaasEen extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.4f);
-		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
-				getY() + getHeight() - 65);
+		if (!magAanvallen) {
+			float richting = getAngleFrom(mainGame.getSpeler());
+			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.4f);
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+					getY() + getHeight() - 65);
+			magAanvallen = true;
+			startAlarm();
+		}
+
 	}
-	
-	/**
-	 * kijkt of er aangevallen mag worden
-	 */
-	@Override
-	public void update() {
-			if (!magAanvallen) {
-				afvuren();
-				magAanvallen = true;
-				startAlarm();
-			}
-	}
+
 
 }

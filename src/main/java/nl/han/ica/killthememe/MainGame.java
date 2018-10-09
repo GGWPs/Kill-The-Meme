@@ -17,7 +17,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener {
 	private Speler speler;
-	private Vijand baasEen;
+	private Vijand vijand;
 	private Vogel vogel;
 	private Sound backgroundSound;
 	private TextObject dashboardText;
@@ -30,6 +30,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Menu menu;
 	private int worldHeight;
 	private int tijd = 30;
+	Vijand[] vijanden = { new BaasEen(this), new BaasEen(this), new BaasEen(this), new BaasEen(this) };
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -127,37 +128,39 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight/4, 250);
 			addGameObject(speler = new Speler(this, 0.3f), 300, 250);
-			addGameObject(baasEen = new BaasEen(this), 650, 250);
+			addGameObject(vijand = new BaasEen(this), 650, 250);
 		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
 			addGameObject(speler = new Speler(this, 0.3f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
-			addGameObject(baasEen = new BaasEen(this), 220, 500);
+			addGameObject(vijand = new BaasEen(this), 220, 500);
 		} else if (currentLevel == 2) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
-			addGameObject(baasEen = new BaasTwee(this), 700, 500);
+			addGameObject(vijand = new BaasTwee(this), 700, 500);
 			addGameObject(powerup = new PowerUpProjectiel(this), 0, 300);
 		} else if (currentLevel == 3) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
-			addGameObject(baasEen = new BaasEen(this), 700, 500);
-			addGameObject(new BaasEen(this), 600, 500);
-			addGameObject(new BaasEen(this), 500, 500);
-			addGameObject(new BaasEen(this), 400, 500);
+			int teller = 700;
+			for (Vijand v : vijanden) {
+				addGameObject(v, teller, 500);
+				teller -= 100;
+			}
 		} else if (currentLevel == 4) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
 		} else if (currentLevel == 5) {
 			addGameObject(speler = new Speler(this, 0.4f), 50, 250);
-			addGameObject(baasEen = new BaasDrie(this), 700, 500);
+			addGameObject(vijand = new BaasDrie(this), 700, 500);
 			startTimerAlarm();
 		}
 
 	}
+
 	/**
 	 * Functie voor het initialiseren van het geluid
 	 */
@@ -165,8 +168,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
 	}
-	
-    
+
 	/*
 	 * 
 	 * Functie om de tilemap in te laden en op te halen van Level.
@@ -189,13 +191,17 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		bossVerslagen = true;
 	}
 
-	// niet gebruikt
-	@Override
 	public void update() {
-		// if(Vijand instanceof mainGame)
-		// Vijand.afvuren();
-
+		if (currentLevel == 3 && speler != null) {
+			for (Vijand v : vijanden) {
+				v.afvuren();
+			}
+		} else if (vijand != null) {
+			vijand.afvuren();
+		}
 	}
+
+	
 
 	/**
 	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
@@ -260,7 +266,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 * @return baas object
 	 */
 	public GameObject getBaas() {
-		return baasEen;
+		return vijand;
 	}
 
 	/**

@@ -10,10 +10,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
  */
 
 public class BaasTwee extends Vijand {
-	
-	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
+
+	private Sprite projectileSprite = new Sprite(
+			"src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
 	private int leven = 3;
-	
+
 	/**
 	 * BaasTwee constructor
 	 * 
@@ -29,11 +30,16 @@ public class BaasTwee extends Vijand {
 	 */
 	@Override
 	public void afvuren() {
-		Random r = new Random();
-		float richting = getAngleFrom(mainGame.getSpeler());
-		Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,r.nextFloat());
-		mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
-				getY() + getHeight() - 65);
+		if (!magAanvallen) {
+			Random r = new Random();
+			float richting = getAngleFrom(mainGame.getSpeler());
+			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting, r.nextFloat());
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+					getY() + getHeight() - 65);
+			magAanvallen = true;
+			startAlarm();
+		}
+
 	}
 
 	/**
@@ -41,18 +47,12 @@ public class BaasTwee extends Vijand {
 	 */
 	@Override
 	public void update() {
-		if(leven <= 0) {
+		if (leven <= 0) {
 			mainGame.deleteGameObject(this);
 			mainGame.bossVerslagen();
 		}
-		if (!magAanvallen) {
-			afvuren();
-			magAanvallen = true;
-			startAlarm();
-		}
 	}
-	
-	
+
 	/**
 	 * Functie voor het verliezen van levens bij de vijand.
 	 */
