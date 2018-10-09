@@ -76,7 +76,7 @@ public class Menu extends GameObject{
         	} else if (keyCode == DELETE) {
         	    naamText = "";
         	}
-        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) && naamText.length() < maxNaamLengte) {
+        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) && !(keyCode == SHIFT) && naamText.length() < maxNaamLengte) {
         		naamText+=key;
     			System.out.println(naamText);
     			  if (keyCode == ENTER) {
