@@ -19,7 +19,7 @@ public class BaasEen extends Vijand {
 	 * @param mainGame de wereld
 	 */
 	public BaasEen(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.99f);
 		this.mainGame = mainGame;
 	}
 
@@ -30,7 +30,7 @@ public class BaasEen extends Vijand {
 	public void afvuren() {
 		if (!magAanvallen) {
 			float richting = getAngleFrom(mainGame.getSpeler());
-			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.4f);
+			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.99f);
 			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
 					getY() + getHeight() - 65);
 			magAanvallen = true;

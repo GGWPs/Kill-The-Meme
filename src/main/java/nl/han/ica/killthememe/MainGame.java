@@ -350,7 +350,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			tijd--;
 			refreshDasboardText();
 			startTimerAlarm();
-		} else if (tijd <= 0) {
+		} else if (tijd <= 0)   {
 			bossVerslagen = true;
 		}
 	}
