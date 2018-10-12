@@ -23,6 +23,7 @@ public class Menu extends GameObject{
     private int menuKnopY= 30;
     private MainGame mainGame;
     private int maxNaamLengte = 15;
+    private char[] alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
     
 	
     
@@ -73,19 +74,20 @@ public class Menu extends GameObject{
         		if(naamText.length() > 0) {
         			 naamText = naamText.substring(0, naamText.length()-1);
         		}
-        		System.out.println("back");
         	} else if (keyCode == DELETE) {
         	    naamText = "";
         	}
-        	if(!(keyCode == DELETE) && !(keyCode == BACKSPACE) && !(keyCode == SHIFT) && !(keyCode == LEFT) && !(keyCode == RIGHT) && !(keyCode == UP) && !(keyCode == DOWN) && naamText.length() < maxNaamLengte) {
-        		naamText+=key;
+    		for(int i = 0; i < alfabet.length;i++) {
+			if((key == alfabet[i]) && naamText.length() < maxNaamLengte) {
+				naamText+=key;
     			System.out.println(naamText);
     			  if (keyCode == ENTER) {
     				  mainGame.setCurrentName(naamText);
     				  mainGame.setCurrentLevel(3);
     			      mainGame.setupGame();
     			  }
-        	}
+			}
+		}
         }
     	if (keyCode == ENTER && !(currentLevel == 0)) {
 			  mainGame.setCurrentLevel(1);

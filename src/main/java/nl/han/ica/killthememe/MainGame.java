@@ -105,10 +105,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		} else if (getCurrentLevel() == 5) {
 			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
-			menu.setText("Congratulations! You won!");
+			menu.setText("Gefeliciteerd! Je hebt gewonnen!");
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() == -1) {
-			menu.setText("You died");
+			menu.setText("Dood! Opnieuw?");
 		} else if (getCurrentLevel() == -10) {
 			menu.setText("Instructies:");
 			// menu.setNaamText(naamText);
