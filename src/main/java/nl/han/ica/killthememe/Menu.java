@@ -14,19 +14,16 @@ import processing.event.KeyEvent;
 
 @SuppressWarnings("serial")
 public class Menu extends GameObject{
-   private int currentLevel;
-    private int worldWidth;
-    private int worldHeight;
-    private String text;
-    private String naamText;
-    private int menuKnopX = 80;
-    private int menuKnopY= 30;
+    private char[] alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private int currentLevel;
     private MainGame mainGame;
     private int maxNaamLengte = 15;
-    private char[] alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    
-	
-    
+    private int menuKnopX = 80;
+    private int menuKnopY= 30;
+    private String naamText;
+    private String text;
+    private int worldWidth;
+    private int worldHeight;
     
     
 	/**

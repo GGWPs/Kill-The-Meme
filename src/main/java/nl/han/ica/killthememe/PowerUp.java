@@ -10,13 +10,15 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
-	protected Sprite powerUp;
-	protected MainGame mainGame;
 	protected boolean itemIsOpgepakt;
+	protected MainGame mainGame;
+	protected Sprite powerUp;
+	
+	
 	/**
 	 * Attribuut van de speler voor het checken van de collision.
 	 */
-	public Speler speler;
+	protected Speler speler;
 
 	/**
 	 * PowerUp constructor
