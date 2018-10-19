@@ -25,12 +25,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private PowerUp powerup;
 	private Level level = new Level(getCurrentLevel());
 	private int worldWidth;
+	private int worldHeight;
 	private String naamText = " ";
 	private boolean bossVerslagen;
 	private Menu menu;
-	private int worldHeight;
 	private int tijd = 30;
-	Vijand[] vijanden = { new BaasEen(this), new BaasEen(this), new BaasEen(this), new BaasEen(this) };
+	private Vijand[] vijanden = { new BaasEen(this), new BaasEen(this), new BaasEen(this), new BaasEen(this) };
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });

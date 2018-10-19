@@ -89,7 +89,8 @@ public class Menu extends GameObject{
 			}
 		}
         }
-    	if (keyCode == ENTER && !(currentLevel == 0)) {
+    	if (keyCode == ENTER) {
+    		if(currentLevel == 0 || currentLevel == -10)
 			  mainGame.setCurrentLevel(1);
 		      mainGame.setupGame();
 		  }
