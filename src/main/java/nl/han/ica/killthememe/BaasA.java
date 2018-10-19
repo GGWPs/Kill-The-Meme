@@ -9,7 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
  * 
  */
 
-public class BaasEen extends Vijand {
+public class BaasA extends Vijand {
 	
 	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png");
 	
@@ -18,7 +18,7 @@ public class BaasEen extends Vijand {
 	 * 
 	 * @param mainGame de wereld
 	 */
-	public BaasEen(MainGame mainGame) {
+	public BaasA(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
 		this.mainGame = mainGame;
 	}

@@ -30,7 +30,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private boolean bossVerslagen;
 	private Menu menu;
 	private int tijd = 30;
-	private Vijand[] vijanden = { new BaasEen(this), new BaasEen(this), new BaasEen(this), new BaasEen(this) };
+	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
@@ -128,17 +128,17 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight/4, 250);
 			addGameObject(speler = new Speler(this, 0.3f), 300, 250);
-			addGameObject(vijand = new BaasEen(this), 650, 250);
+			addGameObject(vijand = new BaasA(this), 650, 250);
 		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
 			addGameObject(speler = new Speler(this, 0.3f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
-			addGameObject(vijand = new BaasEen(this), 220, 500);
+			addGameObject(vijand = new BaasA(this), 220, 500);
 		} else if (currentLevel == 2) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
-			addGameObject(vijand = new BaasTwee(this), 700, 500);
+			addGameObject(vijand = new BaasB(this), 700, 500);
 			addGameObject(powerup = new PowerUpProjectiel(this), 0, 300);
 		} else if (currentLevel == 3) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
@@ -155,7 +155,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
 		} else if (currentLevel == 5) {
 			addGameObject(speler = new Speler(this, 0.4f), 50, 250);
-			addGameObject(vijand = new BaasDrie(this), 700, 500);
+			addGameObject(vijand = new BaasC(this), 700, 500);
 			startTimerAlarm();
 		}
 
