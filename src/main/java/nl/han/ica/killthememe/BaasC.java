@@ -13,7 +13,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class BaasC extends Vijand {
 	
 	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
-	
 	private int speciaalAanval = 0;
 	private double aanvalSnelheid = 1.5;
 	

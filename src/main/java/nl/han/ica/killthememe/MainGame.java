@@ -16,21 +16,21 @@ import processing.core.PApplet;
 
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener {
-	private Speler speler;
-	private Vijand vijand;
-	private Vogel vogel;
 	private Sound backgroundSound;
-	private TextObject dashboardText;
+	private boolean bossVerslagen;
 	private int currentLevel = 0;
-	private PowerUp powerup;
+	private TextObject dashboardText;
 	private Level level = new Level(getCurrentLevel());
+	private Menu menu;
+	private String naamText = " ";
+	private PowerUp powerup;
+	private Speler speler;
+	private int tijd = 30;
+	private Vijand vijand;
+	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
+	private Vogel vogel;
 	private int worldWidth;
 	private int worldHeight;
-	private String naamText = " ";
-	private boolean bossVerslagen;
-	private Menu menu;
-	private int tijd = 30;
-	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
 
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
