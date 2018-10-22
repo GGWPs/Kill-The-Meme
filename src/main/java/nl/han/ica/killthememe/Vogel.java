@@ -33,7 +33,7 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
         super(sprite, 4);
         setxSpeed(-1);
     }
-
+    
 	/**
 	 * functie voor de alarm voor de animatie.
 	 */

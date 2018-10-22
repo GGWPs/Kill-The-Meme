@@ -125,16 +125,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			startAlarm();
 		}
 		if (keyCode == mainGame.LEFT || key == 'a') {
-			beweegLinks(270, speed, 0 + totalFramez);
+			beweeg(270, speed, 0 + totalFramez);
 		}
 		if (keyCode == mainGame.UP || key == 'w') {
-			beweegOmhoog(0, speed, 4 + totalFramez);
+			beweeg(0, speed, 4 + totalFramez);
 		}
 		if (keyCode == mainGame.RIGHT || key == 'd') {
-			beweegRechts(90, speed, 6 + totalFramez);
+			beweeg(90, speed, 6 + totalFramez);
 		}
 		if (keyCode == mainGame.DOWN || key == 's') {
-			beweegOmlaag(180, speed, 2 + totalFramez);
+			beweeg(180, speed, 2 + totalFramez);
 		}
 		if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
@@ -143,8 +143,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
+	
 	/**
-	 * Functie die de speler na links beweegt en animatie verandert.
+	 * Functie die de speler beweegt en animatie verandert.
 	 * 
 	 * @param directionspeed
 	 *            de richting
@@ -153,55 +154,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * @param frame
 	 *            de frame van de afbeelding
 	 */
-	public void beweegLinks(int directionspeed, int speed, int frame) {
+	public void beweeg(int directionspeed, int speed, int frame) {
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
-
-	/**
-	 * Functie die de speler na rechts beweegt en animatie verandert.
-	 * 
-	 * @param directionspeed
-	 *            de richting
-	 * @param speed
-	 *            de snelheid
-	 * @param frame
-	 *            de frame van de afbeelding
-	 */
-	public void beweegRechts(int directionspeed, int speed, int frame) {
-		setDirectionSpeed(directionspeed, speed);
-		setCurrentFrameIndex(frame);
-	}
-
-	/**
-	 * Functie die de speler omhoog beweegt en animatie verandert.
-	 * 
-	 * @param directionspeed
-	 *            de richting
-	 * @param speed
-	 *            de snelheid
-	 * @param frame
-	 *            de frame van de afbeelding
-	 */
-	public void beweegOmhoog(int directionspeed, int speed, int frame) {
-		setDirectionSpeed(directionspeed, speed);
-		setCurrentFrameIndex(frame);
-	}
-
-	/**
-	 * Functie die de speler omlaagt beweegt en animatie verandert.
-	 * 
-	 * @param directionspeed
-	 *            de richting
-	 * @param speed
-	 *            de snelheid
-	 * @param frame
-	 *            de frame van de afbeelding
-	 */
-	public void beweegOmlaag(int directionspeed, int speed, int frame) {
-		setDirectionSpeed(directionspeed, speed);
-		setCurrentFrameIndex(frame);
-	}
+	
 
 	/**
 	 * Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de
