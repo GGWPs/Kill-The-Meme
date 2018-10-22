@@ -63,7 +63,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
 				((Speler) go).setPowerup(this);
-				setItemIsOpgepakt(true);
+				//setItemIsOpgepakt(true);
 				setVisible(false);
 			}
 		}
