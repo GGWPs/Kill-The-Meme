@@ -11,8 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class BaasB extends Vijand {
 
-	private Sprite projectileSprite = new Sprite(
-			"src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
 	private int leven = 3;
 
 	/**

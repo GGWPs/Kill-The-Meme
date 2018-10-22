@@ -20,10 +20,8 @@ public class Menu extends GameObject{
     private int maxNaamLengte = 15;
     private int menuKnopX = 80;
     private int menuKnopY= 30;
-    private String naamText;
-    private String text;
-    private int worldWidth;
-    private int worldHeight;
+    private String naamText, text;
+    private int worldWidth, worldHeight;
     
     
 	/**
@@ -88,7 +86,7 @@ public class Menu extends GameObject{
         }
     	if (keyCode == ENTER) {
     		if(currentLevel == 0 || currentLevel == -10)
-			  mainGame.setCurrentLevel(1);
+			  mainGame.setCurrentLevel(3);
 		      mainGame.setupGame();
 		  }
     }
