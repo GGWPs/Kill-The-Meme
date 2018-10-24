@@ -19,17 +19,17 @@ public class PowerUpVlug extends PowerUp {
 	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze
 	 * powerup.
 	 */
-	public void gebruikPowerUp() {
-		Speler.speed = 4;
-		//speler.setSpeed(4);
+	public void gebruikPowerUp(Speler speler) {
+		//speler.speed = 4;
+		speler.setSpeed(4);
 	}
 	
 	
 	/*
 	 * Functie om de powerups van de speler te resetten.
 	 */
-	public void resetPowerUp() {
-		Speler.speed = 2;
+	public void resetPowerUp(Speler speler) {
+		speler.setSpeed(2);
 	}
 
 }

@@ -19,14 +19,14 @@ public class PowerUpSloop extends PowerUp {
 	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze
 	 * powerup.
 	 */
-	public void gebruikPowerUp() {
-		Speler.sloop = true;
+	public void gebruikPowerUp(Speler speler) {
+		speler.setSloop(true);
 	}
 	/*
 	 * Functie om de powerups van de speler te resetten.
 	 */
-	public void resetPowerUp() {
-		Speler.sloop = false;
+	public void resetPowerUp(Speler speler) {
+		speler.setSloop(false);
 
 	}
 }

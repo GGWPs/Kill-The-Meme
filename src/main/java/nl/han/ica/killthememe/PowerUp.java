@@ -41,14 +41,14 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	 * 
 	 * 
 	 */
-	public void gebruikPowerUp() {
+	public void gebruikPowerUp(Speler speler) {
 	}
 	
 	
 	/*
 	 * Functie om de powerups van de speler te resetten.
 	 */
-	public void resetPowerUp() {
+	public void resetPowerUp(Speler speler) {
 	}
 
 	/**

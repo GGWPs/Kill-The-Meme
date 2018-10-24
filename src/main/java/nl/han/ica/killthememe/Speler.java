@@ -19,10 +19,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden;
 	private int totalFramez = 0;
 	private PowerUp powerup;
-	public static int speed = 2;
-	public static boolean sloop = false;
+	public int speed = 2;
+	public boolean sloop;
 	public boolean magAanvallen;
-	public static boolean powerUpAanval = false;
+	public boolean powerUpAanval;
 	private Sprite projectileSprite;
 
 	/**
@@ -126,19 +126,15 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if (keyCode == mainGame.LEFT || key == 'a') {
 			beweeg(270, speed, 0 + totalFramez);
-		}
-		if (keyCode == mainGame.UP || key == 'w') {
+		} else if (keyCode == mainGame.UP || key == 'w') {
 			beweeg(0, speed, 4 + totalFramez);
-		}
-		if (keyCode == mainGame.RIGHT || key == 'd') {
+		} else if (keyCode == mainGame.RIGHT || key == 'd') {
 			beweeg(90, speed, 6 + totalFramez);
-		}
-		if (keyCode == mainGame.DOWN || key == 's') {
+		} else if (keyCode == mainGame.DOWN || key == 's') {
 			beweeg(180, speed, 2 + totalFramez);
-		}
-		if (key == ' ') {
+		} else if (key == ' ') {
 			if (powerup != null && powerup.isItemIsOpgepakt()) {
-				powerup.gebruikPowerUp();
+				powerup.gebruikPowerUp(this);
 			}
 		}
 	}
@@ -268,6 +264,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+	
+	public void setSloop(boolean sloop) {
+		this.sloop = sloop;
+	}
+	
+	public void setPowerUpAanval(boolean powerUpAanval) {
+		this.powerUpAanval = powerUpAanval;
 	}
 
 	public float getVijandRichting() {
