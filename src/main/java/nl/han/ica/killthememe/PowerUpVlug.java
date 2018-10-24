@@ -20,15 +20,9 @@ public class PowerUpVlug extends PowerUp {
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		
+		speler.setSpeed(4);
 	}
 	
 	
-	/*
-	 * Functie om de powerups van de speler te resetten.
-	 */
-	public void resetPowerUp(Speler speler) {
-		speler.setSpeed(2);
-	}
 
 }
