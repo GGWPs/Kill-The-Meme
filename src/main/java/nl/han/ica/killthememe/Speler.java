@@ -19,9 +19,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden;
 	private PowerUp powerup;
 	public int speed = 2;
-	public boolean sloop;
 	public boolean magAanvallen;
-	public boolean powerUpAanval;
 	private Sprite projectileSprite;
 	private final int size = 50;
 	private int totalFramez = 0;
@@ -65,7 +63,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		if (powerUpAanval && !magAanvallen) {
+		if (powerup != null && powerup.getAanval() && !magAanvallen) {
 			float richting = getAngleFrom(mainGame.getBaas());
 			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.9f);
 			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
@@ -167,34 +165,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		PVector vector;
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.theTile instanceof BoardsTile) {
-				if (sloop == true) {
-					if (ct.collisionSide == ct.RIGHT) {
+				vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+				if (powerup != null && powerup.getSloop() == true) {
+					if (ct.collisionSide == ct.RIGHT || ct.collisionSide == ct.LEFT || ct.collisionSide == ct.TOP || ct.collisionSide == ct.BOTTOM) {
 						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						} catch (TileNotFoundException e) {
-							e.printStackTrace();
-						}
-					}
-					if (ct.collisionSide == ct.LEFT) {
-						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						} catch (TileNotFoundException e) {
-							e.printStackTrace();
-						}
-					}
-					if (ct.collisionSide == ct.TOP) {
-						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
-							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						} catch (TileNotFoundException e) {
-							e.printStackTrace();
-						}
-					}
-					if (ct.collisionSide == ct.BOTTOM) {
-						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
@@ -203,7 +177,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 				} else {
 					if (ct.collisionSide == ct.TOP) {
 						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 							setY(vector.y - getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
@@ -211,7 +184,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 					}
 					if (ct.collisionSide == ct.BOTTOM) {
 						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 							setY(vector.y + getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
@@ -219,7 +191,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 					}
 					if (ct.collisionSide == ct.RIGHT) {
 						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 							setX(vector.x + getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
@@ -227,7 +198,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 					}
 					if (ct.collisionSide == ct.LEFT) {
 						try {
-							vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
 							setX(vector.x - getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
@@ -267,13 +237,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.speed = speed;
 	}
 	
-	public void setSloop(boolean sloop) {
-		this.sloop = sloop;
-	}
-	
-	public void setPowerUpAanval(boolean powerUpAanval) {
-		this.powerUpAanval = powerUpAanval;
-	}
 
 	public float getVijandRichting() {
 		return getAngleFrom(mainGame.getBaas());

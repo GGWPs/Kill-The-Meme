@@ -10,9 +10,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
-	protected boolean itemIsOpgepakt;
 	protected MainGame mainGame;
 	protected Sprite powerUp;
+	protected boolean sloop;
+	protected boolean aanval;
 	
 	
 	/**
@@ -32,7 +33,6 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	public PowerUp(Sprite sprite, MainGame mainGame) {
 		super(sprite);
 		this.mainGame = mainGame;
-		this.itemIsOpgepakt = false;
 
 	}
 
@@ -45,11 +45,6 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	}
 	
 	
-	/*
-	 * Functie om de powerups van de speler te resetten.
-	 */
-	public void resetPowerUp(Speler speler) {
-	}
 
 	/**
 	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een
@@ -67,24 +62,14 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 			}
 		}
 	}
-
-	/**
-	 * bolean die returnt of de item is opgepakt
-	 * 
-	 * @return itemIsOpgepakt
-	 */
-	public boolean isItemIsOpgepakt() {
-		return itemIsOpgepakt;
+	
+	
+	public boolean getSloop() {
+		return sloop;
 	}
-
-	/**
-	 * Functie om de boolean aan te passen.
-	 * 
-	 * @param itemIsOpgepakt
-	 *            een boolean die aangeeft of de speler de powerup heeft opgepakt.
-	 */
-	public void setItemIsOpgepakt(boolean itemIsOpgepakt) {
-		this.itemIsOpgepakt = itemIsOpgepakt;
+	
+	public boolean getAanval() {
+		return aanval;
 	}
 
 	public void update() {

@@ -11,7 +11,7 @@ public class PowerUpProjectiel extends PowerUp {
 	 *            De wereld
 	 */
 	public PowerUpProjectiel(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpCopyAttack.png"), mainGame);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpProjectiel.png"), mainGame);
 	}
 
 	/**
@@ -19,12 +19,7 @@ public class PowerUpProjectiel extends PowerUp {
 	 * en op spatie drukt.
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		speler.setPowerUpAanval(true);
+		aanval = true;
 	}
-	/*
-	 * Functie om de powerups van de speler te resetten.
-	 */
-	public void resetPowerUp(Speler speler) {
-		speler.setPowerUpAanval(false);
-	}
+
 }
