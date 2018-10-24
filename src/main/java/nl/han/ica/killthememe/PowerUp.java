@@ -14,7 +14,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	protected Sprite powerUp;
 	protected boolean sloop;
 	protected boolean aanval;
-	
+	protected Sprite projectileSprite;
 	
 	/**
 	 * Attribuut van de speler voor het checken van de collision.
@@ -73,6 +73,11 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 	}
 
 	public void update() {
+	}
+
+	public void afvuren(float richting) {
+
+		
 	}
 
 }

@@ -23,6 +23,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private Sprite projectileSprite;
 	private final int size = 50;
 	private int totalFramez = 0;
+	public float richting;
 
 	/**
 	 * Speler constructor
@@ -63,14 +64,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		if (powerup != null && powerup.getAanval() && !magAanvallen) {
-			float richting = getAngleFrom(mainGame.getBaas());
-			Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, richting, 0.9f);
-			mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
-					mainGame.getSpelerY() + getHeight() - 10);
+		if (powerup != null && !magAanvallen) {
+			this.richting = getAngleFrom(mainGame.getBaas());
+			powerup.gebruikPowerUp(this);
 			magAanvallen = true;
 			startAlarmAanval();
 		}
+
+		
 	}
 
 	/**
@@ -238,9 +239,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 
-	public float getVijandRichting() {
-		return getAngleFrom(mainGame.getBaas());
-	}
 
 
 }

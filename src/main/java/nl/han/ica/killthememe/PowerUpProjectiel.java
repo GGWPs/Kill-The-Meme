@@ -3,7 +3,7 @@ package nl.han.ica.killthememe;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpProjectiel extends PowerUp {
-
+	
 	/**
 	 * PowerupProjectiel constructor
 	 * 
@@ -19,7 +19,9 @@ public class PowerUpProjectiel extends PowerUp {
 	 * en op spatie drukt.
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		aanval = true;
+		Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, speler.richting, 0.9f);
+		mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
+				mainGame.getSpelerY() + getHeight() - 10);
 	}
 
 }
