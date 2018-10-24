@@ -31,7 +31,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Vogel vogel;
 	private int worldWidth;
 	private int worldHeight;
-
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
 	}

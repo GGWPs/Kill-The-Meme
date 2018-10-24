@@ -134,7 +134,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (keyCode == mainGame.DOWN || key == 's') {
 			beweeg(180, speed, 2 + totalFramez);
 		} else if (key == ' ') {
-			if (powerup != null && powerup.isItemIsOpgepakt()) {
+			if (powerup != null) {
 				powerup.gebruikPowerUp(this);
 			}
 		}
