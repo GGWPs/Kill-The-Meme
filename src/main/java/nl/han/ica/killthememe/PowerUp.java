@@ -9,7 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
-public class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
+public abstract class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
 	protected MainGame mainGame;
 	protected Sprite powerUp;
 	protected boolean sloop;

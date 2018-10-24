@@ -6,10 +6,10 @@ public class PowerUpVlug extends PowerUp {
 
 
 	/**
-	 * PowerupVlug constructor
+	 * PowerUpVlug constructor
 	 * 
-	 * @param mainGame
-	 *            de wereld
+	 * @param mainGame de wereld
+	 *           
 	 */
 	public PowerUpVlug(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpVlug.png"), mainGame);
@@ -24,11 +24,5 @@ public class PowerUpVlug extends PowerUp {
 	}
 	
 	
-	/*
-	 * Functie om de powerups van de speler te resetten.
-	 */
-	public void resetPowerUp(Speler speler) {
-		speler.setSpeed(2);
-	}
 
 }

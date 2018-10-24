@@ -25,6 +25,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private String naamText = " ";
 	private PowerUp powerup;
 	private Speler speler;
+	private String gameNaam = "Kill The Meme!";
+	private String doodTekst = "Dood! Opnieuw?";
+	private String winTekst = "Gefeliciteerd! Je hebt gewonnen!";
 	private int tijd = 30;
 	private Vijand vijand;
 	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
@@ -97,17 +100,17 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 */
 	private void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
-			menu.setText("Kill The Meme!");
+			menu.setText(gameNaam);
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText);
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   " + level.doel(currentLevel));
 		} else if (getCurrentLevel() == 5) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + " Tijd om te winnen: " + tijd);
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   " + level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
-			menu.setText("Gefeliciteerd! Je hebt gewonnen!");
+			menu.setText(winTekst);
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() == -1) {
-			menu.setText("Dood! Opnieuw?");
+			menu.setText(doodTekst);
 		} else if (getCurrentLevel() == -10) {
 			menu.setText("Instructies:");
 			// menu.setNaamText(naamText);
@@ -155,7 +158,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(vijand = new BaasC(this), 700, 500);
 			startTimerAlarm();
 		}
-
 	}
 
 	/**
@@ -177,8 +179,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 		Sprite boardsSprite = new Sprite(level.pickLevelTile());
 		TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
-
-		TileType[] tileTypes = { boardTileType };
+		TileType[] tileTypes = {boardTileType};
 		int tileSize = 50;
 
 		tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
