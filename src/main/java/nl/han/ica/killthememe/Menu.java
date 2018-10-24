@@ -76,17 +76,13 @@ public class Menu extends GameObject{
 			if((key == alfabet[i]) && naamText.length() < maxNaamLengte) {
 				naamText+=key;
     			System.out.println(naamText);
-    			  if (keyCode == ENTER) {
-    				  mainGame.setCurrentName(naamText);
-    				  mainGame.setCurrentLevel(3);
-    			      mainGame.setupGame();
-    			  }
 			}
 		}
         }
     	if (keyCode == ENTER) {
     		if(currentLevel == 0 || currentLevel == -10)
-			  mainGame.setCurrentLevel(3);
+    		  mainGame.setCurrentName(naamText);
+			  mainGame.setCurrentLevel(5);
 		      mainGame.setupGame();
 		  }
     }

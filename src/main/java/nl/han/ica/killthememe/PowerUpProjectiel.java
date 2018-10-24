@@ -5,10 +5,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 public class PowerUpProjectiel extends PowerUp {
 
 	/**
-	 * PowerupProjectiel constructor
+	 * PowerUpProjectiel constructor
 	 * 
-	 * @param mainGame
-	 *            De wereld
+	 * @param mainGame de wereld
+	 *            
 	 */
 	public PowerUpProjectiel(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpProjectiel.png"), mainGame);
@@ -21,5 +21,4 @@ public class PowerUpProjectiel extends PowerUp {
 	public void gebruikPowerUp(Speler speler) {
 		aanval = true;
 	}
-
 }

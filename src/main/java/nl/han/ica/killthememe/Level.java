@@ -39,6 +39,23 @@ public class Level {
 	}
 	
 	
+	public String doel(int currentLevel) {
+		if(currentLevel == 1) {
+			return "Bereik het einde van de level!";
+		} else if(currentLevel == 2) {
+			return "Gebruik de powerup en versla de vijand!";
+		} else if(currentLevel == 3) {
+			return "Gebruik de powerup en bereik het einde!";
+		} else if(currentLevel == 4) {
+			return "Gebruik de powerup en bereik het einde!";
+		} else if(currentLevel == 5) {
+			return "Overleef!";
+		} else {
+			return " ";
+		}
+			
+	}
+	
 	/**
 	 * Functie die de tilemap teruggeeft bij de bijhorende level.
 	 * @param currentLevel
