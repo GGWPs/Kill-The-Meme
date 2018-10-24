@@ -92,13 +92,15 @@ public class Menu extends GameObject{
      */
     @Override
     public void draw(PGraphics g) {
-    	if(currentLevel == 0) {
+    	g.textAlign(g.CENTER,g.TOP);
+    	g.textSize(50);
+    	if(currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
     		g.setSize(worldWidth, worldHeight);
     		g.background(0);
-    		g.textAlign(g.CENTER,g.TOP);
-            g.textSize(50);
             g.text(text,worldWidth/2,worldHeight/4);
             g.fill(255);
+    	}
+    	if(currentLevel == 0) {
             g.textSize(25);
             g.text("Naam: ",worldWidth/2-menuKnopX,(worldHeight/40)*18);
             g.fill(255);
@@ -108,19 +110,11 @@ public class Menu extends GameObject{
             g.text(naamText,worldWidth/2-menuKnopY*4,((worldHeight/40)*18)+menuKnopY);
             tekenKnoppen(g, worldWidth/3, worldWidth/2, (worldHeight/3)*2, "Next ", "Quit ");
     	} else if(currentLevel == -1 || currentLevel == 6) {
-    		g.setSize(worldWidth, worldHeight);
-    		g.background(0);
-    		g.textAlign(g.CENTER,g.TOP);
-            g.textSize(50);
-            g.text(text,worldWidth/2,worldHeight/4);
-            g.fill(255);
             g.rect(worldWidth/2,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
             g.rect(worldWidth/3,(worldHeight/3)*2 ,menuKnopX ,menuKnopY, 8); 
             g.fill(0);
             tekenKnoppen(g, worldWidth/3, worldWidth/2, (worldHeight/3)*2, "Retry ", "Quit ");
     	} else if(currentLevel == -10) {
-    		g.textAlign(g.CENTER,g.TOP);
-            g.textSize(50);
             g.text(text,worldWidth/2,worldHeight/12);
             g.textSize(20);
             tekenKnoppen(g, worldWidth/3, worldWidth/2, (worldHeight/3)*2, "Terug ", "Start ");
@@ -128,7 +122,7 @@ public class Menu extends GameObject{
             g.text("In ieder level is een doel te behalen om naar het volgende level te gaan.", worldWidth/12, worldHeight/5);
             g.text("Dit zijn objecten binnen het spel waar je mee te maken hebt.", worldWidth/12, worldHeight/5+menuKnopY);
             
-            g.text("Interactie:", 0+menuKnopX/2, worldWidth/3+menuKnopX);
+            g.text("Interactie:", menuKnopX/2, worldWidth/3+menuKnopX);
             g.text("Powerup ", worldHeight/4, worldHeight/4+menuKnopX);
             g.text("Speler", worldHeight/2, worldHeight/4+menuKnopX);
             g.text("Vijand", worldWidth-(menuKnopX*2), worldHeight/4+menuKnopX);
