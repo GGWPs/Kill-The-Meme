@@ -143,6 +143,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
+			
 			int teller = 700;
 			for (Vijand v : vijanden) {
 				addGameObject(v, teller, 500);
