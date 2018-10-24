@@ -4,7 +4,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 public class PowerUpProjectiel extends PowerUp {
 
-
 	/**
 	 * PowerupProjectiel constructor
 	 * 

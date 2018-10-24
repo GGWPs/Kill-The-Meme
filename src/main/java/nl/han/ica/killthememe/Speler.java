@@ -13,17 +13,18 @@ import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
-	private final int size = 50;
+
 	private MainGame mainGame;
 	private boolean isAnimatie;
 	private float aanvallenPerSeconden;
-	private int totalFramez = 0;
 	private PowerUp powerup;
 	public int speed = 2;
 	public boolean sloop;
 	public boolean magAanvallen;
 	public boolean powerUpAanval;
 	private Sprite projectileSprite;
+	private final int size = 50;
+	private int totalFramez = 0;
 
 	/**
 	 * Speler constructor
