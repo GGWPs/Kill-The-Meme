@@ -20,13 +20,6 @@ public class PowerUpSloop extends PowerUp {
 	 * powerup.
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		speler.setSloop(true);
-	}
-	/*
-	 * Functie om de powerups van de speler te resetten.
-	 */
-	public void resetPowerUp(Speler speler) {
-		speler.setSloop(false);
-
+		sloop = true;
 	}
 }
