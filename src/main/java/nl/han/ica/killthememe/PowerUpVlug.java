@@ -21,6 +21,7 @@ public class PowerUpVlug extends PowerUp {
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		speler.setSpeed(4);
+
 	}
 	
 	
