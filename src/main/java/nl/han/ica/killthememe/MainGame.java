@@ -20,7 +20,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private boolean bossVerslagen;
 	private int currentLevel = 0;
 	private TextObject dashboardText;
-	private Level level = new Level(getCurrentLevel());
+	private Level level = new Level(this);
 	private Menu menu;
 	private String naamText = " ";
 	private PowerUp powerup;
@@ -30,7 +30,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private String winTekst = "Gefeliciteerd! Je hebt gewonnen!";
 	private int tijd = 30;
 	private Vijand vijand;
-	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
+	private Vijand[] vijanden = {new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this)};
 	private Vogel vogel;
 	private int worldWidth;
 	private int worldHeight;
@@ -131,25 +131,25 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
+			
 			addGameObject(speler = new Speler(this, 0.3f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(vijand = new BaasA(this), 220, 500);
 		} else if (currentLevel == 2) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
+			level.addPowerUp(currentLevel);
 			addGameObject(vijand = new BaasB(this), 700, 500);
-			addGameObject(powerup = new PowerUpProjectiel(this), 0, 300);
 		} else if (currentLevel == 3) {
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
-			
 			int teller = 700;
 			for (Vijand v : vijanden) {
 				addGameObject(v, teller, 500);
 				teller -= 100;
 			}
-		} else if (currentLevel == 4) {
+		} else if (currentLevel == 4) { 
 			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
 			addGameObject(vogel = new Vogel(this), 1000, 100);
 			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
@@ -158,6 +158,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(vijand = new BaasC(this), 700, 500);
 			startTimerAlarm();
 		}
+//		PowerUp[] powerarr = level.getPowerUp(currentLevel);
+//		int[] xy = level.getPowerXY(currentLevel);
+//			for(int i = 0; i < powerarr.length; i++) {
+//				addGameObject(powerarr[i], xy[i], xy[i+1]);
+//			}
 	}
 
 	/**

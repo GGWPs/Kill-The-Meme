@@ -46,9 +46,7 @@ public class BaasC extends Vijand {
 				aanvalSnelheid = 1.1;
 				speciaalAanval = 0;
 			}
-			
 		}
-
 	}
 
 	
