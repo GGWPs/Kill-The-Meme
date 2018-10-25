@@ -82,7 +82,7 @@ public class Menu extends GameObject{
     	if (keyCode == ENTER) {
     		if(currentLevel == 0 || currentLevel == -10)
     		  mainGame.setCurrentName(naamText);
-			  mainGame.setCurrentLevel(5);
+			  mainGame.setCurrentLevel(2);
 		      mainGame.setupGame();
 		  }
     }

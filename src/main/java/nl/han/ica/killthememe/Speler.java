@@ -20,7 +20,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden;
 	private PowerUp powerup;
 	public int speed = 2;
-	public boolean magAanvallen;
+	public boolean magPowerUpGebruiken;
 	private Sprite projectileSprite;
 	private final int size = 50;
 	private int totalFramez = 0;
@@ -38,7 +38,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
 		this.aanvallenPerSeconden = aanvallenPerSeconden;
-		this.magAanvallen = false;
+		this.magPowerUpGebruiken = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
 	}
@@ -65,11 +65,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		if (powerup != null && !magAanvallen) {
+		if (powerup != null && !magPowerUpGebruiken) {
 			this.richting = getAngleFrom(mainGame.getBaas());
-			powerup.gebruikPowerUp(this);
-			magAanvallen = true;
-			startAlarmAanval();
 		}
 
 		
@@ -87,8 +84,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	/**
 	 * Functie om alarm te starten voor de aanval van de speler.
 	 */
-	public void startAlarmAanval() {
-		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
+	public void startAlarmPowerUp() {
+		Alarm alarm = new Alarm("magPowerUpGebruiken", 1 / aanvallenPerSeconden);
 		alarm.addTarget(this);
 		alarm.start();
 
@@ -105,8 +102,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (!isAnimatie) {
 			isAnimatie = true;
 		}
-		if (alarmName == "magAanvallen") {
-			magAanvallen = false;
+		if (alarmName == "magPowerUpGebruiken") {
+			magPowerUpGebruiken = false;
 		}
 	}
 
@@ -134,8 +131,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		} else if (keyCode == mainGame.DOWN || key == 's') {
 			beweeg(180, speed, 2 + totalFramez);
 		} else if (key == ' ') {
-			if (powerup != null) {
+			if (powerup != null && !magPowerUpGebruiken) {
 				powerup.gebruikPowerUp(this);
+				magPowerUpGebruiken = true;
+				startAlarmPowerUp();
 			}
 		}
 	}
