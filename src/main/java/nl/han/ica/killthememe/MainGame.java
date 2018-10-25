@@ -24,16 +24,18 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Menu menu;
 	private String naamText = " ";
 	private PowerUp powerup;
-	private Speler speler;
+	private Speler speler = new Speler(this);
 	private String gameNaam = "Kill The Meme!";
 	private String doodTekst = "Dood! Opnieuw?";
 	private String winTekst = "Gefeliciteerd! Je hebt gewonnen!";
 	private int tijd = 30;
+	private int schuifPositie = 700;
 	private Vijand vijand;
-	private Vijand[] vijanden = {new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this)};
-	private Vogel vogel;
+	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
+	private Vogel vogel = new Vogel(this);
 	private int worldWidth;
 	private int worldHeight;
+
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
 	}
@@ -46,7 +48,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		bossVerslagen = false;
 		worldWidth = 800;
 		worldHeight = 600;
-
 		deleteAllGameOBjects();
 		if (currentLevel == 0 && backgroundSound == null) {
 			initializeSound();
@@ -103,9 +104,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			menu.setText(gameNaam);
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "  Doel:" + level.doel(currentLevel));
+			dashboardText
+					.setText("Level: " + getCurrentLevel() + "  " + naamText + "  Doel:" + level.doel(currentLevel));
 		} else if (getCurrentLevel() == 5) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: " + level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: "
+					+ level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
 			menu.setText(winTekst);
 			menu.setNaamText(naamText);
@@ -125,44 +128,42 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 */
 	private void createObjects(int currentLevel) {
 		if (currentLevel == -10) {
-			addGameObject(new PowerUpProjectiel(this), worldHeight/4, 250);
-			addGameObject(speler = new Speler(this, 0.3f), 300, 250);
+			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
+			addGameObject(speler, 300, 250);
 			addGameObject(vijand = new BaasA(this), 650, 250);
 		}
 		if (currentLevel == 1) {
 			backgroundSound.rewind();
-			
-			addGameObject(speler = new Speler(this, 0.3f), 10, 100);
-			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(speler, 10, 100);
+			addGameObject(vogel, 1000, 100);
 			addGameObject(vijand = new BaasA(this), 220, 500);
 		} else if (currentLevel == 2) {
-			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
-			addGameObject(vogel = new Vogel(this), 1000, 100);
+			addGameObject(speler, 10, 100);
+			addGameObject(vogel, 1000, 100);
 			level.addPowerUp(currentLevel);
 			addGameObject(vijand = new BaasB(this), 700, 500);
 		} else if (currentLevel == 3) {
-			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
-			addGameObject(vogel = new Vogel(this), 1000, 100);
-			addGameObject(powerup = new PowerUpVlug(this), 0, 300);
-			int teller = 700;
+			addGameObject(speler, 10, 100);
+			addGameObject(vogel, 1000, 100);
+			level.addPowerUp(currentLevel);
 			for (Vijand v : vijanden) {
-				addGameObject(v, teller, 500);
-				teller -= 100;
+				addGameObject(v, schuifPositie, 500);
+				schuifPositie -= 100;
 			}
-		} else if (currentLevel == 4) { 
-			addGameObject(speler = new Speler(this, 0.4f), 10, 100);
-			addGameObject(vogel = new Vogel(this), 1000, 100);
+		} else if (currentLevel == 4) {
+			addGameObject(speler, 10, 100);
+			addGameObject(vogel, 1000, 100);
 			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
 		} else if (currentLevel == 5) {
-			addGameObject(speler = new Speler(this, 0.4f), 50, 250);
+			addGameObject(speler, 50, 250);
 			addGameObject(vijand = new BaasC(this), 700, 500);
 			startTimerAlarm();
 		}
-//		PowerUp[] powerarr = level.getPowerUp(currentLevel);
-//		int[] xy = level.getPowerXY(currentLevel);
-//			for(int i = 0; i < powerarr.length; i++) {
-//				addGameObject(powerarr[i], xy[i], xy[i+1]);
-//			}
+		// PowerUp[] powerarr = level.getPowerUp(currentLevel);
+		// int[] xy = level.getPowerXY(currentLevel);
+		// for(int i = 0; i < powerarr.length; i++) {
+		// addGameObject(powerarr[i], xy[i], xy[i+1]);
+		// }
 	}
 
 	/**
@@ -184,7 +185,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 		Sprite boardsSprite = new Sprite(level.pickLevelTile());
 		TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
-		TileType[] tileTypes = {boardTileType};
+		TileType[] tileTypes = { boardTileType };
 		int tileSize = 50;
 
 		tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
@@ -195,7 +196,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	public void update() {
-		if (speler != null) { 
+		if (speler != null) {
 			if (levelClear()) {
 				setCurrentLevel(getCurrentLevel() + 1);
 				setupGame();
@@ -353,7 +354,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			tijd--;
 			refreshDasboardText();
 			startTimerAlarm();
-		} else if (tijd <= 0)   {
+		} else if (tijd <= 0) {
 			bossVerslagen = true;
 		}
 	}
