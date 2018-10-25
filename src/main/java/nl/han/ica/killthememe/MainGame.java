@@ -35,6 +35,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Vogel vogel = new Vogel(this);
 	private int worldWidth;
 	private int worldHeight;
+
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
 	}
@@ -53,8 +54,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 		createDashboard(worldWidth, 100, getCurrentLevel());
 		initializeTileMap(getCurrentLevel());
-		refreshDasboardText();
 		createObjects(getCurrentLevel());
+		refreshDasboardText();
 		createView(worldWidth, worldHeight);
 	}
 
@@ -150,6 +151,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 				addGameObject(v, schuifPositie, 500);
 				schuifPositie -= 100;
 			}
+
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
@@ -196,7 +198,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	public void update() {
-		if (speler != null) {
+		if (speler != null) { 
+			dashboardText.setLeven(speler.getLeven());
 			if (levelClear()) {
 				setCurrentLevel(getCurrentLevel() + 1);
 				setupGame();

@@ -38,9 +38,8 @@ public class VijandAanval extends Aanval{
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
+				((Speler) go).verliesLeven();
 				mainGame.deleteGameObject(this);
-				mainGame.setCurrentLevel(-1);
-				mainGame.setupGame();
 			}
 		}
 	}

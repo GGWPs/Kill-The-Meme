@@ -20,6 +20,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private float aanvallenPerSeconden = 0.3f;
 	private PowerUp powerup;
 	public int speed = 2;
+	public int leven = 3;
 	public boolean magPowerUpGebruiken;
 	private final int size = 50;
 	private int totalFramez = 0;
@@ -63,8 +64,14 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
+
 		if (powerup != null && !magPowerUpGebruiken && mainGame.getBaas() != null) {
 			this.richting = getAngleFrom(mainGame.getBaas());
+		}
+		if(leven <= 0) {
+			mainGame.deleteGameObject(this);
+			mainGame.setCurrentLevel(-1);
+			mainGame.setupGame();
 		}
 	}
 
@@ -230,5 +237,26 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
+	
+	/**
+	 * Functie voor het verliezen van levens bij de vijand.
+	 */
+	public void verliesLeven() {
+		leven--;
+	}
+	
+	
+	public int getLeven() {
+		return leven;
+	}
+
+	
+	public void setLeven(int leven) {
+		this.leven += leven;
+	}
+
+
+
 
 }
