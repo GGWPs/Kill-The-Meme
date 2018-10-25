@@ -198,7 +198,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	public void update() {
 		if (speler != null) { 
-			dashboardText.setLeven(speler.getLeven());
+			if(currentLevel >= 1 && currentLevel <= 5) {
+				dashboardText.setLeven(speler.getLeven());
+			}
 			if (levelClear()) {
 				setCurrentLevel(getCurrentLevel() + 1);
 				setupGame();
