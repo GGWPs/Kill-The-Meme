@@ -222,7 +222,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 	}
 	
-	public void resetSound() {
+	public void speelAfvuurGeluid() {
 		afvuurGeluid.rewind();
 		afvuurGeluid.play();
 	}
