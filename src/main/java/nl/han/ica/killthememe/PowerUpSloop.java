@@ -16,7 +16,7 @@ public class PowerUpSloop extends PowerUp {
 	}
 
 	/**
-	 * Functie voor het gebruiken van de powerup, wordt niet gebruikt bij deze powerup.
+	 * Functie voor het gebruiken van de powerup
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {

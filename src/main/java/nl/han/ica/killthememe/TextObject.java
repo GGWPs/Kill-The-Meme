@@ -11,6 +11,7 @@ public class TextObject extends GameObject {
 
     private String text;
     private int currentLevel;
+    private int leven;
     
     /*
      * @param text tekst 
@@ -24,6 +25,13 @@ public class TextObject extends GameObject {
     public void setText(String text) {
         this.text=text;
     }
+    
+    public void setLeven(int leven) {
+        this.leven=leven;
+    }
+    
+    
+    
     /*
      * (non-Javadoc)
      * @see nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject#update()
@@ -43,7 +51,7 @@ public class TextObject extends GameObject {
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(20);
         g.text(text,getX(),getY());
-        
+        g.text("Leven:" + leven, getX(), getY()+25);
     	}
     }
 }
