@@ -127,6 +127,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 *            de hudige level
 	 */
 	private void createObjects(int currentLevel) {
+
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
@@ -154,7 +155,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
-			addGameObject(powerup = new PowerUpSloop(this), 100, 300);
+			level.addPowerUp(currentLevel);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
 			addGameObject(vijand = new BaasC(this), 700, 500);
