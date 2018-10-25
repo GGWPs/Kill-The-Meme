@@ -103,9 +103,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			menu.setText(gameNaam);
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   " + level.doel(currentLevel));
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "  Doel:" + level.doel(currentLevel));
 		} else if (getCurrentLevel() == 5) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   " + level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
+			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: " + level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
 			menu.setText(winTekst);
 			menu.setNaamText(naamText);
