@@ -35,7 +35,7 @@ public class BaasC extends Vijand {
 			Random r = new Random();
 			float richting = getAngleFrom(mainGame.getSpeler());
 			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,r.nextFloat());
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - 20 / 2 - 16,
 					getY() + getHeight() - 65);
 			magAanvallen = true;
 			startAlarm();

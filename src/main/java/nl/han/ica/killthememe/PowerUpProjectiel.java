@@ -20,7 +20,7 @@ public class PowerUpProjectiel extends PowerUp {
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, speler.richting, 0.9f);
-		mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
-				mainGame.getSpelerY() + getHeight() - 10);
+		mainGame.addGameObject(projectiel, mainGame.getSpelerX(),
+				mainGame.getSpelerY());
 	}
 }

@@ -21,7 +21,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private PowerUp powerup;
 	public int speed = 2;
 	public boolean magPowerUpGebruiken;
-	private Sprite projectileSprite;
 	private final int size = 50;
 	private int totalFramez = 0;
 	public float richting;

@@ -5,7 +5,7 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-public class VijandAanval extends Projectiel{
+public class VijandAanval extends Aanval{
 	
 	/*
 	 * VijandAanval constructor
