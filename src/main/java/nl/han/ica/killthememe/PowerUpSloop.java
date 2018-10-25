@@ -22,4 +22,12 @@ public class PowerUpSloop extends PowerUp {
 	public void gebruikPowerUp(Speler speler) {
 		sloop = true;
 	}
+	
+	/**
+	 * Functie voor het resetten van de powerup.
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+		sloop = false;
+	}
 }

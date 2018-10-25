@@ -16,7 +16,7 @@ import processing.core.PApplet;
 
 @SuppressWarnings("serial")
 public class MainGame extends GameEngine implements IAlarmListener {
-	private Sound backgroundSound;
+	private Sound backgroundSound, afvuurGeluid;
 	private boolean bossVerslagen;
 	private int currentLevel = 0;
 	private TextObject dashboardText;
@@ -127,7 +127,11 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 *            de hudige level
 	 */
 	private void createObjects(int currentLevel) {
-
+		System.out.println("CREATE");
+		if (speler != null && powerup != null) {
+			powerup.resetPowerUp(speler);
+			System.out.println("RESETPOWER");
+		}
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
@@ -155,6 +159,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
+			addGameObject(new PowerUpSloop(this), worldHeight / 4, 250);
 			level.addPowerUp(currentLevel);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
@@ -174,6 +179,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private void initializeSound() {
 		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
 		backgroundSound.loop(-1);
+		afvuurGeluid = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/biem.mp3");
 	}
 
 	/*
@@ -215,7 +221,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
-
+	
+	public void resetSound() {
+		afvuurGeluid.rewind();
+		afvuurGeluid.play();
+	}
+	
 	/**
 	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
 	 * naartoe moet gaan

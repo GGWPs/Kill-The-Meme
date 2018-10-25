@@ -29,6 +29,7 @@ public class BaasA extends Vijand {
 	@Override
 	public void afvuren() {
 		if (!magAanvallen) {
+			 mainGame.resetSound();
 			float richting = getAngleFrom(mainGame.getSpeler());
 			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.3f);
 			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - 20 / 2 - 16,

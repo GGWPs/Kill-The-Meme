@@ -45,6 +45,14 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	}
 	
 	
+	/**
+	 * Functie om de powerup te resetten
+	 * 
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+	}
+	
 
 	/**
 	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een

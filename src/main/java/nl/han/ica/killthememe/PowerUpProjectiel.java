@@ -23,4 +23,13 @@ public class PowerUpProjectiel extends PowerUp {
 		mainGame.addGameObject(projectiel, mainGame.getSpelerX(),
 				mainGame.getSpelerY());
 	}
+	
+	/**
+	 * Functie voor het resetten van de powerup.
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+		speler.setPowerup(null);
+	}
+	
 }
