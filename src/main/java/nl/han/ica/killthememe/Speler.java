@@ -64,7 +64,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		if (powerup != null && !magPowerUpGebruiken) {
+		if (powerup != null && !magPowerUpGebruiken && mainGame.getCurrentLevel() != 4) {
 			this.richting = getAngleFrom(mainGame.getBaas());
 		}
 	}

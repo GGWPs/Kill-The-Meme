@@ -39,6 +39,7 @@ public class TextObject extends GameObject {
     @Override
     public void draw(PGraphics g) {
     	if(currentLevel >= 1) {
+    	g.fill(255, 255, 255);
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(20);
         g.text(text,getX(),getY());
