@@ -69,30 +69,25 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			this.richting = getAngleFrom(mainGame.getBaas());
 			powerup.gebruikPowerUp(this);
 			magAanvallen = true;
-			startAlarmAanval();
+			startAlarm("magAanvallen");
 		}
-
-		
 	}
 
 	/**
 	 * functie voor de alarm voor de animatie.
 	 */
-	public void startAlarm() {
-		Alarm alarm = new Alarm("Animatie", 1 / 0.95f);
-		alarm.addTarget(this);
-		alarm.start();
+	public void startAlarm(String alarmName) {
+		if(alarmName == "Animatie") {
+			Alarm alarm = new Alarm(alarmName, 1 / 0.95f);
+			alarm.addTarget(this);
+			alarm.start();	
+		} else if(alarmName == "magAanvallen") {
+			Alarm alarm = new Alarm(alarmName, 1 / aanvallenPerSeconden);
+			alarm.addTarget(this);
+			alarm.start();
+		}
 	}
 
-	/**
-	 * Functie om alarm te starten voor de aanval van de speler.
-	 */
-	public void startAlarmAanval() {
-		Alarm alarm = new Alarm("magAanvallen", 1 / aanvallenPerSeconden);
-		alarm.addTarget(this);
-		alarm.start();
-
-	}
 
 	/**
 	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een
@@ -119,11 +114,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void keyPressed(int keyCode, char key) {
 		if (!isAnimatie) {
 			totalFramez = 1;
-			startAlarm();
+			startAlarm("Animatie");
 		}
 		if (isAnimatie) {
 			totalFramez = 0;
-			startAlarm();
+			startAlarm("Animatie");
 		}
 		if (keyCode == mainGame.LEFT || key == 'a') {
 			beweeg(270, speed, 0 + totalFramez);
