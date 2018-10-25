@@ -5,6 +5,7 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.collision.CollidedTile;
+import nl.han.ica.OOPDProcessingEngineHAN.collision.CollisionSide;
 import nl.han.ica.OOPDProcessingEngineHAN.collision.ICollidableWithTiles;
 import nl.han.ica.OOPDProcessingEngineHAN.exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.AnimatedSpriteObject;
@@ -165,10 +166,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
 		for (CollidedTile ct : collidedTiles) {
-			if (ct.theTile instanceof BoardsTile) {
-				vector = mainGame.getTileMap().getTilePixelLocation(ct.theTile);
+			if (ct.getTile() instanceof BoardsTile) {
+				vector = mainGame.getTileMap().getTilePixelLocation(ct.getTile());
 				if (powerup != null && powerup.getSloop() == true) {
-					if (ct.collisionSide == ct.RIGHT || ct.collisionSide == ct.LEFT || ct.collisionSide == ct.TOP || ct.collisionSide == ct.BOTTOM) {
+					if (CollisionSide.TOP.equals(ct.getCollisionSide()) || CollisionSide.BOTTOM.equals(ct.getCollisionSide()) || CollisionSide.RIGHT.equals(ct.getCollisionSide()) || CollisionSide.LEFT.equals(ct.getCollisionSide())) {
 						try {
 							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						} catch (TileNotFoundException e) {
@@ -176,28 +177,28 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 						}
 					}
 				} else {
-					if (ct.collisionSide == ct.TOP) {
+					if (CollisionSide.TOP.equals(ct.getCollisionSide())) {
 						try {
 							setY(vector.y - getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
 						}
 					}
-					if (ct.collisionSide == ct.BOTTOM) {
+					if (CollisionSide.BOTTOM.equals(ct.getCollisionSide())) {
 						try {
 							setY(vector.y + getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
 						}
 					}
-					if (ct.collisionSide == ct.RIGHT) {
+					if (CollisionSide.RIGHT.equals(ct.getCollisionSide())) {
 						try {
 							setX(vector.x + getHeight());
 						} catch (TileNotFoundException e) {
 							e.printStackTrace();
 						}
 					}
-					if (ct.collisionSide == ct.LEFT) {
+					if (CollisionSide.LEFT.equals(ct.getCollisionSide())) {
 						try {
 							setX(vector.x - getHeight());
 						} catch (TileNotFoundException e) {
