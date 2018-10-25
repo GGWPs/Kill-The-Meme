@@ -155,7 +155,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 				addGameObject(v, schuifPositie, 500);
 				schuifPositie -= 100;
 			}
-
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
