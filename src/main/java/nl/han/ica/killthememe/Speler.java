@@ -17,12 +17,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	private MainGame mainGame;
 	private boolean isAnimatie;
-	private float aanvallenPerSeconden;
+	private float aanvallenPerSeconden = 0.3f;
 	private PowerUp powerup;
 	public int speed = 2;
 	public int leven = 3;
 	public boolean magPowerUpGebruiken;
-	private Sprite projectileSprite;
 	private final int size = 50;
 	private int totalFramez = 0;
 	public float richting;
@@ -35,10 +34,9 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * @param aanvallenPerSeconden
 	 *            aanvallen per seconde
 	 */
-	public Speler(MainGame mainGame, float aanvallenPerSeconden) {
+	public Speler(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
 		this.mainGame = mainGame;
-		this.aanvallenPerSeconden = aanvallenPerSeconden;
 		this.magPowerUpGebruiken = false;
 		setCurrentFrameIndex(3);
 		setFriction(0.10f);
@@ -66,7 +64,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(mainGame.getHeight() - size);
 		}
-		if (powerup != null && !magPowerUpGebruiken && mainGame.getCurrentLevel() != 4 && mainGame.getCurrentLevel() != 3) {
+
+		if (powerup != null && !magPowerUpGebruiken && mainGame.getBaas() != null) {
 			this.richting = getAngleFrom(mainGame.getBaas());
 		}
 		if(leven <= 0) {
@@ -80,17 +79,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * functie voor de alarm voor de animatie.
 	 */
 	public void startAlarm(String alarmName) {
-		if(alarmName == "Animatie") {
+		if (alarmName == "Animatie") {
 			Alarm alarm = new Alarm(alarmName, 1 / 0.95f);
 			alarm.addTarget(this);
-			alarm.start();	
-		} else if(alarmName == "magPowerUpGebruiken") {
+			alarm.start();
+		} else if (alarmName == "magPowerUpGebruiken") {
 			Alarm alarm = new Alarm(alarmName, 1 / aanvallenPerSeconden);
 			alarm.addTarget(this);
 			alarm.start();
 		}
 	}
-
 
 	/**
 	 * Zodra de alarm afgaat, wordt deze functie uitgevoerd en wisselt hij een
@@ -140,7 +138,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	
 	/**
 	 * Functie die de speler beweegt en animatie verandert.
 	 * 
@@ -155,7 +152,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		setDirectionSpeed(directionspeed, speed);
 		setCurrentFrameIndex(frame);
 	}
-	
 
 	/**
 	 * Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de
@@ -169,7 +165,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (ct.getTile() instanceof BoardsTile) {
 				vector = mainGame.getTileMap().getTilePixelLocation(ct.getTile());
 				if (powerup != null && powerup.getSloop() == true) {
-					if (CollisionSide.TOP.equals(ct.getCollisionSide()) || CollisionSide.BOTTOM.equals(ct.getCollisionSide()) || CollisionSide.RIGHT.equals(ct.getCollisionSide()) || CollisionSide.LEFT.equals(ct.getCollisionSide())) {
+					if (CollisionSide.TOP.equals(ct.getCollisionSide())
+							|| CollisionSide.BOTTOM.equals(ct.getCollisionSide())
+							|| CollisionSide.RIGHT.equals(ct.getCollisionSide())
+							|| CollisionSide.LEFT.equals(ct.getCollisionSide())) {
 						try {
 							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
 						} catch (TileNotFoundException e) {
@@ -256,6 +255,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void setLeven(int leven) {
 		this.leven += leven;
 	}
+
 
 
 

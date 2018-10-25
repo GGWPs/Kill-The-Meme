@@ -1,12 +1,10 @@
 package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
-
 import java.util.List;
-
 import nl.han.ica.OOPDProcessingEngineHAN.collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
+
 import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 
 public abstract class Aanval extends SpriteObject implements ICollidableWithGameObjects{
@@ -33,7 +31,10 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	 */
 	@Override
 	public void update() {
-
+		if (getY() < 0 || getY() > mainGame.getHeight() || 
+				getX() < 0 || getX() > mainGame.getWidth()) {
+			mainGame.deleteGameObject(this);
+		}
 	}
 	/*
 	 * (non-Javadoc)

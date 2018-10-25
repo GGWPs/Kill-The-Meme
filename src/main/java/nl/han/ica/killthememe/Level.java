@@ -183,6 +183,10 @@ public class Level {
 	public void addPowerUp(int currentLevel) {
 		if(currentLevel == 2) {
 			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
+		} else if(currentLevel == 3) {
+			mainGame.addGameObject(new PowerUpVlug(mainGame), 0, 300);
+		} else if(currentLevel == 4) {
+			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
 		}
 		
 	}

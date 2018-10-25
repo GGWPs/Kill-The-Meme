@@ -5,7 +5,7 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-public class SpelerEenAanval extends Projectiel {
+public class SpelerEenAanval extends Aanval {
 	
 	/*
 	 * SpelerEenAanval constructor
