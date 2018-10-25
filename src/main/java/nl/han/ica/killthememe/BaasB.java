@@ -2,7 +2,7 @@ package nl.han.ica.killthememe;
 
 import java.util.Random;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 /**
  * @author Ivan Miladinovic

@@ -1,6 +1,6 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import processing.core.PGraphics;
 
 /**

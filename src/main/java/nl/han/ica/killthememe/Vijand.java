@@ -1,10 +1,10 @@
 	package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
+import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 
 public class Vijand extends SpriteObject implements IAlarmListener {
 	protected float aanvallenPerSeconden;

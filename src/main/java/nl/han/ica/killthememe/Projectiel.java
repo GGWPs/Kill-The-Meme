@@ -2,8 +2,8 @@ package nl.han.ica.killthememe;
 
 import java.util.List;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public abstract class Projectiel extends Aanval {
 	

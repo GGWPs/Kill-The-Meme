@@ -1,15 +1,15 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
-import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
-import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
+import nl.han.ica.OOPDProcessingEngineHAN.dashboard.Dashboard;
+import nl.han.ica.OOPDProcessingEngineHAN.engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
+import nl.han.ica.OOPDProcessingEngineHAN.tile.TileMap;
+import nl.han.ica.OOPDProcessingEngineHAN.tile.TileType;
+import nl.han.ica.OOPDProcessingEngineHAN.view.View;
 import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
