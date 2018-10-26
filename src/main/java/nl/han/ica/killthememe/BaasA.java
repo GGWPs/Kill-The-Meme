@@ -4,11 +4,6 @@ import java.util.Random;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-/**
- * @author Kaene Peters & Ivan Miladinovic
- * 
- */
-
 public class BaasA extends Vijand {
 	
 	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png");
@@ -22,9 +17,8 @@ public class BaasA extends Vijand {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
 		this.mainGame = mainGame;
 	}
-
 	/**
-	 * vuurt projectielen af die richting de speler gaan
+	 * Maakt een Aanval aan die richting de speler gaat
 	 */
 	@Override
 	public void afvuren() {

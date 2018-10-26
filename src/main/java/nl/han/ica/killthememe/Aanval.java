@@ -23,7 +23,6 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 		super(sprite);
 		this.mainGame = mainGame;
 		setDirectionSpeed(richting, snelheid);
-
 	}
 
 	/**

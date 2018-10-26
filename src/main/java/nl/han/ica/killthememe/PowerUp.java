@@ -15,20 +15,14 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	protected boolean sloop;
 	protected boolean aanval;
 	protected Sprite projectileSprite;
-	
-	/**
-	 * Attribuut van de speler voor het checken van de collision.
-	 */
 	protected Speler speler;
 
 	/**
 	 * PowerUp constructor
 	 * 
-	 * @param mainGame
-	 *            referentie naar de wereld
+	 * @param mainGame referentie naar de wereld
 	 * 
-	 * @param powerUpNaam
-	 *            referentie naar de naam van de powerup
+	 * @param powerUpNaam referentie naar de naam van de powerup
 	 */
 	public PowerUp(Sprite sprite, MainGame mainGame) {
 		super(sprite);
@@ -39,20 +33,16 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	/**
 	 * Functie om de powerup te gebruiken
 	 * 
-	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
 	}
-	
-	
+
 	/**
-	 * Functie om de powerup te resetten
-	 * 
+	 * Methode om de powerup te resetten
 	 * 
 	 */
 	public void resetPowerUp(Speler speler) {
 	}
-	
 
 	/**
 	 * (non-Javadoc) kijkt of de speler tegen het object aan loopt en zet een
@@ -70,22 +60,21 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 			}
 		}
 	}
-	
-	
+
+	/**
+	 * returned sloop boolean
+	 * 
+	 */
 	public boolean getSloop() {
 		return sloop;
 	}
-	
-	public boolean getAanval() {
-		return aanval;
-	}
+
+	/**
+	 * returned aanval boolean
+	 * 
+	 */
 
 	public void update() {
-	}
-
-	public void afvuren(float richting) {
-
-		
 	}
 
 }

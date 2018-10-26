@@ -5,10 +5,6 @@ import java.util.Random;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-/**
- * @author Ivan Miladinovic
- * 
- */
 
 public class BaasC extends Vijand {
 	
@@ -27,7 +23,7 @@ public class BaasC extends Vijand {
 	}
 
 	/**
-	 * vuurt projectielen af die richting de speler gaan
+	 * Maakt een Aanval aan die richting de speler gaat met de mogelijkheid voor een speciale aanval
 	 */
 	@Override
 	public void afvuren() {
