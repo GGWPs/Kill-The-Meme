@@ -37,7 +37,13 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private int worldHeight;
 
 	public static void main(String[] args) {
-		PApplet.main(new String[] { "nl.han.ica.killthememe.MainGame" });
+		//PApplet.main(new String[] {"nl.han.ica.killthememe.MainGame"});
+		
+		String[] processingArgs = {"nl.han.ica.killthememe.MainGame"};
+		MainGame mySketch = new MainGame();
+		
+		PApplet.runSketch(processingArgs, mySketch);
+		
 	}
 
 	/**
