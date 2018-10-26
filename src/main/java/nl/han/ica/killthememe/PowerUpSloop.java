@@ -29,5 +29,6 @@ public class PowerUpSloop extends PowerUp {
 	 */
 	public void resetPowerUp(Speler speler) {
 		sloop = false;
+		speler.setPowerup(null);
 	}
 }

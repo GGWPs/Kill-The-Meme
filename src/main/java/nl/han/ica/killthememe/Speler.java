@@ -29,10 +29,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	/**
 	 * Speler constructor
 	 * 
-	 * @param mainGame
-	 *            de wereld
-	 * @param aanvallenPerSeconden
-	 *            aanvallen per seconde
+	 * @param mainGame de wereld
 	 */
 	public Speler(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
@@ -68,7 +65,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (powerup != null && !magPowerUpGebruiken && mainGame.getBaas() != null) {
 			this.richting = getAngleFrom(mainGame.getBaas());
 		}
-		if(leven <= 0) {
+		if (leven <= 0) {
 			mainGame.deleteGameObject(this);
 			mainGame.setCurrentLevel(-1);
 			mainGame.setupGame();
@@ -218,6 +215,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		return powerup;
 	}
 
+	public void resetPowerups() {
+		if (powerup != null) {
+			powerup.resetPowerUp(this);
+		}
+	}
+
 	/**
 	 * Functie om de powerup van de speler aan te passen
 	 * 
@@ -237,26 +240,20 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-	
+
 	/**
 	 * Functie voor het verliezen van levens bij de vijand.
 	 */
 	public void verliesLeven() {
 		leven--;
 	}
-	
-	
+
 	public int getLeven() {
 		return leven;
 	}
 
-	
 	public void setLeven(int leven) {
 		this.leven += leven;
 	}
-
-
-
 
 }

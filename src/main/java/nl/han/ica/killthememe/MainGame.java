@@ -127,11 +127,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 *            de hudige level
 	 */
 	private void createObjects(int currentLevel) {
-		System.out.println("CREATE");
-		if (speler != null && powerup != null) {
-			powerup.resetPowerUp(speler);
-			System.out.println("RESETPOWER");
-		}
+		speler.resetPowerups();
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
@@ -203,8 +199,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	public void update() {
-		if (speler != null) { 
-			if(currentLevel >= 1 && currentLevel <= 5) {
+		if (speler != null) {
+			if (currentLevel >= 1 && currentLevel <= 5) {
 				dashboardText.setLeven(speler.getLeven());
 			}
 			if (levelClear()) {
@@ -220,12 +216,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
-	
+
 	public void speelAfvuurGeluid() {
 		afvuurGeluid.rewind();
 		afvuurGeluid.play();
 	}
-	
+
 	/**
 	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
 	 * naartoe moet gaan
@@ -307,8 +303,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		} else if (getCurrentLevel() == 3 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= worldWidth
 				&& speler.getY() <= 150) {
 			return true;
-		} else if (getCurrentLevel() == 4 && speler.getX() >= worldWidth-50 && speler.getY() >= 250 && speler.getX() <= worldWidth
-				&& speler.getY() <= 350) {
+		} else if (getCurrentLevel() == 4 && speler.getX() >= worldWidth - 50 && speler.getY() >= 250
+				&& speler.getX() <= worldWidth && speler.getY() <= 350) {
 			return true;
 		} else if (getCurrentLevel() == 5 && bossVerslagen) {
 			return true;
