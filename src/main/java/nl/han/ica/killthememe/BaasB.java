@@ -4,10 +4,6 @@ import java.util.Random;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-/**
- * @author Ivan Miladinovic
- * 
- */
 
 public class BaasB extends Vijand {
 
@@ -26,7 +22,7 @@ public class BaasB extends Vijand {
 	}
 
 	/**
-	 * vuurt projectielen af die richting de speler gaan
+	 * Maakt een Aanval object aan die richting de speler gaat
 	 */
 	@Override
 	public void afvuren() {
@@ -42,7 +38,7 @@ public class BaasB extends Vijand {
 	}
 
 	/**
-	 * kijkt of er aangevallen mag worden
+	 * kijkt of de vijand nog levens heeft
 	 */
 	@Override
 	public void update() {
