@@ -12,7 +12,8 @@ public class SpelerEenAanval extends Aanval {
 	 * 
 	 * @oparam mainGame referentie naar mainGame
 	 * @param sprite de afbeelding van de aanval
-	 * @param richting de richting van de projectiel
+	 * @param richting de richting van de aanval
+	 * @param snelheid van de aanval
 	 */
 	public SpelerEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png"), richting, snelheid);

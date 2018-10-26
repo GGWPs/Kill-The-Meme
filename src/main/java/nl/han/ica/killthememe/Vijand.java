@@ -31,7 +31,6 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 
 	}
 	
-	//wordt niet gebruikt
 	public void update() {
 		
 	}

@@ -16,15 +16,13 @@ public class PowerUpVlug extends PowerUp {
 	}
 
 	/**
-	 * Functie voor het gebruiken van de powerup, hiermee wordt de snelheid van de speler verdubbelt
+	 * Functie voor het gebruiken van de powerup, hiermee wordt de snelheid van de speler verhoogt
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		System.out.println("speed up");
 		speler.setSpeed(4);
 	}
-	
-	
 	/**
 	 * Functie voor het resetten van de powerup.
 	 * 

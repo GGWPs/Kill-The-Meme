@@ -154,7 +154,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
-			addGameObject(new PowerUpSloop(this), worldHeight / 4, 250);
 			level.addPowerUp(currentLevel);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);

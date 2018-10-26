@@ -16,7 +16,10 @@ public class VijandAanval extends Aanval{
 	public VijandAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
 		super(mainGame,sprite, richting,snelheid);
 	}
-	
+	/**
+	 * Update constant uitgevoerd en checkt of het object buiten zijn gebied komt.
+	 * 
+	 */
 	@Override
 	public void update() {
 		if(mainGame.getCurrentLevel() == -10) {

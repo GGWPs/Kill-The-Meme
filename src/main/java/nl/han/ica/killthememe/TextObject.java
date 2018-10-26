@@ -3,10 +3,7 @@ package nl.han.ica.killthememe;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import processing.core.PGraphics;
 
-/**
- * @author Ralph Niels
- * Wordt gebruikt om een tekst te kunnen afbeelden
- */
+
 public class TextObject extends GameObject {
 
     private String text;
@@ -29,8 +26,6 @@ public class TextObject extends GameObject {
     public void setLeven(int leven) {
         this.leven=leven;
     }
-    
-    
     
     /*
      * (non-Javadoc)

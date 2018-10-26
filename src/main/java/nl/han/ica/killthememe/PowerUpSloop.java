@@ -16,7 +16,7 @@ public class PowerUpSloop extends PowerUp {
 	}
 
 	/**
-	 * Functie voor het gebruiken van de powerup
+	 * Methode voor het gebruiken van de powerup
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
@@ -24,7 +24,7 @@ public class PowerUpSloop extends PowerUp {
 	}
 	
 	/**
-	 * Functie voor het resetten van de powerup.
+	 * Methode voor het resetten van de powerup.
 	 * 
 	 */
 	public void resetPowerUp(Speler speler) {
