@@ -70,7 +70,6 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			magAanvallen = true;
 			startAlarmAanval();
 		}
-
 		
 	}
 
