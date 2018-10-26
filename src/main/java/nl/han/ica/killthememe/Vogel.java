@@ -77,4 +77,6 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener{
 		  }
 	}
 	
+	
+	
 }

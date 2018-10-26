@@ -8,7 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class BaasC extends Vijand {
 	
-	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasDrieAanval.png");
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasCAanval.png");
 	private int speciaalAanval = 0;
 	private double aanvalSnelheid = 1.5;
 	
@@ -18,7 +18,7 @@ public class BaasC extends Vijand {
 	 * @param mainGame de wereld.
 	 */
 	public BaasC(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasDrie.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasC.png"), mainGame, 0.2f);
 
 	}
 

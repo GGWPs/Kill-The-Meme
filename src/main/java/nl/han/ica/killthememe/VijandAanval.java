@@ -44,6 +44,13 @@ public class VijandAanval extends Aanval{
 				((Speler) go).verliesLeven();
 				mainGame.deleteGameObject(this);
 			}
+			if (go instanceof Vogel) {
+				((Vogel) go).setVisible(false);
+				mainGame.deleteGameObject(this);
+			}
+			if (go instanceof SpelerAanval) {
+				mainGame.deleteGameObject(this);
+			}
 		}
 	}
 }

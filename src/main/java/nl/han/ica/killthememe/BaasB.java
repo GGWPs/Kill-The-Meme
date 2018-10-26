@@ -8,7 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 public class BaasB extends Vijand {
 
 	private Sprite projectileSprite = new Sprite(
-			"src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasTweeAanval.png");
+			"src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasBAanval.png");
 	private int leven = 3;
 
 	/**
@@ -17,7 +17,7 @@ public class BaasB extends Vijand {
 	 * @param mainGame
 	 */
 	public BaasB(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/harambeboss.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasB.png"), mainGame, 0.2f);
 
 	}
 

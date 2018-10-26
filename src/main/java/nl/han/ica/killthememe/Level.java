@@ -174,7 +174,7 @@ public class Level {
 			mainGame.addGameObject(new PowerUpVlug(mainGame), 0, 300);
 		} else if(currentLevel == 4) {
 			mainGame.addGameObject(new PowerUpSloop(mainGame), 100, 300);
-			mainGame.addGameObject(new PowerUpLeven(mainGame), 600, 250);
+			mainGame.addGameObject(new PowerUpLeven(mainGame), 650, 250);
 		}
 	}
 	/**

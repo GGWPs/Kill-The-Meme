@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class BaasA extends Vijand {
 	
-	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png");
+	private Sprite projectileSprite = new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasAAanval.png");
 	
 	/**
 	 * BaasEen constructor
@@ -14,7 +14,7 @@ public class BaasA extends Vijand {
 	 * @param mainGame de wereld
 	 */
 	public BaasA(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasEenCarlosMatos.png"), mainGame, 0.2f);
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasA.png"), mainGame, 0.2f);
 		this.mainGame = mainGame;
 	}
 	/**

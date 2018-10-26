@@ -19,7 +19,7 @@ public class PowerUpProjectiel extends PowerUp {
 	 * en op spatie drukt.
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, speler.richting, 0.9f);
+		Aanval projectiel = new SpelerAanval(mainGame, projectileSprite, speler.richting, 0.9f);
 		mainGame.addGameObject(projectiel, mainGame.getSpelerX(),
 				mainGame.getSpelerY());
 	}

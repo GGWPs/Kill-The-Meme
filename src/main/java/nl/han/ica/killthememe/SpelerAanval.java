@@ -5,7 +5,7 @@ import java.util.List;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-public class SpelerEenAanval extends Aanval {
+public class SpelerAanval extends Aanval {
 	
 	/*
 	 * SpelerEenAanval constructor
@@ -15,8 +15,8 @@ public class SpelerEenAanval extends Aanval {
 	 * @param richting de richting van de aanval
 	 * @param snelheid van de aanval
 	 */
-	public SpelerEenAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
-		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasEenAanval.png"), richting, snelheid);
+	public SpelerAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
+		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasAAanval.png"), richting, snelheid);
 
 	}
 	/*
@@ -28,6 +28,13 @@ public class SpelerEenAanval extends Aanval {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Vijand) {
 				((Vijand) go).verliesLeven();
+				mainGame.deleteGameObject(this);
+			}
+			if (go instanceof Vogel) {
+				((Vogel) go).setVisible(false);
+				mainGame.deleteGameObject(this);
+			}
+			if (go instanceof VijandAanval) {
 				mainGame.deleteGameObject(this);
 			}
 		}

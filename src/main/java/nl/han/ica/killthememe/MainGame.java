@@ -58,6 +58,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == 0 && backgroundSound == null) {
 			initializeSound();
 		}
+		vijand = null;
 		createDashboard(worldWidth, 100, getCurrentLevel());
 		initializeTileMap(getCurrentLevel());
 		createObjects(getCurrentLevel());
@@ -134,6 +135,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 *            het hudige level
 	 */
 	private void createObjects(int currentLevel) {
+
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
