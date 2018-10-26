@@ -301,13 +301,13 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (getCurrentLevel() == 1 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
 				&& speler.getY() <= 150) {
 			return true;
-		} else if (getCurrentLevel() == 2 && speler.getX() >= 715 && speler.getY() >= 500 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 2 && speler.getX() >= 715 && speler.getY() >= 500 && speler.getX() <= worldWidth
 				&& speler.getY() <= 600 || getCurrentLevel() == 2 && bossVerslagen) {
 			return true;
-		} else if (getCurrentLevel() == 3 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 3 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= worldWidth
 				&& speler.getY() <= 150) {
 			return true;
-		} else if (getCurrentLevel() == 4 && speler.getX() >= 750 && speler.getY() >= 250 && speler.getX() <= 800
+		} else if (getCurrentLevel() == 4 && speler.getX() >= worldWidth-50 && speler.getY() >= 250 && speler.getX() <= worldWidth
 				&& speler.getY() <= 350) {
 			return true;
 		} else if (getCurrentLevel() == 5 && bossVerslagen) {
