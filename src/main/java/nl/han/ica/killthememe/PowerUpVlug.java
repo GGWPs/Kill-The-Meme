@@ -1,6 +1,6 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpVlug extends PowerUp {
 
@@ -20,9 +20,17 @@ public class PowerUpVlug extends PowerUp {
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
+		System.out.println("speed up");
 		speler.setSpeed(4);
 	}
 	
 	
-
+	/**
+	 * Functie voor het resetten van de powerup.
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+		speler.setSpeed(2);
+		speler.setPowerup(null);
+	}
 }

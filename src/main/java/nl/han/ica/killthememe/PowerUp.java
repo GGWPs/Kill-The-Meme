@@ -2,12 +2,12 @@ package nl.han.ica.killthememe;
 
 import java.util.List;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
+import nl.han.ica.OOPDProcessingEngineHAN.collision.ICollidableWithGameObjects;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 
 public abstract class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
 	protected MainGame mainGame;
@@ -44,6 +44,14 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	public void gebruikPowerUp(Speler speler) {
 	}
 	
+	
+	/**
+	 * Functie om de powerup te resetten
+	 * 
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+	}
 	
 
 	/**

@@ -2,10 +2,10 @@ package nl.han.ica.killthememe;
 
 import java.util.List;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
-public class VijandAanval extends Projectiel{
+public class VijandAanval extends Aanval{
 	
 	/*
 	 * VijandAanval constructor
@@ -38,9 +38,8 @@ public class VijandAanval extends Projectiel{
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject go : collidedGameObjects) {
 			if (go instanceof Speler) {
+				((Speler) go).verliesLeven();
 				mainGame.deleteGameObject(this);
-				mainGame.setCurrentLevel(-1);
-				mainGame.setupGame();
 			}
 		}
 	}

@@ -1,14 +1,15 @@
 package nl.han.ica.killthememe;
 
 public class Level {
-	private int currentLevel;
+	private MainGame mainGame;
+	private Vijand vijand;
 
 	/**
 	 * Level constructor
 	 * @param currentLevel de huidige level.
 	 */
-	public Level(int currentLevel) {
-		this.currentLevel = currentLevel;
+	public Level(MainGame mainGame) {
+		this.mainGame = mainGame;
 	}
 	
 	
@@ -162,4 +163,59 @@ public class Level {
 		}
 
 	}
+	
+	
+	
+//	public void addGame() {
+//		mainGame.addGameObject(new Speler(mainGame, 0.4f), 10, 100);
+//		mainGame.addGameObject(new Vogel(mainGame), 1000, 100);
+//		mainGame.addGameObject(vijand = new BaasB(mainGame), 700, 500);
+//		mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
+//	}
+//
+//
+//	public Vijand getVijand() {
+//		return vijand;
+//	}
+
+	
+	
+	public void addPowerUp(int currentLevel) {
+		if(currentLevel == 2) {
+			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
+		} else if(currentLevel == 3) {
+			mainGame.addGameObject(new PowerUpVlug(mainGame), 0, 300);
+		} else if(currentLevel == 4) {
+			mainGame.addGameObject(new PowerUpLeven(mainGame), 100, 300);
+		}
+		
+	}
+	
+	public PowerUp[] getPowerUp(int currentLevel) {
+		if(currentLevel == 2) {
+			PowerUp[] powerarr = {new PowerUpProjectiel(mainGame)};
+			return  powerarr; 
+		} else if(currentLevel == 3) {
+			PowerUp[] powerarr = {new PowerUpVlug(mainGame)};
+			return  powerarr; 
+		}
+		
+		return null;
+	}
+	
+	public int[] getPowerXY(int currentLevel){
+		if(currentLevel == 2) {
+		int[] xy = {0,300};
+		
+		return xy;
+		} else {
+			return null;
+		}
+		
+	}
+
+	
+	
+	
+	
 }

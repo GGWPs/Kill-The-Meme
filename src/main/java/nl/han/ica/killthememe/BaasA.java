@@ -2,7 +2,7 @@ package nl.han.ica.killthememe;
 
 import java.util.Random;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 /**
  * @author Kaene Peters & Ivan Miladinovic
@@ -29,15 +29,13 @@ public class BaasA extends Vijand {
 	@Override
 	public void afvuren() {
 		if (!magAanvallen) {
+			 mainGame.speelAfvuurGeluid();
 			float richting = getAngleFrom(mainGame.getSpeler());
 			Aanval projectiel = new VijandAanval(mainGame, projectileSprite, richting,0.3f);
-			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 16,
+			mainGame.addGameObject(projectiel, getX() + getWidth() / 2 - 20 / 2 - 16,
 					getY() + getHeight() - 65);
 			magAanvallen = true;
 			startAlarm();
 		}
-
 	}
-
-
 }

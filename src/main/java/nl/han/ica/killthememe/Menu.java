@@ -1,11 +1,11 @@
 package nl.han.ica.killthememe;
 
 
-import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.dashboard.Dashboard;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.persistence.FilePersistence;
+import nl.han.ica.OOPDProcessingEngineHAN.persistence.IPersistence;
+import nl.han.ica.OOPDProcessingEngineHAN.engine.GameEngine;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
@@ -82,7 +82,7 @@ public class Menu extends GameObject{
     	if (keyCode == ENTER) {
     		if(currentLevel == 0 || currentLevel == -10)
     		  mainGame.setCurrentName(naamText);
-			  mainGame.setCurrentLevel(5);
+			  mainGame.setCurrentLevel(3);
 		      mainGame.setupGame();
 		  }
     }

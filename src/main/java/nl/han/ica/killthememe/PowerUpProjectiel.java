@@ -1,6 +1,6 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpProjectiel extends PowerUp {
 	
@@ -20,7 +20,16 @@ public class PowerUpProjectiel extends PowerUp {
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		Aanval projectiel = new SpelerEenAanval(mainGame, projectileSprite, speler.richting, 0.9f);
-		mainGame.addGameObject(projectiel, mainGame.getSpelerX() + getWidth() / 2 - Projectiel.WIDTH / 2 - 10,
-				mainGame.getSpelerY() + getHeight() - 10);
+		mainGame.addGameObject(projectiel, mainGame.getSpelerX(),
+				mainGame.getSpelerY());
 	}
+	
+	/**
+	 * Functie voor het resetten van de powerup.
+	 * 
+	 */
+	public void resetPowerUp(Speler speler) {
+		speler.setPowerup(null);
+	}
+	
 }

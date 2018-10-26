@@ -1,7 +1,7 @@
 package nl.han.ica.waterworld.tiles;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.Tile;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.tile.Tile;
 
 /**
  * Created by ralphniels on 08-06-15.

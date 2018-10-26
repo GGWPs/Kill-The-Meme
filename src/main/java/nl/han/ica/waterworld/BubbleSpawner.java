@@ -1,8 +1,8 @@
 package nl.han.ica.waterworld;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
-import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
+import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 
 import java.util.Random;
 

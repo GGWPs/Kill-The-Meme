@@ -1,6 +1,6 @@
 package nl.han.ica.killthememe;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import processing.core.PGraphics;
 
 /**
@@ -11,6 +11,7 @@ public class TextObject extends GameObject {
 
     private String text;
     private int currentLevel;
+    private int leven;
     
     /*
      * @param text tekst 
@@ -24,6 +25,13 @@ public class TextObject extends GameObject {
     public void setText(String text) {
         this.text=text;
     }
+    
+    public void setLeven(int leven) {
+        this.leven=leven;
+    }
+    
+    
+    
     /*
      * (non-Javadoc)
      * @see nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject#update()
@@ -39,10 +47,11 @@ public class TextObject extends GameObject {
     @Override
     public void draw(PGraphics g) {
     	if(currentLevel >= 1) {
+    	g.fill(255, 255, 255);
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(20);
         g.text(text,getX(),getY());
-        
+        g.text("Leven:" + leven, getX(), getY()+25);
     	}
     }
 }
