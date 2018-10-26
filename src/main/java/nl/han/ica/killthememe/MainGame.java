@@ -41,7 +41,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * Dit creert alle objecten en maakt de level.
+	 * Dit verwijderd alle huidige objecten en maakt het volgende level aan.
 	 */
 	@Override
 	public void setupGame() {
@@ -57,6 +57,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		createObjects(getCurrentLevel());
 		refreshDasboardText();
 		createView(worldWidth, worldHeight);
+		speler.resetPowerups();
 	}
 
 	/**
@@ -97,7 +98,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * Functie om de dashboard te verversen.
+	 * Functie om het dashboard te verversen.
 	 */
 	private void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
@@ -121,13 +122,12 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * Dit is voor de creatie van Game Objecten
+	 * Dit is voor de creatie van de Game Objecten
 	 * 
 	 * @param currentLevel
-	 *            de hudige level
+	 *            het hudige level
 	 */
 	private void createObjects(int currentLevel) {
-		speler.resetPowerups();
 		if (currentLevel == -10) {
 			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
@@ -193,11 +193,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 		tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
 	}
-
-	public void bossVerslagen() {
-		bossVerslagen = true;
-	}
-
+	/*
+	 * Update functie die constant uitgevoerd wordt.
+	 */
 	public void update() {
 		if (speler != null) {
 			if (currentLevel >= 1 && currentLevel <= 5) {
@@ -216,15 +214,23 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
-
+	/*
+	 * Methode die een geluid afspeelt
+	 */
 	public void speelAfvuurGeluid() {
 		afvuurGeluid.rewind();
 		afvuurGeluid.play();
 	}
 
+	/*
+	 * Zet bossVerslagen op true.
+	 */
+	public void bossVerslagen() {
+		bossVerslagen = true;
+	}
+
 	/**
-	 * Haalt de spelers gameobject op zodat de vijands projectiel weet waar die
-	 * naartoe moet gaan
+	 * Haalt het speler gameobject op om de richting van het projectiel voor de vijand te bepalen
 	 * 
 	 * @return speler Object van de speler
 	 */
@@ -242,25 +248,21 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * Functie om de level te wijzigen
+	 * Functie om het level te wijzigen
 	 * 
-	 * @param currentLevel
-	 *            huidige level
+	 * @param currentLevel huidige level
 	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-
 	/**
 	 * Functie om de naam op te slaan.
 	 * 
-	 * @param naamText
-	 *            de naam die ingevoerd is
+	 * @param naamText de naam die ingevoerd is
 	 */
 	public void setCurrentName(String naamText) {
 		this.naamText = naamText;
 	}
-
 	/**
 	 * Haalt de X pos van de speler op
 	 * 
@@ -269,7 +271,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public float getSpelerX() {
 		return speler.getX();
 	}
-
 	/**
 	 * Haalt de Y pos van de speler op
 	 * 
@@ -278,9 +279,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public float getSpelerY() {
 		return speler.getY();
 	}
-
 	/**
-	 * Haalt de gameobject op zodat de projectiel weet waar die naartoe moet gaan
+	 * Haalt het gameobject op zodat de projectiel naar het vijand object toe gaat
 	 * 
 	 * @return baas object
 	 */
@@ -289,9 +289,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * checkt of de level is gecleared en returnt true.
+	 * checkt of het de eisesn voor hetlevel gecleared zijn en returnt dan true.
 	 * 
-	 * @return
+	 * @return boolean
 	 */
 	public boolean levelClear() {
 		if (getCurrentLevel() == 1 && speler.getX() >= 740 && speler.getY() >= 50 && speler.getX() <= 800
