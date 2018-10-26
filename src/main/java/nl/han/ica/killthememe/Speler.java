@@ -67,6 +67,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if (leven <= 0) {
 			mainGame.deleteGameObject(this);
+			leven = 3;
 			mainGame.setCurrentLevel(-1);
 			mainGame.setupGame();
 		}
@@ -162,14 +163,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (ct.getTile() instanceof BoardsTile) {
 				vector = mainGame.getTileMap().getTilePixelLocation(ct.getTile());
 				if (powerup != null && powerup.getSloop() == true) {
-					if (CollisionSide.TOP.equals(ct.getCollisionSide())
-							|| CollisionSide.BOTTOM.equals(ct.getCollisionSide())
-							|| CollisionSide.RIGHT.equals(ct.getCollisionSide())
-							|| CollisionSide.LEFT.equals(ct.getCollisionSide())) {
-						try {
-							mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-						} catch (TileNotFoundException e) {
-							e.printStackTrace();
+					for(CollisionSide cs : CollisionSide.values()) {
+						if(cs.equals(ct.getCollisionSide())) {
+							try {
+								mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+							} catch (TileNotFoundException e) {
+								e.printStackTrace();
+							}
 						}
 					}
 				} else {
