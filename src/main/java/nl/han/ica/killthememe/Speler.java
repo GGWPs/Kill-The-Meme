@@ -21,15 +21,17 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private PowerUp powerup;
 	public int speed = 2;
 	public int leven = 3;
-	public boolean magPowerUpGebruiken;
+	private boolean magPowerUpGebruiken;
 	private final int size = 50;
-	private int totalFramez = 0;
 	public float richting;
+	private int totalFramez = 0;
+	public PVector vector = null;
 
 	/**
 	 * Speler constructor
 	 * 
-	 * @param mainGame de wereld
+	 * @param mainGame
+	 *            de wereld
 	 */
 	public Speler(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
@@ -153,7 +155,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	/**
 	 * Deze functie kijkt of de speler tegen een tile aanloopt en als de speler de
-	 * powerup sloop heeft opgeraapt, sloopt hij alle tiles.
+	 * powerup sloop heeft opgeraapt sloopt hij de tile.
 	 * 
 	 */
 	@Override
@@ -163,10 +165,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (ct.getTile() instanceof BoardsTile) {
 				vector = mainGame.getTileMap().getTilePixelLocation(ct.getTile());
 				if (powerup != null && powerup.getSloop() == true) {
-					for(CollisionSide cs : CollisionSide.values()) {
-						if(cs.equals(ct.getCollisionSide())) {
+					for (CollisionSide cs : CollisionSide.values()) {
+						if (cs.equals(ct.getCollisionSide())) {
 							try {
-								mainGame.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+								geeftTileMee(vector);
+								powerup.gebruikPowerUp(this);
 							} catch (TileNotFoundException e) {
 								e.printStackTrace();
 							}
@@ -204,6 +207,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 				}
 			}
 		}
+	}
+
+	public void geeftTileMee(PVector vector) {
+		this.vector = vector;
 	}
 
 	/**

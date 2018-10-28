@@ -4,12 +4,12 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpSloop extends PowerUp {
 
-
 	/**
 	 * PowerUpSloop constructor
 	 * 
-	 * @param mainGame de wereld
-	 *            
+	 * @param mainGame
+	 *            de wereld
+	 * 
 	 */
 	public PowerUpSloop(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpSloop.png"), mainGame);
@@ -21,8 +21,11 @@ public class PowerUpSloop extends PowerUp {
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		sloop = true;
+		if (speler.vector != null) {
+			mainGame.getTileMap().setTile((int) speler.vector.x / 50, (int) speler.vector.y / 50, -1);
+		}
 	}
-	
+
 	/**
 	 * Methode voor het resetten van de powerup.
 	 * 
