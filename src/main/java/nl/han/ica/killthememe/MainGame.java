@@ -139,7 +139,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		level.addPowerUp(currentLevel);
 		if (currentLevel == -10) {
 			addGameObject(speler, 300, 250);
-			addGameObject(vijand = new BaasA(this), 650, 250);
 		} else if (currentLevel == 1) {
 			backgroundSound.rewind();
 			addGameObject(speler, 10, 100);
@@ -161,11 +160,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 		if(vijanden != null) {
 			int[][] xy = level.getVijandXY(currentLevel);
-			for (Vijand v : vijanden) {
 				for(int i = 0; i < vijanden.length; i++) {
-					addGameObject(v, xy[i][0], xy[i][1]);
+					addGameObject(vijanden[i], xy[i][0], xy[i][1]);
 				}
-			}
 		}
 	}
 

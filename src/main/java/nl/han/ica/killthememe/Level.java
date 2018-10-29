@@ -182,7 +182,10 @@ public class Level {
 	
 	
 	public Vijand[] getVijanden(int currentLevel) {
-		if(currentLevel == 1) {
+		if(currentLevel == -10) {
+			Vijand[] vijanden = {new BaasA(mainGame)};
+			return vijanden;
+		} else if(currentLevel == 1) {
 			Vijand[] vijanden = {new BaasA(mainGame)};
 			return vijanden;
 		} else if(currentLevel == 2) {
