@@ -168,7 +168,9 @@ public class Level {
 	 * 
 	 */
 	public void addPowerUp(int currentLevel) {
-		if (currentLevel == 2) {
+		if(currentLevel == -10) {
+			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 600 / 4, 250);
+		} else if (currentLevel == 2) {
 			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
 		} else if (currentLevel == 3) {
 			mainGame.addGameObject(new PowerUpVlug(mainGame), 0, 300);
@@ -176,23 +178,6 @@ public class Level {
 			mainGame.addGameObject(new PowerUpSloop(mainGame), 100, 300);
 			mainGame.addGameObject(new PowerUpLeven(mainGame), 650, 250);
 		}
-	}
-	/**
-	 * 
-	 * Voegt verschillende PowerUps toe aan het level
-	 * 
-	 * @param currentLevel voor huidige level
-	 * 
-	 */
-	public int[] getPowerXY(int currentLevel) {
-		if (currentLevel == 2) {
-			int[] xy = { 0, 300 };
-
-			return xy;
-		} else {
-			return null;
-		}
-
 	}
 	
 	
@@ -206,9 +191,30 @@ public class Level {
 		} else if(currentLevel == 3) {
 			Vijand[] vijanden = {new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame)};
 			return vijanden;
+		} else if(currentLevel == 5) {
+			Vijand[] vijanden = {new BaasC(mainGame)};
+			return vijanden;
 		}
-		
 		return null;
 	}
-
+	
+	public int[][] getVijandXY(int currentLevel){
+		if(currentLevel == -10) {
+			int[][] xy = {{650, 250}};
+			return xy;
+		}  else if(currentLevel == 1) {
+			int[][] xy = {{220, 500}};
+			return xy;
+		}else if(currentLevel == 2) {
+			int[][] xy = {{700, 500}};
+			return xy;
+		}else if(currentLevel == 3) {
+			int[][] xy = {{700, 500}, {600, 700}, {500, 700} ,{400, 700}};
+			return xy;
+		} else if(currentLevel == 5) {
+			int[][] xy = {{700, 500}};
+			return xy;
+		}
+		return null;
+	}
 }

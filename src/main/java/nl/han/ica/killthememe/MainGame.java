@@ -24,7 +24,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Level level = new Level(this);
 	private Menu menu;
 	private String naamText = " ";
-	private PowerUp powerup;
 	private Speler speler = new Speler(this);
 	private String gameNaam = "Kill The Meme!";
 	private String doodTekst = "Dood! Opnieuw?";
@@ -136,45 +135,38 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 *            het hudige level
 	 */
 	private void createObjects(int currentLevel) {
-
+		vijanden = level.getVijanden(currentLevel);
+		level.addPowerUp(currentLevel);
 		if (currentLevel == -10) {
-			addGameObject(new PowerUpProjectiel(this), worldHeight / 4, 250);
 			addGameObject(speler, 300, 250);
 			addGameObject(vijand = new BaasA(this), 650, 250);
-		}
-		if (currentLevel == 1) {
+		} else if (currentLevel == 1) {
 			backgroundSound.rewind();
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
-			addGameObject(vijand = new BaasA(this), 220, 500);
 		} else if (currentLevel == 2) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
-			level.addPowerUp(currentLevel);
-			addGameObject(vijand = new BaasB(this), 700, 500);
 		} else if (currentLevel == 3) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
 			level.addPowerUp(currentLevel);
-			vijanden = level.getVijanden(currentLevel);
-			for (Vijand v : vijanden) {
-				addGameObject(v, schuifPositie, 500);
-				schuifPositie -= 100;
-			}
 		} else if (currentLevel == 4) {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
 			level.addPowerUp(currentLevel);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
-			addGameObject(vijand = new BaasC(this), 700, 500);
 			startTimerAlarm();
 		}
-		// PowerUp[] powerarr = level.getPowerUp(currentLevel);
-		// int[] xy = level.getPowerXY(currentLevel);
-		// for(int i = 0; i < powerarr.length; i++) {
-		// addGameObject(powerarr[i], xy[i], xy[i+1]);
-		// }
+		if(vijanden != null) {
+			int[][] xy = level.getVijandXY(currentLevel);
+			for (Vijand v : vijanden) {
+				for(int i = 0; i < vijanden.length; i++) {
+					addGameObject(v, xy[i][0], xy[i][1]);
+				}
+			}
+		}
 	}
 
 	/**
@@ -214,12 +206,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 				setCurrentLevel(getCurrentLevel() + 1);
 				setupGame();
 			}
-			if (currentLevel == 3 && vijanden != null) {
+			if (vijanden != null) {
 				for (Vijand v : vijanden) {
 					v.afvuren();
 				}
-			} else if (vijand != null) {
-				vijand.afvuren();
 			}
 		}
 	}
@@ -294,7 +284,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 * @return baas object
 	 */
 	public GameObject getBaas() {
-		return vijand;
+		return vijanden[0];
 	}
 
 	/**
