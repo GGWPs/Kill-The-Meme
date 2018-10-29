@@ -19,13 +19,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean isAnimatie;
 	private float aanvallenPerSeconden = 0.3f;
 	private PowerUp powerup;
-	public int speed = 2;
-	public int leven = 3;
+	private int speed = 2;
+	private int leven = 3;
 	private boolean magPowerUpGebruiken;
 	private final int size = 50;
-	public float richting;
+	private float richting;
 	private int totalFramez = 0;
-	public PVector vector = null;
+	private PVector vector;
 
 	/**
 	 * Speler constructor
@@ -65,7 +65,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 
 		if (powerup != null && !magPowerUpGebruiken && mainGame.getBaas() != null) {
-			this.richting = getAngleFrom(mainGame.getBaas());
+			this.setRichting(getAngleFrom(mainGame.getBaas()));
 		}
 		if (leven <= 0) {
 			mainGame.deleteGameObject(this);
@@ -160,7 +160,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
-		PVector vector;
+		//PVector vector;
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.getTile() instanceof BoardsTile) {
 				vector = mainGame.getTileMap().getTilePixelLocation(ct.getTile());
@@ -168,7 +168,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 					for (CollisionSide cs : CollisionSide.values()) {
 						if (cs.equals(ct.getCollisionSide())) {
 							try {
-								geeftTileMee(vector);
+								setVector(vector);
 								powerup.gebruikPowerUp(this);
 							} catch (TileNotFoundException e) {
 								e.printStackTrace();
@@ -209,8 +209,12 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	public void geeftTileMee(PVector vector) {
+	public void setVector(PVector vector) {
 		this.vector = vector;
+	}
+	
+	public PVector getVector() {
+		return vector;
 	}
 
 	/**
@@ -254,13 +258,29 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void verliesLeven() {
 		leven--;
 	}
-
+	
+	/*
+	 * Getter en Setter voor het leven van de speler.
+	 */
 	public int getLeven() {
 		return leven;
 	}
 
 	public void setLeven(int leven) {
 		this.leven += leven;
+	}
+
+	
+	/*
+	 * Getter en Setter voor de richting van de speler.
+	 * 
+	 */
+	public float getRichting() {
+		return richting;
+	}
+
+	public void setRichting(float richting) {
+		this.richting = richting;
 	}
 
 }

@@ -21,8 +21,8 @@ public class PowerUpSloop extends PowerUp {
 	 */
 	public void gebruikPowerUp(Speler speler) {
 		sloop = true;
-		if (speler.vector != null) {
-			mainGame.getTileMap().setTile((int) speler.vector.x / 50, (int) speler.vector.y / 50, -1);
+		if (speler.getVector() != null) {
+			mainGame.getTileMap().setTile((int) speler.getVector().x / 50, (int) speler.getVector().y / 50, -1);
 		}
 	}
 
