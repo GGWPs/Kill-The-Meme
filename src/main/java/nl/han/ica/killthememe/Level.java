@@ -194,5 +194,21 @@ public class Level {
 		}
 
 	}
+	
+	
+	public Vijand[] getVijanden(int currentLevel) {
+		if(currentLevel == 1) {
+			Vijand[] vijanden = {new BaasA(mainGame)};
+			return vijanden;
+		} else if(currentLevel == 2) {
+			Vijand[] vijanden = {new BaasB(mainGame)};
+			return vijanden;
+		} else if(currentLevel == 3) {
+			Vijand[] vijanden = {new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame)};
+			return vijanden;
+		}
+		
+		return null;
+	}
 
 }

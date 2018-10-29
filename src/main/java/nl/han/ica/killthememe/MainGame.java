@@ -9,6 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileType;
+import nl.han.ica.OOPDProcessingEngineHAN.userinput.IKeyInput;
 import nl.han.ica.OOPDProcessingEngineHAN.view.View;
 import nl.han.ica.killthememe.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
@@ -31,7 +32,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private int tijd = 30;
 	private int schuifPositie = 700;
 	private Vijand vijand;
-	private Vijand[] vijanden = { new BaasA(this), new BaasA(this), new BaasA(this), new BaasA(this) };
+	private Vijand[] vijanden;
 	private Vogel vogel = new Vogel(this);
 	private int worldWidth;
 	private int worldHeight;
@@ -155,6 +156,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(speler, 10, 100);
 			addGameObject(vogel, 1000, 100);
 			level.addPowerUp(currentLevel);
+			vijanden = level.getVijanden(currentLevel);
 			for (Vijand v : vijanden) {
 				addGameObject(v, schuifPositie, 500);
 				schuifPositie -= 100;
@@ -212,7 +214,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 				setCurrentLevel(getCurrentLevel() + 1);
 				setupGame();
 			}
-			if (currentLevel == 3) {
+			if (currentLevel == 3 && vijanden != null) {
 				for (Vijand v : vijanden) {
 					v.afvuren();
 				}
@@ -353,6 +355,16 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
+	
+//	@Override
+//	public void keyPressed() {
+//		if (keyCode == ESC) {
+//			pauseGame();
+//		}
+//	}
+	
+	
+	
 
 	/**
 	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het
@@ -376,4 +388,5 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			bossVerslagen = true;
 		}
 	}
+
 }
