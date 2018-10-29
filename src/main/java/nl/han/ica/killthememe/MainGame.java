@@ -137,32 +137,22 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private void createObjects(int currentLevel) {
 		vijanden = level.getVijanden(currentLevel);
 		level.addPowerUp(currentLevel);
+		addGameObject(vogel, 1000, 100);
 		if (currentLevel == -10) {
 			addGameObject(speler, 300, 250);
 		} else if (currentLevel == 1) {
 			backgroundSound.rewind();
 			addGameObject(speler, 10, 100);
-			addGameObject(vogel, 1000, 100);
-		} else if (currentLevel == 2) {
+		} else if (currentLevel == 2 || currentLevel == 3 || currentLevel == 4) {
 			addGameObject(speler, 10, 100);
-			addGameObject(vogel, 1000, 100);
-		} else if (currentLevel == 3) {
-			addGameObject(speler, 10, 100);
-			addGameObject(vogel, 1000, 100);
-			level.addPowerUp(currentLevel);
-		} else if (currentLevel == 4) {
-			addGameObject(speler, 10, 100);
-			addGameObject(vogel, 1000, 100);
-			level.addPowerUp(currentLevel);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
 			startTimerAlarm();
 		}
 		if(vijanden != null) {
-			int[][] xy = level.getVijandXY(currentLevel);
-				for(int i = 0; i < vijanden.length; i++) {
-					addGameObject(vijanden[i], xy[i][0], xy[i][1]);
-				}
+			for (Vijand v : vijanden) {
+					addGameObject(v, v.x, v.y);
+			}
 		}
 	}
 

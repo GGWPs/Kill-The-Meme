@@ -13,9 +13,8 @@ public class BaasA extends Vijand {
 	 * 
 	 * @param mainGame de wereld
 	 */
-	public BaasA(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasA.png"), mainGame, 0.2f);
-		this.mainGame = mainGame;
+	public BaasA(MainGame mainGame, float x, float y) {
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasA.png"), mainGame, x, y);
 	}
 	/**
 	 * Maakt een Aanval aan die richting de speler gaat

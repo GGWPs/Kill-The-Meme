@@ -7,12 +7,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 
 public class Vijand extends SpriteObject implements IAlarmListener {
-	protected float aanvallenPerSeconden;
+	protected float aanvallenPerSeconden = 0.2f;
 	protected Level level;
 	protected int leven;
 	protected boolean magAanvallen;
 	protected MainGame mainGame;
 	protected Sprite projectileSprite;
+	protected float x;
+	protected float y;
 	
 	/**
 	 * Vijand constructor
@@ -22,11 +24,12 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	 * @param aanvallenperSeconden het aantal aanvallen per seconden
 	 * 
 	 */
-	public Vijand(Sprite sprite, MainGame mainGame, float aanvallenPerSeconden) {
+	public Vijand(Sprite sprite, MainGame mainGame, float x, float y) {
 		super(sprite);
 		this.mainGame = mainGame;
-		this.aanvallenPerSeconden = aanvallenPerSeconden;
 		this.magAanvallen = false;
+		this.x = x;
+		this.y = y;
 		setFriction(0.05f);
 
 	}

@@ -13,7 +13,6 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	protected MainGame mainGame;
 	protected Sprite powerUp;
 	protected boolean sloop;
-	protected boolean aanval;
 	protected Sprite projectileSprite;
 	protected Speler speler;
 

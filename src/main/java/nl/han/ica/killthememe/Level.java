@@ -183,41 +183,22 @@ public class Level {
 	
 	public Vijand[] getVijanden(int currentLevel) {
 		if(currentLevel == -10) {
-			Vijand[] vijanden = {new BaasA(mainGame)};
+			Vijand[] vijanden = {new BaasA(mainGame, 650, 250)};
 			return vijanden;
 		} else if(currentLevel == 1) {
-			Vijand[] vijanden = {new BaasA(mainGame)};
+			Vijand[] vijanden = {new BaasA(mainGame, 220, 500)};
 			return vijanden;
 		} else if(currentLevel == 2) {
-			Vijand[] vijanden = {new BaasB(mainGame)};
+			Vijand[] vijanden = {new BaasB(mainGame, 700, 500)};
 			return vijanden;
 		} else if(currentLevel == 3) {
-			Vijand[] vijanden = {new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame),new BaasA(mainGame)};
+			Vijand[] vijanden = {new BaasA(mainGame, 700, 500),new BaasA(mainGame, 600, 500),new BaasA(mainGame, 500, 500),new BaasA(mainGame, 400, 500)};
 			return vijanden;
 		} else if(currentLevel == 5) {
-			Vijand[] vijanden = {new BaasC(mainGame)};
+			Vijand[] vijanden = {new BaasC(mainGame, 700, 500)};
 			return vijanden;
 		}
 		return null;
 	}
 	
-	public int[][] getVijandXY(int currentLevel){
-		if(currentLevel == -10) {
-			int[][] xy = {{650, 250}};
-			return xy;
-		}  else if(currentLevel == 1) {
-			int[][] xy = {{220, 500}};
-			return xy;
-		}else if(currentLevel == 2) {
-			int[][] xy = {{700, 500}};
-			return xy;
-		}else if(currentLevel == 3) {
-			int[][] xy = {{700, 500}, {600, 700}, {500, 700} ,{400, 700}};
-			return xy;
-		} else if(currentLevel == 5) {
-			int[][] xy = {{700, 500}};
-			return xy;
-		}
-		return null;
-	}
 }

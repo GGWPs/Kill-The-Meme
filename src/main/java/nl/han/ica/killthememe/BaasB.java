@@ -16,9 +16,8 @@ public class BaasB extends Vijand {
 	 * 
 	 * @param mainGame
 	 */
-	public BaasB(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasB.png"), mainGame, 0.2f);
-
+	public BaasB(MainGame mainGame, float x, float y) {
+		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasB.png"), mainGame, x, y);
 	}
 
 	/**
