@@ -20,7 +20,6 @@ public class PowerUpVlug extends PowerUp {
 	 * 
 	 */
 	public void gebruikPowerUp(Speler speler) {
-		System.out.println("speed up");
 		speler.setSpeed(4);
 	}
 	/**

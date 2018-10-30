@@ -7,8 +7,7 @@ public class PowerUpSloop extends PowerUp {
 	/**
 	 * PowerUpSloop constructor
 	 * 
-	 * @param mainGame
-	 *            de wereld
+	 * @param mainGame de wereld
 	 * 
 	 */
 	public PowerUpSloop(MainGame mainGame) {
