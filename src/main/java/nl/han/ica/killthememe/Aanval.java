@@ -39,9 +39,7 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	 * (non-Javadoc)
 	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#gameObjectCollisionOccurred(java.util.List)
 	 */
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		
-	}
+	
+	public abstract void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects); 
 }
 

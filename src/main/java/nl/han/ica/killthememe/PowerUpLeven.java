@@ -16,7 +16,7 @@ public class PowerUpLeven extends PowerUp {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpProjectiel.png"), mainGame);
 	}
 
-	
+
 	/**
 	 * Functie voor het gebruiken van de powerup
 	 * 
