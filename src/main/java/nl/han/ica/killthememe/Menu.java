@@ -1,6 +1,5 @@
 package nl.han.ica.killthememe;
 
-
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import processing.core.PGraphics;
 
@@ -14,7 +13,7 @@ public class Menu extends GameObject {
 	private int menuKnopY = 30;
 	private String naamTekst, tekst;
 	private int worldWidth, worldHeight;
-	
+
 	/**
 	 * menu constructor
 	 * 
@@ -34,7 +33,7 @@ public class Menu extends GameObject {
 	/**
 	 * Functie om de tekst te wijzigen
 	 * 
-	 * @param tekst  menu tekst en dergelijke
+	 * @param tekst menu tekst en dergelijke
 	 */
 	public void setText(String tekst) {
 		this.tekst = tekst;
@@ -67,16 +66,15 @@ public class Menu extends GameObject {
 			for (int i = 0; i < alfabet.length; i++) {
 				if ((key == alfabet[i]) && naamTekst.length() < maxNaamLengte) {
 					naamTekst += key;
-					System.out.println(naamTekst);
 				}
 			}
 		}
 		if (keyCode == ENTER) {
 			if (currentLevel == 0) {
 				mainGame.setCurrentName(naamTekst);
-				mainGame.setCurrentLevel(-10);
+				mainGame.setCurrentLevel(2);
 				mainGame.setupGame();
-			} else if(currentLevel == -10) {
+			} else if (currentLevel == -10) {
 				mainGame.setCurrentLevel(1);
 				mainGame.setupGame();
 			}
