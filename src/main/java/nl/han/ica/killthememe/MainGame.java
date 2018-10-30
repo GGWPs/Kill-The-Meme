@@ -130,7 +130,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			backgroundSound.rewind();
 			addGameObject(speler, 10, 100);
 		} else if (currentLevel == 2 || currentLevel == 3 || currentLevel == 4) {
-			addGameObject(speler, 10, 100);
+			addGameObject(speler, 10, 90);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
 			eindBaasAlarm();
