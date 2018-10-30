@@ -205,7 +205,7 @@ public class Level {
 			Vijand[] vijanden = {new BaasB(mainGame, 700, 500)};
 			return vijanden;
 		} else if(currentLevel == 3) {
-			Vijand[] vijanden = {new BaasA(mainGame, 700, 500),new BaasA(mainGame, 600, 500),new BaasA(mainGame, 500, 500),new BaasA(mainGame, 400, 500)};
+			Vijand[] vijanden = {new BaasB(mainGame, 700, 500),new BaasB(mainGame, 600, 500),new BaasA(mainGame, 500, 500),new BaasA(mainGame, 400, 500)};
 			return vijanden;
 		} else if(currentLevel == 5) {
 			Vijand[] vijanden = {new BaasC(mainGame, 700, 500)};
