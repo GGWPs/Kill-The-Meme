@@ -19,7 +19,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean isAnimatie;
 	private float aanvallenPerSeconden = 0.3f;
 	private PowerUp powerup;
-	private int speed = 2;
+	private int spelerSpeed = 2;
 	private int leven = 3;
 	private boolean magPowerUpGebruiken;
 	private final int size = 50;
@@ -64,7 +64,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			setY(mainGame.getHeight() - size);
 		}
 
-		if (powerup != null && !magPowerUpGebruiken && mainGame.getBaas() != null) {
+		if (powerup instanceof PowerUpProjectiel) {
 			this.setRichting(getAngleFrom(mainGame.getBaas()));
 		}
 		if (leven <= 0) {
@@ -122,13 +122,13 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 			startAlarm("Animatie");
 		}
 		if (keyCode == mainGame.LEFT || key == 'a') {
-			beweeg(270, speed, 0 + totalFramez);
+			beweeg(270, spelerSpeed, 0 + totalFramez);
 		} else if (keyCode == mainGame.UP || key == 'w') {
-			beweeg(0, speed, 4 + totalFramez);
+			beweeg(0, spelerSpeed, 4 + totalFramez);
 		} else if (keyCode == mainGame.RIGHT || key == 'd') {
-			beweeg(90, speed, 6 + totalFramez);
+			beweeg(90, spelerSpeed, 6 + totalFramez);
 		} else if (keyCode == mainGame.DOWN || key == 's') {
-			beweeg(180, speed, 2 + totalFramez);
+			beweeg(180, spelerSpeed, 2 + totalFramez);
 		} else if (key == ' ') {
 			if (powerup != null && !magPowerUpGebruiken) {
 				powerup.gebruikPowerUp(this);
@@ -249,7 +249,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 *            spelers snelheid
 	 */
 	public void setSpeed(int speed) {
-		this.speed = speed;
+		this.spelerSpeed = speed;
 	}
 
 	/**

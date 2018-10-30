@@ -29,8 +29,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private String doodTekst = "Dood! Opnieuw?";
 	private String winTekst = "Gefeliciteerd! Je hebt gewonnen!";
 	private int tijd = 30;
-	private int schuifPositie = 700;
-	private Vijand vijand;
 	private Vijand[] vijanden;
 	private Vogel vogel = new Vogel(this);
 	private int worldWidth;
@@ -38,12 +36,9 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 	public static void main(String[] args) {
 		//PApplet.main(new String[] {"nl.han.ica.killthememe.MainGame"});
-		
 		String[] processingArgs = {"nl.han.ica.killthememe.MainGame"};
 		MainGame mySketch = new MainGame();
-		
 		PApplet.runSketch(processingArgs, mySketch);
-		
 	}
 
 	/**
@@ -58,7 +53,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == 0 && backgroundSound == null) {
 			initializeSound();
 		}
-		vijand = null;
 		createDashboard(worldWidth, 100, getCurrentLevel());
 		initializeTileMap(getCurrentLevel());
 		createObjects(getCurrentLevel());
@@ -131,8 +125,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * Dit is voor de creatie van de Game Objecten
 	 * 
-	 * @param currentLevel
-	 *            het hudige level
+	 * @param currentLevel het hudige level
 	 */
 	private void createObjects(int currentLevel) {
 		vijanden = level.getVijanden(currentLevel);
@@ -147,7 +140,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(speler, 10, 100);
 		} else if (currentLevel == 5) {
 			addGameObject(speler, 50, 250);
-			startTimerAlarm();
+			eindBaasAlarm();
 		}
 		if(vijanden != null) {
 			for (Vijand v : vijanden) {
@@ -347,7 +340,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het
 	 * moet overleven.
 	 */
-	private void startTimerAlarm() {
+	private void eindBaasAlarm() {
 		Alarm alarm = new Alarm("timer", 1);
 		alarm.addTarget(this);
 		alarm.start();
@@ -360,7 +353,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (tijd >= 1) {
 			tijd--;
 			refreshDasboardText();
-			startTimerAlarm();
+			eindBaasAlarm();
 		} else if (tijd <= 0) {
 			bossVerslagen = true;
 		}
