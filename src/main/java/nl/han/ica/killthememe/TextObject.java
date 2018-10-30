@@ -23,6 +23,10 @@ public class TextObject extends GameObject {
         this.text=text;
     }
     
+    
+    /*
+     * Setter zodat de juiste speler leven wordt weergeven
+     */
     public void setLeven(int leven) {
         this.leven=leven;
     }
@@ -48,7 +52,7 @@ public class TextObject extends GameObject {
         g.text(text,getX(),getY());
         g.text("Leven:" + leven, getX(), getY()+25);
         if(currentLevel == 1) {
-        	 g.text("Finish ->", 725, 100);
+        	 g.text("Finish ->", 700, 100);
         } else if(currentLevel == 2) {
         	//g.text("Finish", 725, 100);
         } else if(currentLevel == 3) {
