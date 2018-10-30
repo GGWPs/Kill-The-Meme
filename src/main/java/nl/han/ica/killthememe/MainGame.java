@@ -20,7 +20,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Sound backgroundSound, afvuurGeluid;
 	private boolean bossVerslagen;
 	private int currentLevel = 0;
-	private TekstObject dashboardText;
+	private TekstObject dashboardTekst;
 	private Level level = new Level(this);
 	private Menu menu;
 	private String naamText = " ";
@@ -91,8 +91,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 5) {
-			dashboardText = new TekstObject(" ", currentLevel);
-			dashboard.addGameObject(dashboardText);
+			dashboardTekst = new TekstObject(" ", currentLevel);
+			dashboard.addGameObject(dashboardTekst);
 		}
 		addDashboard(dashboard);
 	}
@@ -105,10 +105,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			menu.setText(gameNaam);
 			menu.setNaamText(naamText);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
-			dashboardText
+			dashboardTekst
 					.setTekst("Level: " + getCurrentLevel() + "  " + naamText + "  Doel:" + level.doel(currentLevel));
 		} else if (getCurrentLevel() == 5) {
-			dashboardText.setTekst("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: "
+			dashboardTekst.setTekst("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: "
 					+ level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
 			menu.setText(winTekst);
@@ -177,7 +177,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void update() {
 		if (speler != null) {
 			if (currentLevel >= 1 && currentLevel <= 5) {
-				dashboardText.setLeven(speler.getLeven());
+				dashboardTekst.setLeven(speler.getLeven());
 			}
 			if (levelClear()) {
 				setCurrentLevel(getCurrentLevel() + 1);
