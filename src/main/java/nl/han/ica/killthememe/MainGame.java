@@ -62,10 +62,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * creert de view zonder viewport
 	 * 
-	 * @param screenWidth
-	 *            Breedte van het scherm
-	 * @param screenHeight
-	 *            Hoogte van het scherm
+	 * @param screenWidth Breedte van het scherm
+	 * @param screenHeight Hoogte van het scherm
 	 */
 	private void createView(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
@@ -77,10 +75,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * Functie om een dashboard te maken.
 	 * 
-	 * @param dashboardWidth
-	 *            breedte van de scherm
-	 * @param dashboardHeight
-	 *            hoogte van de scherm
+	 * @param dashboardWidth breedte van de scherm
+	 * @param dashboardHeight hoogte van de scherm
 	 */
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
 		deleteAllDashboards();

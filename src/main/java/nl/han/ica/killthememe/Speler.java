@@ -15,7 +15,7 @@ import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
 	
-	private float aanvallenPerSeconden = 0.3f;
+	private float aanvallenPerSeconden = 0.5f;
 	private boolean inAnimatie;
 	private int leven = 3;
 	private boolean magPowerUpGebruiken;
