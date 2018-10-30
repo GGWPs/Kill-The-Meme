@@ -164,7 +164,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	 */
 	private void initializeTileMap(int currentLevel) {
 		/* TILES */
-
 		Sprite boardsSprite = new Sprite(level.pickLevelTile());
 		TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 		TileType[] tileTypes = { boardTileType };
