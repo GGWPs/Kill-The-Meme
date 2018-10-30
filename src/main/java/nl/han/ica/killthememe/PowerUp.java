@@ -11,7 +11,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 
 public abstract class PowerUp extends SpriteObject implements ICollidableWithGameObjects {
 	protected MainGame mainGame;
-	protected Sprite powerUp;
 	protected boolean sloop;
 	protected Sprite projectileSprite;
 	protected Speler speler;
@@ -26,7 +25,6 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	public PowerUp(Sprite sprite, MainGame mainGame) {
 		super(sprite);
 		this.mainGame = mainGame;
-
 	}
 
 	/**

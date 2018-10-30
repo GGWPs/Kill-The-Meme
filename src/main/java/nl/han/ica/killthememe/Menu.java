@@ -14,7 +14,7 @@ public class Menu extends GameObject {
 	private int menuKnopY = 30;
 	private String naamText, text;
 	private int worldWidth, worldHeight;
-
+	
 	/**
 	 * menu constructor
 	 * 

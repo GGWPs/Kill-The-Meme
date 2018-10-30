@@ -16,7 +16,7 @@ import processing.core.PVector;
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
 
 	private MainGame mainGame;
-	private boolean isAnimatie;
+	private boolean inAnimatie;
 	private float aanvallenPerSeconden = 0.3f;
 	private PowerUp powerup;
 	private int spelerSpeed = 2;
@@ -96,10 +96,10 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * 
 	 */
 	public void triggerAlarm(String alarmName) {
-		if (isAnimatie) {
-			isAnimatie = false;
-		} else if (!isAnimatie) {
-			isAnimatie = true;
+		if (inAnimatie) {
+			inAnimatie = false;
+		} else if (!inAnimatie) {
+			inAnimatie = true;
 		}
 		if (alarmName == "magPowerUpGebruiken") {
 			magPowerUpGebruiken = false;
@@ -113,11 +113,11 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		if (!isAnimatie) {
+		if (!inAnimatie) {
 			totalFramez = 1;
 			startAlarm("Animatie");
 		}
-		if (isAnimatie) {
+		if (inAnimatie) {
 			totalFramez = 0;
 			startAlarm("Animatie");
 		}
