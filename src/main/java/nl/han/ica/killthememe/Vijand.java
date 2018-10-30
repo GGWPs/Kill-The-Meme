@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 
-public class Vijand extends SpriteObject implements IAlarmListener {
+public abstract class Vijand extends SpriteObject implements IAlarmListener {
 	protected float aanvallenPerSeconden = 0.2f;
 	protected Level level;
 	protected int leven;
@@ -40,9 +40,7 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	/**
 	 * Basis functie voor het afvuren van projectielen richting de speler.
 	 */
-	public void afvuren() {
-		
-	}
+	public abstract void afvuren();
 	
 	/**
 	 * Functie om een alarm te starten voor de vijand zodat hij alleen aanvalt wanneer de alarm is afgelopen.
