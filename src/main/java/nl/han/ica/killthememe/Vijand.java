@@ -31,7 +31,6 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 		this.x = x;
 		this.y = y;
 		setFriction(0.05f);
-
 	}
 	
 	public void update() {
@@ -61,6 +60,7 @@ public class Vijand extends SpriteObject implements IAlarmListener {
 	public void triggerAlarm(String alarmName) {
 		magAanvallen = false;
 	}
+	
 	/**
 	 * Basis functie voor het verliezen van levens bij de vijand.
 	 */

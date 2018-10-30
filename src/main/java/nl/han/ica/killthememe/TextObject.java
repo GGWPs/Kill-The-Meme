@@ -23,6 +23,10 @@ public class TextObject extends GameObject {
         this.text=text;
     }
     
+    
+    /*
+     * Setter zodat de juiste speler leven wordt weergeven
+     */
     public void setLeven(int leven) {
         this.leven=leven;
     }

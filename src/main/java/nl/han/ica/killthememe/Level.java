@@ -38,7 +38,14 @@ public class Level {
 			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
 		}
 	}
-
+	
+	
+	/*
+	 * Methode die returnt wat de huidige level doel is.
+	 * 
+	 * @param int currentLevel de huidige level.
+	 * 
+	 */
 	public String doel(int currentLevel) {
 		if (currentLevel == 1) {
 			return "Bereik het einde van de level!";
@@ -181,6 +188,12 @@ public class Level {
 	}
 	
 	
+	
+	/*
+	 * Functie die de vijanden voor het level teruggeeft.
+	 * 
+	 * @param int currentLevel de huidige level
+	 */
 	public Vijand[] getVijanden(int currentLevel) {
 		if(currentLevel == -10) {
 			Vijand[] vijanden = {new BaasA(mainGame, 650, 250)};
