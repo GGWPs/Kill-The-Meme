@@ -33,8 +33,7 @@ public abstract class PowerUp extends SpriteObject implements ICollidableWithGam
 	 * Functie om de powerup te gebruiken
 	 * 
 	 */
-	public void gebruikPowerUp(Speler speler) {
-	}
+	public abstract void gebruikPowerUp(Speler speler);
 
 	/**
 	 * Methode om de powerup te resetten

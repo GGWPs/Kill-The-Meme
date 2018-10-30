@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 
-public abstract class Aanval extends SpriteObject implements ICollidableWithGameObjects{
+public abstract class Aanval extends SpriteObject implements ICollidableWithGameObjects {
 
 	protected MainGame mainGame;
 
@@ -30,18 +30,16 @@ public abstract class Aanval extends SpriteObject implements ICollidableWithGame
 	 */
 	@Override
 	public void update() {
-		if (getY() < 0 || getY() > mainGame.getHeight() || 
-				getX() < 0 || getX() > mainGame.getWidth()) {
+		if (getY() < 0 || getY() > mainGame.getHeight() || getX() < 0 || getX() > mainGame.getWidth()) {
 			mainGame.deleteGameObject(this);
 		}
 	}
 	/*
 	 * (non-Javadoc)
-	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#gameObjectCollisionOccurred(java.util.List)
+	 * 
+	 * @see nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects#
+	 * gameObjectCollisionOccurred(java.util.List)
 	 */
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		
-	}
-}
 
+	public abstract void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects);
+}
