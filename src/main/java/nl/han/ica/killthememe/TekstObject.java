@@ -14,8 +14,8 @@ public class TekstObject extends GameObject {
      * @param tekst tekst 
      * @param currentLevel huidige level
      */
-    public TekstObject(String text, int currentLevel) {
-        this.tekst=text;
+    public TekstObject(String tekst, int currentLevel) {
+        this.tekst=tekst;
         this.currentLevel=currentLevel;
     }
     
@@ -25,8 +25,8 @@ public class TekstObject extends GameObject {
      * Setter voor de tekst op het scherm.
      * 
      */
-    public void setText(String text) {
-        this.tekst=text;
+    public void setTekst(String tekst) {
+        this.tekst=tekst;
     }
     
     
