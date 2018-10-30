@@ -56,7 +56,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		createObjects(getCurrentLevel());
 		refreshDasboardText();
 		createView(worldWidth, worldHeight);
-		speler.resetPowerups();
+		speler.resetPowerUps();
 	}
 
 	/**

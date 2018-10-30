@@ -14,16 +14,16 @@ import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
-
-	private MainGame mainGame;
-	private boolean inAnimatie;
+	
 	private float aanvallenPerSeconden = 0.3f;
-	private PowerUp powerup;
-	private int spelerSpeed = 2;
+	private boolean inAnimatie;
 	private int leven = 3;
 	private boolean magPowerUpGebruiken;
-	private final int size = 50;
+	private MainGame mainGame;
+	private PowerUp powerup;
 	private float richting;
+	private final int size = 50;
+	private int spelerSpeed = 2;
 	private int totalFramez = 0;
 	private PVector vector;
 
@@ -233,7 +233,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 		return powerup;
 	}
 
-	public void resetPowerups() {
+	public void resetPowerUps() {
 		if (powerup != null) {
 			powerup.resetPowerUp(this);
 		}

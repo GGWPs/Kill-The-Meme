@@ -10,7 +10,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
 public abstract class Aanval extends SpriteObject implements ICollidableWithGameObjects {
 
 	protected MainGame mainGame;
-
 	/**
 	 * Aanval constructor
 	 * 

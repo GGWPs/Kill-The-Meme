@@ -5,11 +5,10 @@ import processing.core.PGraphics;
 
 
 public class TekstObject extends GameObject {
-
-    private String tekst;
+ 
     private int currentLevel;
     private int leven;
-    
+    private String tekst;
     /*
      * @param tekst tekst 
      * @param currentLevel huidige level

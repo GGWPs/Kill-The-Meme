@@ -4,7 +4,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.SpriteObject;
-import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 
 public abstract class Vijand extends SpriteObject implements IAlarmListener {
 	protected float aanvallenPerSeconden = 0.2f;
@@ -12,6 +11,7 @@ public abstract class Vijand extends SpriteObject implements IAlarmListener {
 	protected int leven;
 	protected boolean magAanvallen;
 	protected MainGame mainGame;
+	protected Aanval projectiel;
 	protected Sprite projectileSprite;
 	protected float x;
 	protected float y;
