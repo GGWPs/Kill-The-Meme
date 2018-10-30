@@ -25,7 +25,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Menu menu;
 	private String naamText = " ";
 	private Speler speler = new Speler(this);
-	private String gameNaam = "Kill The Meme! ";
+	private String gameNaam = "Kill The Meme!";
 	private String doodTekst = "Dood! Opnieuw?";
 	private String winTekst = "Gefeliciteerd! Je hebt gewonnen!";
 	private int tijd = 30;
