@@ -11,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.userinput.IKeyInput;
 import nl.han.ica.OOPDProcessingEngineHAN.view.View;
-import nl.han.ica.killthememe.TextObject;
+import nl.han.ica.killthememe.TekstObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
@@ -20,7 +20,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Sound backgroundSound, afvuurGeluid;
 	private boolean bossVerslagen;
 	private int currentLevel = 0;
-	private TextObject dashboardText;
+	private TekstObject dashboardText;
 	private Level level = new Level(this);
 	private Menu menu;
 	private String naamText = " ";
@@ -91,7 +91,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 5) {
-			dashboardText = new TextObject(" ", currentLevel);
+			dashboardText = new TekstObject(" ", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
 		addDashboard(dashboard);
