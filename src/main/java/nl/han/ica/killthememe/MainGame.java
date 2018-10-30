@@ -53,7 +53,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		if (currentLevel == 0 && backgroundSound == null) {
 			initializeSound();
 		}
-		createDashboard(worldWidth, 100, getCurrentLevel());
+		createDashboard(worldWidth, worldHeight, getCurrentLevel());
 		initializeTileMap(getCurrentLevel());
 		createObjects(getCurrentLevel());
 		refreshDasboardText();
@@ -92,7 +92,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 5) {
-			dashboardText = new TextObject("", currentLevel);
+			dashboardText = new TextObject(" ", currentLevel);
 			dashboard.addGameObject(dashboardText);
 		}
 		addDashboard(dashboard);
@@ -326,12 +326,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 		}
 	}
 	
-//	@Override
-//	public void keyPressed() {
-//		if (keyCode == ESC) {
-//			pauseGame();
-//		}
-//	}
 	
 	
 	
