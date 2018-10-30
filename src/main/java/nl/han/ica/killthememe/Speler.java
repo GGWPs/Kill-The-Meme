@@ -15,7 +15,7 @@ import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {
 	
-	private float aanvallenPerSeconden = 0.3f;
+	private float aanvallenPerSeconden = 0.5f;
 	private boolean inAnimatie;
 	private int leven = 3;
 	private boolean magPowerUpGebruiken;
@@ -30,8 +30,7 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	/**
 	 * Speler constructor
 	 * 
-	 * @param mainGame
-	 *            de wereld
+	 * @param mainGame de wereld
 	 */
 	public Speler(MainGame mainGame) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);

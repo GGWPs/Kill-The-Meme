@@ -19,7 +19,6 @@ public class BaasC extends Vijand {
 	 */
 	public BaasC(MainGame mainGame, float x, float y) {
 		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasC.png"), mainGame, x, y);
-
 	}
 
 	/**
