@@ -4,23 +4,29 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import processing.core.PGraphics;
 
 
-public class TextObject extends GameObject {
+public class TekstObject extends GameObject {
 
-    private String text;
+    private String tekst;
     private int currentLevel;
     private int leven;
     
     /*
-     * @param text tekst 
+     * @param tekst tekst 
      * @param currentLevel huidige level
      */
-    public TextObject(String text, int currentLevel) {
-        this.text=text;
+    public TekstObject(String tekst, int currentLevel) {
+        this.tekst=tekst;
         this.currentLevel=currentLevel;
     }
-
-    public void setText(String text) {
-        this.text=text;
+    
+    
+    
+    /*
+     * Setter voor de tekst op het scherm.
+     * 
+     */
+    public void setTekst(String tekst) {
+        this.tekst=tekst;
     }
     
     
@@ -49,7 +55,7 @@ public class TextObject extends GameObject {
     	g.fill(255, 255, 255);
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(20);
-        g.text(text,getX(),getY());
+        g.text(tekst,getX(),getY());
         g.text("Leven:" + leven, getX(), getY()+25);
         if(currentLevel == 1) {
         	 g.text("Finish ->", 700, 100);

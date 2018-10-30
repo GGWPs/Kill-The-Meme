@@ -213,6 +213,8 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	/*
 	 * Getter en setter voor de vector. Wordt gebruikt voor de tilecollision
+	 * 
+	 * @return Spelers vector tile
 	 */
 	public void setVector(PVector vector) {
 		this.vector = vector;

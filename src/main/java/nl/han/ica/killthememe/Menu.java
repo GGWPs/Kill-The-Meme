@@ -12,41 +12,41 @@ public class Menu extends GameObject {
 	private int maxNaamLengte = 15;
 	private int menuKnopX = 80;
 	private int menuKnopY = 30;
-	private String naamText, text;
+	private String naamTekst, tekst;
 	private int worldWidth, worldHeight;
 	
 	/**
 	 * menu constructor
 	 * 
-	 * @param text
+	 * @param tekst
 	 * @param currentLevel huidige level
 	 * @param worldWidth scherm breedte
 	 * @param worldHeight scherm hoogte
 	 */
-	public Menu(MainGame mainGame, String text, int currentLevel, int worldWidth, int worldHeight) {
+	public Menu(MainGame mainGame, String tekst, int currentLevel, int worldWidth, int worldHeight) {
 		this.mainGame = mainGame;
-		this.text = text;
+		this.tekst = tekst;
 		this.currentLevel = currentLevel;
 		this.worldWidth = worldWidth;
 		this.worldHeight = worldHeight;
 	}
 
 	/**
-	 * Functie om de text te wijzigen
+	 * Functie om de tekst te wijzigen
 	 * 
-	 * @param text  menu text en dergelijke
+	 * @param tekst  menu tekst en dergelijke
 	 */
-	public void setText(String text) {
-		this.text = text;
+	public void setText(String tekst) {
+		this.tekst = tekst;
 	}
 
 	/**
 	 * Functie om de naam te wijzigen
 	 * 
-	 * @param naamText String die de naam bevat
+	 * @param naamTekst String die de naam bevat
 	 */
-	public void setNaamText(String naamText) {
-		this.naamText = naamText;
+	public void setNaamText(String naamTekst) {
+		this.naamTekst = naamTekst;
 	}
 
 	/**
@@ -58,22 +58,22 @@ public class Menu extends GameObject {
 	public void keyPressed(int keyCode, char key) {
 		if (currentLevel == 0) {
 			if (keyCode == BACKSPACE) {
-				if (naamText.length() > 0) {
-					naamText = naamText.substring(0, naamText.length() - 1);
+				if (naamTekst.length() > 0) {
+					naamTekst = naamTekst.substring(0, naamTekst.length() - 1);
 				}
 			} else if (keyCode == DELETE) {
-				naamText = "";
+				naamTekst = "";
 			}
 			for (int i = 0; i < alfabet.length; i++) {
-				if ((key == alfabet[i]) && naamText.length() < maxNaamLengte) {
-					naamText += key;
-					System.out.println(naamText);
+				if ((key == alfabet[i]) && naamTekst.length() < maxNaamLengte) {
+					naamTekst += key;
+					System.out.println(naamTekst);
 				}
 			}
 		}
 		if (keyCode == ENTER) {
 			if (currentLevel == 0) {
-				mainGame.setCurrentName(naamText);
+				mainGame.setCurrentName(naamTekst);
 				mainGame.setCurrentLevel(-10);
 				mainGame.setupGame();
 			} else if(currentLevel == -10) {
@@ -93,7 +93,7 @@ public class Menu extends GameObject {
 		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6) {
 			g.setSize(worldWidth, worldHeight);
 			g.background(0);
-			g.text(text, worldWidth / 2, worldHeight / 4);
+			g.text(tekst, worldWidth / 2, worldHeight / 4);
 			g.fill(255);
 		}
 		if (currentLevel == 0) {
@@ -103,7 +103,7 @@ public class Menu extends GameObject {
 			g.rect(worldWidth / 3, (worldHeight / 4) * 2, menuKnopX * 3, menuKnopY, 8);
 			g.fill(0);
 			g.textAlign(g.LEFT, g.TOP);
-			g.text(naamText, worldWidth / 2 - menuKnopY * 4, ((worldHeight / 40) * 18) + menuKnopY);
+			g.text(naamTekst, worldWidth / 2 - menuKnopY * 4, ((worldHeight / 40) * 18) + menuKnopY);
 			tekenKnoppen(g, worldWidth / 3, worldWidth / 2, (worldHeight / 3) * 2, "Next ", "Quit ");
 		} else if (currentLevel == -1 || currentLevel == 6) {
 			g.rect(worldWidth / 2, (worldHeight / 3) * 2, menuKnopX, menuKnopY, 8);
@@ -111,7 +111,7 @@ public class Menu extends GameObject {
 			g.fill(0);
 			tekenKnoppen(g, worldWidth / 3, worldWidth / 2, (worldHeight / 3) * 2, "Retry ", "Quit ");
 		} else if (currentLevel == -10) {
-			g.text(text, worldWidth / 2, worldHeight / 12);
+			g.text(tekst, worldWidth / 2, worldHeight / 12);
 			g.textSize(20);
 			tekenKnoppen(g, worldWidth / 3, worldWidth / 2, (worldHeight / 3) * 2, "Terug ", "Start ");
 
@@ -160,10 +160,10 @@ public class Menu extends GameObject {
 	/**
 	 * Functie om de naam op te halen.
 	 * 
-	 * @return naamText de naam van de speler.
+	 * @return naamTekst de naam van de speler.
 	 */
 	public String getNaam() {
-		return naamText;
+		return naamTekst;
 	}
 
 }

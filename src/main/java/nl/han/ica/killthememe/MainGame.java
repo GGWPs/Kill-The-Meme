@@ -9,9 +9,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileType;
-import nl.han.ica.OOPDProcessingEngineHAN.userinput.IKeyInput;
 import nl.han.ica.OOPDProcessingEngineHAN.view.View;
-import nl.han.ica.killthememe.TextObject;
+import nl.han.ica.killthememe.TekstObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
@@ -20,10 +19,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private Sound backgroundSound, afvuurGeluid;
 	private boolean bossVerslagen;
 	private int currentLevel = 0;
-	private TextObject dashboardText;
+	private TekstObject dashboardTekst;
 	private Level level = new Level(this);
 	private Menu menu;
-	private String naamText = " ";
+	private String naamTekst = " ";
 	private Speler speler = new Speler(this);
 	private String gameNaam = "Kill The Meme!";
 	private String doodTekst = "Dood! Opnieuw?";
@@ -91,8 +90,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			dashboard.addGameObject(menu);
 			addGameObject(menu);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 5) {
-			dashboardText = new TextObject(" ", currentLevel);
-			dashboard.addGameObject(dashboardText);
+			dashboardTekst = new TekstObject(" ", currentLevel);
+			dashboard.addGameObject(dashboardTekst);
 		}
 		addDashboard(dashboard);
 	}
@@ -103,16 +102,16 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private void refreshDasboardText() {
 		if (getCurrentLevel() == 0) {
 			menu.setText(gameNaam);
-			menu.setNaamText(naamText);
+			menu.setNaamText(naamTekst);
 		} else if (getCurrentLevel() >= 1 && getCurrentLevel() <= 4) {
-			dashboardText
-					.setText("Level: " + getCurrentLevel() + "  " + naamText + "  Doel:" + level.doel(currentLevel));
+			dashboardTekst
+					.setTekst("Level: " + getCurrentLevel() + "  " + naamTekst + "  Doel:" + level.doel(currentLevel));
 		} else if (getCurrentLevel() == 5) {
-			dashboardText.setText("Level: " + getCurrentLevel() + "  " + naamText + "   Doel: "
+			dashboardTekst.setTekst("Level: " + getCurrentLevel() + "  " + naamTekst + "   Doel: "
 					+ level.doel(currentLevel) + " Tijd om te winnen: " + tijd);
 		} else if (getCurrentLevel() == 6) {
 			menu.setText(winTekst);
-			menu.setNaamText(naamText);
+			menu.setNaamText(naamTekst);
 		} else if (getCurrentLevel() == -1) {
 			menu.setText(doodTekst);
 		} else if (getCurrentLevel() == -10) {
@@ -178,7 +177,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void update() {
 		if (speler != null) {
 			if (currentLevel >= 1 && currentLevel <= 5) {
-				dashboardText.setLeven(speler.getLeven());
+				dashboardTekst.setLeven(speler.getLeven());
 			}
 			if (levelClear()) {
 				setCurrentLevel(getCurrentLevel() + 1);
@@ -235,10 +234,10 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * Functie om de naam op te slaan.
 	 * 
-	 * @param naamText de naam die ingevoerd is
+	 * @param naamTekst de naam die ingevoerd is
 	 */
 	public void setCurrentName(String naamText) {
-		this.naamText = naamText;
+		this.naamTekst = naamText;
 	}
 	/**
 	 * Haalt de X pos van de speler op
@@ -300,7 +299,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			if (mouseX > worldWidth / 3 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 3 + 80
 					&& mouseY < 440) {
 				if (currentLevel == 0) {
-					naamText = menu.getNaam();
+					naamTekst = menu.getNaam();
 				}
 				currentLevel = -10;
 				setupGame();
@@ -316,7 +315,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			} else if (mouseX > worldWidth / 2 && mouseY > (worldHeight / 3) * 2 && mouseX < worldWidth / 2 + 80
 					&& mouseY < 440) {
 				if (currentLevel == 0) {
-					naamText = menu.getNaam();
+					naamTekst = menu.getNaam();
 				}
 				currentLevel = 1;
 				setupGame();
