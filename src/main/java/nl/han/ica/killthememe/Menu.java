@@ -23,9 +23,9 @@ public class Menu extends GameObject {
 	 * @param worldWidth scherm breedte
 	 * @param worldHeight scherm hoogte
 	 */
-	public Menu(MainGame mainGame, String text, int currentLevel, int worldWidth, int worldHeight) {
+	public Menu(MainGame mainGame, String tekst, int currentLevel, int worldWidth, int worldHeight) {
 		this.mainGame = mainGame;
-		this.tekst = text;
+		this.tekst = tekst;
 		this.currentLevel = currentLevel;
 		this.worldWidth = worldWidth;
 		this.worldHeight = worldHeight;
@@ -36,8 +36,8 @@ public class Menu extends GameObject {
 	 * 
 	 * @param tekst  menu tekst en dergelijke
 	 */
-	public void setText(String text) {
-		this.tekst = text;
+	public void setText(String tekst) {
+		this.tekst = tekst;
 	}
 
 	/**
@@ -45,8 +45,8 @@ public class Menu extends GameObject {
 	 * 
 	 * @param naamTekst String die de naam bevat
 	 */
-	public void setNaamText(String naamText) {
-		this.naamTekst = naamText;
+	public void setNaamText(String naamTekst) {
+		this.naamTekst = naamTekst;
 	}
 
 	/**
