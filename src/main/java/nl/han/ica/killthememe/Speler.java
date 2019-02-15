@@ -28,13 +28,16 @@ public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles
 	private int totalFramez = 0;
 	private PVector vector;
 
+	
+	private static URL url = Speler.class.getResource(
+            "/frisk1.png");
 	/**
 	 * Speler constructor
 	 * 
 	 * @param mainGame de wereld
 	 */
 	public Speler(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/frisk1.png"), 8);
+		super(new Sprite(url.toString()), 8);
 		this.mainGame = mainGame;
 		this.magPowerUpGebruiken = false;
 		setCurrentFrameIndex(3);

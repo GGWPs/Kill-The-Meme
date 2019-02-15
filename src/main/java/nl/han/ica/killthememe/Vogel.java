@@ -1,5 +1,7 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.AnimatedSpriteObject;
@@ -11,14 +13,15 @@ public class Vogel extends AnimatedSpriteObject implements IAlarmListener {
 	private boolean inAnimatie;
 	private MainGame mainGame;
 	private int totalFramez = 0;
-
+	private static URL vogel = Vogel.class.getResource(
+            "/twitter-bird-sprite.png");
 	/**
 	 * Vogel constructor
 	 * 
 	 * @param mainGame de wereld
 	 */
 	public Vogel(MainGame mainGame) {
-		this(new Sprite("src/main/java/nl/han/ica/killthememe/media/twitter-bird-sprite.png"));
+		this(new Sprite(vogel.toString()));
 		this.mainGame = mainGame;
 		setCurrentFrameIndex(totalFramez);
 	}

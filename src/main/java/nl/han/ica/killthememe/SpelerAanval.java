@@ -1,12 +1,14 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class SpelerAanval extends Aanval {
-	
+	private static URL spelerAanval = SpelerAanval.class.getResource(
+            "/aanvallen/BaasAAanval.png");
 	/*
 	 * SpelerEenAanval constructor
 	 * 
@@ -16,7 +18,7 @@ public class SpelerAanval extends Aanval {
 	 * @param snelheid van de aanval
 	 */
 	public SpelerAanval(MainGame mainGame, Sprite sprite, float richting, float snelheid) {
-		super(mainGame, new Sprite("src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasAAanval.png"), richting, snelheid);
+		super(mainGame, new Sprite(spelerAanval.toString()), richting, snelheid);
 
 	}
 	/*

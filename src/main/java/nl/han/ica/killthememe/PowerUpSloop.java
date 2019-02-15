@@ -1,9 +1,12 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpSloop extends PowerUp {
-
+	private static URL url = PowerUpSloop.class.getResource(
+            "/powerups/PowerUpSloop.png");
 	/**
 	 * PowerUpSloop constructor
 	 * 
@@ -11,7 +14,7 @@ public class PowerUpSloop extends PowerUp {
 	 * 
 	 */
 	public PowerUpSloop(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpSloop.png"), mainGame);
+		super(new Sprite(url.toString()), mainGame);
 	}
 
 	/**

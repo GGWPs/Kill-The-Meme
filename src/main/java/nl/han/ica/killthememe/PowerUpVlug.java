@@ -1,10 +1,13 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpVlug extends PowerUp {
 
-
+	private static URL url = PowerUpVlug.class.getResource(
+            "/powerups/PowerUpVlug.png");
 	/**
 	 * PowerUpVlug constructor
 	 * 
@@ -12,7 +15,7 @@ public class PowerUpVlug extends PowerUp {
 	 *           
 	 */
 	public PowerUpVlug(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpVlug.png"), mainGame);
+		super(new Sprite(url.toString()), mainGame);
 	}
 
 	/**

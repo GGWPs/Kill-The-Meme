@@ -1,5 +1,7 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.dashboard.Dashboard;
@@ -34,7 +36,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	private int worldHeight;
 
 	public static void main(String[] args) {
-		String[] processingArgs = {"nl.han.ica.killthememe.MainGame"};
+		String[] processingArgs = { "nl.han.ica.killthememe.MainGame" };
 		MainGame mySketch = new MainGame();
 		PApplet.runSketch(processingArgs, mySketch);
 	}
@@ -62,7 +64,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * creert de view zonder viewport
 	 * 
-	 * @param screenWidth Breedte van het scherm
+	 * @param screenWidth  Breedte van het scherm
 	 * @param screenHeight Hoogte van het scherm
 	 */
 	private void createView(int screenWidth, int screenHeight) {
@@ -75,7 +77,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	/**
 	 * Functie om een dashboard te maken.
 	 * 
-	 * @param dashboardWidth breedte van de scherm
+	 * @param dashboardWidth  breedte van de scherm
 	 * @param dashboardHeight hoogte van de scherm
 	 */
 	private void createDashboard(int dashboardWidth, int dashboardHeight, int currentLevel) {
@@ -135,20 +137,23 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			addGameObject(speler, 50, 250);
 			eindBaasAlarm();
 		}
-		if(vijanden != null) {
+		if (vijanden != null) {
 			for (Vijand v : vijanden) {
-					addGameObject(v, v.x, v.y);
+				addGameObject(v, v.x, v.y);
 			}
 		}
 	}
+
+	private static URL url = MainGame.class.getResource("/SeaShanty2.mp3");
+	private static URL url2 = MainGame.class.getResource("/biem.mp3");
 
 	/**
 	 * Functie voor het initialiseren van het geluid
 	 */
 	private void initializeSound() {
-		backgroundSound = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/SeaShanty2.mp3");
+		backgroundSound = new Sound(this, url.toString());
 		backgroundSound.loop(-1);
-		afvuurGeluid = new Sound(this, "src/main/java/nl/han/ica/killthememe/media/biem.mp3");
+		afvuurGeluid = new Sound(this, url2.toString());
 	}
 
 	/*
@@ -167,6 +172,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 
 		tileMap = new TileMap(tileSize, tileTypes, level.getLevelTile(currentLevel));
 	}
+
 	/*
 	 * Update functie die constant uitgevoerd wordt.
 	 */
@@ -186,6 +192,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
+
 	/*
 	 * Methode die een geluid afspeelt
 	 */
@@ -202,7 +209,8 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	}
 
 	/**
-	 * Haalt het speler gameobject op om de richting van het projectiel voor de vijand te bepalen
+	 * Haalt het speler gameobject op om de richting van het projectiel voor de
+	 * vijand te bepalen
 	 * 
 	 * @return speler Object van de speler
 	 */
@@ -227,6 +235,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
+
 	/**
 	 * Functie om de naam op te slaan.
 	 * 
@@ -235,6 +244,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public void setCurrentName(String naamText) {
 		this.naamTekst = naamText;
 	}
+
 	/**
 	 * Haalt de X pos van de speler op
 	 * 
@@ -243,6 +253,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public float getSpelerX() {
 		return speler.getX();
 	}
+
 	/**
 	 * Haalt de Y pos van de speler op
 	 * 
@@ -251,6 +262,7 @@ public class MainGame extends GameEngine implements IAlarmListener {
 	public float getSpelerY() {
 		return speler.getY();
 	}
+
 	/**
 	 * Haalt het gameobject op zodat de projectiel naar het vijand object toe gaat
 	 * 
@@ -318,10 +330,6 @@ public class MainGame extends GameEngine implements IAlarmListener {
 			}
 		}
 	}
-	
-	
-	
-	
 
 	/**
 	 * Functie om alarm te starten voor de timer die laat zien hoelang de speler het

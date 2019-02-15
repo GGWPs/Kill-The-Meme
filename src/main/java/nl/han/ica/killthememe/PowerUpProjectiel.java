@@ -1,9 +1,12 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class PowerUpProjectiel extends PowerUp {
-	
+	private static URL url = PowerUpProjectiel.class.getResource(
+            "/powerups/PowerUpProjectiel.png");
 	/**
 	 * PowerUpProjectiel constructor
 	 * 
@@ -11,7 +14,7 @@ public class PowerUpProjectiel extends PowerUp {
 	 *            
 	 */
 	public PowerUpProjectiel(MainGame mainGame) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/powerups/PowerUpProjectiel.png"), mainGame);
+		super(new Sprite(url.toString()), mainGame);
 	}
 
 	/**

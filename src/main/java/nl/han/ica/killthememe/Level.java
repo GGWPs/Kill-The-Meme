@@ -1,7 +1,13 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
+
 public class Level {
 	private MainGame mainGame;
+	private static URL levelTile = Level.class.getResource("/boards.jpg");
+	private static URL menuZwart = Level.class.getResource("/menuZwart.png");
+	private static URL tiles1 = Level.class.getResource("/tiles1.jpg");
+	private static URL fccAcht = Level.class.getResource("/fccachtergrond.jpg");
 
 	/**
 	 * Level constructor
@@ -13,12 +19,13 @@ public class Level {
 	}
 
 	/**
-	 * Functie die per level een andere tile kan uitkiezen of te wel een andere muur.
+	 * Functie die per level een andere tile kan uitkiezen of te wel een andere
+	 * muur.
 	 * 
 	 * @return tile locatie
 	 */
 	public String pickLevelTile() {
-		return "src/main/java/nl/han/ica/killthememe/media/boards.jpg";
+		return levelTile.toString();
 	}
 
 	/**
@@ -29,17 +36,16 @@ public class Level {
 	 */
 	public String pickBackground(int currentLevel) {
 		if (currentLevel == 0 || currentLevel == -1 || currentLevel == 6 || currentLevel == -10) {
-			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
+			return menuZwart.toString();
 		} else if (currentLevel >= 1 && currentLevel <= 4) {
-			return "src/main/java/nl/han/ica/killthememe/media/tiles1.jpg";
+			return tiles1.toString();
 		} else if (currentLevel == 5) {
-			return "src/main/java/nl/han/ica/killthememe/media/fccachtergrond.jpg";
+			return fccAcht.toString();
 		} else {
-			return "src/main/java/nl/han/ica/killthememe/media/menuZwart.png";
+			return menuZwart.toString();
 		}
 	}
-	
-	
+
 	/*
 	 * Methode die returnt wat de huidige level doel is.
 	 * 
@@ -130,21 +136,19 @@ public class Level {
 			return tilesMap;
 		} else if (currentLevel == 4) {
 			System.out.println("Level" + currentLevel);
-			int tilesMap[][]={
-	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,-1,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,-1,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-	        };
-			return tilesMap; 
+			int tilesMap[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+					{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+			return tilesMap;
 		} else if (currentLevel == 5) {
 			System.out.println("Level" + currentLevel);
 			int tilesMap[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -175,43 +179,42 @@ public class Level {
 	 * 
 	 */
 	public void addPowerUp(int currentLevel) {
-		if(currentLevel == -10) {
+		if (currentLevel == -10) {
 			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 600 / 4, 250);
 		} else if (currentLevel == 2) {
 			mainGame.addGameObject(new PowerUpProjectiel(mainGame), 0, 300);
 		} else if (currentLevel == 3) {
 			mainGame.addGameObject(new PowerUpVlug(mainGame), 0, 300);
-		} else if(currentLevel == 4) {
+		} else if (currentLevel == 4) {
 			mainGame.addGameObject(new PowerUpSloop(mainGame), 100, 300);
 			mainGame.addGameObject(new PowerUpLeven(mainGame), 650, 250);
 		}
 	}
-	
-	
-	
+
 	/*
 	 * Functie die de vijanden voor het level teruggeeft.
 	 * 
 	 * @param int currentLevel de huidige level
 	 */
 	public Vijand[] getVijanden(int currentLevel) {
-		if(currentLevel == -10) {
-			Vijand[] vijanden = {new BaasA(mainGame, 650, 250)};
+		if (currentLevel == -10) {
+			Vijand[] vijanden = { new BaasA(mainGame, 650, 250) };
 			return vijanden;
-		} else if(currentLevel == 1) {
-			Vijand[] vijanden = {new BaasA(mainGame, 220, 500)};
+		} else if (currentLevel == 1) {
+			Vijand[] vijanden = { new BaasA(mainGame, 220, 500) };
 			return vijanden;
-		} else if(currentLevel == 2) {
-			Vijand[] vijanden = {new BaasB(mainGame, 700, 500)};
+		} else if (currentLevel == 2) {
+			Vijand[] vijanden = { new BaasB(mainGame, 700, 500) };
 			return vijanden;
-		} else if(currentLevel == 3) {
-			Vijand[] vijanden = {new BaasB(mainGame, 700, 500),new BaasB(mainGame, 600, 500),new BaasA(mainGame, 500, 500),new BaasA(mainGame, 400, 500)};
+		} else if (currentLevel == 3) {
+			Vijand[] vijanden = { new BaasB(mainGame, 700, 500), new BaasB(mainGame, 600, 500),
+					new BaasA(mainGame, 500, 500), new BaasA(mainGame, 400, 500) };
 			return vijanden;
-		} else if(currentLevel == 5) {
-			Vijand[] vijanden = {new BaasC(mainGame, 700, 500)};
+		} else if (currentLevel == 5) {
+			Vijand[] vijanden = { new BaasC(mainGame, 700, 500) };
 			return vijanden;
 		}
 		return null;
 	}
-	
+
 }

@@ -1,13 +1,16 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
 import java.util.Random;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 
 public class BaasA extends Vijand {
 
-	private Sprite projectileSprite = new Sprite(
-			"src/main/java/nl/han/ica/killthememe/media/aanvallen/BaasAAanval.png");
+	private static URL BaasAAanval = BaasA.class.getResource("/aanvallen/BaasAAanval.png");
+	private static URL BaasA = BaasA.class.getResource("/BaasA.png");
+
+	private Sprite projectileSprite = new Sprite(BaasAAanval.toString());
 
 	/**
 	 * BaasEen constructor
@@ -15,7 +18,7 @@ public class BaasA extends Vijand {
 	 * @param mainGame de wereld
 	 */
 	public BaasA(MainGame mainGame, float x, float y) {
-		super(new Sprite("src/main/java/nl/han/ica/killthememe/media/BaasA.png"), mainGame, x, y);
+		super(new Sprite(BaasA.toString()), mainGame, x, y);
 	}
 
 	/**
