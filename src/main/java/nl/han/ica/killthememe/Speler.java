@@ -1,5 +1,6 @@
 package nl.han.ica.killthememe;
 
+import java.net.URL;
 import java.util.List;
 
 import nl.han.ica.OOPDProcessingEngineHAN.alarm.Alarm;
@@ -10,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.collision.ICollidableWithTiles;
 import nl.han.ica.OOPDProcessingEngineHAN.exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
-import nl.han.ica.waterworld.tiles.BoardsTile;
+import nl.han.ica.killthememe.BoardsTile;
 import processing.core.PVector;
 
 public class Speler extends AnimatedSpriteObject implements ICollidableWithTiles, IAlarmListener {

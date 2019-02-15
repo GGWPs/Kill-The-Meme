@@ -1,4 +1,4 @@
-package nl.han.ica.waterworld.tiles;
+package nl.han.ica.killthememe;
 
 import nl.han.ica.OOPDProcessingEngineHAN.objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.Tile;

@@ -11,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.view.View;
 import nl.han.ica.killthememe.TekstObject;
-import nl.han.ica.waterworld.tiles.BoardsTile;
+import nl.han.ica.killthememe.BoardsTile;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
